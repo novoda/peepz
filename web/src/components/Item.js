@@ -31,9 +31,8 @@ class Item extends React.Component {
 
   render() {
     const name = this.props.name;
-    const image = this.props.image || { payload: hodor };
+    const image = this.props.image || { payload: hodor, timestamp: 0 } ;
     const lastSeen = this.props.lastSeen;
-
     const imageStyle = {...style};
     if (!lastSeen || ((Date.now() - lastSeen) >= (30 * 60) * 1000)) {
       imageStyle.filter = `grayscale(${lastSeenToFilter(lastSeen)}%)`;
@@ -46,7 +45,15 @@ class Item extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    return this.props.image.payload !== nextProps.image.payload;
+    if (nextProps.image) {
+      if (!this.props.image) {
+        return true;
+      } else {
+        return this.props.image.timestamp !== nextProps.image.timestamp;
+      }
+    } else {
+      return false;
+    }
   }
 
 };
