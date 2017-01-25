@@ -1,3 +1,0 @@
-devServer: {
-  historyApiFallback: true,
-}
