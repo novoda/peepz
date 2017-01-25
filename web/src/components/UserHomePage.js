@@ -53,9 +53,6 @@ const UserHomeContainer = connect(
       updateLastSeen: (user) => {
         dispatch(lastSeen(user.uid));
       },
-      stopUpdatingLastSeen: () => {
-
-      },
       onLogoutClicked: () => {
         dispatch(logout());
       }
