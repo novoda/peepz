@@ -77,7 +77,9 @@ class Me extends React.Component {
 
   componentDidMount() {
     const autoScreenshot = () => {
-      this.props.startScreenshot();
+      if (!this.props.requestScreenshot) {
+        this.props.startScreenshot();
+      }
       if (autoScreenshotTask) {
         clearTimeout(autoScreenshotTask);
       }
