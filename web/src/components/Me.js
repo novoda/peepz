@@ -6,7 +6,7 @@ import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg'
-const TWO_MINTUES_MS = (2 * 10) * 1000;
+const TWO_MINTUES_MS = (2 * 60) * 1000;
 
 const style = {
   width: '100%',
