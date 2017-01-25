@@ -98,6 +98,9 @@ class Me extends React.Component {
   }
 
   componentDidUpdate() {
+    if (this.props.requestScreenshot) {
+      return;
+    }
     // if (this.props.requestScreenshot && this.refs.webcam) {
     //   const screenshot = this.refs.webcam.getScreenshot();
     //   if (!screenshot) {

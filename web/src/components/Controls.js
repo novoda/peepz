@@ -16,6 +16,7 @@ const buttonStyle = {
 };
 
 const Controls = ({onPreview, closePreview, startScreenshot, isPreviewing}) => {
+  return null;
   if (isPreviewing) {
     return (
       <div style={closeButtonStyle}>
