@@ -32,8 +32,13 @@ let autoScreenshotTask;
 
 class Me extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.takeScreenshotTask = undefined;
+    this.autoScreenshotTask = undefined;
+  }
+
   render() {
-    const self = this;
     if (this.props.isPreviewing) {
       return (
         <div>
@@ -41,26 +46,20 @@ class Me extends React.Component {
           <div style={popOutWebcamStyle}>
             <ControlsContainer />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
-              if (self.props.requestScreenshot && self.props.isPreviewing) {
-                const takeScreenshot = () => {
-                  const webcam = self.refs.webcam;
-                  if (webcam) {
-                    const screenshot = webcam.getScreenshot();
-                    const user = self.props.user;
-                    self.props.screenshot(user, screenshot);
-                  } else {
-                    console.log("webcam isn't ready, let's wait a bit longer");
-                    if (takeScreenshotTask) {
-                      clearTimeout(takeScreenshotTask);
-                    }
-                    takeScreenshotTask = setTimeout(takeScreenshot, 2000);
-                  }
+              if (this.props.requestScreenshot && this.props.isPreviewing) {
+                const takeScreenshot = (webcam, user) => () => {
+                  const screenshot = webcam.getScreenshot();
+                  console.log(screenshot);
+                  this.props.screenshot(user, screenshot);
                 };
 
-                if (takeScreenshotTask) {
-                  clearTimeout(takeScreenshotTask);
+                if (this.takeScreenshotTask) {
+                  clearTimeout(this.takeScreenshotTask);
                 }
-                takeScreenshotTask = setTimeout(takeScreenshot, 5000);
+
+                this.takeScreenshotTask = setTimeout(takeScreenshot(
+                  this.refs.webcam, this.props.user
+                ), 5000);
               }
             }}/>
           </div>
@@ -90,25 +89,25 @@ class Me extends React.Component {
       if (!this.props.requestScreenshot) {
         this.props.startScreenshot();
       }
-      if (autoScreenshotTask) {
-        clearTimeout(autoScreenshotTask);
+      if (this.autoScreenshotTask) {
+        clearTimeout(this.autoScreenshotTask);
       }
-      autoScreenshotTask = setTimeout(autoScreenshot, 20 * 1000);
+      this.autoScreenshotTask = setTimeout(autoScreenshot, 20 * 1000);
     }
-    setTimeout(autoScreenshot, 20 * 1000);
+    this.autoScreenshotTask = setTimeout(autoScreenshot, 20 * 1000);
   }
 
   componentDidUpdate() {
-    if (this.props.requestScreenshot && this.refs.webcam) {
-      const screenshot = this.refs.webcam.getScreenshot();
-      if (!screenshot) {
-        return;
-      }
-      const user = this.props.user;
-      this.props.screenshot(user, screenshot);
-    } else if (this.props.requestScreenshot) {
-      this.props.startPreview();
-    }
+    // if (this.props.requestScreenshot && this.refs.webcam) {
+    //   const screenshot = this.refs.webcam.getScreenshot();
+    //   if (!screenshot) {
+    //     return;
+    //   }
+    //   const user = this.props.user;
+    //   this.props.screenshot(user, screenshot);
+    // } else if (this.props.requestScreenshot) {
+    //   this.props.startPreview();
+    // }
   }
 
 }
