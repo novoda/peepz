@@ -1,0 +1,6 @@
+{
+  "rules": {
+    ".read": "auth.token.email.endsWith('novoda.com')",
+    ".write": "auth.token.email.endsWith('novoda.com')"
+  }
+}
