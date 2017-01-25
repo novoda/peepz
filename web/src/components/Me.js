@@ -27,9 +27,6 @@ const popOutWebcamStyle = {
   position: 'absolute',
 };
 
-let takeScreenshotTask;
-let autoScreenshotTask;
-
 class Me extends React.Component {
 
   constructor(props) {
