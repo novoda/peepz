@@ -34,7 +34,7 @@ class Item extends React.Component {
     const image = this.props.image || { payload: hodor, timestamp: 0 } ;
     const lastSeen = this.props.lastSeen;
     const imageStyle = {...style};
-    if (!lastSeen || ((Date.now() - lastSeen) >= (30 * 60) * 1000)) {
+    if (!lastSeen) {
       imageStyle.filter = `grayscale(${lastSeenToFilter(lastSeen)}%)`;
     }
     return (
