@@ -1,19 +1,22 @@
 import { combineReducers } from 'redux';
 import values from 'object.values';
 
-const camera = (state = { requestScreenshot: false, isPreviewing: false}, action) => {
+const camera = (state = { requestScreenshot: false, isPreviewing: false , manualScreenshot: false}, action) => {
   switch (action.type) {
-    case 'onPreview':
-      return {...state, isPreviewing: true};
+    case 'showPreview':
+      return {...state, active: true};
 
-    case 'onScreenShot':
-      return {...state, isPreviewing: false, requestScreenshot: false};
+    case 'closePreview':
+      return {...state, active: false};
 
-    case 'requestScreenshot':
-      return {...state, requestScreenshot: true, isPreviewing: true};
+    case 'automaticScreenshot':
+      return {...state, active: true, requestAutomaticScreenshot: true};
 
-    case 'onClosePreview':
-      return {...state, isPreviewing: false};
+    case 'manualScreenshot':
+      return {...state, requestManualScreenshot: true};
+
+    case 'closeCamera':
+      return { active: false, requestManualScreenshot: false , requestAutomaticScreenshot: false};
 
     default:
       return state;

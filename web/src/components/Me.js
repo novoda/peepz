@@ -6,7 +6,7 @@ import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg'
-const TWO_MINTUES_MS = (2 * 60) * 1000;
+const TWO_MINTUES_MS = (2 * 10) * 1000;
 
 const style = {
   width: '100%',
@@ -39,7 +39,7 @@ class Me extends React.Component {
   }
 
   render() {
-    if (this.props.isPreviewing) {
+    if (this.props.cameraIsActive) {
       return (
         <div>
           <Item image={this.props.me.image || hodor} />
@@ -86,7 +86,7 @@ class Me extends React.Component {
   componentDidMount() {
     const autoScreenshot = () => {
       if (!this.props.requestScreenshot) {
-        this.props.startScreenshot();
+        this.props.automaticScreenshot();
       }
       if (this.autoScreenshotTask) {
         clearTimeout(this.autoScreenshotTask);
@@ -97,44 +97,33 @@ class Me extends React.Component {
   }
 
   componentDidUpdate() {
-    if (this.props.requestScreenshot) {
-      return;
+    if (this.props.requestManualScreenshot) {
+      const screenshot = this.refs.webcam.getScreenshot();
+      const user = this.props.user;
+      this.props.screenshot(user, screenshot);
     }
-    // if (this.props.requestScreenshot && this.refs.webcam) {
-    //   const screenshot = this.refs.webcam.getScreenshot();
-    //   if (!screenshot) {
-    //     return;
-    //   }
-    //   const user = this.props.user;
-    //   this.props.screenshot(user, screenshot);
-    // } else if (this.props.requestScreenshot) {
-    //   this.props.startPreview();
-    // }
   }
 
 }
 
 const MeContainer = connect(state => {
   return {
-    isPreviewing: state.camera.isPreviewing,
-    requestScreenshot: state.camera.requestScreenshot,
-    photo: state.camera.photo,
-    user: state.user
+    cameraIsActive: state.camera.active,
+    requestAutomaticScreenshot: state.camera.requestAutomaticScreenshot,
+    requestManualScreenshot: state.camera.requestManualScreenshot,
+    user: state.user,
   };
 }, dispatch => {
   return {
-    startScreenshot: () => {
-      dispatch({type: 'requestScreenshot'});
-    },
-    startPreview: () => {
-      dispatch({type: 'onPreview'});
+    automaticScreenshot: () => {
+      dispatch({type: 'automaticScreenshot'});
     },
     screenshot: (user, screenshot) => {
-      dispatch({type: 'onScreenShot'});
+      dispatch({type: 'closeCamera'});
       dispatch(submitScreenshot(user)(screenshot));
     },
     closePreview: () => {
-      dispatch({type: 'onClosePreview'});
+      dispatch({type: 'closePreview'});
     }
   };
 })(Me);

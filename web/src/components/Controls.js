@@ -15,9 +15,8 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-const Controls = ({onPreview, closePreview, startScreenshot, isPreviewing}) => {
-  return null;
-  if (isPreviewing) {
+const Controls = ({onPreview, closePreview, startScreenshot, cameraIsActive}) => {
+  if (cameraIsActive) {
     return (
       <div style={closeButtonStyle}>
         <button style={buttonStyle} onClick={closePreview}>❌</button>
@@ -33,18 +32,18 @@ const Controls = ({onPreview, closePreview, startScreenshot, isPreviewing}) => {
 
 const ControlsContainer = connect(state => {
   return {
-    isPreviewing: state.camera.isPreviewing
+    cameraIsActive: state.camera.active
   };
 }, (dispatch => {
   return {
     onPreview: () => {
-      dispatch({type: 'onPreview'});
+      dispatch({type: 'showPreview'});
     },
     closePreview: () => {
-      dispatch({type: 'onclosePreview'});
+      dispatch({type: 'closePreview'});
     },
     startScreenshot: (screenshot) => {
-      dispatch({type: 'requestScreenshot'});
+      dispatch({type: 'manualScreenshot'});
     }
   }
 }))(Controls);
