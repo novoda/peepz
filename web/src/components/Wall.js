@@ -29,34 +29,27 @@ const findMe = user => each => {
   return user.uid !== each.uid;
 };
 
+const toPeepz = user => (peep, index) => {
+    if (user.uid === peep.uid) {
+      return (
+        <li key={index} style={itemStyle}><MeContainer me={peep}/></li>
+      );
+    } else {
+      return (
+        <li key={index} style={itemStyle}>
+          <Item image={peep.image} name={peep.name} lastSeen={peep.lastSeen}/>
+        </li>
+      );
+    }
+}
+
 class Wall extends React.Component {
 
   render() {
-    const self = this;
-    const user = this.props.user;
-    const peepz = this.props.wall.map((each, index) => {
-        if (user.uid === each.uid) {
-          return self._getMe(index, each);
-        } else {
-          return (
-            <li key={index} style={itemStyle}>
-              <Item image={each.image} name={each.name} lastSeen={each.lastSeen}/>
-            </li>
-          );
-        }
-    });
-
-
+    const peepz = this.props.wall.map(toPeepz(this.props.user));
     const all = peepz.concat(this._hackToFixLastRowWidths(peepz.length));
-
     return (
       <ul style={style}>{all}</ul>
-    );
-  }
-
-  _getMe(index, me) {
-    return (
-      <li key={index} style={itemStyle}><MeContainer me={me}/></li>
     );
   }
 
@@ -66,7 +59,6 @@ class Wall extends React.Component {
         <li key={startIndex + index} style={itemStyle}></li>
       );
     });
-
   }
 
 }
