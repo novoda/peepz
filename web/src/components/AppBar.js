@@ -21,18 +21,27 @@ const containerStyle = {
   height: '100%',
   display: 'flex',
   alignItems: 'center',
-  paddingLeft: '4%'
+  justifyContent: 'space-between',
+  paddingLeft: '4%',
+  paddingRight: '2%'
 };
 
 const titleStyle = {
-  border: 'none',
   color: 'white',
   fontFamily: 'Montserrat, sans-serif',
-  backgroundColor: 'Transparent',
   fontWeight: 'bold',
   cursor: 'pointer',
   fontSize: '27px',
 };
+
+const logoutStyle = {
+  fontFamily: 'Montserrat, sans-serif',
+  backgroundColor: 'transparent',
+  border: 'none',
+  color: 'white',
+  fontSize: '14px',
+  cursor: 'pointer',
+}
 
 const AppBar = ({user, isLoadingUser, isSignedIn, instanceId, onSignInClicked, onSignOutClicked}) => {
   return (
@@ -40,6 +49,7 @@ const AppBar = ({user, isLoadingUser, isSignedIn, instanceId, onSignInClicked, o
       <div style={contentStyle}>
         <div style={containerStyle}>
           <div style={titleStyle}>Peepz</div>
+          <button style={logoutStyle}>Logout</button>
         </div>
       </div>
     </div>
