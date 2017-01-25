@@ -33,7 +33,7 @@ const user = (state = {}, action) => {
       return action.payload || action.payload.user;
 
     case 'onSignedOut':
-      return {};
+      return false;
 
     default:
       return state;

@@ -3,7 +3,7 @@ import { WallContainer } from './Wall';
 import { AppBar } from './AppBar';
 import { connect } from 'react-redux';
 
-import { requestSignIn as signIn, lastSeen, getAllScreenshots as fetchAllScreenshots} from '../firebase';
+import { requestSignIn as signIn, lastSeen, getAllScreenshots as fetchAllScreenshots, logout} from '../firebase';
 
 const FIVE_MINUTES = (60 * 5) * 1000;
 
@@ -13,7 +13,7 @@ class HomePage extends React.Component {
     if (this.props.isSignedIn) {
       return (
         <div>
-          <AppBar />
+          <AppBar onLogoutClicked={this.props.onLogoutClicked}/>
           <WallContainer />
         </div>
       );
@@ -38,13 +38,15 @@ class HomePage extends React.Component {
 
 const HomePageContainer = connect(state => {
   return {
-    isSignedIn: state.isSignedIn,
-    user: state.user
+    isSignedIn: state.isSignedIn
   };
 }, dispatch => {
   return {
+    onLogoutClicked: () => {
+      dispatch(logout());
+    },
     requestSignIn: () => {
-        dispatch(signIn());
+      dispatch(signIn());
     },
     getAllScreenshots: () => {
       dispatch(fetchAllScreenshots());

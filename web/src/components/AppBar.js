@@ -43,13 +43,13 @@ const logoutStyle = {
   cursor: 'pointer',
 }
 
-const AppBar = ({user, isLoadingUser, isSignedIn, instanceId, onSignInClicked, onSignOutClicked}) => {
+const AppBar = ({onLogoutClicked}) => {
   return (
     <div style={appBarStyle}>
       <div style={contentStyle}>
         <div style={containerStyle}>
           <div style={titleStyle}>Peepz</div>
-          <button style={logoutStyle}>Logout</button>
+          <button style={logoutStyle} onClick={onLogoutClicked}>Logout</button>
         </div>
       </div>
     </div>
