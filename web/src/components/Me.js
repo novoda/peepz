@@ -49,6 +49,7 @@ class Me extends React.Component {
                     const user = self.props.user;
                     self.props.screenshot(user, screenshot);
                   } else {
+                    console.log("webcam isn't ready, let's wait a bit longer");
                     if (takeScreenshotTask) {
                       clearTimeout(takeScreenshotTask);
                     }
