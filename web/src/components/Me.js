@@ -26,9 +26,13 @@ const popOutWebcamStyle = {
   position: 'absolute',
 };
 
+let takeScreenshotTask;
+let autoScreenshotTask;
+
 class Me extends React.Component {
 
   render() {
+    const self = this;
     if (this.props.isPreviewing) {
       return (
         <div>
@@ -36,12 +40,17 @@ class Me extends React.Component {
           <div style={popOutWebcamStyle}>
             <ControlsContainer />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
-              if (this.props.requestScreenshot) {
-                setTimeout(() => {
-                  const user = this.props.user;
-                  const screenshot = this.refs.webcam.getScreenshot();
-                  this.props.screenshot(user, screenshot);
-                }, 5000);
+              if (self.props.requestScreenshot) {
+                const takeScreenshot = () => {
+                  const user = self.props.user;
+                  const screenshot = self.refs.webcam.getScreenshot();
+                  self.props.screenshot(user, screenshot);
+                };
+
+                if (takeScreenshotTask) {
+                  clearTimeout(takeScreenshotTask);
+                }
+                takeScreenshotTask = setTimeout(takeScreenshot, 5000);
               }
             }}/>
           </div>
@@ -67,11 +76,14 @@ class Me extends React.Component {
   }
 
   componentDidMount() {
-      const autoScreenshot = () => {
-        this.props.startScreenshot();
-        setTimeout(autoScreenshot, 120 * 1000);
+    const autoScreenshot = () => {
+      this.props.startScreenshot();
+      if (autoScreenshotTask) {
+        clearTimeout(autoScreenshotTask);
       }
-      setTimeout(autoScreenshot, 120 * 1000);
+      autoScreenshotTask = setTimeout(autoScreenshot, 20 * 1000);
+    }
+    setTimeout(autoScreenshot, 20 * 1000);
   }
 
   componentDidUpdate() {
@@ -105,11 +117,11 @@ const MeContainer = connect(state => {
       dispatch({type: 'onPreview'});
     },
     screenshot: (user, screenshot) => {
-      dispatch({type: 'onScreenShot', data: screenshot});
+      dispatch({type: 'onScreenShot'});
       dispatch(submitScreenshot(user)(screenshot));
     },
     closePreview: () => {
-      dispatch({type: 'onclosePreview'});
+      dispatch({type: 'onClosePreview'});
     }
   };
 })(Me);
