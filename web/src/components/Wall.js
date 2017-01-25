@@ -34,7 +34,7 @@ class Wall extends React.Component {
   render() {
     const self = this;
     const user = this.props.user;
-    const otherPeeps = this.props.wall.map((each, index) => {
+    const peepz = this.props.wall.map((each, index) => {
         if (user.uid === each.uid) {
           return self._getMe(index, each);
         } else {
@@ -47,7 +47,7 @@ class Wall extends React.Component {
     });
 
 
-    const all = otherPeeps.concat(this._hackToFixLastRowWidths(otherPeeps.length));
+    const all = peepz.concat(this._hackToFixLastRowWidths(peepz.length));
 
     return (
       <ul style={style}>{all}</ul>
