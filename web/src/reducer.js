@@ -10,7 +10,7 @@ const camera = (state = { requestScreenshot: false, isPreviewing: false}, action
       return {...state, isPreviewing: false, requestScreenshot: false};
 
     case 'requestScreenshot':
-      return {...state, requestScreenshot: true};
+      return {...state, requestScreenshot: true, isPreviewing: true};
 
     case 'onClosePreview':
       return {...state, isPreviewing: false};

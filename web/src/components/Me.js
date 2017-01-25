@@ -6,6 +6,7 @@ import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg'
+const TWO_MINTUES_MS = (2 * 60) * 1000;
 
 const style = {
   width: '100%',
@@ -40,11 +41,19 @@ class Me extends React.Component {
           <div style={popOutWebcamStyle}>
             <ControlsContainer />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
-              if (self.props.requestScreenshot) {
+              if (self.props.requestScreenshot && self.props.isPreviewing) {
                 const takeScreenshot = () => {
-                  const user = self.props.user;
-                  const screenshot = self.refs.webcam.getScreenshot();
-                  self.props.screenshot(user, screenshot);
+                  const webcam = self.refs.webcam;
+                  if (webcam) {
+                    const screenshot = webcam.getScreenshot();
+                    const user = self.props.user;
+                    self.props.screenshot(user, screenshot);
+                  } else {
+                    if (takeScreenshotTask) {
+                      clearTimeout(takeScreenshotTask);
+                    }
+                    takeScreenshotTask = setTimeout(takeScreenshot, 2000);
+                  }
                 };
 
                 if (takeScreenshotTask) {
