@@ -92,9 +92,9 @@ class Me extends React.Component {
       if (this.autoScreenshotTask) {
         clearTimeout(this.autoScreenshotTask);
       }
-      this.autoScreenshotTask = setTimeout(autoScreenshot, 20 * 1000);
+      this.autoScreenshotTask = setTimeout(autoScreenshot, TWO_MINTUES_MS);
     }
-    this.autoScreenshotTask = setTimeout(autoScreenshot, 20 * 1000);
+    this.autoScreenshotTask = setTimeout(autoScreenshot, TWO_MINTUES_MS);
   }
 
   componentDidUpdate() {
