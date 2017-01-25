@@ -55,7 +55,7 @@ class Item extends React.Component {
 
   _timestampsAreDifferent(currentImage, nextImage) {
     return nextImage && (!currentImage && nextImage)
-      && (this.props.image.timestamp !== nextProps.image.timestamp)
+      && (this.props.image.timestamp !== nextImage.timestamp)
   }
 
 };
