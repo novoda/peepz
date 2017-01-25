@@ -46,13 +46,8 @@ class Wall extends React.Component {
         }
     });
 
-    const extras = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map(each => {
-      return (
-        <li style={itemStyle}></li>
-      );
-    });
 
-    const all = otherPeeps.concat(extras);
+    const all = otherPeeps.concat(this._hackToFixLastRowWidths(otherPeeps.length));
 
     return (
       <ul style={style}>{all}</ul>
@@ -63,6 +58,15 @@ class Wall extends React.Component {
     return (
       <li key={index} style={itemStyle}><MeContainer me={me}/></li>
     );
+  }
+
+  _hackToFixLastRowWidths(startIndex) {
+    return [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((each, index) => {
+      return (
+        <li key={startIndex + index} style={itemStyle}></li>
+      );
+    });
+
   }
 
 }
