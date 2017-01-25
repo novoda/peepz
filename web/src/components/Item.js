@@ -27,20 +27,28 @@ const onImageError = (img) => {
   img.target.src = hodor;
 };
 
-const Item = ({lastSeen, image, name}) => {
-  if (!image) {
-    image = { payload: hodor };
+class Item extends React.Component {
+
+  render() {
+    const name = this.props.name;
+    const image = this.props.image || { payload: hodor };
+    const lastSeen = this.props.lastSeen;
+
+    const imageStyle = {...style};
+    if (!lastSeen || ((Date.now() - lastSeen) >= (30 * 60) * 1000)) {
+      imageStyle.filter = `grayscale(${lastSeenToFilter(lastSeen)}%)`;
+    }
+    return (
+      <div style={containerStyle}>
+        <img style={imageStyle} src={image.payload} onError={onImageError} alt={name}></img>
+      </div>
+    );
   }
 
-  const imageStyle = {...style};
-  if (!lastSeen || ((Date.now() - lastSeen) >= (30 * 60) * 1000)) {
-    imageStyle.filter = `grayscale(${lastSeenToFilter(lastSeen)}%)`;
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.props.image.payload !== nextProps.image.payload;
   }
-  return (
-    <div style={containerStyle}>
-      <img style={imageStyle} src={image.payload} onError={onImageError} alt={name}></img>
-    </div>
-  );
+
 };
 
 const lastSeenToFilter = (lastSeen) => {
