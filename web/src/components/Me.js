@@ -49,7 +49,6 @@ class Me extends React.Component {
               if (this.props.requestScreenshot && this.props.isPreviewing) {
                 const takeScreenshot = (webcam, user) => () => {
                   const screenshot = webcam.getScreenshot();
-                  console.log(screenshot);
                   this.props.screenshot(user, screenshot);
                 };
 
