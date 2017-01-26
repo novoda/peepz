@@ -43,7 +43,7 @@ class Me extends React.Component {
           <div style={popOutWebcamStyle}>
             <ControlsContainer />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
-              if (this.props.requestScreenshot && this.props.isPreviewing) {
+              if (this.props.requestAutomaticScreenshot && this.props.cameraIsActive) {
                 const takeScreenshot = (webcam, user) => () => {
                   const screenshot = webcam.getScreenshot();
                   this.props.screenshot(user, screenshot);
@@ -82,7 +82,7 @@ class Me extends React.Component {
 
   componentDidMount() {
     const autoScreenshot = () => {
-      if (!this.props.requestScreenshot) {
+      if (!this.props.requestAutomaticScreenshot) {
         this.props.automaticScreenshot();
       }
       if (this.autoScreenshotTask) {
