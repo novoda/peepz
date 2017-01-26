@@ -4,6 +4,12 @@ import { connect } from 'react-redux';
 const screenshotButtonStyle = {
   position: 'absolute',
   cursor: 'pointer',
+  border: 'none',
+  background: 'transparent',
+  color: 'white',
+  bottom: '0',
+  right: '0',
+  fontSize: '25px'
 }
 
 const closeButtonStyle = {
@@ -25,7 +31,7 @@ const Controls = ({onPreview, closePreview, startScreenshot, cameraIsActive}) =>
     );
   } else {
     return (
-      <button style={screenshotButtonStyle} onClick={onPreview}>📷</button>
+      <button style={screenshotButtonStyle} className={"material-icons"} onClick={onPreview}>camera_alt</button>
     );
   }
 }

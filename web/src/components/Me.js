@@ -8,6 +8,10 @@ import { connect } from 'react-redux';
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg'
 const TWO_MINTUES_MS = (2 * 60) * 1000;
 
+const containerStyle = {
+  position: 'relative'
+};
+
 const style = {
   width: '100%',
   position: 'absolute',
@@ -65,14 +69,14 @@ class Me extends React.Component {
 
     if (this.props.me.image) {
       return (
-        <div>
+        <div style={containerStyle}>
           <ControlsContainer />
           <Item image={this.props.me.image} lastSeen={Date.now()} />
         </div>
       );
     } else {
       return (
-        <div>
+        <div style={containerStyle}>
           <ControlsContainer />
           <Item lastSeen={Date.now()}/>
         </div>
