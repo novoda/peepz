@@ -17,7 +17,6 @@ const style = {
   width: '100%',
   position: 'absolute',
   height: '100%',
-  border: '1px solid black',
   objectFit: 'cover'
 };
 
