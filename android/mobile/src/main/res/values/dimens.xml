@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="size_peek">44dp</dimen>
+    <dimen name="grid_spacing">8dp</dimen>
+    <dimen name="grid_spacing_half">8dp</dimen>
+</resources>
