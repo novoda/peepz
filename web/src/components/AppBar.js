@@ -1,10 +1,10 @@
 import React, { PropTypes } from 'react';
 
 const appBarStyle = {
-  height: '32px',
+  height: '48px',
   width: '100%',
-  backgroundColor: 'white',
-  backgroundImage: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
+  backgroundColor: '#fafafa',
+  border-bottom: 'solid 1px #f3f3f3',
   zIndex: '-1',
 };
 
@@ -26,18 +26,20 @@ const containerStyle = {
 };
 
 const titleStyle = {
-  color: 'white',
+background:-webkit-linear-gradient(#391885, #9e2ebf);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 'bold',
   cursor: 'pointer',
-  fontSize: '1em',
+  fontSize: '1.4em',
 };
 
 const logoutStyle = {
   fontFamily: 'Montserrat, sans-serif',
   backgroundColor: 'transparent',
   border: 'none',
-  color: 'white',
+  color: #72218a,
   fontSize: '0.6em',
   cursor: 'pointer',
 }
