@@ -4,7 +4,7 @@ const appBarStyle = {
   height: '48px',
   width: '100%',
   backgroundColor: '#fafafa',
-  border-bottom: 'solid 1px #f3f3f3',
+  borderBottom: 'solid 1px #f3f3f3',
   zIndex: '-1',
 };
 
@@ -26,9 +26,7 @@ const containerStyle = {
 };
 
 const titleStyle = {
-background:-webkit-linear-gradient(#391885, #9e2ebf);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent; 
+  color: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 'bold',
   cursor: 'pointer',
@@ -39,7 +37,7 @@ const logoutStyle = {
   fontFamily: 'Montserrat, sans-serif',
   backgroundColor: 'transparent',
   border: 'none',
-  color: #72218a,
+  color: '#72218a',
   fontSize: '0.6em',
   cursor: 'pointer',
 }
