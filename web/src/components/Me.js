@@ -70,14 +70,14 @@ class Me extends React.Component {
     if (this.props.me.image) {
       return (
         <div style={containerStyle}>
-          <ControlsContainer />
+          <ControlsContainer hasImage />
           <Item image={this.props.me.image} lastSeen={Date.now()} />
         </div>
       );
     } else {
       return (
         <div style={containerStyle}>
-          <ControlsContainer />
+          <ControlsContainer hasImage={false} />
           <Item lastSeen={Date.now()}/>
         </div>
       );
