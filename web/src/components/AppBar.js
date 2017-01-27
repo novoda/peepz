@@ -1,12 +1,11 @@
 import React, { PropTypes } from 'react';
 
 const appBarStyle = {
-  height: '32px',
+  height: '48px',
   width: '100%',
-  backgroundColor: 'white',
-  backgroundImage: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
+  backgroundColor: '#fafafa',
+  borderBottom: 'solid 1px #f3f3f3',
   zIndex: '-1',
-  boxShadow: '0px 0px 8px 1px #333'
 };
 
 const contentStyle = {
@@ -27,18 +26,20 @@ const containerStyle = {
 };
 
 const titleStyle = {
-  color: 'white',
+  background: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 'bold',
   cursor: 'pointer',
-  fontSize: '1em',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
+  fontSize: '1.4em',
 };
 
 const logoutStyle = {
   fontFamily: 'Montserrat, sans-serif',
   backgroundColor: 'transparent',
   border: 'none',
-  color: 'white',
+  color: '#72218a',
   fontSize: '0.6em',
   cursor: 'pointer',
 }
@@ -48,7 +49,7 @@ const AppBar = ({onLogoutClicked}) => {
     <div style={appBarStyle}>
       <div style={contentStyle}>
         <div style={containerStyle}>
-          <div style={titleStyle}>Peepz</div>
+          <h1 style={titleStyle}>Peepz</h1>
           <button style={logoutStyle} onClick={onLogoutClicked}>Logout</button>
         </div>
       </div>
