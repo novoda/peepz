@@ -37,7 +37,7 @@ class Item extends React.Component {
 
     console.log('render:', name)
 
-    if (!lastSeen) {
+    if (lastSeen) {
       imageStyle.filter = `grayscale(${lastSeenToFilter(lastSeen)}%)`;
     }
     return (
@@ -63,17 +63,14 @@ class Item extends React.Component {
 };
 
 const lastSeenToFilter = (lastSeen) => {
-  if (!lastSeen) {
-    return 100;
-  }
   const delta = Date.now() - lastSeen;
 
-  if (delta => ONE_DAY) {
+  if (delta >= ONE_DAY) {
     return 100;
-  } else if (delta => ONE_HOUR) {
-    return 50;
-  } else if (delta => THIRTY_MINUTES) {
-      return 10;
+  } else if (delta >= ONE_HOUR) {
+    return 70;
+  } else if (delta >= THIRTY_MINUTES) {
+      return 50;
   } else {
     return 0;
   }
