@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 
 const appBarStyle = {
-  height: '68px',
+  height: '32px',
   width: '100%',
   backgroundColor: 'white',
   backgroundImage: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
@@ -31,7 +31,7 @@ const titleStyle = {
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 'bold',
   cursor: 'pointer',
-  fontSize: '27px',
+  fontSize: '1em',
 };
 
 const logoutStyle = {
@@ -39,7 +39,7 @@ const logoutStyle = {
   backgroundColor: 'transparent',
   border: 'none',
   color: 'white',
-  fontSize: '14px',
+  fontSize: '0.6em',
   cursor: 'pointer',
 }
 
