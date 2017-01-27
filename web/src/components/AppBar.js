@@ -6,7 +6,6 @@ const appBarStyle = {
   backgroundColor: 'white',
   backgroundImage: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
   zIndex: '-1',
-  boxShadow: '0px 0px 8px 1px #333'
 };
 
 const contentStyle = {
