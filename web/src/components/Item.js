@@ -57,7 +57,16 @@ class Item extends React.Component {
     if (!currentImage && !nextImage) {
       return false;
     }
-    return (!currentImage && nextImage) || (currentImage.timestamp !== nextImage.timestamp);
+
+    if (currentImage && !nextImage) {
+      return false;
+    }
+
+    if (!currentImage && nextImage) {
+      return true;
+    }
+
+    return currentImage.timestamp !== nextImage.timestamp;
   }
 
 };
