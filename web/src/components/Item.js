@@ -9,8 +9,7 @@ const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/mast
 const containerStyle = {
   position: 'relative',
   width: '100%',
-  paddingBottom: '100%',
-  zIndex: '-1'
+  paddingBottom: '100%'
 };
 
 const style = {
