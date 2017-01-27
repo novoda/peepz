@@ -26,10 +26,12 @@ const containerStyle = {
 };
 
 const titleStyle = {
-  color: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
+  background: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
   fontFamily: 'Montserrat, sans-serif',
   fontWeight: 'bold',
   cursor: 'pointer',
+  WebkitBackgroundClip: 'text',
+  WebkitTextFillColor: 'transparent',
   fontSize: '1.4em',
 };
 
@@ -47,7 +49,7 @@ const AppBar = ({onLogoutClicked}) => {
     <div style={appBarStyle}>
       <div style={contentStyle}>
         <div style={containerStyle}>
-          <div style={titleStyle}>Peepz</div>
+          <h1 style={titleStyle}>Peepz</h1>
           <button style={logoutStyle} onClick={onLogoutClicked}>Logout</button>
         </div>
       </div>
