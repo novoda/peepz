@@ -121,7 +121,11 @@ const MeContainer = connect(state => {
     },
     screenshot: (user, screenshot) => {
       dispatch({type: 'closeCamera'});
-      dispatch(submitScreenshot(user)(screenshot));
+      if (screenshot !== 'data:,') {
+        dispatch(submitScreenshot(user)(screenshot));
+      } else {
+        console.error('screenshot was invalid, skipping');
+      }
     },
     closePreview: () => {
       dispatch({type: 'closePreview'});
