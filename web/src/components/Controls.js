@@ -1,15 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const screenshotButtonStyle = {
+const baseButtonStyle = {
   position: 'absolute',
   cursor: 'pointer',
   border: 'none',
   background: 'transparent',
-  color: 'white',
   bottom: '0',
   right: '0',
   fontSize: '25px'
+};
+
+const screenshotButtonStyle = {
+  ...baseButtonStyle,
+  color: 'white'
+}
+
+const hodorScreenshotButtonStyle = {
+  ...baseButtonStyle,
+  color: 'black',
 }
 
 const closeButtonStyle = {
@@ -21,7 +30,7 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-const Controls = ({onPreview, closePreview, startScreenshot, cameraIsActive}) => {
+const Controls = ({hasImage, onPreview, closePreview, startScreenshot, cameraIsActive}) => {
   if (cameraIsActive) {
     return (
       <div style={closeButtonStyle}>
@@ -30,8 +39,9 @@ const Controls = ({onPreview, closePreview, startScreenshot, cameraIsActive}) =>
       </div>
     );
   } else {
+    const style = hasImage ? screenshotButtonStyle : hodorScreenshotButtonStyle;
     return (
-      <button style={screenshotButtonStyle} className={"material-icons"} onClick={onPreview}>camera_alt</button>
+      <button style={style} className={"material-icons"} onClick={onPreview}>camera_alt</button>
     );
   }
 }

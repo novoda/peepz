@@ -70,14 +70,14 @@ class Me extends React.Component {
     if (this.props.me.image) {
       return (
         <div style={containerStyle}>
-          <ControlsContainer />
+          <ControlsContainer hasImage />
           <Item image={this.props.me.image} lastSeen={Date.now()} />
         </div>
       );
     } else {
       return (
         <div style={containerStyle}>
-          <ControlsContainer />
+          <ControlsContainer hasImage={false} />
           <Item lastSeen={Date.now()}/>
         </div>
       );
@@ -121,7 +121,11 @@ const MeContainer = connect(state => {
     },
     screenshot: (user, screenshot) => {
       dispatch({type: 'closeCamera'});
-      dispatch(submitScreenshot(user)(screenshot));
+      if (screenshot !== 'data:,') {
+        dispatch(submitScreenshot(user)(screenshot));
+      } else {
+        console.error('screenshot was invalid, skipping');
+      }
     },
     closePreview: () => {
       dispatch({type: 'closePreview'});
