@@ -9,7 +9,7 @@ import android.widget.FrameLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-class SelfieView extends FrameLayout {
+public class SelfieView extends FrameLayout {
 
     @BindView(R.id.selfie_live)
     SelfieLiveWidget liveWidget;

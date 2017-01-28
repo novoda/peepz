@@ -12,7 +12,7 @@ import com.google.android.cameraview.CameraView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-class SelfieLiveWidget extends FrameLayout {
+public class SelfieLiveWidget extends FrameLayout {
 
     @BindView(R.id.selfie_live_camera)
     CameraView cameraView;
