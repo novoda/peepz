@@ -26,8 +26,12 @@ const popOutWebcamStyle = {
   top: '50%',
   width: '640px',
   height: '480px',
-  marginLeft: '-320px',
-  marginTop: '-240px',
+  get marginLeft () {
+    return `calc(${this.width} / 2 - ${this.width})`;
+  },
+  get marginTop () {
+    return `calc(${this.height} / 2 - ${this.height})`;
+  },
   position: 'absolute',
 };
 
