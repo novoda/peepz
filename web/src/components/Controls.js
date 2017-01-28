@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 
 import pictureTakeIcon from '../../assets/ic_picturetake.png'
 
-const pictureTakeStyle = {
+const pictureTakeIconStyle = {
   width: '36px',
   maxHeight: '100%'
 };
 
-const baseButtonStyle = {
+const pictureTakeButtonStyle = {
   position: 'absolute',
   cursor: 'pointer',
   border: 'none',
@@ -17,16 +17,6 @@ const baseButtonStyle = {
   zIndex: '1',
   background: 'transparent'
 };
-
-const screenshotButtonStyle = {
-  ...baseButtonStyle,
-  color: 'white'
-}
-
-const hodorScreenshotButtonStyle = {
-  ...baseButtonStyle,
-  color: 'black',
-}
 
 const closeButtonStyle = {
   position: 'absolute',
@@ -37,7 +27,7 @@ const buttonStyle = {
   cursor: 'pointer',
 };
 
-const Controls = ({hasImage, onPreview, closePreview, startScreenshot, cameraIsActive}) => {
+const Controls = ({ onPreview, closePreview, startScreenshot, cameraIsActive}) => {
   if (cameraIsActive) {
     return (
       <div style={closeButtonStyle}>
@@ -46,9 +36,10 @@ const Controls = ({hasImage, onPreview, closePreview, startScreenshot, cameraIsA
       </div>
     );
   } else {
-    const style = hasImage ? screenshotButtonStyle : hodorScreenshotButtonStyle;
     return (
-      <button style={style} onClick={onPreview}><img style={pictureTakeStyle} src={pictureTakeIcon} /></button>
+      <button style={pictureTakeButtonStyle} onClick={onPreview}>
+        <img style={pictureTakeIconStyle} src={pictureTakeIcon} />
+      </button>
     );
   }
 }
