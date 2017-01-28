@@ -31,7 +31,7 @@ public class SelfieView extends FrameLayout {
         ButterKnife.bind(this);
     }
 
-    public void attach(final PictureTakeListener listener) {
+    public void attach(PictureTakeListener listener) {
         this.listener = listener;
         liveWidget.attachListener(wrappedListener);
     }
