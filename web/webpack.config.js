@@ -20,7 +20,7 @@ module.exports = {
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: "file-loader?name=/public/[name].[ext]"
+        loader: "file-loader?name=/assets/[name].[ext]"
       }
     ]
   },
