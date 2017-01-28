@@ -1,15 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
+import pictureTakeIcon from '../../assets/ic_picturetake.png'
+
+const pictureTakeStyle = {
+  width: '36px',
+  maxHeight: '100%'
+};
+
 const baseButtonStyle = {
   position: 'absolute',
   cursor: 'pointer',
   border: 'none',
-  background: 'transparent',
   bottom: '0',
   right: '0',
-  fontSize: '25px',
-  zIndex: '1'
+  zIndex: '1',
+  background: 'transparent'
 };
 
 const screenshotButtonStyle = {
@@ -42,7 +48,7 @@ const Controls = ({hasImage, onPreview, closePreview, startScreenshot, cameraIsA
   } else {
     const style = hasImage ? screenshotButtonStyle : hodorScreenshotButtonStyle;
     return (
-      <button style={style} className={"material-icons"} onClick={onPreview}>camera_alt</button>
+      <button style={style} onClick={onPreview}><img style={pictureTakeStyle} src={pictureTakeIcon} /></button>
     );
   }
 }
