@@ -31,6 +31,18 @@ class SelfieLiveWidget extends FrameLayout {
         ButterKnife.bind(this);
     }
 
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        cameraView.start();
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        cameraView.stop();
+        super.onDetachedFromWindow();
+    }
+
     public void bind(final byte[] baos, final Listener listener) {
         cameraView.takePicture();
     }
