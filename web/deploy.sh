@@ -1,7 +1,7 @@
 #!/bin/sh
 
-mkdir dist/public
+mkdir -p dist/public
 npm run build
 cp index.html dist/public/
-cp favicon.ico dist/public/
+cp favicon.png dist/public/
 cd dist && firebase deploy

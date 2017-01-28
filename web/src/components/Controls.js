@@ -8,7 +8,8 @@ const baseButtonStyle = {
   background: 'transparent',
   bottom: '0',
   right: '0',
-  fontSize: '25px'
+  fontSize: '25px',
+  zIndex: '1'
 };
 
 const screenshotButtonStyle = {
