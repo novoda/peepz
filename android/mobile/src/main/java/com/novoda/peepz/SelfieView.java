@@ -1,6 +1,7 @@
 package com.novoda.peepz;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -16,7 +17,8 @@ class SelfieView extends FrameLayout {
     @BindView(R.id.selfie_preview)
     SelfiePreviewWidget previewWidget;
 
-    private Listener listener;
+    @Nullable
+    private PictureTakeListener listener;
 
     public SelfieView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -29,18 +31,35 @@ class SelfieView extends FrameLayout {
         ButterKnife.bind(this);
     }
 
-    public void attach(Listener listener) {
-
+    public void attach(final PictureTakeListener listener) {
+        this.listener = listener;
+        liveWidget.attachListener(wrappedListener);
     }
+
+    private final PictureTakeListener wrappedListener = new PictureTakeListener() {
+        @Override
+        public void onPictureTake(byte[] baos) {
+            previewWidget.bind(baos, new SelfiePreviewWidget.Listener() {
+                @Override
+                public void onClickRetakePicture() {
+                    liveWidget.setVisibility(VISIBLE);
+                    previewWidget.setVisibility(GONE);
+                }
+
+                @Override
+                public void onClickAccept(byte[] baos) {
+                    if (listener != null) {
+                        listener.onPictureTake(baos);
+                    }
+                }
+            });
+
+            previewWidget.setVisibility(VISIBLE);
+            liveWidget.setVisibility(GONE);
+        }
+    };
 
     public void detachListeners() {
-        this.listener = null;
+        liveWidget.teardown();
     }
-
-    public interface Listener {
-
-        void onPictureTaken(byte[] data);
-
-    }
-
 }

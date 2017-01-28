@@ -1,11 +1,11 @@
 package com.novoda.peepz;
 
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 
 import com.google.android.cameraview.CameraView;
 
@@ -20,6 +20,9 @@ class SelfieLiveWidget extends FrameLayout {
     @BindView(R.id.selfie_live_button_take_picture)
     Button takePictureButton;
 
+    @Nullable
+    private PictureTakeListener listener;
+
     public SelfieLiveWidget(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
@@ -32,25 +35,43 @@ class SelfieLiveWidget extends FrameLayout {
     }
 
     @Override
-    protected void onAttachedToWindow() {
-        super.onAttachedToWindow();
-        cameraView.start();
-    }
-
-    @Override
     protected void onDetachedFromWindow() {
-        cameraView.stop();
+        teardown();
         super.onDetachedFromWindow();
     }
 
-    public void bind(final byte[] baos, final Listener listener) {
-        cameraView.takePicture();
+    public void attachListener(PictureTakeListener listener) {
+        this.listener = listener;
+
+        cameraView.start();
+        cameraView.addCallback(callback);
+
+        takePictureButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cameraView.takePicture();
+            }
+        });
     }
 
-    public interface Listener {
+    private final CameraView.Callback callback = new CameraView.Callback() {
+        @Override
+        public void onPictureTaken(CameraView cameraView, byte[] data) {
+            super.onPictureTaken(cameraView, data);
+            if (listener != null) {
+                listener.onPictureTake(data);
+            }
+        }
+    };
 
-        void onPictureTake(byte[] baos);
+    public void teardown() {
+        takePictureButton.setOnClickListener(null);
+        takePictureButton.setClickable(false);
 
+        cameraView.removeCallback(callback);
+        cameraView.stop();
+
+        listener = null;
     }
 
 }

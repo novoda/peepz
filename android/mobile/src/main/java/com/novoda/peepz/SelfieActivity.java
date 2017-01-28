@@ -40,9 +40,9 @@ public class SelfieActivity extends BaseActivity {
         super.onPause();
     }
 
-    private final SelfieView.Listener listener = new SelfieView.Listener() {
+    private final PictureTakeListener listener = new PictureTakeListener() {
         @Override
-        public void onPictureTaken(byte[] data) {
+        public void onPictureTake(byte[] data) {
             final FirebaseUser user = firebaseApi().getSignedInUser();
             final long currentTimeMillis = System.currentTimeMillis();
             StorageReference destination = FirebaseStorage.getInstance().getReference().child(KEY_ROOT + "/" + user.getUid() + ".png");
@@ -64,8 +64,11 @@ public class SelfieActivity extends BaseActivity {
 
                         FirebaseDatabase database = FirebaseDatabase.getInstance();
                         database.getReference(KEY_ROOT).child(user.getUid()).setValue(apiPeep);
+                        // TODO use startActivityForResult and send success back
+                        finish();
                     } else {
-                        // TODO: image upload failed - retry a couple times and then give up
+                        // TODO use startActivityForResult and send failure back
+                        finish();
                     }
                 }
             });

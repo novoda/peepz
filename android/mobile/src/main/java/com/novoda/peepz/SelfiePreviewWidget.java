@@ -1,6 +1,8 @@
 package com.novoda.peepz;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -32,8 +34,9 @@ class SelfiePreviewWidget extends FrameLayout {
         ButterKnife.bind(this);
     }
 
-    public void bind(final byte[] baos, final Listener listener) {
-        // TODO: render baos
+    public void bind(final byte[] data, final Listener listener) {
+        Bitmap bitmap = BitmapFactory.decodeByteArray(data, 0, data.length);
+        imageView.setImageBitmap(bitmap);
 
         retakeButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -45,7 +48,7 @@ class SelfiePreviewWidget extends FrameLayout {
         acceptButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClickAccept(baos);
+                listener.onClickAccept(data);
             }
         });
     }
