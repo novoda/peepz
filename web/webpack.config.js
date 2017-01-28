@@ -17,6 +17,10 @@ module.exports = {
           presets: ['es2015', 'react'],
           plugins: ['transform-object-rest-spread', 'transform-class-properties']
         }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader?name=/public/[name].[ext]"
       }
     ]
   },
