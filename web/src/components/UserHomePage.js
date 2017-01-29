@@ -1,3 +1,5 @@
+/*global setTimeout clearTimeout */
+
 import React from 'react';
 import { WallContainer } from './Wall';
 import { AppBar } from './AppBar';

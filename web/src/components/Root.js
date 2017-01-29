@@ -1,3 +1,5 @@
+/*global document */
+
 import { Provider } from 'react-redux';
 import React from 'react';
 import HomePageContainer from './HomePage'
