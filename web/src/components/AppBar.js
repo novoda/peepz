@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const styles = StyleSheet.create({
