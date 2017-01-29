@@ -1,3 +1,5 @@
+/*global setTimeout clearTimeout */
+
 import React from 'react';
 import { Item } from './Item';
 import { ControlsContainer } from './Controls';
