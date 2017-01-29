@@ -1,4 +1,5 @@
 /*global setTimeout clearTimeout */
+
 import Console from '../console';
 import React from 'react';
 import { Item } from './Item';

@@ -77,7 +77,7 @@ class Item extends React.Component {
     return currentImage.timestamp !== nextImage.timestamp;
   }
 
-};
+}
 
 const lastSeenToFilterAmount = lastSeen => {
   const delta = Date.now() - lastSeen;
