@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, css } from 'aphrodite';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 const THIRTY_MINUTES = (30 * 60) * 1000;
 const ONE_HOUR = (60 * 60) * 1000;

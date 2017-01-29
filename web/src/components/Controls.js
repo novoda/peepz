@@ -1,44 +1,44 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
 import pictureTakeIcon from '../../assets/ic_picturetake.png'
 
-const pictureTakeIconStyle = {
-  width: '36px',
-  maxHeight: '100%'
-};
-
-const pictureTakeButtonStyle = {
-  position: 'absolute',
-  cursor: 'pointer',
-  border: 'none',
-  bottom: '0',
-  right: '0',
-  zIndex: '1',
-  background: 'transparent'
-};
-
-const closeButtonStyle = {
-  position: 'absolute',
-  zIndex: '1'
-}
-
-const buttonStyle = {
-  cursor: 'pointer',
-};
+const styles = StyleSheet.create({
+  pictureTakeIconStyle: {
+    width: '36px',
+    maxHeight: '100%'
+  },
+  pictureTakeButtonStyle: {
+    position: 'absolute',
+    cursor: 'pointer',
+    border: 'none',
+    bottom: '0',
+    right: '0',
+    zIndex: '1',
+    background: 'transparent'
+  },
+  closeButtonStyle: {
+    position: 'absolute',
+    zIndex: '1'
+  },
+  buttonStyle: {
+    cursor: 'pointer',
+  }
+});
 
 const Controls = ({ onPreview, closePreview, startScreenshot, cameraIsActive}) => {
   if (cameraIsActive) {
     return (
-      <div style={closeButtonStyle}>
-        <button style={buttonStyle} onClick={closePreview}>❌</button>
-        <button style={buttonStyle} onClick={startScreenshot}>📷</button>
+      <div className={css(styles.closeButtonStyle)}>
+        <button className={css(styles.buttonStyle)} onClick={closePreview}>❌</button>
+        <button className={css(styles.buttonStyle)} onClick={startScreenshot}>📷</button>
       </div>
     );
   } else {
     return (
-      <button style={pictureTakeButtonStyle} onClick={onPreview}>
-        <img style={pictureTakeIconStyle} src={pictureTakeIcon} />
+      <button className={css(styles.pictureTakeButtonStyle)} onClick={onPreview}>
+        <img className={css(styles.pictureTakeIconStyle)} src={pictureTakeIcon} />
       </button>
     );
   }
