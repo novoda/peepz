@@ -23,14 +23,6 @@ const styles = StyleSheet.create({
   }
 });
 
-const removeMe = user => each => {
-  return user.uid === each.uid;
-};
-
-const findMe = user => each => {
-  return user.uid !== each.uid;
-};
-
 const toPeepz = user => (peep, index) => {
     if (user.uid === peep.uid) {
       return (
