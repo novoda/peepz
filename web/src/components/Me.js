@@ -1,5 +1,5 @@
 /*global setTimeout clearTimeout */
-
+import Console from '../console';
 import React from 'react';
 import { Item } from './Item';
 import { ControlsContainer } from './Controls';
@@ -124,7 +124,7 @@ const MeContainer = connect(state => {
       if (screenshot !== 'data:,') {
         dispatch(submitScreenshot(user)(screenshot));
       } else {
-        console.error('screenshot was invalid, skipping');
+        Console.error('screenshot was invalid, skipping');
       }
     },
     closePreview: () => {

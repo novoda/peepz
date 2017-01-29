@@ -1,4 +1,5 @@
 import React from 'react';
+import Console from '../console';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
 const THIRTY_MINUTES = (30 * 60) * 1000;
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
 });
 
 const onImageError = (img) => {
-  console.log('on image error');
+  Console.log('on image error');
   img.target.onerror = null;
   img.target.src = missingImage.payload;
 };
@@ -36,7 +37,7 @@ class Item extends React.Component {
     const name = this.props.name;
     const image = this.props.image || missingImage;
     const lastSeen = this.props.lastSeen;
-    console.log('render:', name)
+    Console.log('render:', name)
 
     const dynamicStyles = StyleSheet.create ({
       grayFilter: {

@@ -1,7 +1,9 @@
+import Console from './console';
+
 const loggerMiddleware = store => next => action => {
-    console.log('Dispatching', action);
+    Console.log('Dispatching', action);
     const result = next(action);
-    console.log('Next state', store.getState());
+    Console.log('Next state', store.getState());
     return result;
 }
 
