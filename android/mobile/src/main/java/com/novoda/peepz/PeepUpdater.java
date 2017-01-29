@@ -16,7 +16,7 @@ class PeepUpdater {
         this.signedInUser = signedInUser;
     }
 
-    public void updateLastSeen(String imageUrl) {
+    public void updatePeepImage(String imageUrl) {
         long currentTimeMillis = clock.currentTimeMillis();
 
         ApiPeep apiPeep = ApiPeep.create(

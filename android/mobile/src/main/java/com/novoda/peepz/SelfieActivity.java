@@ -1,17 +1,11 @@
 package com.novoda.peepz;
 
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
+import com.novoda.support.SystemClock;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,11 +15,19 @@ public class SelfieActivity extends BaseActivity {
     @BindView(R.id.selfie_view)
     SelfieView selfieView;
 
+    private PictureUploader pictureUploader;
+    private PeepUpdater peepUpdater;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selfie);
         ButterKnife.bind(this);
+
+        // TODO: what if the user is not signed in?
+        FirebaseUser signedInUser = firebaseApi().getSignedInUser();
+        peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
+        pictureUploader = new PictureUploader(signedInUser);
     }
 
     @Override
@@ -43,33 +45,18 @@ public class SelfieActivity extends BaseActivity {
     private final PictureTakeListener listener = new PictureTakeListener() {
         @Override
         public void onPictureTake(byte[] data) {
-            final FirebaseUser user = firebaseApi().getSignedInUser();
-            final long currentTimeMillis = System.currentTimeMillis();
-            StorageReference destination = FirebaseStorage.getInstance().getReference().child(KEY_ROOT + "/" + user.getUid() + ".png");
-
-            UploadTask uploadTask = destination.putBytes(data);
-            uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+            pictureUploader.upload(data, new PictureUploader.Callback() {
                 @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        Uri downloadUrl = task.getResult().getDownloadUrl();
+                public void onSuccess(String pictureUrl) {
+                    // TODO use startActivityForResult and send success back
+                    peepUpdater.updatePeepImage(pictureUrl);
+                    finish();
+                }
 
-                        ApiPeep apiPeep = ApiPeep.create(
-                                user.getUid(),
-                                user.getDisplayName(),
-                                downloadUrl.toString(),
-                                currentTimeMillis,
-                                currentTimeMillis
-                        );
-
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        database.getReference(KEY_ROOT).child(user.getUid()).setValue(apiPeep);
-                        // TODO use startActivityForResult and send success back
-                        finish();
-                    } else {
-                        // TODO use startActivityForResult and send failure back
-                        finish();
-                    }
+                @Override
+                public void onFailure() {
+                    // TODO use startActivityForResult and send failure back
+                    finish();
                 }
             });
         }

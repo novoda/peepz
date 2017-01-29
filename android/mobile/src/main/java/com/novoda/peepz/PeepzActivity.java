@@ -37,6 +37,7 @@ public class PeepzActivity extends BaseActivity {
 
     private AccessibilityServices accessibilityServices;
     private PictureUploader pictureUploader;
+    private PeepUpdater peepUpdater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +49,8 @@ public class PeepzActivity extends BaseActivity {
 
         // TODO: what if the user is not signed in?
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
-        PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
-        pictureUploader = new PictureUploader(signedInUser, peepUpdater);
+        peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
+        pictureUploader = new PictureUploader(signedInUser);
 
         int spans = getResources().getInteger(R.integer.spans);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spans));
@@ -72,8 +73,17 @@ public class PeepzActivity extends BaseActivity {
     private final CameraView.Callback cameraViewCallback = new CameraView.Callback() {
         @Override
         public void onPictureTaken(CameraView cameraView, byte[] data) {
-            pictureUploader.upload(data);
-            // TODO: with callback, then update user
+            pictureUploader.upload(data, new PictureUploader.Callback() {
+                @Override
+                public void onSuccess(String pictureUrl) {
+                    peepUpdater.updatePeepImage(pictureUrl);
+                }
+
+                @Override
+                public void onFailure() {
+                    toast("couldn't upload picture :(");
+                }
+            });
         }
     };
 

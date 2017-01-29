@@ -12,27 +12,34 @@ import com.google.firebase.storage.UploadTask;
 class PictureUploader {
 
     private final FirebaseUser signedInUser;
-    private final PeepUpdater peepUpdater;
 
-    public PictureUploader(FirebaseUser signedInUser, PeepUpdater peepUpdater) {
+    public PictureUploader(FirebaseUser signedInUser) {
         this.signedInUser = signedInUser;
-        this.peepUpdater = peepUpdater;
     }
 
-    public void upload(byte[] picture) {
+    public void upload(byte[] picture, final Callback callback) {
         StorageReference destination = FirebaseStorage.getInstance().getReference().child(BaseActivity.KEY_ROOT + "/" + signedInUser.getUid() + ".png");
 
         UploadTask uploadTask = destination.putBytes(picture);
         uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    return;
+                if (task.isSuccessful()) {
+                    String imageUrl = task.getResult().getDownloadUrl().toString();
+                    callback.onSuccess(imageUrl);
+                } else {
+                    callback.onFailure();
                 }
-                String imageUrl = task.getResult().getDownloadUrl().toString();
-                peepUpdater.updateLastSeen(imageUrl);
             }
         });
+    }
+
+    public interface Callback {
+
+        void onSuccess(String pictureUrl);
+
+        void onFailure();
+
     }
 
 }
