@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     }
   }
 
-};
+}
 
 const HomePageContainer = connect(state => {
   return {
