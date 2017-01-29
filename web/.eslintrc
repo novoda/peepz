@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "plugins": [
     "react"
   ],
@@ -11,6 +12,7 @@
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true,
+      "classes": true,
       "experimentalObjectRestSpread": true
     }
   },
