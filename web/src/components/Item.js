@@ -37,7 +37,7 @@ class Item extends React.Component {
     const name = this.props.name;
     const image = this.props.image || missingImage;
     const lastSeen = this.props.lastSeen;
-    Console.log('render:', name)
+    Console.log('render:', name);
 
     const dynamicStyles = StyleSheet.create ({
       grayFilter: {

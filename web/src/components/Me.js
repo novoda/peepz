@@ -9,7 +9,7 @@ import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
-const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg'
+const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg';
 const TWO_MINTUES_MS = (2 * 60) * 1000;
 
 const styles = StyleSheet.create({
@@ -94,7 +94,7 @@ class Me extends React.Component {
         clearTimeout(this.autoScreenshotTask);
       }
       this.autoScreenshotTask = setTimeout(autoScreenshot, TWO_MINTUES_MS);
-    }
+    };
     this.autoScreenshotTask = setTimeout(autoScreenshot, TWO_MINTUES_MS);
   }
 

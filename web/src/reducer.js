@@ -38,7 +38,7 @@ const user = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 const isSignedIn = (state = false, action) => {
   switch(action.type) {
@@ -51,7 +51,7 @@ const isSignedIn = (state = false, action) => {
     default:
       return state;
   }
-}
+};
 
 
 const wall = (state = [], action) => {

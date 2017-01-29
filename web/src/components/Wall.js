@@ -35,7 +35,7 @@ const toPeepz = user => (peep, index) => {
         </li>
       );
     }
-}
+};
 
 class Wall extends React.Component {
 

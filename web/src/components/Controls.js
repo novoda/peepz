@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, css } from 'aphrodite/no-important';
 
-import pictureTakeIcon from '../../assets/ic_picturetake.png'
+import pictureTakeIcon from '../../assets/ic_picturetake.png';
 
 const styles = StyleSheet.create({
   pictureTakeIconStyle: {
@@ -42,7 +42,7 @@ const Controls = ({ onPreview, closePreview, startScreenshot, cameraIsActive}) =
       </button>
     );
   }
-}
+};
 
 const ControlsContainer = connect(state => {
   return {
@@ -59,7 +59,7 @@ const ControlsContainer = connect(state => {
     startScreenshot: () => {
       dispatch({type: 'manualScreenshot'});
     }
-  }
+  };
 }))(Controls);
 
 export {

@@ -46,7 +46,7 @@ class UserHome extends React.Component {
 }
 
 const UserHomeContainer = connect(
-  state => { return { user: state.user } },
+  state => { return { user: state.user }; },
   dispatch => {
     return {
       getAllScreenshots: () => {

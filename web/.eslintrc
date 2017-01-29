@@ -5,7 +5,8 @@
   ],
   "rules": {
     "react/prop-types": "off",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "semi": "error"
   },
   "parserOptions": {
     "ecmaVersion": 6,

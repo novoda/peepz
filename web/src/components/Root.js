@@ -2,7 +2,7 @@
 
 import { Provider } from 'react-redux';
 import React from 'react';
-import HomePageContainer from './HomePage'
+import HomePageContainer from './HomePage';
 
 class Root extends React.Component {
 

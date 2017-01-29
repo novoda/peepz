@@ -79,4 +79,4 @@ export {
   getAllScreenshots,
   lastSeen,
   logout
-}
+};
