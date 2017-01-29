@@ -1,3 +1,6 @@
+/*global document navigator window MediaStreamTrack */
+
+import Console from './console';
 import React, { Component, PropTypes } from 'react';
 import { findDOMNode } from 'react-dom';
 
@@ -101,7 +104,7 @@ export default class Webcam extends Component {
           sourceSelected(audioSource, videoSource);
         })
         .catch((error) => {
-          console.log(`${error.name}: ${error.message}`); // eslint-disable-line no-console
+          Console.log(`${error.name}: ${error.message}`);
         });
       } else {
         MediaStreamTrack.getSources((sources) => {
