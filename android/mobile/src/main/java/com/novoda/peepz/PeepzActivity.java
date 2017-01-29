@@ -1,9 +1,7 @@
 package com.novoda.peepz;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -13,18 +11,14 @@ import android.view.MenuItem;
 
 import com.ataulm.rv.SpacesItemDecoration;
 import com.google.android.cameraview.CameraView;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 import com.novoda.accessibility.AccessibilityServices;
+import com.novoda.support.SystemClock;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -42,6 +36,7 @@ public class PeepzActivity extends BaseActivity {
     CameraView secretCameraView;
 
     private AccessibilityServices accessibilityServices;
+    private PictureUploader pictureUploader;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,14 +46,20 @@ public class PeepzActivity extends BaseActivity {
 
         accessibilityServices = AccessibilityServices.newInstance(this);
 
+        // TODO: what if the user is not signed in?
+        FirebaseUser signedInUser = firebaseApi().getSignedInUser();
+        PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
+        pictureUploader = new PictureUploader(signedInUser, peepUpdater);
+
         int spans = getResources().getInteger(R.integer.spans);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spans));
         int dimensionPixelSize = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
         recyclerView.addItemDecoration(SpacesItemDecoration.newInstance(dimensionPixelSize, dimensionPixelSize, spans));
-        fetchData();
 
         Toolbar toolbar = ButterKnife.findById(this, R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        fetchData();
     }
 
     @Override
@@ -71,32 +72,8 @@ public class PeepzActivity extends BaseActivity {
     private final CameraView.Callback cameraViewCallback = new CameraView.Callback() {
         @Override
         public void onPictureTaken(CameraView cameraView, byte[] data) {
-            final FirebaseUser user = firebaseApi().getSignedInUser();
-            final long currentTimeMillis = System.currentTimeMillis();
-            StorageReference destination = FirebaseStorage.getInstance().getReference().child(KEY_ROOT + "/" + user.getUid() + ".png");
-
-            UploadTask uploadTask = destination.putBytes(data);
-            uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                    if (task.isSuccessful()) {
-                        Uri downloadUrl = task.getResult().getDownloadUrl();
-
-                        ApiPeep apiPeep = ApiPeep.create(
-                                user.getUid(),
-                                user.getDisplayName(),
-                                downloadUrl.toString(),
-                                currentTimeMillis,
-                                currentTimeMillis
-                        );
-
-                        FirebaseDatabase database = FirebaseDatabase.getInstance();
-                        database.getReference(KEY_ROOT).child(user.getUid()).setValue(apiPeep);
-                    } else {
-                        log("something went wrong with the auto picture take");
-                    }
-                }
-            });
+            pictureUploader.upload(data);
+            // TODO: with callback, then update user
         }
     };
 
