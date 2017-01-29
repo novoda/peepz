@@ -56,7 +56,7 @@ const ControlsContainer = connect(state => {
     closePreview: () => {
       dispatch({type: 'closePreview'});
     },
-    startScreenshot: (screenshot) => {
+    startScreenshot: () => {
       dispatch({type: 'manualScreenshot'});
     }
   }

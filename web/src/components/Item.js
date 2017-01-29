@@ -55,7 +55,7 @@ class Item extends React.Component {
     );
   }
 
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     const currentImage = this.props.image;
     const nextImage = nextProps.image;
     return this._timestampsAreDifferent(currentImage, nextImage);

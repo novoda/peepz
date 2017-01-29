@@ -40,7 +40,7 @@ const dispatchSignedIn = dispatch => user => () => {
   dispatch({type: 'onSignedIn', payload: user});
 };
 
-const submitScreenshot = user => screenshot => dispatch => {
+const submitScreenshot = user => screenshot => () => {
   return fb.storage()
     .ref()
     .child(`wall/${user.uid}.png`)
@@ -60,7 +60,7 @@ const getAllScreenshots = () => dispatch => {
   });
 };
 
-const lastSeen = userId => dispatch => {
+const lastSeen = userId => () => {
   fb.database().ref(`wall/${userId}`).update({
     lastSeen: Date.now()
   });
