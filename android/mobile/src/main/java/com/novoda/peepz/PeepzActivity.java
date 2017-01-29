@@ -1,7 +1,9 @@
 package com.novoda.peepz;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -10,11 +12,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ataulm.rv.SpacesItemDecoration;
+import com.google.android.cameraview.CameraView;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.novoda.accessibility.AccessibilityServices;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -28,11 +38,18 @@ public class PeepzActivity extends BaseActivity {
     @BindView(R.id.peepz_collection)
     RecyclerView recyclerView;
 
+    @BindView(R.id.peepz_secret_camera)
+    CameraView secretCameraView;
+
+    private AccessibilityServices accessibilityServices;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_peepz);
         ButterKnife.bind(this);
+
+        accessibilityServices = AccessibilityServices.newInstance(this);
 
         int spans = getResources().getInteger(R.integer.spans);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spans));
@@ -45,8 +62,64 @@ public class PeepzActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        secretCameraView.start();
+        secretCameraView.addCallback(cameraViewCallback);
+    }
+
+    private final CameraView.Callback cameraViewCallback = new CameraView.Callback() {
+        @Override
+        public void onPictureTaken(CameraView cameraView, byte[] data) {
+            final FirebaseUser user = firebaseApi().getSignedInUser();
+            final long currentTimeMillis = System.currentTimeMillis();
+            StorageReference destination = FirebaseStorage.getInstance().getReference().child(KEY_ROOT + "/" + user.getUid() + ".png");
+
+            UploadTask uploadTask = destination.putBytes(data);
+            uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        Uri downloadUrl = task.getResult().getDownloadUrl();
+
+                        ApiPeep apiPeep = ApiPeep.create(
+                                user.getUid(),
+                                user.getDisplayName(),
+                                downloadUrl.toString(),
+                                currentTimeMillis,
+                                currentTimeMillis
+                        );
+
+                        FirebaseDatabase database = FirebaseDatabase.getInstance();
+                        database.getReference(KEY_ROOT).child(user.getUid()).setValue(apiPeep);
+                    } else {
+                        log("something went wrong with the auto picture take");
+                    }
+                }
+            });
+        }
+    };
+
+    @Override
+    protected void onPause() {
+        secretCameraView.removeCallback(cameraViewCallback);
+        secretCameraView.stop();
+        super.onPause();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.peepz, menu);
+        if (shouldShowAppBarAction()) {
+            getMenuInflater().inflate(R.menu.peepz, menu);
+            return true;
+        } else {
+            // TODO: show fab instead
+            return false;
+        }
+    }
+
+    private boolean shouldShowAppBarAction() {
+        // TODO: `return accessibilityServices.isSpokenFeedbackEnabled() || !recyclerView.isInTouchMode();` when fab is implemented
         return true;
     }
 
@@ -55,6 +128,9 @@ public class PeepzActivity extends BaseActivity {
         if (item.getItemId() == R.id.peepz_menu_take_picture) {
             // TODO: might wanna go startActivityForResult unless selfieActivity stays there til picture is uploaded
             startActivity(new Intent(this, SelfieActivity.class));
+            return true;
+        } else if (item.getItemId() == R.id.peepz_menu_debug_secret_picture) {
+            secretCameraView.takePicture();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
