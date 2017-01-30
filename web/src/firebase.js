@@ -1,6 +1,7 @@
 import * as fb from 'firebase';
 
 const fetchSignIn = () => dispatch => {
+  dispatch({type: 'fetchSignIn'});
   const unsubscribe = fb.auth().onAuthStateChanged(result => {
     unsubscribe();
     if (result) {
