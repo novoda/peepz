@@ -36,8 +36,7 @@ public class PeepzActivity extends BaseActivity {
     CameraView secretCameraView;
 
     private AccessibilityServices accessibilityServices;
-    private PictureUploader pictureUploader;
-    private PeepUpdater peepUpdater;
+    private AutomaticPictureTaker automaticPictureTaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +48,9 @@ public class PeepzActivity extends BaseActivity {
 
         // TODO: what if the user is not signed in?
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
-        peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
-        pictureUploader = new PictureUploader(signedInUser);
+        PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
+        PictureUploader pictureUploader = new PictureUploader(signedInUser);
+        automaticPictureTaker = new AutomaticPictureTaker(secretCameraView, pictureUploader, peepUpdater);
 
         int spans = getResources().getInteger(R.integer.spans);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spans));
@@ -66,31 +66,13 @@ public class PeepzActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        secretCameraView.start();
-        secretCameraView.addCallback(cameraViewCallback);
+        automaticPictureTaker.start();
     }
 
-    private final CameraView.Callback cameraViewCallback = new CameraView.Callback() {
-        @Override
-        public void onPictureTaken(CameraView cameraView, byte[] data) {
-            pictureUploader.upload(data, new PictureUploader.Callback() {
-                @Override
-                public void onSuccess(String pictureUrl) {
-                    peepUpdater.updatePeepImage(pictureUrl);
-                }
-
-                @Override
-                public void onFailure() {
-                    toast("couldn't upload picture :(");
-                }
-            });
-        }
-    };
 
     @Override
     protected void onPause() {
-        secretCameraView.removeCallback(cameraViewCallback);
-        secretCameraView.stop();
+        automaticPictureTaker.stop();
         super.onPause();
     }
 
@@ -115,9 +97,6 @@ public class PeepzActivity extends BaseActivity {
         if (item.getItemId() == R.id.peepz_menu_take_picture) {
             // TODO: might wanna go startActivityForResult unless selfieActivity stays there til picture is uploaded
             startActivity(new Intent(this, SelfieActivity.class));
-            return true;
-        } else if (item.getItemId() == R.id.peepz_menu_debug_secret_picture) {
-            secretCameraView.takePicture();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
