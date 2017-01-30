@@ -12,23 +12,19 @@ export const SignInButton = {
     border:0,
     backgroundColor: 'white',
     backgroundImage: 'linear-gradient(to left, #7F70C4, #391885 0%, #72218A 92%)',
-};
+}
+
 export const buttonContainer = {
     width: '100%',
     display: 'flex',
 }
+
 export const madeWithLoveContainer = {
     width: '100%',
     display: 'flex',
     position: 'absolute',
     bottom:30
 }
-export const header = {
-    height: '32px',
-    width: '100%',
-    backgroundColor: 'white',
-    backgroundImage: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
-};
 
 export const madeWithLove = {
     fontFamily: 'Montserrat',
@@ -36,6 +32,13 @@ export const madeWithLove = {
     color:'#b2b2b2',
     margin:'auto',
     bottom: 0,
+}
+
+export const header = {
+    height: '32px',
+    width: '100%',
+    backgroundColor: 'white',
+    backgroundImage: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
 }
 
 export const logoContainer = {
