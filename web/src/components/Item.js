@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     opacity: '0.72',
     background: 'linear-gradient(120deg, #391885, #72218A 10%, #7F70C4)',
   },
-  name: {
+  overlayName: {
     position: 'absolute',
     bottom: '0px',
     color: 'white',
@@ -76,7 +76,7 @@ class Item extends React.Component {
           alt={name} />
         <div className={css(styles.overlay)}>
           <div className={css(styles.overlayBackground)} />
-          <div className={css(styles.name)}>{name}</div>
+          <div className={css(styles.overlayName)}>{name}</div>
         </div>
       </div>
     );
