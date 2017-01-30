@@ -5,13 +5,14 @@ import { connect } from 'react-redux';
 
 class HomePage extends React.Component {
 
-    render() {
-        if (this.props.isSignedIn) {
-            return (<UserHomePage />);
-        } else {
-            return (<SignInContainer />);
-        }
+  render() {
+    if (this.props.isSignedIn) {
+      return (<UserHomePage />);
+    } else {
+      return (<SignInContainer />);
     }
+  }
+  
 }
 
 const HomePageContainer = connect(state => {
