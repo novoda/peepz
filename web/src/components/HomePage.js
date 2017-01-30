@@ -1,33 +1,23 @@
 import React from 'react';
 import UserHomePage from './UserHomePage';
+import SignInContainer from './SignIn/SignInPage';
 import { connect } from 'react-redux';
-
-import { requestSignIn as signIn} from '../firebase';
 
 class HomePage extends React.Component {
 
-  render() {
-    if (this.props.isSignedIn) {
-      return (<UserHomePage />);
-    } else {
-      return (
-        <button onClick={this.props.requestSignIn}>sign in</button>
-      );
+    render() {
+        if (this.props.isSignedIn) {
+            return (<UserHomePage />);
+        } else {
+            return (<SignInContainer />);
+        }
     }
-  }
-
 };
 
 const HomePageContainer = connect(state => {
-  return {
-    isSignedIn: state.isSignedIn
-  };
-}, dispatch => {
-  return {
-    requestSignIn: () => {
-      dispatch(signIn());
-    }
-  };
+    return {
+        isSignedIn: state.isSignedIn
+    };
 })(HomePage);
 
 export default HomePageContainer;
