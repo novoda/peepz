@@ -1,5 +1,3 @@
-import React from 'react';
-
 export const SignInButton = {
     color: "white",
     fontSize: '1em',
