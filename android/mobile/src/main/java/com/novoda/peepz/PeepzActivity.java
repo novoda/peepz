@@ -5,22 +5,16 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.ataulm.rv.SpacesItemDecoration;
 import com.google.android.cameraview.CameraView;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.novoda.accessibility.AccessibilityServices;
 import com.novoda.support.SystemClock;
 
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -46,12 +40,6 @@ public class PeepzActivity extends BaseActivity {
 
         accessibilityServices = AccessibilityServices.newInstance(this);
 
-        // TODO: what if the user is not signed in?
-        FirebaseUser signedInUser = firebaseApi().getSignedInUser();
-        PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
-        PictureUploader pictureUploader = new PictureUploader(signedInUser);
-        automaticPictureTaker = new AutomaticPictureTaker(secretCameraView, pictureUploader, peepUpdater);
-
         int spans = getResources().getInteger(R.integer.spans);
         recyclerView.setLayoutManager(new GridLayoutManager(this, spans));
         int dimensionPixelSize = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
@@ -60,8 +48,30 @@ public class PeepzActivity extends BaseActivity {
         Toolbar toolbar = ButterKnife.findById(this, R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        fetchData();
+        // TODO: what if the user is not signed in?
+        FirebaseUser signedInUser = firebaseApi().getSignedInUser();
+        PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
+        PictureUploader pictureUploader = new PictureUploader(signedInUser);
+        automaticPictureTaker = new AutomaticPictureTaker(secretCameraView, pictureUploader, peepUpdater);
+
+        PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance());
+        peepzService.observeChanges(onPeepsUpdatedCallback);
     }
+
+    private final PeepzService.Callback onPeepsUpdatedCallback = new PeepzService.Callback() {
+        @Override
+        public void onNext(List<Peep> peepz) {
+            if (recyclerView.getAdapter() == null) {
+                String signedInUserUid = firebaseApi().getSignedInUser().getUid();
+                Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUserUid), new LastSeenPeepComparator());
+                PeepAdapter peepAdapter = new PeepAdapter(comparator);
+                peepAdapter.update(peepz);
+                recyclerView.setAdapter(peepAdapter);
+            } else {
+                ((PeepAdapter) recyclerView.getAdapter()).update(peepz);
+            }
+        }
+    };
 
     @Override
     protected void onResume() {
@@ -100,44 +110,6 @@ public class PeepzActivity extends BaseActivity {
             return true;
         } else {
             return super.onOptionsItemSelected(item);
-        }
-    }
-
-    private void fetchData() {
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference wallRef = database.getReference(KEY_ROOT);
-        wallRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot wall) {
-                Converter converter = new Converter();
-                List<Peep> peepz = new ArrayList<>((int) wall.getChildrenCount());
-                for (DataSnapshot item : wall.getChildren()) {
-                    try {
-                        Peep peep = converter.convert(item);
-                        peepz.add(peep);
-                    } catch (Converter.ConverterException e) {
-                        Log.e("!!!", "error converting peep: " + item);
-                    }
-                }
-                onNext(peepz);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // TODO: on error?
-            }
-        });
-    }
-
-    private void onNext(List<Peep> peepz) {
-        if (recyclerView.getAdapter() == null) {
-            String signedInUserUid = firebaseApi().getSignedInUser().getUid();
-            Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUserUid), new LastSeenPeepComparator());
-            PeepAdapter peepAdapter = new PeepAdapter(comparator);
-            peepAdapter.update(peepz);
-            recyclerView.setAdapter(peepAdapter);
-        } else {
-            ((PeepAdapter) recyclerView.getAdapter()).update(peepz);
         }
     }
 
