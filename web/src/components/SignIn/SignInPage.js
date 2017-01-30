@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import styles from './SignInStyle';
 import { css } from 'aphrodite/no-important';
 import { requestSignIn as signIn} from '../../firebase';
+import peepzLogo from '../../../assets/peepzLogo.png';
 
 class SignInPage extends React.Component {
 
@@ -16,7 +17,7 @@ class SignInPage extends React.Component {
                 <div className={css(styles.header)}></div>
 
                 <div className={css(styles.logoContainer)}>
-                    <img className={css(styles.logo)} src='peepzLogo.png'/>
+                    <img className={css(styles.logo)} src={peepzLogo}/>
                 </div>
 
                 <div className={css(styles.buttonContainer)}>
