@@ -1,47 +1,45 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { StyleSheet, css } from 'aphrodite/no-important';
 
-const baseButtonStyle = {
-  position: 'absolute',
-  cursor: 'pointer',
-  border: 'none',
-  background: 'transparent',
-  bottom: '0',
-  right: '0',
-  fontSize: '25px'
-};
+import pictureTakeIcon from '../../assets/ic_picturetake.png'
 
-const screenshotButtonStyle = {
-  ...baseButtonStyle,
-  color: 'white'
-}
+const styles = StyleSheet.create({
+  pictureTakeIconStyle: {
+    width: '36px',
+    maxHeight: '100%'
+  },
+  pictureTakeButtonStyle: {
+    position: 'absolute',
+    cursor: 'pointer',
+    border: 'none',
+    bottom: '0',
+    right: '0',
+    zIndex: '1',
+    background: 'transparent'
+  },
+  closeButtonStyle: {
+    position: 'absolute',
+    zIndex: '1'
+  },
+  buttonStyle: {
+    cursor: 'pointer',
+  }
+});
 
-const hodorScreenshotButtonStyle = {
-  ...baseButtonStyle,
-  color: 'black',
-}
-
-const closeButtonStyle = {
-  position: 'absolute',
-  zIndex: '1'
-}
-
-const buttonStyle = {
-  cursor: 'pointer',
-};
-
-const Controls = ({hasImage, onPreview, closePreview, startScreenshot, cameraIsActive}) => {
+const Controls = ({ onPreview, closePreview, startScreenshot, cameraIsActive}) => {
   if (cameraIsActive) {
     return (
-      <div style={closeButtonStyle}>
-        <button style={buttonStyle} onClick={closePreview}>❌</button>
-        <button style={buttonStyle} onClick={startScreenshot}>📷</button>
+      <div className={css(styles.closeButtonStyle)}>
+        <button className={css(styles.buttonStyle)} onClick={closePreview}>❌</button>
+        <button className={css(styles.buttonStyle)} onClick={startScreenshot}>📷</button>
       </div>
     );
   } else {
-    const style = hasImage ? screenshotButtonStyle : hodorScreenshotButtonStyle;
     return (
-      <button style={style} className={"material-icons"} onClick={onPreview}>camera_alt</button>
+      <button className={css(styles.pictureTakeButtonStyle)} onClick={onPreview}>
+        <img className={css(styles.pictureTakeIconStyle)} src={pictureTakeIcon} />
+      </button>
     );
   }
 }
