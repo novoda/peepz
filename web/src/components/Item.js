@@ -45,8 +45,15 @@ const styles = StyleSheet.create({
     fontSize: '0.8em',
     fontWeight: 'light',
     padding: '6px'
+  },
+  contextOnlyLink: {
+    cursor: 'default'
   }
 });
+
+const preventClick = (e) => {
+  e.preventDefault();
+};
 
 const onImageError = (img) => {
   Console.log('on image error');
@@ -74,7 +81,7 @@ class Item extends React.Component {
           src={image.payload}
           onError={onImageError}
           alt={name} />
-        <a href={image.payload}>
+        <a className={css(styles.contextOnlyLink)} onClick={preventClick} href={image.payload}>
           <div className={css(styles.overlay)} href={image.payload}>
             <div className={css(styles.overlayBackground)} />
             <div className={css(styles.overlayName)}>{name}</div>
