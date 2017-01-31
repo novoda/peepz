@@ -74,10 +74,12 @@ class Item extends React.Component {
           src={image.payload}
           onError={onImageError}
           alt={name} />
-        <div className={css(styles.overlay)}>
-          <div className={css(styles.overlayBackground)} />
-          <div className={css(styles.overlayName)}>{name}</div>
-        </div>
+        <a href={image.payload}>
+          <div className={css(styles.overlay)} href={image.payload}>
+            <div className={css(styles.overlayBackground)} />
+            <div className={css(styles.overlayName)}>{name}</div>
+          </div>
+        </a>
       </div>
     );
   }
