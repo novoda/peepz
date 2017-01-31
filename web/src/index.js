@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
-import RootContainer from './containers/RootContainer';
+import Root from './components/Root';
 import { create } from './store';
 import * as firebase from 'firebase';
 import config from '../config.json';
@@ -12,6 +12,6 @@ firebase.initializeApp(config);
 const store = create();
 
 render(
-  <RootContainer store={store} />,
+  <Root store={store} />,
   document.getElementById('root')
 );

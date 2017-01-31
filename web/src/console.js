@@ -1,7 +1,7 @@
 /*eslint no-console: "off"*/
 /*global console*/
 
-const log = key => value => {
+const log = (key, value) => {
   console.log(key, value);
 };
 
