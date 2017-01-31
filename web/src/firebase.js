@@ -44,7 +44,7 @@ const dispatchSignedIn = dispatch => user => () => {
 const submitScreenshot = user => screenshot => () => {
   return fb.storage()
     .ref()
-    .child(`wall/${user.uid}.png`)
+    .child(`wall/${user.uid}.webp`)
     .putString(screenshot, 'data_url')
     .then(result => {
       return fb.database().ref(`wall/${user.uid}/image`).set({
