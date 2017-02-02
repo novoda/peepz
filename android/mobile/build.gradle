@@ -54,7 +54,8 @@ dependencies {
 
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
-    compile 'com.github.google:cameraview:70799b7b03'
+    compile 'com.github.jackSzm:cameraview:e32e238321'
+
     compile 'com.ataulm:rv-tools:1.1.0'
 
     compile 'com.google.firebase:firebase-core:10.0.1'
