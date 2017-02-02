@@ -90,12 +90,8 @@ class Me extends React.Component {
       if (!this.props.requestAutomaticScreenshot) {
         this.props.automaticScreenshot();
       }
-      if (this.autoScreenshotTask) {
-        clearTimeout(this.autoScreenshotTask);
-      }
-      this.autoScreenshotTask = setTimeout(autoScreenshot, TWO_MINTUES_MS);
     };
-    this.autoScreenshotTask = setTimeout(autoScreenshot, TWO_MINTUES_MS);
+    this.autoScreenshotTask = setInterval(autoScreenshot, TWO_MINTUES_MS);
   }
 
   componentDidUpdate() {
@@ -103,6 +99,12 @@ class Me extends React.Component {
       const screenshot = this.refs.webcam.getScreenshot();
       const user = this.props.user;
       this.props.screenshot(user, screenshot);
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.autoScreenshotTask) {
+      clearInterval(this.autoScreenshotTask);
     }
   }
 
