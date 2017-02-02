@@ -10,13 +10,6 @@ dependencies:
     - npm install:
           pwd: functions
 
-test:
-  override:
-    - mocha test --reporter mocha-junit-reporter:
-          pwd: functions
-          environment:
-             MOCHA_FILE: $CIRCLE_TEST_REPORTS/junit/test-results.xml
-
 deployment:
   production:
     branch: master
@@ -24,5 +17,5 @@ deployment:
     #token acquired and set per http://stackoverflow.com/a/36504180/721000
     #environment variable FIREBASE_CLI_PREVIEWS must be set to enable functions preview (--open-sesame)
     #https://groups.google.com/forum/#!searchin/firebase-functions-trusted-testers/continuous$20integration$20%7Csort:relevance/firebase-functions-trusted-testers/7_8nntK95cU/7QGYm5H2AwAJ
-      - echo $CONFIG_JSON | base64 --decode > ${HOME}/web/gcloud-service-key.json
+      - echo $GCLOUD_SERVICE_KEY | base64 --decode > ${HOME}/web/gcloud-service-key.json
       - ./functions/node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive --only functions
