@@ -18,4 +18,4 @@ deployment:
     #environment variable FIREBASE_CLI_PREVIEWS must be set to enable functions preview (--open-sesame)
     #https://groups.google.com/forum/#!searchin/firebase-functions-trusted-testers/continuous$20integration$20%7Csort:relevance/firebase-functions-trusted-testers/7_8nntK95cU/7QGYm5H2AwAJ
       - echo $CONFIG_JSON | base64 --decode > ./config.json
-      - ./functions/node_modules/.bin/firebase deploy --token=$FIREBASE_TOKEN --non-interactive --only functions
+      - ./deploy.sh
