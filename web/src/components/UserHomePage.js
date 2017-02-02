@@ -32,14 +32,13 @@ class UserHome extends React.Component {
   _startUpdatingLastSeen() {
     const updateLastSeen = () => {
       this.props.updateLastSeen(this.props.user);
-      this.updateLastSeenTask = setTimeout(updateLastSeen, FIVE_MINUTES);
     };
-    updateLastSeen();
+    this.updateLastSeenTask = setInterval(updateLastSeen, FIVE_MINUTES);
   }
 
   componentWillUnmount() {
     if (this.updateLastSeenTask) {
-      clearTimeout(this.updateLastSeenTask);
+      clearInterval(this.updateLastSeenTask);
     }
   }
 
