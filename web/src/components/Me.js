@@ -17,6 +17,7 @@ const styles = StyleSheet.create({
     position: 'relative'
   },
   popOutWebcamStyle: {
+    zStyle: 100,
     display: 'inline-block',
     position: 'absolute',
     left: '50%',
