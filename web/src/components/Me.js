@@ -7,31 +7,11 @@ import { ControlsContainer } from './Controls';
 import Webcam from '../webcam';
 import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
-import { StyleSheet, css } from 'aphrodite/no-important';
+import { css } from 'aphrodite/no-important';
+import Style from './me.style';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg';
 const TWO_MINTUES_MS = (2 * 60) * 1000;
-
-const styles = StyleSheet.create({
-  container: {
-    position: 'relative'
-  },
-  popOutWebcamStyle: {
-    zIndex: '100',
-    display: 'inline-block',
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    width: '640px',
-    height: '480px',
-    get marginLeft () {
-      return `calc(${this.width} / 2 - ${this.width})`;
-    },
-    get marginTop () {
-      return `calc(${this.height} / 2 - ${this.height})`;
-    }
-  }
-});
 
 class Me extends React.Component {
 
@@ -46,7 +26,7 @@ class Me extends React.Component {
       return (
         <div>
           <Item image={this.props.me.image || hodor} />
-          <div className={css(styles.popOutWebcamStyle)}>
+          <div className={css(Style.popOutWebcamStyle)}>
             <ControlsContainer />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
               if (this.props.requestAutomaticScreenshot && this.props.cameraIsActive) {
@@ -71,14 +51,14 @@ class Me extends React.Component {
 
     if (this.props.me.image) {
       return (
-        <div className={css(styles.container)}>
+        <div className={css(Style.container)}>
           <ControlsContainer />
           <Item image={this.props.me.image} lastSeen={Date.now()} />
         </div>
       );
     } else {
       return (
-        <div className={css(styles.container)}>
+        <div className={css(Style.container)}>
           <ControlsContainer />
           <Item lastSeen={Date.now()}/>
         </div>
