@@ -1,4 +1,4 @@
-/*global setTimeout clearTimeout */
+/*global setInterval clearInterval setTimeout clearTimeout */
 
 import Console from '../console';
 import React from 'react';
