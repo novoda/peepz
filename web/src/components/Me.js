@@ -111,9 +111,6 @@ class Me extends React.Component {
 
 }
 
-
-let lastScreenshot = 0;
-
 const MeContainer = connect(state => {
   return {
     cameraIsActive: state.camera.active,
@@ -127,12 +124,6 @@ const MeContainer = connect(state => {
       dispatch({type: 'automaticScreenshot'});
     },
     screenshot: (user, screenshot) => {
-      const now = Date.now();
-
-      Console.log('!!! time since last screenshot', now - lastScreenshot);
-
-      lastScreenshot = now;
-
       dispatch({type: 'closeCamera'});
       if (screenshot !== 'data:,') {
         dispatch(submitScreenshot(user)(screenshot));
