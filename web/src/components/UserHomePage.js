@@ -1,4 +1,4 @@
-/*global setTimeout clearTimeout */
+/*global setInterval clearInterval */
 
 import React from 'react';
 import { WallContainer } from './Wall';
