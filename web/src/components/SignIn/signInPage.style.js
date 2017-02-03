@@ -1,4 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
+import peepzLogo from '../../../assets/peepzLogo.png';
 
 const styles = StyleSheet.create({
     SignInButton: {
@@ -48,6 +49,7 @@ const styles = StyleSheet.create({
         height: '70px',
         margin:'auto',
         marginTop: '10em',
+        content: `url(${peepzLogo})`
     },
     detail: {
         margin:'auto',
