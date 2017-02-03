@@ -117,7 +117,7 @@ class Item extends React.Component {
 
 const lastSeenToFilterAmount = lastSeen => {
   const delta = Date.now() - lastSeen;
-  if (delta >= ONE_DAY) {
+  if (delta >= ONE_DAY || !lastSeen) {
     return 100;
   } else if (delta >= ONE_HOUR) {
     return 70;
