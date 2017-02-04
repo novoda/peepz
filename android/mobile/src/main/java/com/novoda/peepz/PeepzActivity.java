@@ -61,8 +61,13 @@ public class PeepzActivity extends BaseActivity {
     private final PeepzService.Callback onPeepsUpdatedCallback = new PeepzService.Callback() {
         @Override
         public void onNext(List<Peep> peepz) {
+            FirebaseUser signedInUser = firebaseApi().getSignedInUser();
+            String signedInUserUid = signedInUser.getUid();
+            if (missingSignedInUserFromPeepz(peepz, signedInUser)) {
+                automaticPictureTaker.requestPictureTake();
+            }
+
             if (recyclerView.getAdapter() == null) {
-                String signedInUserUid = firebaseApi().getSignedInUser().getUid();
                 Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUserUid), new LastSeenPeepComparator());
                 PeepAdapter peepAdapter = new PeepAdapter(comparator);
                 peepAdapter.update(peepz);
@@ -70,6 +75,15 @@ public class PeepzActivity extends BaseActivity {
             } else {
                 ((PeepAdapter) recyclerView.getAdapter()).update(peepz);
             }
+        }
+
+        private boolean missingSignedInUserFromPeepz(List<Peep> peepz, FirebaseUser signedInUser) {
+            for (Peep peep : peepz) {
+                if (peep.id().equals(signedInUser.getUid())) {
+                    return false;
+                }
+            }
+            return true;
         }
     };
 

@@ -72,6 +72,12 @@ class AutomaticPictureTaker {
         }
     };
 
+    public void requestPictureTake() {
+        if (cameraReady) {
+            cameraView.takePicture();
+        }
+    }
+
     public void stop() {
         cameraReady = false;
         cameraView.stop();
