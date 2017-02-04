@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "jest --config ./jest.config",
     "start": "webpack-dev-server --progress --colors --https --host 0.0.0.0",
     "build": "webpack"
   },
@@ -24,6 +24,7 @@
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
     "babel-eslint": "^7.1.1",
+    "babel-jest": "^18.0.0",
     "babel-loader": "^6.2.10",
     "babel-plugin-transform-class-properties": "^6.22.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
@@ -33,6 +34,7 @@
     "eslint-plugin-react": "^6.9.0",
     "file-loader": "^0.10.0",
     "firebase-tools": "^3.2.1",
+    "jest": "^18.1.0",
     "webpack": "^2.2.0-rc.3",
     "webpack-dev-server": "^2.2.0-rc.0"
   }
