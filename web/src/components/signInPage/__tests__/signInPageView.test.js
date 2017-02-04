@@ -1,4 +1,4 @@
-/*global describe it expect beforeAll afterAll beforeEach */
+/*global describe it expect beforeAll afterAll beforeEach jest */
 
 import React from 'react';
 import { shallow } from 'enzyme';
@@ -7,6 +7,8 @@ import SignInPageView from '../signInPageView';
 import Style from '../signInPage.style';
 
 describe('SignInPageView', () => {
+
+  const requestSignIn = jest.fn();
 
   let signInPageView;
   const props = {};
@@ -32,6 +34,14 @@ describe('SignInPageView', () => {
     expect(elementText(Style.SignInButton)).toBe('Sign in');
   });
 
+  it('triggers callback on sign in button click', () => {
+    signInPageView = shallow(<SignInPageView {...props} requestSignIn={requestSignIn} />);
+
+    clickElement(Style.SignInButton);
+
+    expect(requestSignIn).toBeCalled();
+  });
+
   afterAll(() => {
     StyleSheetTestUtils.clearBufferAndResumeStyleInjection();
   });
@@ -43,6 +53,10 @@ describe('SignInPageView', () => {
   const elementText = style => {
     return find(style).text();
   };
+
+  const clickElement = style => {
+    find(style).simulate('click');
+  }
 
   const find = style => {
     return signInPageView.find(`.${css(style)}`);
