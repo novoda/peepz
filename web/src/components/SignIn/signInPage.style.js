@@ -1,7 +1,7 @@
 import { StyleSheet } from 'aphrodite/no-important';
 import peepzLogo from '../../../assets/peepzLogo.png';
 
-const styles = StyleSheet.create({
+export default StyleSheet.create({
     SignInButton: {
         color: "white",
         fontSize: '0.8em',
@@ -60,5 +60,3 @@ const styles = StyleSheet.create({
         fontSize: '.9em',
     }
 });
-
-export default styles;
