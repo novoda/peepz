@@ -1,5 +1,5 @@
 import { StyleSheet } from 'aphrodite/no-important';
-import pictureTakeIcon from '../../assets/ic_picturetake.png';
+import pictureTakeIcon from '../../../assets/ic_picturetake.png';
 
 export default StyleSheet.create({
   pictureTakeIconStyle: {

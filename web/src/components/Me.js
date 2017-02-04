@@ -3,7 +3,7 @@
 import Console from '../console';
 import React from 'react';
 import { Item } from './Item';
-import { ControlsContainer } from './Controls';
+import { ControlsContainer } from './controls/Controls';
 import Webcam from '../webcam';
 import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
