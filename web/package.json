@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "lint": "eslint webpack.config.js ./src",
     "test": "jest --config ./jest.config",
     "start": "webpack-dev-server --progress --colors --https --host 0.0.0.0",
     "build": "webpack"
