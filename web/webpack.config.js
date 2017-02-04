@@ -1,11 +1,15 @@
+/* global require module __dirname*/
+
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  context: path.resolve(__dirname, './src'),
+  entry: {
+    index: './index.js'
+  },
   output: {
-    path: __dirname + '/dist/public',
-    filename: 'index.bundle.js'
+    path: path.resolve(__dirname, './dist/public'),
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
@@ -25,4 +29,4 @@ module.exports = {
     ]
   },
   devtool: 'source-map'
-}
+};
