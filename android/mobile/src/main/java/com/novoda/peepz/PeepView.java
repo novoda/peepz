@@ -32,9 +32,6 @@ public class PeepView extends FrameLayout {
     @BindView(R.id.peep_image)
     ImageView imageView;
 
-    @BindView(R.id.peep_online_status)
-    View onlineStatusView;
-
     public PeepView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }

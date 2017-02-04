@@ -15,10 +15,4 @@
         android:textColor="@android:color/white"
         app:textFont="montserratRegular" />
 
-    <View
-        android:id="@+id/peep_online_status"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_gravity="right|bottom" />
-
 </merge>
