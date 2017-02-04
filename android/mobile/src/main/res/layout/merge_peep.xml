@@ -20,12 +20,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="@drawable/peep_name_background"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:paddingBottom="4dp"
         android:paddingLeft="6dp"
         android:paddingRight="6dp"
         android:paddingTop="38dp"
         android:textColor="@color/white"
         app:textFont="montserratRegular"
-        tools:text="Adam B" />
+        tools:text="Master O" />
 
 </merge>
