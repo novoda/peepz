@@ -50,6 +50,11 @@ class AutomaticPictureTaker {
             });
         }
 
+        @Override
+        public void onCameraClosed(CameraView cameraView) {
+            cameraReady = false;
+        }
+
     };
 
     private void scheduleAutomaticPictureTake() {
