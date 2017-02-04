@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "jest",
     "start": "webpack-dev-server --progress --colors --https --host 0.0.0.0",
     "build": "webpack"
   },
@@ -33,6 +33,7 @@
     "eslint-plugin-react": "^6.9.0",
     "file-loader": "^0.10.0",
     "firebase-tools": "^3.2.1",
+    "jest": "^18.1.0",
     "webpack": "^2.2.0-rc.3",
     "webpack-dev-server": "^2.2.0-rc.0"
   }
