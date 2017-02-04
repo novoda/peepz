@@ -3,7 +3,7 @@
 import Console from '../console';
 import React from 'react';
 import { Item } from './Item';
-import { ControlsContainer } from './controls/Controls';
+import Controls from './controls/Controls';
 import Webcam from '../webcam';
 import { submitScreenshot } from '../firebase';
 import { connect } from 'react-redux';
@@ -27,7 +27,7 @@ class Me extends React.Component {
         <div>
           <Item image={this.props.me.image || hodor} />
           <div className={css(Style.popOutWebcamStyle)}>
-            <ControlsContainer />
+            <Controls />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
               if (this.props.requestAutomaticScreenshot && this.props.cameraIsActive) {
                 const takeScreenshot = (webcam, user) => () => {
@@ -40,7 +40,7 @@ class Me extends React.Component {
                 }
 
                 this.takeScreenshotTask = setTimeout(takeScreenshot(
-                  this.refs.webcam, this.props.user
+                    this.refs.webcam, this.props.user
                 ), 5000);
               }
             }}/>
@@ -52,14 +52,14 @@ class Me extends React.Component {
     if (this.props.me.image) {
       return (
         <div className={css(Style.container)}>
-          <ControlsContainer />
+          <Controls />
           <Item image={this.props.me.image} lastSeen={Date.now()} />
         </div>
       );
     } else {
       return (
         <div className={css(Style.container)}>
-          <ControlsContainer />
+          <Controls />
           <Item lastSeen={Date.now()}/>
         </div>
       );
