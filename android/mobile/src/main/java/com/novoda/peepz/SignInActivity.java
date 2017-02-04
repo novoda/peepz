@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
@@ -17,7 +18,7 @@ public class SignInActivity extends BaseActivity {
     private static final int REQUEST_CODE_SIGN_IN = 1;
 
     @BindView(R.id.sign_in_button)
-    Button signInButton;
+    TextView signInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

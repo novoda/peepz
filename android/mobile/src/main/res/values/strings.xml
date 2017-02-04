@@ -1,6 +1,10 @@
 <resources>
 
   <string name="app_name">peepz</string>
-  <string name="peepz_menu_take_picture">Take picture</string>
+  <string name="sign_in">Sign in</string>
+  <string name="take_picture">Take picture</string>
+
+  <string name="peepz_menu_take_picture">@string/take_picture</string>
+  <string name="sign_in_button">@string/sign_in</string>
 
 </resources>
