@@ -1,6 +1,6 @@
 import React from 'react';
 import UserHomePage from './UserHomePage';
-import SignInContainer from './SignIn/SignInPage';
+import SignInPage from './signInPage/SignInPage';
 import { connect } from 'react-redux';
 import { fetchSignIn as fetch} from '../firebase';
 
@@ -14,7 +14,7 @@ class HomePage extends React.Component {
     if (this.props.isSignedIn) {
       return (<UserHomePage />);
     } else {
-      return (<SignInContainer />);
+      return (<SignInPage />);
     }
   }
 
