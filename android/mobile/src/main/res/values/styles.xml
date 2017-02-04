@@ -2,6 +2,7 @@
 
     <style name="Peepz" parent="Theme.AppCompat.NoActionBar">
         <item name="peepzToolbarDefStyle">@style/Peepz.Toolbar</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->
