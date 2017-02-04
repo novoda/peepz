@@ -26,6 +26,8 @@ public class PeepView extends FrameLayout {
         GRAYSCALE_FILTER = new ColorMatrixColorFilter(matrix);
     }
 
+    private final ImageState imageState = new ImageState();
+
     @BindView(R.id.peep_text_name)
     TextView nameTextView;
 
@@ -55,9 +57,15 @@ public class PeepView extends FrameLayout {
         imageView.setColorFilter(getColorFilterFor(peep.onlineStatus()));
 
         if (peep.image() != null) {
-            Glide.with(getContext()).load(peep.image().payload()).into(imageView);
+            updateImage(peep);
         } else {
             imageView.setImageBitmap(null);
+        }
+    }
+
+    private void updateImage(Peep peep) {
+        if (imageState.shouldUpdateImageFor(peep)) {
+            Glide.with(getContext()).load(peep.image().payload()).into(imageView);
         }
     }
 
@@ -73,6 +81,31 @@ public class PeepView extends FrameLayout {
         } else {
             return null;
         }
+    }
+
+    private static class ImageState {
+
+        private Peep peep;
+
+        boolean shouldUpdateImageFor(Peep peep) {
+            if (different(peep)) {
+                this.peep = peep;
+                return true;
+            }
+
+            return imageUpdatedFor(peep);
+        }
+
+        private boolean different(Peep peep) {
+            return this.peep == null || !peep.id().equals(this.peep.id());
+        }
+
+        private boolean imageUpdatedFor(Peep peep) {
+            long oldImage = this.peep.image().timestamp();
+            long newImage = peep.image().timestamp();
+            return oldImage < newImage;
+        }
+
     }
 
 }
