@@ -1,13 +1,13 @@
 import React from 'react';
 import Item from '../item/Item';
-import { MeContainer } from '../me/Me';
+import Me from '../me/Me';
 import { css } from 'aphrodite/no-important';
 import Style from './wall.style';
 
 const toPeepz = user => (peep, index) => {
     if (user.uid === peep.uid) {
       return (
-        <li key={index} className={css(Style.item)}><MeContainer me={peep}/></li>
+        <li key={index} className={css(Style.item)}><Me me={peep}/></li>
       );
     } else {
       return (
