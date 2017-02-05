@@ -2,7 +2,7 @@ import React from 'react';
 import { css } from 'aphrodite/no-important';
 import Style from './appBar.style';
 
-const AppBar = ({onLogoutClicked}) => {
+export default ({onLogoutClicked}) => {
   return (
     <div className={css(Style.appBarStyle)}>
       <div className={css(Style.contentStyle)}>
@@ -13,8 +13,4 @@ const AppBar = ({onLogoutClicked}) => {
       </div>
     </div>
   );
-};
-
-export {
-  AppBar
 };

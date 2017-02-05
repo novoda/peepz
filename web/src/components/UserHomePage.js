@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { WallContainer } from './Wall';
-import { AppBar } from './AppBar';
+import { AppBar } from './appBar/AppBar';
 import { connect } from 'react-redux';
 import { lastSeen, getAllScreenshots as fetchAllScreenshots, logout} from '../firebase';
 
