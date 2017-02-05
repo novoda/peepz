@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -16,16 +15,10 @@
 
     <com.novoda.support.FontTextView
         android:id="@+id/sign_in_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/sign_in_button_margin_top"
-        android:background="@drawable/sign_in_button_background"
+        style="@style/Peepz.SignIn.Button"
+        android:layout_width="@dimen/sign_in_button_width"
+        android:layout_height="@dimen/sign_in_button_height"
         android:gravity="center"
-        android:minHeight="@dimen/sign_in_button_min_height"
-        android:minWidth="@dimen/sign_in_button_min_width"
-        android:text="@string/sign_in_button"
-        android:textColor="@color/white"
-        android:textSize="@dimen/sign_in_button_text"
-        app:textFont="montserratRegular" />
+        android:text="@string/sign_in_button" />
 
 </LinearLayout>
