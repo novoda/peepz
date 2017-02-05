@@ -88,9 +88,6 @@ public class FontTextView extends TextView {
         public static int extractStyle(Context context, AttributeSet attrs) {
             int[] attrValues = {android.R.attr.textStyle};
             TypedArray typedArray = context.obtainStyledAttributes(attrs, attrValues);
-            if (typedArray == null) {
-                return Typeface.NORMAL;
-            }
             try {
                 return typedArray.getInt(0, Typeface.NORMAL);
             } finally {
@@ -109,10 +106,6 @@ public class FontTextView extends TextView {
 
         private int getFontId(Context context, AttributeSet attrs) {
             TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.FontTextView);
-            if (typedArray == null) {
-                return INVALID_FONT_ID;
-            }
-
             try {
                 return typedArray.getInt(R.styleable.FontTextView_textFont, INVALID_FONT_ID);
             } finally {
@@ -235,4 +228,5 @@ public class FontTextView extends TextView {
         }
 
     }
+
 }
