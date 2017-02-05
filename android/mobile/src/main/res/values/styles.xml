@@ -1,14 +1,19 @@
 <resources>
 
     <style name="Peepz" parent="Theme.AppCompat.NoActionBar">
-        <item name="peepzToolbarDefStyle">@style/Peepz.Toolbar</item>
         <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="peepzToolbarDefStyle">@style/Peepz.Toolbar</item>
+        <item name="actionMenuTextColor">@color/purple_text</item>
     </style>
 
     <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->
     <style name="Peepz.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:id">@id/toolbar</item> <!-- this should be forced in the class? -->
         <item name="android:background">@android:color/transparent</item>
+        <item name="logo">@drawable/peepz_appbar_icon</item>
+        <item name="logoDescription">@string/app_name</item>
+        <item name="contentInsetStart">24dp</item>
     </style>
 
     <style name="Peepz.SignIn" />

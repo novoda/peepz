@@ -7,5 +7,6 @@
     <color name="white">#FFFFFF</color>
     <color name="purple_left">#72218A</color>
     <color name="purple_right">#391885</color>
+    <color name="purple_text">#3A1885</color>
 
 </resources>

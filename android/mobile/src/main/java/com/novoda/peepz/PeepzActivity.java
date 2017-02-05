@@ -47,6 +47,7 @@ public class PeepzActivity extends BaseActivity {
 
         Toolbar toolbar = ButterKnife.findById(this, R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         // TODO: what if the user is not signed in?
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
