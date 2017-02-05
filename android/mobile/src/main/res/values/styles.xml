@@ -5,6 +5,7 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="peepzToolbarDefStyle">@style/Peepz.Toolbar</item>
         <item name="actionMenuTextColor">@color/purple_text</item>
+        <item name="colorPrimary">@color/white</item>
     </style>
 
     <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->

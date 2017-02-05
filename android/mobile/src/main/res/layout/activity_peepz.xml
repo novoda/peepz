@@ -8,9 +8,15 @@
     android:orientation="vertical"
     tools:layout_marginTop="24dp">
 
-    <com.novoda.peepz.PeepzToolbar
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <com.novoda.peepz.PeepzToolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
