@@ -17,7 +17,7 @@ describe('HomePageView', () => {
   });
 
   it('renders without exploding', () => {
-    // expect(_.length).toBe(1);
+    expect(_.rootExists()).toBe(true);
   });
 
   it('shows the sign in page when not signed in', () => {

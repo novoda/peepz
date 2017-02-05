@@ -10,8 +10,10 @@ const helper = {
   },
   of: view => {
     const wrapper = shallow(view);
-
     return {
+      rootExists: () => {
+        return wrapper.exists();
+      },
       elementExists: style => {
         return find(wrapper)(style).exists();
       },

@@ -20,7 +20,7 @@ describe('SignInPageView', () => {
   });
 
   it('renders without exploding', () => {
-    // expect(signInPageView.length).toBe(1);
+    expect(_.rootExists()).toBe(true);
   });
 
   it('has a logo', () => {
