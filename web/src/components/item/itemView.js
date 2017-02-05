@@ -1,5 +1,5 @@
 import React from 'react';
-import Console from '../console';
+import Console from '../../console';
 import { css } from 'aphrodite/no-important';
 import Style from './item.style';
 
@@ -22,7 +22,7 @@ const onImageError = (img) => {
   img.target.src = missingImage.payload;
 };
 
-class Item extends React.Component {
+export default class Item extends React.Component {
 
   render() {
     const name = this.props.name;
@@ -84,8 +84,4 @@ const lastSeenToFilterAmount = lastSeen => {
     return Style.noGray;
   }
 
-};
-
-export {
-  Item
 };

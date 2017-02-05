@@ -2,7 +2,7 @@
 
 import Console from '../console';
 import React from 'react';
-import { Item } from './Item';
+import Item from './item/Item';
 import Controls from './controls/Controls';
 import Webcam from '../webcam';
 import { submitScreenshot } from '../firebase';

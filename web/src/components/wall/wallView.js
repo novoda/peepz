@@ -1,5 +1,5 @@
 import React from 'react';
-import { Item } from '../Item';
+import Item from '../item/Item';
 import { MeContainer } from '../Me';
 import { css } from 'aphrodite/no-important';
 import Style from './wall.style';
