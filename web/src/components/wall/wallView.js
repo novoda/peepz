@@ -1,7 +1,6 @@
-import { connect } from 'react-redux';
 import React from 'react';
-import { Item } from './Item';
-import { MeContainer } from './Me';
+import { Item } from '../Item';
+import { MeContainer } from '../Me';
 import { css } from 'aphrodite/no-important';
 import Style from './wall.style';
 
@@ -19,7 +18,7 @@ const toPeepz = user => (peep, index) => {
     }
 };
 
-class Wall extends React.Component {
+export default class Wall extends React.Component {
 
   render() {
     const peepz = this.props.wall.map(toPeepz(this.props.user));
@@ -38,14 +37,3 @@ class Wall extends React.Component {
   }
 
 }
-
-const WallContainer = connect(state => {
-  return {
-    wall: state.wall,
-    user: state.user
-  };
-})(Wall);
-
-export {
-  WallContainer
-};

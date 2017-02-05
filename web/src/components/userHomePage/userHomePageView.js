@@ -1,8 +1,8 @@
 /*global setInterval clearInterval */
 
 import React from 'react';
-import { WallContainer } from '../Wall';
-import { AppBar } from '../appBar/AppBar';
+import Wall from '../wall/Wall';
+import AppBar from '../appBar/AppBar';
 
 const FIVE_MINUTES = (60 * 5) * 1000;
 
@@ -17,7 +17,7 @@ export default class UserHomePageView extends React.Component {
     return (
       <div>
         <AppBar onLogoutClicked={this.props.onLogoutClicked}/>
-        <WallContainer />
+        <Wall />
       </div>
     );
   }
