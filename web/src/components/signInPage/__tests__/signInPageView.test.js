@@ -24,18 +24,18 @@ describe('SignInPageView', () => {
   });
 
   it('has a logo', () => {
-    expect(_.elementExists(Style.logo)).toBe(true);
+    expect(_.style(Style.logo).exists()).toBe(true);
   });
 
   it('has a sign in button', () => {
-    expect(_.elementExists(Style.SignInButton)).toBe(true);
-    expect(_.elementText(Style.SignInButton)).toBe('Sign in');
+    expect(_.style(Style.SignInButton).exists()).toBe(true);
+    expect(_.style(Style.SignInButton).text()).toBe('Sign in');
   });
 
   it('triggers callback on sign in button click', () => {
     _ = Helper.of(<SignInPageView {...props} requestSignIn={requestSignIn} />);
 
-    _.clickElement(Style.SignInButton);
+    _.style(Style.SignInButton).click();
 
     expect(requestSignIn).toBeCalled();
   });

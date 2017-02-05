@@ -13,16 +13,13 @@ const helper = {
     const wrapper = shallow(view);
     return {
       rootExists: () => {
-        return wrapper.exists();
+        return wrapper.type() !== null && wrapper.exists();
       },
-      elementExists: style => {
-        return find(wrapper)(style).exists();
+      style: style => {
+        return sugar(find(wrapper)(style));
       },
-      elementText: style => {
-        return find(wrapper)(style).text();
-      },
-      clickElement: style => {
-        find(wrapper)(style).simulate('click');
+      component: component => {
+        return sugar(wrapper.find(component));
       }
     };
   }
@@ -30,6 +27,20 @@ const helper = {
 
 const find = view => style => {
   return view.find(`.${css(style)}`);
+};
+
+const sugar = element => {
+  return {
+    exists: () => {
+      return element.exists();
+    },
+    click: () => {
+      element.simulate('click');
+    },
+    text: () => {
+      return element.text();
+    }
+  };
 };
 
 global.Helper = helper;
