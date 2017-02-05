@@ -1,3 +1,5 @@
+# Peepz [![CircleCI](https://circleci.com/gh/novoda/peepz.svg?style=shield)](https://circleci.com/gh/novoda/peepz)
+
 ###Usage
 
 Copy config.json.sample and fill out the fields from your firebase instance.
