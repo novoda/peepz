@@ -1,4 +1,4 @@
-/*global Helper describe it expect beforeAll afterAll beforeEach jest */
+/*global Helper describe it expect beforeAll afterAll beforeEach */
 
 import React from 'react';
 import HomePageView from '../homePageView';

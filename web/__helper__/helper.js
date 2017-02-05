@@ -1,3 +1,4 @@
+/*global global*/
 import { StyleSheetTestUtils, css } from 'aphrodite/no-important';
 import { shallow } from 'enzyme';
 
