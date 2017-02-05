@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.ataulm.rv.SpacesItemDecoration;
 import com.google.android.cameraview.CameraView;
@@ -21,6 +22,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+import static android.view.View.GONE;
+import static android.view.View.VISIBLE;
+
 public class PeepzActivity extends BaseActivity {
 
     @BindView(R.id.peepz_collection)
@@ -28,6 +32,9 @@ public class PeepzActivity extends BaseActivity {
 
     @BindView(R.id.peepz_secret_camera)
     CameraView secretCameraView;
+
+    @BindView(R.id.peepz_button_take_picture)
+    View takePictureButton;
 
     private AccessibilityServices accessibilityServices;
     private AutomaticPictureTaker automaticPictureTaker;
@@ -105,27 +112,37 @@ public class PeepzActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         if (shouldShowAppBarAction()) {
             getMenuInflater().inflate(R.menu.peepz, menu);
+            takePictureButton.setVisibility(GONE);
             return true;
         } else {
-            // TODO: show fab instead
+            takePictureButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickTakePicture();
+                }
+            });
+            takePictureButton.setVisibility(VISIBLE);
             return false;
         }
     }
 
     private boolean shouldShowAppBarAction() {
-        // TODO: `return accessibilityServices.isSpokenFeedbackEnabled() || !recyclerView.isInTouchMode();` when fab is implemented
-        return true;
+        return accessibilityServices.isSpokenFeedbackEnabled() || !recyclerView.isInTouchMode();
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.peepz_menu_take_picture) {
-            // TODO: might wanna go startActivityForResult unless selfieActivity stays there til picture is uploaded
-            startActivity(new Intent(this, SelfieActivity.class));
+            onClickTakePicture();
             return true;
         } else {
             return super.onOptionsItemSelected(item);
         }
+    }
+
+    private void onClickTakePicture() {
+        // TODO: might wanna go startActivityForResult unless selfieActivity stays there til picture is uploaded
+        startActivity(new Intent(this, SelfieActivity.class));
     }
 
 }
