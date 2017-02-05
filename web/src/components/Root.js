@@ -2,7 +2,7 @@
 
 import { Provider } from 'react-redux';
 import React from 'react';
-import HomePageContainer from './HomePage';
+import HomePage from './homePage/HomePage';
 
 const isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
 
@@ -14,7 +14,7 @@ class Root extends React.Component {
     }
     return (
       <Provider store={this.props.store}>
-        <HomePageContainer />
+        <HomePage />
       </Provider>
     );
   }
