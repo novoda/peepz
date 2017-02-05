@@ -39,6 +39,9 @@ const sugar = element => {
     },
     text: () => {
       return element.text();
+    },
+    count: () => {
+      return element.length;
     }
   };
 };
