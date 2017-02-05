@@ -1,19 +1,16 @@
 /*global setInterval clearInterval setTimeout clearTimeout */
 
-import Console from '../console';
 import React from 'react';
-import Item from './item/Item';
-import Controls from './controls/Controls';
-import Webcam from '../webcam';
-import { submitScreenshot } from '../firebase';
-import { connect } from 'react-redux';
+import Item from '../item/Item';
+import Controls from '../controls/Controls';
+import Webcam from '../../webcam';
 import { css } from 'aphrodite/no-important';
 import Style from './me.style';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg';
 const TWO_MINTUES_MS = (2 * 60) * 1000;
 
-class Me extends React.Component {
+export default class MeView extends React.Component {
 
   constructor(props) {
     super(props);
@@ -90,33 +87,3 @@ class Me extends React.Component {
   }
 
 }
-
-const MeContainer = connect(state => {
-  return {
-    cameraIsActive: state.camera.active,
-    requestAutomaticScreenshot: state.camera.requestAutomaticScreenshot,
-    requestManualScreenshot: state.camera.requestManualScreenshot,
-    user: state.user,
-  };
-}, dispatch => {
-  return {
-    automaticScreenshot: () => {
-      dispatch({type: 'automaticScreenshot'});
-    },
-    screenshot: (user, screenshot) => {
-      dispatch({type: 'closeCamera'});
-      if (screenshot !== 'data:,') {
-        dispatch(submitScreenshot(user)(screenshot));
-      } else {
-        Console.error('screenshot was invalid, skipping');
-      }
-    },
-    closePreview: () => {
-      dispatch({type: 'closePreview'});
-    }
-  };
-})(Me);
-
-export {
-  MeContainer
-};

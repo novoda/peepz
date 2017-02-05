@@ -1,6 +1,6 @@
 import React from 'react';
 import Item from '../item/Item';
-import { MeContainer } from '../Me';
+import { MeContainer } from '../me/Me';
 import { css } from 'aphrodite/no-important';
 import Style from './wall.style';
 
