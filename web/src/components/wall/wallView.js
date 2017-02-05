@@ -4,14 +4,14 @@ import Me from '../me/Me';
 import { css } from 'aphrodite/no-important';
 import Style from './wall.style';
 
-const toPeepz = user => (peep, index) => {
+const toPeepz = user => peep => {
     if (user.uid === peep.uid) {
       return (
-        <li key={index} className={css(Style.item)}><Me me={peep}/></li>
+        <li key={peep.uid} className={css(Style.item)}><Me me={peep}/></li>
       );
     } else {
       return (
-        <li key={index} className={css(Style.item)}>
+        <li key={peep.uid} className={css(Style.item)}>
           <Item image={peep.image} name={peep.name} lastSeen={peep.lastSeen}/>
         </li>
       );

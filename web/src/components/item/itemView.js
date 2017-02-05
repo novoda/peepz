@@ -12,10 +12,6 @@ const missingImage = {
   timestamp: 0
 };
 
-const preventClick = (e) => {
-  e.preventDefault();
-};
-
 const onImageError = (img) => {
   Console.log('on image error');
   img.target.onerror = null;
@@ -24,6 +20,13 @@ const onImageError = (img) => {
 
 export default class Item extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      isHovering: false
+    };
+  }
+
   render() {
     const name = this.props.name;
     const image = this.props.image || missingImage;
@@ -31,24 +34,34 @@ export default class Item extends React.Component {
     Console.log('render:', name);
 
     const availabilityFilter = lastSeenToFilterAmount(lastSeen);
+    const onMouseEnter = this._onMouseEnter.bind(this);
+    const onMouseLeave = this._onMouseExit.bind(this);
 
     return (
-      <div className={css(Style.container)}>
-        <img className={css(Style.imageStyle, availabilityFilter)}
+      <div className={css(Style.container)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className={css(Style.overlayBackground)} />
+        <img className={css(Style.imageStyle, availabilityFilter, this.state.isHovering && Style.makeOpaque)}
           src={image.payload}
           onError={onImageError}
           alt={name} />
-        <a className={css(Style.contextOnlyLink)} onClick={preventClick} href={image.payload}>
-          <div className={css(Style.overlay)} href={image.payload}>
-            <div className={css(Style.overlayBackground)} />
-            <div className={css(Style.overlayName)}>{name}</div>
-          </div>
-        </a>
+        {this.state.isHovering ? <div className={css(Style.overlayName)}>{name}</div> : null}
       </div>
     );
   }
 
-  shouldComponentUpdate(nextProps) {
+  _onMouseEnter() {
+    this.setState({isHovering: true});
+  }
+
+  _onMouseExit() {
+    this.setState({isHovering: false});
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.isHovering !== nextState.isHovering) {
+      return true;
+    }
+
     const currentImage = this.props.image;
     const nextImage = nextProps.image;
     return this._timestampsAreDifferent(currentImage, nextImage);
