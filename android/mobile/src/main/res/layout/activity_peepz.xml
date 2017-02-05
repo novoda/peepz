@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:keepScreenOn="true"
-    android:orientation="vertical"
     tools:layout_marginTop="24dp">
 
     <android.support.design.widget.AppBarLayout
@@ -20,7 +20,8 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <com.novoda.peepz.PeepzCameraView
             android:id="@+id/peepz_secret_camera"
@@ -36,4 +37,4 @@
 
     </FrameLayout>
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
