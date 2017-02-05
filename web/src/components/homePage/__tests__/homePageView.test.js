@@ -3,7 +3,7 @@
 import React from 'react';
 import HomePageView from '../homePageView';
 import SignInPage from '../../signInPage/SignInPage';
-import UserHomePage from '../../UserHomePage';
+import UserHomePage from '../../userHomePage/UserHomePage';
 
 describe('HomePageView', () => {
 

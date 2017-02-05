@@ -1,5 +1,5 @@
 import React from 'react';
-import UserHomePage from '../UserHomePage';
+import UserHomePage from '../userHomePage/UserHomePage';
 import SignInPage from '../signInPage/SignInPage';
 
 export default class HomePageView extends React.Component {
