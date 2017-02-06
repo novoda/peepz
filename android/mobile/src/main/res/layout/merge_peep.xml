@@ -1,24 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_gravity="center"
+    tools:layout_height="100dp"
+    tools:layout_width="100dp"
+    tools:parentTag="FrameLayout">
 
     <ImageView
         android:id="@+id/peep_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:background="@color/black"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/debug_peep_photo" />
 
     <com.novoda.support.FontTextView
         android:id="@+id/peep_text_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"
-        app:textFont="montserratRegular" />
-
-    <View
-        android:id="@+id/peep_online_status"
-        android:layout_width="16dp"
-        android:layout_height="16dp"
-        android:layout_gravity="right|bottom" />
+        android:layout_gravity="bottom"
+        android:background="@drawable/peep_name_background"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:paddingBottom="4dp"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:paddingTop="38dp"
+        android:textColor="@color/white"
+        app:textFont="montserratRegular"
+        tools:text="Master O" />
 
 </merge>

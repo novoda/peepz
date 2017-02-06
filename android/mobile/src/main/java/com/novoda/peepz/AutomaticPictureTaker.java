@@ -1,6 +1,7 @@
 package com.novoda.peepz;
 
 import android.os.Handler;
+import android.util.Log;
 
 import com.google.android.cameraview.CameraView;
 
@@ -13,6 +14,8 @@ class AutomaticPictureTaker {
     private final CameraView cameraView;
     private final PictureUploader pictureUploader;
     private final PeepUpdater peepUpdater;
+    private final Handler handler = new Handler();
+    ;
 
     private boolean cameraReady;
 
@@ -31,6 +34,7 @@ class AutomaticPictureTaker {
 
         @Override
         public void onCameraOpened(CameraView cameraView) {
+            Log.d("!!!", "onCameraOpened: " + System.currentTimeMillis());
             cameraReady = true;
             scheduleAutomaticPictureTake();
         }
@@ -50,22 +54,36 @@ class AutomaticPictureTaker {
             });
         }
 
+        @Override
+        public void onCameraClosed(CameraView cameraView) {
+            cameraReady = false;
+            handler.removeCallbacks(runnable);
+        }
+
     };
 
     private void scheduleAutomaticPictureTake() {
         long delayMillis = TimeUnit.MINUTES.toMillis(DELAY_MINUTES_BETWEEN_AUTOMATIC_PHOTOS);
-        new Handler().postDelayed(runnable, delayMillis);
+        handler.postDelayed(runnable, delayMillis);
     }
 
     private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
+            Log.d("!!!", "autoPictureTake: " + System.currentTimeMillis());
             if (cameraReady) {
                 cameraView.takePicture();
                 scheduleAutomaticPictureTake();
             }
         }
     };
+
+    public void requestPictureTake() {
+        Log.d("!!!", "requestPictureTake: " + System.currentTimeMillis());
+        if (cameraReady) {
+            cameraView.takePicture();
+        }
+    }
 
     public void stop() {
         cameraReady = false;

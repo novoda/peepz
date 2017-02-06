@@ -14,6 +14,9 @@ public class PeepzCameraView extends CameraView {
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
+        if (isInEditMode()) {
+            return;
+        }
         setFacing(FACING_FRONT);
         setFlash(FLASH_OFF);
         setAutoFocus(true);

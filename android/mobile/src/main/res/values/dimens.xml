@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <dimen name="size_peek">44dp</dimen>
     <dimen name="grid_spacing">8dp</dimen>
     <dimen name="grid_spacing_half">8dp</dimen>
+
+    <dimen name="sign_in_button_width">253dp</dimen>
+    <dimen name="sign_in_button_height">96dp</dimen>
+
 </resources>
