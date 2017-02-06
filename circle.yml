@@ -9,6 +9,12 @@ compile:
   override:
     - npm run lint
 
+
+test:
+  override:
+    - npm test
+    - npm run coveralls
+
 deployment:
   production:
     branch: master

@@ -4,7 +4,8 @@
   "description": "",
   "scripts": {
     "lint": "eslint webpack.config.js ./src",
-    "test": "jest --config ./jest.config && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "test": "jest --config ./jest.config",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "start": "webpack-dev-server --progress --colors --https --host 0.0.0.0",
     "build": "webpack"
   },
