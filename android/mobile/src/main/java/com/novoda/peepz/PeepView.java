@@ -4,9 +4,13 @@ import android.content.Context;
 import android.graphics.ColorFilter;
 import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
+import android.graphics.Outline;
+import android.graphics.Rect;
 import android.support.annotation.Nullable;
+import android.support.annotation.Px;
 import android.util.AttributeSet;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +47,10 @@ public class PeepView extends FrameLayout {
         super.onFinishInflate();
         View.inflate(getContext(), R.layout.merge_peep, this);
         ButterKnife.bind(this);
+
+        int radiusPx = getResources().getDimensionPixelSize(R.dimen.grid_item_radius);
+        setOutlineProvider(new RoundedCornersOutlineProvider(radiusPx));
+        setClipToOutline(true);
     }
 
     @Override
@@ -107,6 +115,25 @@ public class PeepView extends FrameLayout {
             long oldImage = this.peep.image().timestamp();
             long newImage = peep.image().timestamp();
             return oldImage < newImage;
+        }
+
+    }
+
+    private static class RoundedCornersOutlineProvider extends ViewOutlineProvider {
+
+        private final Rect rect = new Rect();
+        @Px
+        private final int radiusPx;
+
+        RoundedCornersOutlineProvider(@Px int radiusPx) {
+            this.radiusPx = radiusPx;
+        }
+
+        @Override
+        public void getOutline(View view, Outline outline) {
+            view.getDrawingRect(rect);
+            // TODO: getting artifacts - why?
+            outline.setRoundRect(rect, radiusPx);
         }
 
     }
