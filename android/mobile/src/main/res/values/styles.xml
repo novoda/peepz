@@ -8,6 +8,10 @@
         <item name="colorPrimary">@color/white</item>
     </style>
 
+    <style name="Peepz.Fab" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/white</item>
+    </style>
+
     <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->
     <style name="Peepz.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:id">@id/toolbar</item> <!-- this should be forced in the class? -->
