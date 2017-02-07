@@ -12,14 +12,14 @@ export default ({ requestSignIn }) => {
         </div>
 
         <div className={css(Style.buttonContainer)}>
-            <text className={css(Style.detail)}> Because someone is always watching</text>
+            <text className={css(Style.detail)}>Because the picture take</text>
         </div>
         <div className={css(Style.buttonContainer)}>
             <button onClick={requestSignIn} className={css(Style.SignInButton)}>Sign in</button>
         </div>
 
         <div className={css(Style.madeWithLoveContainer)}>
-            <text className={css(Style.madeWithLove)}> Made with 😘 by Novoda</text>
+            <text className={css(Style.madeWithLove)}>Made with 😘 by Novoda</text>
         </div>
     </div>
   );
