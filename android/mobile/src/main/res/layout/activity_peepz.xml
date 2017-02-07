@@ -39,13 +39,12 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/peepz_button_take_picture"
-        android:theme="@style/Peepz.Fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:layout_margin="16dp"
-        android:src="@drawable/peepz_button_take_picture"
-        android:visibility="gone"
-        app:fabSize="normal" />
+        android:src="@drawable/ic_camera_purple"
+        android:theme="@style/Peepz.Fab"
+        android:visibility="gone" />
 
 </android.support.design.widget.CoordinatorLayout>

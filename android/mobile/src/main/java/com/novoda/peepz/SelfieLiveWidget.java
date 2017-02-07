@@ -18,7 +18,7 @@ public class SelfieLiveWidget extends FrameLayout {
     CameraView cameraView;
 
     @BindView(R.id.selfie_live_button_take_picture)
-    Button takePictureButton;
+    View takePictureButton;
 
     @Nullable
     private PictureTakeListener listener;
