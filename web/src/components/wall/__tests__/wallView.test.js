@@ -7,7 +7,7 @@ import Item from '../../item/Item';
 
 describe('WallView', () => {
 
-  const props = { wall: [], user: { uid: 'any'} };
+  const props = { wall: [], user: { uid: 'any'}, nowProvider: () => 0 };
 
   it('renders without exploding', () => {
     const _ = Helper.of(<WallView {...props} />);
@@ -18,13 +18,13 @@ describe('WallView', () => {
   it('shows Me when a wall element uid matches the user id', () => {
     const user = { uid: 'userId' };
     const wall = [ { uid: 'userId'} ];
-    const _ = Helper.of(<WallView wall={wall} user={user}/>);
+    const _ = Helper.of(<WallView {...props} wall={wall} user={user}/>);
 
     expect(_.component(Me).exists()).toBe(true);
   });
 
   it('shows an Item for each element of the wall that does not match the user id', () => {
-    const wall = [ { uid: '1'}, { uid: '2'}, { uid: '3'} ];
+    const wall = [ { uid: '1', lastSeen: 0 }, { uid: '2', lastSeen: 0 }, { uid: '3', lastSeen: 0 } ];
     const _ = Helper.of(<WallView {...props} wall={wall} />);
 
     expect(_.component(Item).count()).toBe(wall.length);

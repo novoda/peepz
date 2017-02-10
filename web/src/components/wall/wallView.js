@@ -22,7 +22,7 @@ const toPeepz = user => peep => {
 export default class Wall extends React.Component {
 
   render() {
-    const now = Date.now();
+    const now = this.props.nowProvider();
     const peepz = this.props.wall.filter(filter(now)(this.props.user))
       .map(toPeepz(this.props.user));
 
