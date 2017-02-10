@@ -8,7 +8,7 @@ import { css } from 'aphrodite/no-important';
 import Style from './me.style';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg';
-const TWO_MINTUES_MS = (2 * 60) * 1000;
+const FIVE_MINTUES_MS = (5 * 60) * 1000;
 
 export default class MeView extends React.Component {
 
@@ -69,7 +69,7 @@ export default class MeView extends React.Component {
         this.props.automaticScreenshot();
       }
     };
-    this.autoScreenshotTask = setInterval(autoScreenshot, TWO_MINTUES_MS);
+    this.autoScreenshotTask = setInterval(autoScreenshot, FIVE_MINTUES_MS);
   }
 
   componentDidUpdate() {
