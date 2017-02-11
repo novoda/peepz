@@ -32,11 +32,14 @@ public class PeepView extends FrameLayout {
 
     private final ImageState imageState = new ImageState();
 
-    @BindView(R.id.peep_text_name)
-    TextView nameTextView;
-
     @BindView(R.id.peep_image)
     ImageView imageView;
+
+    @BindView(R.id.peep_online_indicator)
+    View onlineIndicatorView;
+
+    @BindView(R.id.peep_text_name)
+    TextView nameTextView;
 
     public PeepView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -68,6 +71,12 @@ public class PeepView extends FrameLayout {
             updateImage(peep);
         } else {
             imageView.setImageBitmap(null);
+        }
+
+        if (peep.onlineStatus() == Peep.OnlineStatus.FRESH) {
+            onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_fresh);
+        } else {
+            onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_stale);
         }
     }
 
