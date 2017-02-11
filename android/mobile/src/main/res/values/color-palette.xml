@@ -9,6 +9,7 @@
     <color name="purple_left">#72218A</color>
     <color name="purple_right">#391885</color>
     <color name="purple_accent">#3A1885</color>
+    <color name="gray_text">#757575</color>
     <color name="purple_text">@color/purple_accent</color>
 
 </resources>
