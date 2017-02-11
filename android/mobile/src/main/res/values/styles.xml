@@ -6,7 +6,7 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="peepzToolbarDefStyle">@style/PeepzApp.Toolbar</item>
-        <item name="peepzCircleActionButtonDefStyle">@style/PeepzApp.CircleActionButton</item>
+        <item name="floatingActionButtonDefStyle">@style/PeepzApp.FloatingActionButton</item>
         <item name="actionMenuTextColor">@color/purple_text</item>
         <item name="colorPrimary">@color/white</item>
     </style>
@@ -20,12 +20,11 @@
         <item name="contentInsetStart">24dp</item>
     </style>
 
-    <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->
-    <style name="PeepzApp.CircleActionButton">
+    <style name="PeepzApp.FloatingActionButton">
         <item name="android:padding">16dp</item>
-        <item name="android:elevation">5dp</item>
-        <item name="android:src">@drawable/ic_camera_white</item>
-        <item name="android:background">@drawable/circle_action_button_background</item>
+        <item name="android:elevation">@dimen/fab_elevation_default</item>
+        <item name="android:background">@drawable/floating_action_button_background_white</item>
+        <item name="android:stateListAnimator">@animator/floating_action_button_elevation_animator</item>
     </style>
 
     <style name="Peepz" />

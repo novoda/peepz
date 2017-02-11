@@ -8,4 +8,7 @@
     <dimen name="sign_in_button_width">253dp</dimen>
     <dimen name="sign_in_button_height">96dp</dimen>
 
+    <dimen name="fab_elevation_pressed">10dp</dimen>
+    <dimen name="fab_elevation_default">5dp</dimen>
+
 </resources>

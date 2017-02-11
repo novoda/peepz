@@ -3,14 +3,10 @@
 
     <attr name="peepzToolbarDefStyle" format="reference" />
 
-    <attr name="peepzCircleActionButtonDefStyle" format="reference" />
+    <attr name="floatingActionButtonDefStyle" format="reference" />
 
-    <declare-styleable name="CircleActionButton">
-
+    <declare-styleable name="FloatingActionButton">
         <attr name="android:src" />
-
-        <attr name="android:background" />
-
     </declare-styleable>
 
 </resources>
