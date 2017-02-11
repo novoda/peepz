@@ -3,7 +3,7 @@
 import React from 'react';
 import Item from '../item/Item';
 import Controls from '../controls/Controls';
-import Webcam from '../../webcam';
+import Webcam from 'react-webcam';
 import { css } from 'aphrodite/no-important';
 import Style from './me.style';
 
