@@ -1,31 +1,34 @@
 <resources>
 
-    <style name="Peepz" parent="Theme.AppCompat.NoActionBar">
+    <style name="PeepzApp" />
+
+    <style name="PeepzApp.Theme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="peepzToolbarDefStyle">@style/Peepz.Toolbar</item>
+        <item name="peepzToolbarDefStyle">@style/PeepzApp.Toolbar</item>
+        <item name="peepzCircleActionButtonDefStyle">@style/PeepzApp.CircleActionButton</item>
         <item name="actionMenuTextColor">@color/purple_text</item>
         <item name="colorPrimary">@color/white</item>
     </style>
 
-    <style name="Peepz.Fab" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/white</item>
-        <item name="colorControlHighlight">@color/purple_accent</item>
-    </style>
-
-    <style name="Selfie.Fab" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/purple_accent</item>
-        <item name="colorControlHighlight">@color/white</item>
-    </style>
-
     <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->
-    <style name="Peepz.Toolbar" parent="Widget.AppCompat.Toolbar">
+    <style name="PeepzApp.Toolbar" parent="Widget.AppCompat.Toolbar">
         <item name="android:id">@id/toolbar</item> <!-- this should be forced in the class? -->
         <item name="android:background">@android:color/transparent</item>
         <item name="logo">@drawable/img_appbar_logo</item>
         <item name="logoDescription">@string/app_name</item>
         <item name="contentInsetStart">24dp</item>
     </style>
+
+    <!--AppCompat's Toolbar ignores any `android:` attrs that are related to the action bar, on any API level-->
+    <style name="PeepzApp.CircleActionButton">
+        <item name="android:padding">16dp</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:src">@drawable/ic_camera_white</item>
+        <item name="android:background">@drawable/circle_action_button_background</item>
+    </style>
+
+    <style name="Peepz" />
 
     <style name="Peepz.SignIn" />
 
@@ -39,6 +42,16 @@
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/white</item>
         <item name="textFont">montserratRegular</item>
+    </style>
+
+    <style name="Peepz.Fab" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlHighlight">@color/purple_accent</item>
+    </style>
+
+    <style name="Selfie.Fab" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/purple_accent</item>
+        <item name="colorControlHighlight">@color/white</item>
     </style>
 
 </resources>
