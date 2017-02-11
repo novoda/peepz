@@ -26,10 +26,10 @@ public class SelfiePreviewWidget extends FrameLayout {
     ImageView imageView;
 
     @BindView(R.id.selfie_preview_button_retake)
-    Button retakeButton;
+    View retakeButton;
 
     @BindView(R.id.selfie_preview_button_accept)
-    Button acceptButton;
+    View acceptButton;
 
     public SelfiePreviewWidget(Context context, AttributeSet attrs) {
         super(context, attrs);

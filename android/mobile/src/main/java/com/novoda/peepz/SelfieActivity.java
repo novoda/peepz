@@ -2,6 +2,7 @@ package com.novoda.peepz;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
@@ -14,6 +15,9 @@ public class SelfieActivity extends BaseActivity {
 
     @BindView(R.id.selfie_view)
     SelfieView selfieView;
+
+    @BindView(R.id.selfie_button_close)
+    View closeButton;
 
     private PictureUploader pictureUploader;
     private PeepUpdater peepUpdater;
@@ -28,6 +32,13 @@ public class SelfieActivity extends BaseActivity {
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
         peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         pictureUploader = new PictureUploader(signedInUser);
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     @Override

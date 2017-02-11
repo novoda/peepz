@@ -7,18 +7,29 @@
         android:layout_height="match_parent"
         android:scaleType="centerCrop" />
 
-    <Button
-        android:id="@+id/selfie_preview_button_retake"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="left|bottom"
-        android:text="Retake" />
+        android:layout_gravity="bottom|center"
+        android:layout_marginBottom="24dp"
+        android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/selfie_preview_button_accept"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:text="Accept" />
+        <com.novoda.support.FloatingActionButton
+            android:id="@+id/selfie_preview_button_retake"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="17dp"
+            android:contentDescription="Retake"
+            android:src="@drawable/ic_retake" />
+
+        <com.novoda.support.FloatingActionButton
+            android:id="@+id/selfie_preview_button_accept"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:contentDescription="Accept"
+            android:src="@drawable/ic_accept" />
+
+    </LinearLayout>
 
 </merge>
