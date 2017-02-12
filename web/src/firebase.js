@@ -84,6 +84,27 @@ const roomListing = () => dispatch => {
   });
 };
 
+const joinRoom = roomId => user => dispatch => {
+  fb.database()
+    .ref(wallPath(roomId))
+    .once('value')
+    .then(hasUser(user))
+    .then(userExists => {
+      if (userExists) {
+        dispatchJoinedRoom(dispatch)(roomId)();
+      } else {
+        return fb.database().ref(`${wallPath}/${user.uid}`).set({
+          uid: user.uid,
+          name: user.displayName
+        }).then(dispatchJoinedRoom(dispatch)(roomId));
+      }
+    });
+};
+
+const dispatchJoinedRoom = dispatch => roomId => () => {
+  dispatch({type: 'onJoinedRoom', payload: roomId});
+};
+
 export {
   fetchSignIn,
   requestSignIn,
@@ -91,5 +112,6 @@ export {
   getAllScreenshots,
   lastSeen,
   logout,
-  roomListing
+  roomListing,
+  joinRoom
 };
