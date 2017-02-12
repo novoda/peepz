@@ -52,12 +52,13 @@ public class PeepzActivity extends BaseActivity {
     private final PeepzPageDisplayer.Callback callback = new PeepzPageDisplayer.Callback() {
         @Override
         public void onClickTakePicture() {
-            startActivity(new Intent(PeepzActivity.this, SelfieActivity.class));
+            startActivity(new Intent(getApplicationContext(), SelfieActivity.class));
         }
 
         @Override
         public void onClickSignOut() {
             firebaseApi().signOut();
+            startActivity(new Intent(getApplicationContext(), SignInActivity.class));
             finish();
         }
     };
