@@ -1,6 +1,7 @@
 import * as fb from 'firebase';
 
-const wallPath = 'wall';
+const novodaRoomId = 'novoda';
+const wallPath = `wip/rooms/${novodaRoomId}/wall`;
 
 const fetchSignIn = () => dispatch => {
   dispatch({type: 'fetchSignIn'});
