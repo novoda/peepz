@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".SignInActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/sign_in_title" />
+
+        <com.novoda.support.FontTextView
+            style="@style/Peepz.SignIn.Tagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/peepz_signin_tagline" />
+
+        <com.novoda.support.FontTextView
+            android:id="@+id/sign_in_button"
+            style="@style/Peepz.SignIn.Button"
+            android:layout_width="@dimen/sign_in_button_width"
+            android:layout_height="@dimen/sign_in_button_height"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="@string/peepz_signin_button" />
+    </LinearLayout>
+
+    <com.novoda.support.FontTextView
+        style="@style/Peepz.SignIn.Footer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:text="@string/peepz_signin_footer" />
+
+</RelativeLayout>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_height="wrap_content"
+    tools:layout_width="wrap_content"
+    tools:layout_gravity="center"
+    tools:padding="16dp"
+    tools:background="@drawable/purple_gradient_circle_background"
+    tools:elevation="5dp"
+    tools:parentTag="FrameLayout">
+
+    <ImageView
+        android:id="@+id/floating_action_button_image"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        tools:src="@drawable/ic_camera_white" />
+
+</merge>

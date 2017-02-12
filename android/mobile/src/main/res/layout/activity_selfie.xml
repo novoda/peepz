@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.novoda.peepz.SelfieView
+        android:id="@+id/selfie_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+        <!--TODO: ask for a 9patch scrim (enough gradient to cover button, then stretchy transparent pixel) for the button-->
+
+        <FrameLayout
+            android:id="@+id/selfie_button_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="17dp"
+            android:foreground="@drawable/selfie_button_close_foreground">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_close" />
+
+        </FrameLayout>
+    </FrameLayout>
+
+</FrameLayout>

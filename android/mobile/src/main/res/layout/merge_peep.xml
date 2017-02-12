@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_gravity="center"
+    tools:layout_height="100dp"
+    tools:layout_width="100dp"
+    tools:parentTag="FrameLayout">
+
+    <ImageView
+        android:id="@+id/peep_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        android:scaleType="centerCrop"
+        tools:src="@drawable/debug_peep_photo" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@drawable/peep_name_background"
+        android:minHeight="38dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="4dp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:paddingTop="4dp">
+
+            <View
+                android:id="@+id/peep_online_indicator"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                tools:background="@drawable/peep_indicator_stale" />
+
+            <com.novoda.support.FontTextView
+                android:id="@+id/peep_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="2dp"
+                android:layout_marginLeft="6dp"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="@color/white"
+                app:textFont="montserratRegular"
+                tools:text="Master O" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</merge>
