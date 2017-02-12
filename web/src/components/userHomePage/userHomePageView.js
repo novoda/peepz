@@ -17,7 +17,7 @@ export default class UserHomePageView extends React.Component {
     return (
       <div>
         <AppBar onLogoutClicked={this.props.onLogoutClicked}/>
-        <Wall />
+        {this.props.isLoadingRoom ? null : <Wall />}
       </div>
     );
   }

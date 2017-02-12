@@ -63,6 +63,7 @@ const roomListing = () => dispatch => {
 
 const joinRoom = roomId => user => dispatch => {
   const wallPath = createWallPath(roomId);
+  dispatch({type: 'requestJoinRoom'});
   fb.database()
     .ref(wallPath)
     .once('value')

@@ -62,6 +62,12 @@ const loading = (state = { isLoadingSignIn: true }, action) => {
     case 'onSignedOut':
       return {...state, isLoadingSignIn: false};
 
+    case 'requestJoinRoom':
+      return {...state, isLoadingRoom: true};
+
+    case 'onRoomJoined':
+      return {...state, isLoadingRoom: false};
+
     default:
       return state;
   }

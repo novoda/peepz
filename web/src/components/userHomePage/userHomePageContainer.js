@@ -6,7 +6,8 @@ import {
 export const mapToProps = state => {
   return {
     user: state.user,
-    roomId: state.roomSelection
+    roomId: state.roomSelection,
+    isLoadingRoom: state.isLoadingRoom
   };
 };
 
