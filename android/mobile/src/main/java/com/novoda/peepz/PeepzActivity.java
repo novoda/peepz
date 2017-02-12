@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 public class PeepzActivity extends BaseActivity {
 
     private PeepzPageDisplayer peepzPageDisplayer;
-    private AutomaticPictureTaker automaticPictureTaker;
+    private PreviewlessPictureTaker previewlessPictureTaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class PeepzActivity extends BaseActivity {
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
         PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
-        automaticPictureTaker = new AutomaticPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
+        previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUser.getUid()), new LastSeenPeepComparator());
         PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator);
@@ -69,7 +69,7 @@ public class PeepzActivity extends BaseActivity {
             peepzPageDisplayer.display(peepz);
             FirebaseUser signedInUser = firebaseApi().getSignedInUser();
             if (missingSignedInUserFromPeepz(peepz, signedInUser)) {
-                automaticPictureTaker.requestPictureTake();
+                previewlessPictureTaker.requestPictureTake();
             }
         }
 
@@ -86,13 +86,13 @@ public class PeepzActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        automaticPictureTaker.start();
+        previewlessPictureTaker.start();
     }
 
 
     @Override
     protected void onPause() {
-        automaticPictureTaker.stop();
+        previewlessPictureTaker.stop();
         super.onPause();
     }
 

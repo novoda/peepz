@@ -7,7 +7,7 @@ import com.google.android.cameraview.CameraView;
 
 import java.util.concurrent.TimeUnit;
 
-class AutomaticPictureTaker {
+class PreviewlessPictureTaker {
 
     private static final int DELAY_MINUTES_BETWEEN_AUTOMATIC_PHOTOS = 2;
 
@@ -15,11 +15,10 @@ class AutomaticPictureTaker {
     private final PictureUploader pictureUploader;
     private final PeepUpdater peepUpdater;
     private final Handler handler = new Handler();
-    ;
 
     private boolean cameraReady;
 
-    AutomaticPictureTaker(CameraView cameraView, PictureUploader pictureUploader, PeepUpdater peepUpdater) {
+    PreviewlessPictureTaker(CameraView cameraView, PictureUploader pictureUploader, PeepUpdater peepUpdater) {
         this.cameraView = cameraView;
         this.pictureUploader = pictureUploader;
         this.peepUpdater = peepUpdater;
