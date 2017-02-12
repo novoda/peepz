@@ -1,5 +1,7 @@
 import * as fb from 'firebase';
 
+const wallPath = 'wall';
+
 const fetchSignIn = () => dispatch => {
   dispatch({type: 'fetchSignIn'});
   const unsubscribe = fb.auth().onAuthStateChanged(result => {
@@ -17,14 +19,14 @@ const requestSignIn = () => dispatch => {
   fb.auth().signInWithPopup(provider).then(result => {
     const user = result.user;
     fb.database()
-      .ref('wall')
+      .ref(wallPath)
       .once('value')
       .then(hasUser(user))
       .then(userExists => {
         if (userExists) {
           dispatchSignedIn(dispatch)(user)();
         } else {
-          return fb.database().ref(`wall/${user.uid}`).set({
+          return fb.database().ref(`${wallPath}/${user.uid}`).set({
             uid: user.uid,
             name: user.displayName,
           }).then(dispatchSignedIn(dispatch)(user));
@@ -47,7 +49,7 @@ const submitScreenshot = user => screenshot => () => {
     .child(`wall/${user.uid}.webp`)
     .putString(screenshot, 'data_url')
     .then(result => {
-      return fb.database().ref(`wall/${user.uid}/image`).set({
+      return fb.database().ref(`${wallPath}/${user.uid}/image`).set({
         payload: result.downloadURL,
         timestamp: Date.now()
       });
@@ -55,14 +57,14 @@ const submitScreenshot = user => screenshot => () => {
 };
 
 const getAllScreenshots = () => dispatch => {
-  fb.database().ref('wall/').on('value', snapshot => {
+  fb.database().ref(wallPath).on('value', snapshot => {
     const result = snapshot.val() || {};
     dispatch({type: 'onUpdate', payload: result });
   });
 };
 
 const lastSeen = userId => () => {
-  fb.database().ref(`wall/${userId}`).update({
+  fb.database().ref(`${wallPath}/${userId}`).update({
     lastSeen: Date.now()
   });
 };
