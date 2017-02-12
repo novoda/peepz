@@ -88,13 +88,18 @@ const room = (state = {}, action) => {
   }
 };
 
+const roomSelection = (state = 'novoda') => {
+  return state;
+};
+
 const reducer = combineReducers({
   camera,
   user,
   isSignedIn,
   wall,
   loading,
-  room
+  room,
+  roomSelection
 });
 
 export default reducer;

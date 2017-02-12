@@ -24,8 +24,8 @@ export default class UserHomePageView extends React.Component {
 
   componentDidMount() {
     // this.props.getRoomListings();
-    this.props.joinRoom('novoda', this.props.user);
-    this._startUpdatingLastSeen('novoda', this.props.user);
+    this.props.joinRoom(this.props.roomId, this.props.user);
+    this._startUpdatingLastSeen(this.props.roomId, this.props.user);
   }
 
   _startUpdatingLastSeen(roomId, user) {
