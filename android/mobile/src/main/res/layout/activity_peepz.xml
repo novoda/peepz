@@ -18,27 +18,21 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
+    <com.novoda.peepz.PeepzCameraView
+        android:id="@+id/peepz_secret_camera"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <com.novoda.peepz.PeepzView
+        android:id="@+id/peepz"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <com.novoda.peepz.PeepzCameraView
-            android:id="@+id/peepz_secret_camera"
-            android:layout_width="1dp"
-            android:layout_height="1dp" />
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/peepz_collection"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingLeft="@dimen/grid_spacing"
-            android:paddingTop="@dimen/grid_spacing"
-            android:paddingRight="@dimen/grid_spacing"
-            android:paddingBottom="104dp" />
-
-    </FrameLayout>
+        android:clipToPadding="false"
+        android:paddingBottom="104dp"
+        android:paddingLeft="@dimen/grid_spacing"
+        android:paddingRight="@dimen/grid_spacing"
+        android:paddingTop="@dimen/grid_spacing"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <com.novoda.support.FloatingActionButton
         android:id="@+id/peepz_button_take_picture"

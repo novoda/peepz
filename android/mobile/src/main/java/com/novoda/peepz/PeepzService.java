@@ -9,14 +9,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 class PeepzService {
 
     private final FirebaseDatabase database;
+    private final Comparator<Peep> comparator;
 
-    PeepzService(FirebaseDatabase database) {
+    PeepzService(FirebaseDatabase database, Comparator<Peep> comparator) {
         this.database = database;
+        this.comparator = comparator;
     }
 
     public void observeChanges(final Callback callback) {
@@ -35,6 +39,7 @@ class PeepzService {
                         Log.e("!!!", "error converting peep: " + item);
                     }
                 }
+                Collections.sort(peepz, comparator);
                 callback.onNext(peepz);
             }
 

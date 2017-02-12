@@ -50,15 +50,14 @@ public class SignInActivity extends BaseActivity {
         if (requestCode == REQUEST_CODE_SIGN_IN) {
             GoogleSignInResult result = googleApiClientApi().getSignInResultFromIntent(data);
             if (result.isSuccess()) {
-                signIntoFirebase(result);
+                signIntoFirebase(result.getSignInAccount());
             } else {
                 displayError();
             }
         }
     }
 
-    private void signIntoFirebase(GoogleSignInResult result) {
-        GoogleSignInAccount googleSignInAccount = result.getSignInAccount();
+    private void signIntoFirebase(GoogleSignInAccount googleSignInAccount) {
         firebaseApi().signIntoFirebase(googleSignInAccount, new AuthenticationCallbacks() {
             @Override
             public void onSuccess(FirebaseUser firebaseUser) {
