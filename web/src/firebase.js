@@ -20,20 +20,7 @@ const requestSignIn = () => dispatch => {
   const provider = new fb.auth.GoogleAuthProvider();
   fb.auth().signInWithPopup(provider).then(result => {
     const user = result.user;
-    fb.database()
-      .ref(wallPath)
-      .once('value')
-      .then(hasUser(user))
-      .then(userExists => {
-        if (userExists) {
-          dispatchSignedIn(dispatch)(user)();
-        } else {
-          return fb.database().ref(`${wallPath}/${user.uid}`).set({
-            uid: user.uid,
-            name: user.displayName,
-          }).then(dispatchSignedIn(dispatch)(user));
-        }
-      });
+    dispatchSignedIn(dispatch)(user)();
   });
 };
 
