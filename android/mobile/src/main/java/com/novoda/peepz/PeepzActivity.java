@@ -19,7 +19,6 @@ import com.novoda.support.SystemClock;
 import java.util.Comparator;
 import java.util.List;
 
-import butterknife.BindBool;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -63,7 +62,8 @@ public class PeepzActivity extends BaseActivity {
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
         automaticPictureTaker = new AutomaticPictureTaker(secretCameraView, pictureUploader, peepUpdater);
 
-        PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance());
+        Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUser.getUid()), new LastSeenPeepComparator());
+        PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator);
         peepzService.observeChanges(onPeepsUpdatedCallback);
     }
 
@@ -71,14 +71,12 @@ public class PeepzActivity extends BaseActivity {
         @Override
         public void onNext(List<Peep> peepz) {
             FirebaseUser signedInUser = firebaseApi().getSignedInUser();
-            String signedInUserUid = signedInUser.getUid();
             if (missingSignedInUserFromPeepz(peepz, signedInUser)) {
                 automaticPictureTaker.requestPictureTake();
             }
 
             if (recyclerView.getAdapter() == null) {
-                Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUserUid), new LastSeenPeepComparator());
-                PeepAdapter peepAdapter = new PeepAdapter(comparator);
+                PeepAdapter peepAdapter = new PeepAdapter();
                 peepAdapter.update(peepz);
                 recyclerView.setAdapter(peepAdapter);
             } else {
