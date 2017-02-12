@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:layout_width="match_parent"
+    tools:layout_height="match_parent"
+    tools:parentTag="FrameLayout">
+
+    <com.novoda.peepz.PeepzCameraView
+        android:id="@+id/peepz_content_secret_camera"
+        android:layout_width="1dp"
+        android:layout_height="1dp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/peepz_content_collection"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="104dp"
+        android:paddingLeft="@dimen/grid_spacing"
+        android:paddingRight="@dimen/grid_spacing"
+        android:paddingTop="@dimen/grid_spacing" />
+
+</merge>

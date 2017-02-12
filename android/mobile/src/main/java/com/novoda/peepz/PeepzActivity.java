@@ -2,15 +2,10 @@ package com.novoda.peepz;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.ataulm.rv.SpacesItemDecoration;
-import com.google.android.cameraview.CameraView;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.novoda.accessibility.AccessibilityServices;
@@ -22,21 +17,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-import static android.view.View.GONE;
-import static android.view.View.VISIBLE;
-
 public class PeepzActivity extends BaseActivity {
 
-    @BindView(R.id.peepz_collection)
-    RecyclerView recyclerView;
+    @BindView(R.id.peepz_content)
+    PeepzContentView peepzContentView;
 
-    @BindView(R.id.peepz_secret_camera)
-    CameraView secretCameraView;
-
-    @BindView(R.id.peepz_button_take_picture)
-    View takePictureButton;
-
-    private AccessibilityServices accessibilityServices;
     private AutomaticPictureTaker automaticPictureTaker;
 
     @Override
@@ -45,22 +30,37 @@ public class PeepzActivity extends BaseActivity {
         setContentView(R.layout.activity_peepz);
         ButterKnife.bind(this);
 
-        accessibilityServices = AccessibilityServices.newInstance(this);
-
-        int spans = getResources().getInteger(R.integer.spans);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, spans));
-        int dimensionPixelSize = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
-        recyclerView.addItemDecoration(SpacesItemDecoration.newInstance(dimensionPixelSize, dimensionPixelSize, spans));
-
         Toolbar toolbar = ButterKnife.findById(this, R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        final View takePictureButton = ButterKnife.findById(this, R.id.peepz_button_take_picture);
+
+        if (AccessibilityServices.newInstance(this).isSpokenFeedbackEnabled() || !peepzContentView.isInTouchMode()) {
+            toolbar.inflateMenu(R.menu.peepz);
+            toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    if (item.getItemId() == R.id.peepz_menu_take_picture) {
+                        onClickTakePicture();
+                        return true;
+                    }
+                    return false;
+                }
+            });
+            takePictureButton.setVisibility(View.GONE);
+        } else {
+            takePictureButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickTakePicture();
+                }
+            });
+            takePictureButton.setVisibility(View.VISIBLE);
+        }
 
         // TODO: what if the user is not signed in?
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
         PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
-        automaticPictureTaker = new AutomaticPictureTaker(secretCameraView, pictureUploader, peepUpdater);
+        automaticPictureTaker = new AutomaticPictureTaker(peepzContentView.getCameraView(), pictureUploader, peepUpdater);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUser.getUid()), new LastSeenPeepComparator());
         PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator);
@@ -70,17 +70,10 @@ public class PeepzActivity extends BaseActivity {
     private final PeepzService.Callback onPeepsUpdatedCallback = new PeepzService.Callback() {
         @Override
         public void onNext(List<Peep> peepz) {
+            peepzContentView.update(peepz);
             FirebaseUser signedInUser = firebaseApi().getSignedInUser();
             if (missingSignedInUserFromPeepz(peepz, signedInUser)) {
                 automaticPictureTaker.requestPictureTake();
-            }
-
-            if (recyclerView.getAdapter() == null) {
-                PeepAdapter peepAdapter = new PeepAdapter();
-                peepAdapter.update(peepz);
-                recyclerView.setAdapter(peepAdapter);
-            } else {
-                ((PeepAdapter) recyclerView.getAdapter()).update(peepz);
             }
         }
 
@@ -107,40 +100,7 @@ public class PeepzActivity extends BaseActivity {
         super.onPause();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        if (shouldShowAppBarAction()) {
-            getMenuInflater().inflate(R.menu.peepz, menu);
-            takePictureButton.setVisibility(GONE);
-            return true;
-        } else {
-            takePictureButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClickTakePicture();
-                }
-            });
-            takePictureButton.setVisibility(VISIBLE);
-            return false;
-        }
-    }
-
-    private boolean shouldShowAppBarAction() {
-        return accessibilityServices.isSpokenFeedbackEnabled() || !recyclerView.isInTouchMode();
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.peepz_menu_take_picture) {
-            onClickTakePicture();
-            return true;
-        } else {
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
     private void onClickTakePicture() {
-        // TODO: might wanna go startActivityForResult unless selfieActivity stays there til picture is uploaded
         startActivity(new Intent(this, SelfieActivity.class));
     }
 

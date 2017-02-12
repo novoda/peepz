@@ -5,6 +5,7 @@
     <item
         android:id="@+id/peepz_menu_take_picture"
         android:title="@string/peepz_menu_take_picture"
+        android:icon="@drawable/ic_camera_purple"
         app:showAsAction="always" />
 
 </menu>
