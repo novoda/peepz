@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="size_peek">44dp</dimen>
+    <dimen name="grid_spacing">4dp</dimen>
+    <dimen name="grid_item_radius">2dp</dimen>
+
+    <dimen name="sign_in_button_width">253dp</dimen>
+    <dimen name="sign_in_button_height">96dp</dimen>
+
+    <dimen name="fab_elevation_pressed">10dp</dimen>
+    <dimen name="fab_elevation_default">5dp</dimen>
+
+</resources>

@@ -1,0 +1,1 @@
+Requires `google-services.json` from Ataul or Adam and in the `mobile` directory.
