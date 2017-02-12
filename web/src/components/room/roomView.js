@@ -3,6 +3,7 @@
 import React from 'react';
 import Wall from '../wall/Wall';
 import Progress from 'material-ui/CircularProgress';
+import wallFilter from './wallFilter';
 
 const FIVE_MINUTES = (60 * 5) * 1000;
 
@@ -27,8 +28,14 @@ export default class UserHomePageView extends React.Component {
 
   render() {
     return (
-      this.props.isLoadingRoom ? <Progress {...foobar} /> : <Wall />
+      this.props.isLoadingRoom ?
+        <Progress {...foobar} />
+        : <Wall wall={this._getWallContent()} />
     );
+  }
+
+  _getWallContent() {
+    return this.props.wall.filter(wallFilter(this.props.user));
   }
 
   componentDidMount() {

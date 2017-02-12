@@ -3,7 +3,6 @@ import Item from '../item/Item';
 import Me from '../me/Me';
 import { css } from 'aphrodite/no-important';
 import Style from './wall.style';
-import filter from './wallFilter';
 
 const toPeepz = user => peep => {
     if (user.uid === peep.uid) {
@@ -22,20 +21,17 @@ const toPeepz = user => peep => {
 export default class Wall extends React.Component {
 
   render() {
-    const now = this.props.nowProvider();
-    const peepz = this.props.wall.filter(filter(now)(this.props.user))
-      .map(toPeepz(this.props.user));
-
-    const all = peepz.concat(this._hackToFixLastRowWidths(peepz.length));
+    const peepz = this.props.wall.map(toPeepz(this.props.user))
+      .concat(this._hackToFixLastRowWidths());
     return (
-      <ul className={css(Style.list)}>{all}</ul>
+      <ul className={css(Style.list)}>{peepz}</ul>
     );
   }
 
-  _hackToFixLastRowWidths(startIndex) {
+  _hackToFixLastRowWidths() {
     return [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1].map((each, index) => {
       return (
-        <li key={startIndex + index} className={css(Style.item)}></li>
+        <li key={index} className={css(Style.item)}></li>
       );
     });
   }

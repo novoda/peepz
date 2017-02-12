@@ -3,7 +3,11 @@ import { lastSeen, joinRoom } from '../../firebase';
 export const mapToProps = state => {
   return {
     user: state.user,
-    isLoadingRoom: state.loading.isLoadingRoom
+    isLoadingRoom: state.loading.isLoadingRoom,
+    wall: state.wall,
+    nowProvider: () => {
+      return Date.now();
+    }
   };
 };
 
