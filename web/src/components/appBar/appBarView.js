@@ -1,5 +1,6 @@
 import React from 'react';
 import { css } from 'aphrodite/no-important';
+import { Link } from 'react-router';
 import Style from './appBar.style';
 
 export default ({onLogoutClicked}) => {
@@ -8,7 +9,10 @@ export default ({onLogoutClicked}) => {
       <div className={css(Style.contentStyle)}>
         <div className={css(Style.containerStyle)}>
           <h1 className={css(Style.titleStyle)}>Peepz</h1>
-          <button className={css(Style.logoutStyle)} onClick={onLogoutClicked}>Logout</button>
+          <div>
+            <Link to={`/settings`}>Settings</Link>
+            <button className={css(Style.logoutStyle)} onClick={onLogoutClicked}>Logout</button>
+          </div>
         </div>
       </div>
     </div>
