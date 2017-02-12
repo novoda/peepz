@@ -53,7 +53,7 @@ const isSignedIn = (state = false, action) => {
   }
 };
 
-const loading = (state = { isLoadingSignIn: true }, action) => {
+const loading = (state = { isLoadingSignIn: true, isLoadingRoom: true }, action) => {
   switch(action.type) {
     case 'fetchSignIn':
       return {...state, isLoadingSignIn: true};
@@ -65,7 +65,7 @@ const loading = (state = { isLoadingSignIn: true }, action) => {
     case 'requestJoinRoom':
       return {...state, isLoadingRoom: true};
 
-    case 'onRoomJoined':
+    case 'onRoomLoaded':
       return {...state, isLoadingRoom: false};
 
     default:

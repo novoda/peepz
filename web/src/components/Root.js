@@ -2,6 +2,7 @@
 
 import { Provider } from 'react-redux';
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import HomePage from './homePage/HomePage';
 
 const isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0 || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || safari.pushNotification);
@@ -14,7 +15,9 @@ class Root extends React.Component {
     }
     return (
       <Provider store={this.props.store}>
-        <HomePage />
+        <MuiThemeProvider>
+          <HomePage />
+        </MuiThemeProvider>
       </Provider>
     );
   }

@@ -74,7 +74,10 @@ const joinRoom = roomId => user => dispatch => {
     .then(() => {
       return dispatch({type: 'onRoomJoined', payload: roomId});
     })
-    .then(getWall(wallPath)(dispatch));
+    .then(getWall(wallPath)(dispatch))
+    .then(() => {
+      return dispatch({type: 'onRoomLoaded'});
+    });
 };
 
 const hasUser = user => snapshot => {

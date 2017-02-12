@@ -12,6 +12,7 @@
   "dependencies": {
     "aphrodite": "^1.1.0",
     "firebase": "^3.6.4",
+    "material-ui": "^0.16.7",
     "object.values": "^1.0.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
