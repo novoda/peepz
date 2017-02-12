@@ -1,13 +1,27 @@
 {
   "rules": {
-    ".read": "auth.token.email.endsWith('novoda.com')",
-    ".write": "auth.token.email.endsWith('novoda.com')",
+
+    "wall": {
+      ".read": "auth.token.email.endsWith('novoda.com')",
+      ".write": "auth.token.email.endsWith('novoda.com')",
+    },
 
     "wip": {
       "rooms": {
         "$room": {
-          ".read": "root.child('user').child(auth.uid).child($room).exists()",
-          ".write": "false"
+
+          "members": {
+            ".read": "data.child(auth.uid).val() === 'admin'",
+            ".write": "data.child(auth.uid).val() === 'admin'"
+          },
+
+          "wall": {
+              ".read": "data.parent().child('members').child(auth.uid).exists()",
+              "$userId": {
+              ".write": "auth.uid === $userId"
+            }
+          }
+
         }
       }
     }
