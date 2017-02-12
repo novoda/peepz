@@ -1,7 +1,8 @@
 import * as fb from 'firebase';
 
-const novodaRoomId = 'novoda';
-const wallPath = `wip/rooms/${novodaRoomId}/wall`;
+const wallPath = roomId => {
+  return `wip/rooms/${roomId}/wall`;
+};
 
 const fetchSignIn = () => dispatch => {
   dispatch({type: 'fetchSignIn'});
@@ -44,28 +45,28 @@ const dispatchSignedIn = dispatch => user => () => {
   dispatch({type: 'onSignedIn', payload: user});
 };
 
-const submitScreenshot = user => screenshot => () => {
+const submitScreenshot = roomId => user => screenshot => () => {
   return fb.storage()
     .ref()
-    .child(`${wallPath}/${user.uid}/${user.uid}.webp`)
+    .child(`${wallPath(roomId)}/${user.uid}/${user.uid}.webp`)
     .putString(screenshot, 'data_url')
     .then(result => {
-      return fb.database().ref(`${wallPath}/${user.uid}/image`).set({
+      return fb.database().ref(`${wallPath(roomId)}/${user.uid}/image`).set({
         payload: result.downloadURL,
         timestamp: Date.now()
       });
     });
 };
 
-const getAllScreenshots = () => dispatch => {
-  fb.database().ref(wallPath).on('value', snapshot => {
+const getAllScreenshots = roomId => dispatch => {
+  fb.database().ref(wallPath(roomId)).on('value', snapshot => {
     const result = snapshot.val() || {};
     dispatch({type: 'onUpdate', payload: result });
   });
 };
 
-const lastSeen = userId => () => {
-  fb.database().ref(`${wallPath}/${userId}`).update({
+const lastSeen = roomId => userId => () => {
+  fb.database().ref(`${wallPath(roomId)}/${userId}`).update({
     lastSeen: Date.now()
   });
 };
