@@ -1,6 +1,6 @@
 import * as fb from 'firebase';
 
-const wallPath = roomId => {
+const createWallPath = roomId => {
   return `wip/rooms/${roomId}/wall`;
 };
 
@@ -24,36 +24,26 @@ const requestSignIn = () => dispatch => {
   });
 };
 
-const hasUser = user => snapshot => {
-  return snapshot.child(user.uid).exists();
-};
-
 const dispatchSignedIn = dispatch => user => () => {
   dispatch({type: 'onSignedIn', payload: user});
 };
 
 const submitScreenshot = roomId => user => screenshot => () => {
+  const wallPath = createWallPath(roomId);
   return fb.storage()
     .ref()
-    .child(`${wallPath(roomId)}/${user.uid}/${user.uid}.webp`)
+    .child(`${wallPath}/${user.uid}/${user.uid}.webp`)
     .putString(screenshot, 'data_url')
     .then(result => {
-      return fb.database().ref(`${wallPath(roomId)}/${user.uid}/image`).set({
+      return fb.database().ref(`${wallPath}/${user.uid}/image`).set({
         payload: result.downloadURL,
         timestamp: Date.now()
       });
     });
 };
 
-const getAllScreenshots = roomId => dispatch => {
-  fb.database().ref(wallPath(roomId)).on('value', snapshot => {
-    const result = snapshot.val() || {};
-    dispatch({type: 'onUpdate', payload: result });
-  });
-};
-
 const lastSeen = roomId => userId => () => {
-  fb.database().ref(`${wallPath(roomId)}/${userId}`).update({
+  fb.database().ref(`${createWallPath(roomId)}/${userId}`).update({
     lastSeen: Date.now()
   });
 };
@@ -72,31 +62,42 @@ const roomListing = () => dispatch => {
 };
 
 const joinRoom = roomId => user => dispatch => {
+  const wallPath = createWallPath(roomId);
   fb.database()
-    .ref(wallPath(roomId))
+    .ref(wallPath)
     .once('value')
     .then(hasUser(user))
     .then(userExists => {
-      if (userExists) {
-        dispatchJoinedRoom(dispatch)(roomId)();
-      } else {
-        return fb.database().ref(`${wallPath}/${user.uid}`).set({
-          uid: user.uid,
-          name: user.displayName
-        }).then(dispatchJoinedRoom(dispatch)(roomId));
-      }
-    });
+      return userExists ? {} : updateUser(wallPath, user);
+    })
+    .then(() => {
+      return dispatch({type: 'onRoomJoined', payload: roomId});
+    })
+    .then(getWall(wallPath)(dispatch));
 };
 
-const dispatchJoinedRoom = dispatch => roomId => () => {
-  dispatch({type: 'onJoinedRoom', payload: roomId});
+const hasUser = user => snapshot => {
+  return snapshot.child(user.uid).exists();
+};
+
+const updateUser = (wallPath, user) => {
+  return fb.database().ref(`${wallPath}/${user.uid}`).set({
+    uid: user.uid,
+    name: user.displayName
+  });
+};
+
+const getWall = wallPath => dispatch => () => {
+  fb.database().ref(wallPath).on('value', snapshot => {
+    const result = snapshot.val() || {};
+    dispatch({type: 'onUpdate', payload: result });
+  });
 };
 
 export {
   fetchSignIn,
   requestSignIn,
   submitScreenshot,
-  getAllScreenshots,
   lastSeen,
   logout,
   roomListing,

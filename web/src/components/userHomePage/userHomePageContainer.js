@@ -1,6 +1,6 @@
 import {
   lastSeen,
-  getAllScreenshots as fetchAllScreenshots,
+  joinRoom,
   logout } from '../../firebase';
 
 export const mapToProps = state => {
@@ -11,14 +11,14 @@ export const mapToProps = state => {
 
 export const mapToDispatch = dispatch => {
   return {
-    getAllScreenshots: () => {
-      dispatch(fetchAllScreenshots());
-    },
-    updateLastSeen: (user) => {
-      dispatch(lastSeen(user.uid));
+    updateLastSeen: (roomId, user) => {
+      dispatch(lastSeen(roomId)(user.uid));
     },
     onLogoutClicked: () => {
       dispatch(logout());
+    },
+    joinRoom: (roomId, user) => {
+      dispatch(joinRoom(roomId)(user));
     }
   };
 };

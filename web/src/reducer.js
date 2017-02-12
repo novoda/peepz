@@ -78,10 +78,10 @@ const wall = (state = [], action) => {
   }
 };
 
-const rooms = (state = [], action) => {
+const room = (state = {}, action) => {
   switch(action.type) {
-    case 'onRoomListing':
-      return values(action.payload);
+    case 'onRoomJoined':
+      return {...state, id: action.payload};
 
     default:
       return state;
@@ -94,7 +94,7 @@ const reducer = combineReducers({
   isSignedIn,
   wall,
   loading,
-  rooms
+  room
 });
 
 export default reducer;

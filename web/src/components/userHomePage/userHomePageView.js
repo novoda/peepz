@@ -23,13 +23,14 @@ export default class UserHomePageView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAllScreenshots();
-    this._startUpdatingLastSeen(this.props.user);
+    // this.props.getRoomListings();
+    this.props.joinRoom('novoda', this.props.user);
+    this._startUpdatingLastSeen('novoda', this.props.user);
   }
 
-  _startUpdatingLastSeen() {
+  _startUpdatingLastSeen(roomId, user) {
     const updateLastSeen = () => {
-      this.props.updateLastSeen(this.props.user);
+      this.props.updateLastSeen(roomId, user);
     };
     this.updateLastSeenTask = setInterval(updateLastSeen, FIVE_MINUTES);
   }

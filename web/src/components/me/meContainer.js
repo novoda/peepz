@@ -7,6 +7,7 @@ export const mapToProps = state => {
     requestAutomaticScreenshot: state.camera.requestAutomaticScreenshot,
     requestManualScreenshot: state.camera.requestManualScreenshot,
     user: state.user,
+    roomId: state.room.id
   };
 };
 
@@ -15,10 +16,10 @@ export const mapToDispatch = dispatch => {
     automaticScreenshot: () => {
       dispatch({type: 'automaticScreenshot'});
     },
-    screenshot: (user, screenshot) => {
+    screenshot: (roomId, user, screenshot) => {
       dispatch({type: 'closeCamera'});
       if (screenshot !== 'data:,') {
-        dispatch(submitScreenshot(user)(screenshot));
+        dispatch(submitScreenshot(roomId)(user)(screenshot));
       } else {
         Console.error('screenshot was invalid, skipping');
       }
