@@ -19,7 +19,7 @@ const foobar = {
   size: 100
 };
 
-export default class UserHomePageView extends React.Component {
+export default class RoomView extends React.Component {
 
   constructor(props) {
     super(props);
