@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <attr name="peepzToolbarDefStyle" format="reference" />
+
+    <attr name="floatingActionButtonDefStyle" format="reference" />
+
+    <declare-styleable name="FloatingActionButton">
+        <attr name="android:src" />
+    </declare-styleable>
+
+</resources>
