@@ -65,15 +65,16 @@ public class PeepView extends FrameLayout {
     public void bind(Peep peep) {
         String name = getDisplayNameFrom(peep);
         nameTextView.setText(name);
-        imageView.setColorFilter(getColorFilterFor(peep.onlineStatus()));
 
-        if (peep.image() != null) {
+        Image image = peep.image();
+        if (image != null) {
             updateImage(peep);
+            imageView.setColorFilter(getColorFilterFor(image.freshness()));
         } else {
             imageView.setImageBitmap(null);
         }
 
-        if (peep.onlineStatus() == Peep.OnlineStatus.FRESH) {
+        if (peep.lastSeen().freshness() == Freshness.SUPER_FRESH) {
             onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_fresh);
         } else {
             onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_stale);
@@ -95,8 +96,8 @@ public class PeepView extends FrameLayout {
     }
 
     @Nullable
-    private ColorFilter getColorFilterFor(Peep.OnlineStatus status) {
-        if (status == Peep.OnlineStatus.STALE) {
+    private ColorFilter getColorFilterFor(Freshness status) {
+        if (status == Freshness.NOT_SO_FRESH) {
             return GRAYSCALE_FILTER;
         } else {
             return null;

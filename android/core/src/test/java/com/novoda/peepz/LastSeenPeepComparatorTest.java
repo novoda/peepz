@@ -8,7 +8,7 @@ import static org.fest.assertions.api.Assertions.assertThat;
 public class LastSeenPeepComparatorTest {
 
     private static final Peep PEEP = peep(0);
-    private static final Peep PEEP_STALE = peep(PEEP.lastSeen() - 1);
+    private static final Peep PEEP_STALE = peep(PEEP.lastSeen().timestamp() - 1);
 
     LastSeenPeepComparator comparator;
 
@@ -39,7 +39,7 @@ public class LastSeenPeepComparatorTest {
     }
 
     private static Peep peep(long lastSeen) {
-        return new Peep(null, null, null, lastSeen, null);
+        return new Peep(null, null, null, new LastSeen(lastSeen, null));
     }
 
 }

@@ -18,7 +18,7 @@ public class PeepCompoundComparatorTest {
     private static final Peep PEEP_DOS = createNewPeep();
 
     private static Peep createNewPeep() {
-        return new Peep(null, null, null, 0, null);
+        return new Peep(null, null, null, null);
     }
 
     @Rule

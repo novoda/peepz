@@ -42,7 +42,7 @@ public class SignedInUserIsFirstPeepComparatorTest {
     }
 
     private static Peep peep(String id) {
-        return new Peep(id, "", null, 0, Peep.OnlineStatus.FRESH);
+        return new Peep(id, "", null, null);
     }
 
 }

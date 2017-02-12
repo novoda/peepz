@@ -21,25 +21,24 @@ class Converter {
 
         String payload = (String) value.image.get(ApiPeep.KEY_IMAGE_PAYLOAD);
         long timestamp = (long) value.image.get(ApiPeep.KEY_IMAGE_TIMESTAMP);
-        Image image = new Image(payload, timestamp);
+        Image image = new Image(payload, timestamp, getFreshnessFor(timestamp));
 
         return new Peep(
                 value.uid,
                 value.name,
                 image,
-                value.lastSeen,
-                getOnlineStatusFor(value)
+                new LastSeen(value.lastSeen, getFreshnessFor(value.lastSeen))
         );
     }
 
-    private Peep.OnlineStatus getOnlineStatusFor(ApiPeep value) {
-        long diffMillis = System.currentTimeMillis() - value.lastSeen;
+    private Freshness getFreshnessFor(long timestamp) {
+        long diffMillis = System.currentTimeMillis() - timestamp;
         long diffMinutes = TimeUnit.MILLISECONDS.toMinutes(diffMillis);
 
         if (diffMinutes < MINUTES_UNTIL_STALE) {
-            return Peep.OnlineStatus.FRESH;
+            return Freshness.SUPER_FRESH;
         } else {
-            return Peep.OnlineStatus.STALE;
+            return Freshness.NOT_SO_FRESH;
         }
     }
 

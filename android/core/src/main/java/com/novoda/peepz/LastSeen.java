@@ -1,19 +1,13 @@
 package com.novoda.peepz;
 
-public class Image {
+public class LastSeen {
 
-    private final String payload;
     private final long timestamp;
     private final Freshness freshness;
 
-    public Image(String payload, long timestamp, Freshness freshness) {
-        this.payload = payload;
+    public LastSeen(long timestamp, Freshness freshness) {
         this.timestamp = timestamp;
         this.freshness = freshness;
-    }
-
-    public String payload() {
-        return payload;
     }
 
     public long timestamp() {
