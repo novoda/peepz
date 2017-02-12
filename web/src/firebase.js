@@ -76,11 +76,19 @@ const logout = () => dispatch => {
   });
 };
 
+const roomListing = () => dispatch => {
+  fb.database().ref('wip/listing').on('value', snapshot => {
+    const listings = snapshot.val();
+    dispatch({type: 'onRoomListing', listings});
+  });
+};
+
 export {
   fetchSignIn,
   requestSignIn,
   submitScreenshot,
   getAllScreenshots,
   lastSeen,
-  logout
+  logout,
+  roomListing
 };

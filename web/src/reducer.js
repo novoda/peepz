@@ -78,12 +78,23 @@ const wall = (state = [], action) => {
   }
 };
 
+const rooms = (state = [], action) => {
+  switch(action.type) {
+    case 'onRoomListing':
+      return values(action.payload);
+
+    default:
+      return state;
+  }
+};
+
 const reducer = combineReducers({
   camera,
   user,
   isSignedIn,
   wall,
-  loading
+  loading,
+  rooms
 });
 
 export default reducer;
