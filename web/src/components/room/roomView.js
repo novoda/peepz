@@ -4,20 +4,9 @@ import React from 'react';
 import Wall from '../wall/Wall';
 import Progress from 'material-ui/CircularProgress';
 import wallFilter from './wallFilter';
+import Styles from './room.style';
 
 const FIVE_MINUTES = (60 * 5) * 1000;
-
-const foobar = {
-  style: {
-    width: '100%',
-    height: '50vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center'
-  },
-  color: '#72218A',
-  size: 100
-};
 
 export default class RoomView extends React.Component {
 
@@ -29,7 +18,7 @@ export default class RoomView extends React.Component {
   render() {
     return (
       this.props.isLoadingRoom ?
-        <Progress {...foobar} />
+        <Progress {...Styles.progress} />
         : <Wall wall={this._getWallContent()} />
     );
   }
