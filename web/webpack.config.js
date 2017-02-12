@@ -1,11 +1,15 @@
+/* global require module __dirname*/
+
 const path = require('path');
-const webpack = require('webpack');
 
 module.exports = {
-  entry: './src/index.js',
+  context: path.resolve(__dirname, './src'),
+  entry: {
+    index: './index.js'
+  },
   output: {
-    path: __dirname + '/dist/public',
-    filename: 'index.bundle.js'
+    path: path.resolve(__dirname, './dist/public'),
+    filename: '[name].bundle.js'
   },
   module: {
     loaders: [
@@ -14,11 +18,14 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react'],
-          plugins: ['transform-object-rest-spread', 'transform-class-properties']
+          babelrc: true
         }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: "file-loader?name=/assets/[name].[ext]"
       }
     ]
   },
   devtool: 'source-map'
-}
+};

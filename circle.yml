@@ -1,0 +1,27 @@
+general:
+  build_dir: web
+
+machine:
+  node:
+    version: 6.1.0
+
+compile:
+  override:
+    - npm run lint
+
+
+test:
+  override:
+    - npm test
+    - npm run coveralls
+
+deployment:
+  production:
+    branch: master
+    commands:
+    #token acquired and set per http://stackoverflow.com/a/36504180/721000
+    #environment variable FIREBASE_CLI_PREVIEWS must be set to enable functions preview (--open-sesame)
+    #https://groups.google.com/forum/#!searchin/firebase-functions-trusted-testers/continuous$20integration$20%7Csort:relevance/firebase-functions-trusted-testers/7_8nntK95cU/7QGYm5H2AwAJ
+      - echo $CONFIG_JSON | base64 --decode > ./config.json
+      - npm install
+      - ./deploy.sh

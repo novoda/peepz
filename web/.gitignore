@@ -1,6 +1,7 @@
 /node_modules
 npm-debug.log
 /bin
+/coverage
 config.json
 .DS_Store
 public/

@@ -38,7 +38,7 @@ const user = (state = {}, action) => {
     default:
       return state;
   }
-}
+};
 
 const isSignedIn = (state = false, action) => {
   switch(action.type) {
@@ -51,7 +51,21 @@ const isSignedIn = (state = false, action) => {
     default:
       return state;
   }
-}
+};
+
+const loading = (state = { isLoadingSignIn: true }, action) => {
+  switch(action.type) {
+    case 'fetchSignIn':
+      return {...state, isLoadingSignIn: true};
+
+    case 'onSignedIn':
+    case 'onSignedOut':
+      return {...state, isLoadingSignIn: false};
+
+    default:
+      return state;
+  }
+};
 
 
 const wall = (state = [], action) => {
@@ -68,7 +82,8 @@ const reducer = combineReducers({
   camera,
   user,
   isSignedIn,
-  wall
+  wall,
+  loading
 });
 
 export default reducer;

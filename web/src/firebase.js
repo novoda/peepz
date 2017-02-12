@@ -1,6 +1,7 @@
 import * as fb from 'firebase';
 
 const fetchSignIn = () => dispatch => {
+  dispatch({type: 'fetchSignIn'});
   const unsubscribe = fb.auth().onAuthStateChanged(result => {
     unsubscribe();
     if (result) {
@@ -40,10 +41,10 @@ const dispatchSignedIn = dispatch => user => () => {
   dispatch({type: 'onSignedIn', payload: user});
 };
 
-const submitScreenshot = user => screenshot => dispatch => {
+const submitScreenshot = user => screenshot => () => {
   return fb.storage()
     .ref()
-    .child(`wall/${user.uid}.png`)
+    .child(`wall/${user.uid}.webp`)
     .putString(screenshot, 'data_url')
     .then(result => {
       return fb.database().ref(`wall/${user.uid}/image`).set({
@@ -60,7 +61,7 @@ const getAllScreenshots = () => dispatch => {
   });
 };
 
-const lastSeen = userId => dispatch => {
+const lastSeen = userId => () => {
   fb.database().ref(`wall/${userId}`).update({
     lastSeen: Date.now()
   });
@@ -79,4 +80,4 @@ export {
   getAllScreenshots,
   lastSeen,
   logout
-}
+};
