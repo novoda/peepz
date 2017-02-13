@@ -35,7 +35,11 @@ public class PeepzActivity extends BaseActivity {
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
         previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
 
-        Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUser.getUid()), new LastSeenPeepComparator());
+        Comparator<Peep> comparator = new PeepCompoundComparator(
+                new SignedInUserIsFirstPeepComparator(signedInUser.getUid()),
+                new PeepFreshnessComparator(),
+                new ImageFreshnessPeepComparator()
+        );
         PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator);
         peepzService.observeChanges(onPeepsUpdatedCallback);
     }
@@ -88,7 +92,6 @@ public class PeepzActivity extends BaseActivity {
         super.onResume();
         previewlessPictureTaker.start();
     }
-
 
     @Override
     protected void onPause() {
