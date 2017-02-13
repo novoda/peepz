@@ -3,7 +3,6 @@
 import React from 'react';
 import Wall from '../wall/Wall';
 import Progress from 'material-ui/CircularProgress';
-import wallFilter from './wallFilter';
 import Styles from './room.style';
 
 const FIVE_MINUTES = (60 * 5) * 1000;
@@ -24,7 +23,7 @@ export default class RoomView extends React.Component {
   }
 
   _getWallContent() {
-    return this.props.wall.filter(wallFilter(this.props.user));
+    return this.props.wall;
   }
 
   componentDidMount() {
