@@ -9,7 +9,6 @@ describe('ImageFreshnessComparator', () => {
   const FRESH_PEEP = { image: { timestamp: 1000} };
   const STALE_PEEP = { image: { timestamp: 0} };
 
-
   it('no image is greater than peep', () => {
     const result = imageFreshness(NO_IMAGE, PEEP);
 
