@@ -143,4 +143,4 @@ const Indicator = ({lastSeen, imageTimestamp}) => {
       <div style={circle}></div>
     </div>
   );
-}
+};
