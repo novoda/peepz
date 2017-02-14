@@ -47,4 +47,9 @@ public final class Duration {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return value + " " + timeUnit.name();
+    }
+
 }

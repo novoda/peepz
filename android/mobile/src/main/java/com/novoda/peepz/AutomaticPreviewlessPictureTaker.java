@@ -1,5 +1,7 @@
 package com.novoda.peepz;
 
+import android.util.Log;
+
 import com.novoda.support.Duration;
 
 class AutomaticPreviewlessPictureTaker {
@@ -17,6 +19,7 @@ class AutomaticPreviewlessPictureTaker {
     public void start() {
         final PictureTakeInterval interval = settings.getPictureTakeInterval();
         if (!autoPictureTakingEnabled(interval)) {
+            Log.v("!!!", "auto picture taking disabled");
             return;
         }
 
@@ -26,7 +29,7 @@ class AutomaticPreviewlessPictureTaker {
                 scheduleNextPictureTake(interval);
             }
         });
-        scheduleNextPictureTake(settings.getPictureTakeInterval());
+        scheduleNextPictureTake(interval);
     }
 
     private boolean autoPictureTakingEnabled(PictureTakeInterval interval) {
@@ -36,6 +39,7 @@ class AutomaticPreviewlessPictureTaker {
     private void scheduleNextPictureTake(PictureTakeInterval interval) {
         if (autoPictureTakingEnabled(interval)) {
             Duration delay = getDelayFor(interval);
+            Log.v("!!!", "scheduling next picture after delay: " + delay.toString());
             scheduleTimerWith(delay);
         }
     }
@@ -63,6 +67,7 @@ class AutomaticPreviewlessPictureTaker {
     }
 
     public void stop() {
+        Log.v("!!!", "stopping automatic picture take");
         timer.stop();
         pictureTaker.stop();
     }

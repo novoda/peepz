@@ -3,14 +3,19 @@ package com.novoda.peepz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 
 import com.google.android.cameraview.CameraView;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.novoda.accessibility.AccessibilityServices;
+import com.novoda.accessibility.Action;
+import com.novoda.accessibility.Actions;
+import com.novoda.accessibility.ActionsAlertDialogCreator;
 import com.novoda.support.SystemClock;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -62,6 +67,13 @@ public class PeepzActivity extends BaseActivity {
         }
 
         @Override
+        public void onClickSetPictureTimer() {
+            ActionsAlertDialogCreator actionsAlertDialogCreator = new ActionsAlertDialogCreator(PeepzActivity.this);
+            AlertDialog alertDialog = actionsAlertDialogCreator.create(foo());
+            alertDialog.show();
+        }
+
+        @Override
         public void onClickSignOut() {
             firebaseApi().signOut();
             startActivity(new Intent(getApplicationContext(), SignInActivity.class));
@@ -99,6 +111,42 @@ public class PeepzActivity extends BaseActivity {
     protected void onPause() {
         automaticPreviewlessPictureTaker.stop();
         super.onPause();
+    }
+
+    private void bar() {
+        ActionsAlertDialogCreator actionsAlertDialogCreator = new ActionsAlertDialogCreator(this);
+        AlertDialog alertDialog = actionsAlertDialogCreator.create(foo());
+
+    }
+
+    private Actions foo() {
+        return new Actions(
+                Arrays.asList(
+                        new Action(R.id.action_set_timer_very_frequent, R.string.action_set_timer_very_frequent, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.VERY_FREQUENT);
+                            }
+                        }),
+                        new Action(R.id.action_set_timer_frequent, R.string.action_set_timer_frequent, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.FREQUENT);
+                            }
+                        }),
+                        new Action(R.id.action_set_timer_infrequent, R.string.action_set_timer_infrequent, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.INFREQUENT);
+                            }
+                        }),
+                        new Action(R.id.action_set_timer_off, R.string.action_set_timer_off, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.OFF);
+                            }
+                        })
+                ));
     }
 
 }
