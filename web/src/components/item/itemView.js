@@ -3,9 +3,7 @@ import Console from '../../console';
 import { css } from 'aphrodite/no-important';
 import Style from './item.style';
 
-const THIRTY_MINUTES = (30 * 60) * 1000;
-const ONE_HOUR = (60 * 60) * 1000;
-const ONE_DAY = ((60 * 24) * 60) * 1000;
+const FITHTEEN_MINUTES = (15 * 60) * 1000;
 
 const missingImage = {
   payload: 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg',
@@ -87,14 +85,8 @@ export default class Item extends React.Component {
 
 const lastSeenToFilterAmount = lastSeen => {
   const delta = Date.now() - lastSeen;
-  if (!lastSeen || delta >= ONE_DAY) {
+  if (!lastSeen || delta >= FITHTEEN_MINUTES) {
     return Style.fullGray;
-  } else if (delta >= ONE_HOUR) {
-    return Style.seventyGray;
-  } else if (delta >= THIRTY_MINUTES) {
-      return Style.halfGray;
-  } else {
-    return Style.noGray;
   }
 
 };

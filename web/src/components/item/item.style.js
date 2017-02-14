@@ -36,14 +36,5 @@ export default StyleSheet.create({
   },
   fullGray: {
     filter: 'grayscale(100%)'
-  },
-  seventyGray: {
-    filter: 'grayscale(70%)'
-  },
-  halfGray: {
-    filter: 'grayscale(50%)'
-  },
-  noGray: {
-    filter: 'grayscale(0%)'
   }
 });
