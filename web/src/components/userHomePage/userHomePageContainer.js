@@ -1,22 +1,13 @@
-import {
-  lastSeen,
-  getAllScreenshots as fetchAllScreenshots,
-  logout } from '../../firebase';
+import { logout } from '../../firebase';
 
 export const mapToProps = state => {
   return {
-    user: state.user
+    roomId: state.roomSelection,
   };
 };
 
 export const mapToDispatch = dispatch => {
   return {
-    getAllScreenshots: () => {
-      dispatch(fetchAllScreenshots());
-    },
-    updateLastSeen: (user) => {
-      dispatch(lastSeen(user.uid));
-    },
     onLogoutClicked: () => {
       dispatch(logout());
     }

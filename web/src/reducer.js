@@ -53,7 +53,7 @@ const isSignedIn = (state = false, action) => {
   }
 };
 
-const loading = (state = { isLoadingSignIn: true }, action) => {
+const loading = (state = { isLoadingSignIn: true, isLoadingRoom: true }, action) => {
   switch(action.type) {
     case 'fetchSignIn':
       return {...state, isLoadingSignIn: true};
@@ -61,6 +61,12 @@ const loading = (state = { isLoadingSignIn: true }, action) => {
     case 'onSignedIn':
     case 'onSignedOut':
       return {...state, isLoadingSignIn: false};
+
+    case 'requestJoinRoom':
+      return {...state, isLoadingRoom: true};
+
+    case 'onRoomLoaded':
+      return {...state, isLoadingRoom: false};
 
     default:
       return state;
@@ -78,12 +84,28 @@ const wall = (state = [], action) => {
   }
 };
 
+const room = (state = {}, action) => {
+  switch(action.type) {
+    case 'onRoomJoined':
+      return {...state, id: action.payload};
+
+    default:
+      return state;
+  }
+};
+
+const roomSelection = (state = 'novoda') => {
+  return state;
+};
+
 const reducer = combineReducers({
   camera,
   user,
   isSignedIn,
   wall,
-  loading
+  loading,
+  room,
+  roomSelection
 });
 
 export default reducer;

@@ -23,27 +23,16 @@ export default StyleSheet.create({
     background: 'linear-gradient(120deg, #391885, #72218A 10%, #7F70C4)',
   },
   overlayName: {
-    position: 'absolute',
-    bottom: '0px',
     color: 'white',
     fontFamily: 'Montserrat, sans-serif',
     fontSize: '0.8em',
     fontWeight: 'light',
-    padding: '6px'
+    float: 'left'
   },
   contextOnlyLink: {
     cursor: 'default'
   },
   fullGray: {
     filter: 'grayscale(100%)'
-  },
-  seventyGray: {
-    filter: 'grayscale(70%)'
-  },
-  halfGray: {
-    filter: 'grayscale(50%)'
-  },
-  noGray: {
-    filter: 'grayscale(0%)'
   }
 });

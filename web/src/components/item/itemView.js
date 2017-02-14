@@ -3,9 +3,7 @@ import Console from '../../console';
 import { css } from 'aphrodite/no-important';
 import Style from './item.style';
 
-const THIRTY_MINUTES = (30 * 60) * 1000;
-const ONE_HOUR = (60 * 60) * 1000;
-const ONE_DAY = ((60 * 24) * 60) * 1000;
+const FITHTEEN_MINUTES = (15 * 60) * 1000;
 
 const missingImage = {
   payload: 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg',
@@ -16,6 +14,13 @@ const onImageError = (img) => {
   Console.log('on image error');
   img.target.onerror = null;
   img.target.src = missingImage.payload;
+};
+
+const container = {
+  position: 'absolute',
+  bottom: '0',
+  margin: '6px',
+  height: '18px'
 };
 
 export default class Item extends React.Component {
@@ -44,7 +49,17 @@ export default class Item extends React.Component {
           src={image.payload}
           onError={onImageError}
           alt={name} />
-        {this.state.isHovering ? <div className={css(Style.overlayName)}>{name}</div> : null}
+
+        {this.state.isHovering ?
+          <div style={container}>
+            <Indicator lastSeen={lastSeen} imageTimestamp={image.timestamp}/>
+            <div className={css(Style.overlayName)}>{name}</div>
+          </div>
+          :
+          <div style={container}>
+            <Indicator lastSeen={lastSeen} imageTimestamp={image.timestamp}/>
+          </div>
+        }
       </div>
     );
   }
@@ -87,14 +102,45 @@ export default class Item extends React.Component {
 
 const lastSeenToFilterAmount = lastSeen => {
   const delta = Date.now() - lastSeen;
-  if (!lastSeen || delta >= ONE_DAY) {
+  if (!lastSeen || delta >= FITHTEEN_MINUTES) {
     return Style.fullGray;
-  } else if (delta >= ONE_HOUR) {
-    return Style.seventyGray;
-  } else if (delta >= THIRTY_MINUTES) {
-      return Style.halfGray;
   } else {
-    return Style.noGray;
+    return false;
+  }
+};
+
+const indicatorWrapper = {
+  float: 'left',
+  marginTop: '4px'
+};
+
+const circle = {
+  border: '1px solid #FFF',
+  borderRadius: '16px',
+  boxShadow: '0 0 1px #888',
+  marginLeft: '4px',
+  marginRight: '6px',
+  height: '6px',
+  get width() {
+    return this.height;
+  }
+};
+
+const Indicator = ({lastSeen, imageTimestamp}) => {
+  const isOffline = Date.now() - lastSeen > FITHTEEN_MINUTES;
+  const isIdle = Date.now() - imageTimestamp > FITHTEEN_MINUTES;
+
+  if (isOffline) {
+    circle.backgroundColor = "";
+  } else if (isIdle) {
+    circle.backgroundColor = "#888";
+  } else {
+    circle.backgroundColor = "#391885";
   }
 
+  return (
+    <div style={indicatorWrapper}>
+      <div style={circle}></div>
+    </div>
+  );
 };

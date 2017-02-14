@@ -27,9 +27,9 @@ export default class MeView extends React.Component {
             <Controls />
             <Webcam ref='webcam' audio={false} onUserMedia={() => {
               if (this.props.requestAutomaticScreenshot && this.props.cameraIsActive) {
-                const takeScreenshot = (webcam, user) => () => {
+                const takeScreenshot = (webcam, roomId, user) => () => {
                   const screenshot = webcam.getScreenshot();
-                  this.props.screenshot(user, screenshot);
+                  this.props.screenshot(roomId, user, screenshot);
                 };
 
                 if (this.takeScreenshotTask) {
@@ -37,7 +37,7 @@ export default class MeView extends React.Component {
                 }
 
                 this.takeScreenshotTask = setTimeout(takeScreenshot(
-                    this.refs.webcam, this.props.user
+                    this.refs.webcam, this.props.roomId, this.props.user
                 ), 5000);
               }
             }}/>
@@ -76,7 +76,8 @@ export default class MeView extends React.Component {
     if (this.props.requestManualScreenshot) {
       const screenshot = this.refs.webcam.getScreenshot();
       const user = this.props.user;
-      this.props.screenshot(user, screenshot);
+      const roomId = this.props.roomId;
+      this.props.screenshot(roomId, user, screenshot);
     }
   }
 
