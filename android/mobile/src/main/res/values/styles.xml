@@ -20,6 +20,13 @@
         <item name="contentInsetStart">24dp</item>
     </style>
 
+    <style name="PeepzApp.Toolbar.Theme" parent="Theme.AppCompat.Light">
+        <!--Overflow menu item text color-->
+        <item name="android:textColorPrimary">@color/purple_text</item>
+        <!--Overflow icon color-->
+        <item name="android:textColorSecondary">@color/purple_accent</item>
+    </style>
+
     <style name="PeepzApp.FloatingActionButton">
         <item name="android:padding">16dp</item>
         <item name="android:elevation">@dimen/fab_elevation_default</item>

@@ -35,7 +35,11 @@ public class PeepzActivity extends BaseActivity {
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
         automaticPictureTaker = new AutomaticPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
 
-        Comparator<Peep> comparator = new PeepCompoundComparator(new SignedInUserIsFirstPeepComparator(signedInUser.getUid()), new LastSeenPeepComparator());
+        Comparator<Peep> comparator = new PeepCompoundComparator(
+                new SignedInUserIsFirstPeepComparator(signedInUser.getUid()),
+                new PeepFreshnessComparator(),
+                new ImageFreshnessPeepComparator()
+        );
         PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator);
         peepzService.observeChanges(onPeepsUpdatedCallback);
     }
@@ -52,12 +56,13 @@ public class PeepzActivity extends BaseActivity {
     private final PeepzPageDisplayer.Callback callback = new PeepzPageDisplayer.Callback() {
         @Override
         public void onClickTakePicture() {
-            startActivity(new Intent(PeepzActivity.this, SelfieActivity.class));
+            startActivity(new Intent(getApplicationContext(), SelfieActivity.class));
         }
 
         @Override
         public void onClickSignOut() {
             firebaseApi().signOut();
+            startActivity(new Intent(getApplicationContext(), SignInActivity.class));
             finish();
         }
     };
@@ -87,7 +92,6 @@ public class PeepzActivity extends BaseActivity {
         super.onResume();
         automaticPictureTaker.start();
     }
-
 
     @Override
     protected void onPause() {
