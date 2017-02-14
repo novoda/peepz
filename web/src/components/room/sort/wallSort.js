@@ -15,6 +15,6 @@ const sort = (now, userId) => (a, b) => {
     return last !== 0;
   });
   return last;
-}
+};
 
 export default sort;
