@@ -69,15 +69,17 @@ public class PeepView extends FrameLayout {
         Image image = peep.image();
         if (image != null) {
             updateImage(peep);
-            imageView.setColorFilter(getColorFilterFor(image.freshness()));
+            imageView.setColorFilter(getColorFilterFor(peep.lastSeen().freshness()));
         } else {
             imageView.setImageBitmap(null);
         }
 
-        if (peep.lastSeen().freshness() == Freshness.SUPER_FRESH) {
+        if (peep.image() != null && peep.image().freshness() == Freshness.SUPER_FRESH && peep.lastSeen().freshness() == Freshness.SUPER_FRESH) {
             onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_fresh);
+        } else if (peep.lastSeen().freshness() == Freshness.SUPER_FRESH) {
+            onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_idle);
         } else {
-            onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_stale);
+            onlineIndicatorView.setBackgroundResource(R.drawable.peep_indicator_offline);
         }
     }
 
