@@ -16,6 +16,7 @@ class PreviewlessPictureTaker {
     private final PeepUpdater peepUpdater;
     private final Handler handler = new Handler();
 
+    private Callback callback;
     private boolean cameraReady;
 
     PreviewlessPictureTaker(CameraView cameraView, PictureUploader pictureUploader, PeepUpdater peepUpdater) {
@@ -24,7 +25,9 @@ class PreviewlessPictureTaker {
         this.peepUpdater = peepUpdater;
     }
 
-    public void start() {
+    public void start(Callback callback) {
+        this.callback = callback;
+
         cameraView.addCallback(cameraViewCallback);
         cameraView.start();
     }
@@ -43,6 +46,9 @@ class PreviewlessPictureTaker {
             pictureUploader.upload(data, new PictureUploader.Callback() {
                 @Override
                 public void onSuccess(String pictureUrl) {
+                    if (callback != null) {
+                        callback.onPictureUploaded();
+                    }
                     peepUpdater.updatePeepImage(pictureUrl);
                 }
 
@@ -77,7 +83,7 @@ class PreviewlessPictureTaker {
         }
     };
 
-    public void requestPictureTake() {
+    public void takeNewPicture() {
         Log.d("!!!", "requestPictureTake: " + System.currentTimeMillis());
         if (cameraReady) {
             cameraView.takePicture();
@@ -88,6 +94,14 @@ class PreviewlessPictureTaker {
         cameraReady = false;
         cameraView.stop();
         cameraView.removeCallback(cameraViewCallback);
+
+        this.callback = null;
+    }
+
+    public interface Callback {
+
+        void onPictureUploaded();
+
     }
 
 }

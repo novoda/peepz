@@ -2,6 +2,7 @@ package com.novoda.peepz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 
 import com.google.android.cameraview.CameraView;
@@ -18,7 +19,7 @@ import butterknife.ButterKnife;
 public class PeepzActivity extends BaseActivity {
 
     private PeepzPageDisplayer peepzPageDisplayer;
-    private PreviewlessPictureTaker previewlessPictureTaker;
+    private AutomaticPreviewlessPictureTaker automaticPreviewlessPictureTaker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,8 @@ public class PeepzActivity extends BaseActivity {
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
         PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
-        previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
+        PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
+        automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(Settings.create(this), new PreviewlessPictureTakeTimer(new Handler()), previewlessPictureTaker);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(
                 new SignedInUserIsFirstPeepComparator(signedInUser.getUid()),
@@ -73,7 +75,7 @@ public class PeepzActivity extends BaseActivity {
             peepzPageDisplayer.display(peepz);
             FirebaseUser signedInUser = firebaseApi().getSignedInUser();
             if (missingSignedInUserFromPeepz(peepz, signedInUser)) {
-                previewlessPictureTaker.requestPictureTake();
+                automaticPreviewlessPictureTaker.takeNewPicture();
             }
         }
 
@@ -90,12 +92,12 @@ public class PeepzActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        previewlessPictureTaker.start();
+        automaticPreviewlessPictureTaker.start();
     }
 
     @Override
     protected void onPause() {
-        previewlessPictureTaker.stop();
+        automaticPreviewlessPictureTaker.stop();
         super.onPause();
     }
 
