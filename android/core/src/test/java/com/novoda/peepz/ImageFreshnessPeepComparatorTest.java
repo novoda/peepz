@@ -32,13 +32,6 @@ public class ImageFreshnessPeepComparatorTest {
     }
 
     @Test
-    public void noImagePeepIsGreaterThanStalePeep() {
-        int compare = comparator.compare(PEEP_NO_IMAGE, PEEP);
-
-        assertThat(compare).isEqualTo(1);
-    }
-
-    @Test
     public void noImagePeepIsSameAsNoImagePeep() {
         int compare = comparator.compare(PEEP_NO_IMAGE, PEEP_NO_IMAGE);
 
