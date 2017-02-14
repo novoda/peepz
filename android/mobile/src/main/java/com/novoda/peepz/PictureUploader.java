@@ -27,7 +27,8 @@ class PictureUploader {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         bmp.compress(Bitmap.CompressFormat.WEBP, 0, stream);
 
-        StorageReference destination = FirebaseStorage.getInstance().getReference().child(BaseActivity.KEY_ROOT + "/" + signedInUser.getUid() + ".webp");
+        String path = BaseActivity.KEY_ROOT + "/" + signedInUser.getUid() + "/" + signedInUser.getUid() + ".webp";
+        StorageReference destination = FirebaseStorage.getInstance().getReference().child(path);
 
         UploadTask uploadTask = destination.putStream(new ByteArrayInputStream(stream.toByteArray()));
         uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {

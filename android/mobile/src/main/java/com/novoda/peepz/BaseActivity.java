@@ -11,7 +11,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public abstract class BaseActivity extends AppCompatActivity {
 
     // TODO: this could be nicer - perhaps don't expose this but expose methods that return the thing this is used for
-    protected static final String KEY_ROOT = "wall";
+    protected static final String KEY_ROOT = "wip/rooms/novoda/wall";
 
     private FirebaseApi firebaseApi;
     private GoogleApiClientApi googleApiClientApi;
