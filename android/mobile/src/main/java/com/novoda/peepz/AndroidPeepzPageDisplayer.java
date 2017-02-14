@@ -29,30 +29,45 @@ public class AndroidPeepzPageDisplayer implements PeepzPageDisplayer {
 
     @Override
     public void bindMenu(Callback callback) {
-        if (inflateAppBarMenuInsteadOfFloatingActionButton()) {
-            inflateAppBarMenu(callback);
-        } else {
+        inflateAppBarMenu(callback);
+
+        if (showTakePictureAsFabInsteadOfAppBarAction()) {
             bindFloatingActionButton(callback);
+            toolbar.getMenu().removeItem(R.id.peepz_menu_take_picture);
+            pictureTakeButton.setVisibility(View.VISIBLE);
+        } else {
+            pictureTakeButton.setVisibility(View.GONE);
         }
     }
 
-    private boolean inflateAppBarMenuInsteadOfFloatingActionButton() {
-        return accessibilityServices.isSpokenFeedbackEnabled() || !peepzView.isInTouchMode();
+    private boolean showTakePictureAsFabInsteadOfAppBarAction() {
+        return !accessibilityServices.isSpokenFeedbackEnabled() && peepzView.isInTouchMode();
     }
 
-    private void inflateAppBarMenu(final Callback callback) {
+    private void inflateAppBarMenu(Callback callback) {
         toolbar.inflateMenu(R.menu.peepz);
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+        toolbar.setOnMenuItemClickListener(createOnMenuItemClickListener(callback));
+    }
+
+    private Toolbar.OnMenuItemClickListener createOnMenuItemClickListener(final Callback callback) {
+        return new Toolbar.OnMenuItemClickListener() {
+
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.peepz_menu_take_picture) {
                     callback.onClickTakePicture();
                     return true;
                 }
+
+                if (item.getItemId() == R.id.peepz_menu_sign_out) {
+                    callback.onClickSignOut();
+                    return true;
+                }
+
                 return false;
             }
-        });
-        pictureTakeButton.setVisibility(View.GONE);
+
+        };
     }
 
     private void bindFloatingActionButton(final Callback callback) {
@@ -62,7 +77,6 @@ public class AndroidPeepzPageDisplayer implements PeepzPageDisplayer {
                 callback.onClickTakePicture();
             }
         });
-        pictureTakeButton.setVisibility(View.VISIBLE);
     }
 
     @Override

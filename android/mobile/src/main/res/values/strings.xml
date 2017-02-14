@@ -2,6 +2,7 @@
 
   <string name="app_name">peepz</string>
   <string name="sign_in">Sign in</string>
+  <string name="sign_out">Sign out</string>
   <string name="take_picture">Take picture</string>
   <string name="because_the_picture_take">Because the picture take</string>
   <string name="made_with_love_by_novoda">Made with 😘 by Novoda</string>
@@ -11,5 +12,6 @@
   <string name="peepz_signin_footer">@string/made_with_love_by_novoda</string>
 
   <string name="peepz_menu_take_picture">@string/take_picture</string>
+  <string name="peepz_menu_sign_out">@string/sign_out</string>
 
 </resources>

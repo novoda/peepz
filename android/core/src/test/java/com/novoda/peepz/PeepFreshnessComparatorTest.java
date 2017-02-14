@@ -5,16 +5,16 @@ import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-public class LastSeenPeepComparatorTest {
+public class PeepFreshnessComparatorTest {
 
-    private static final Peep PEEP = peep(0);
-    private static final Peep PEEP_STALE = peep(PEEP.lastSeen().timestamp() - 1);
+    private static final Peep PEEP = peep(Freshness.SUPER_FRESH);
+    private static final Peep PEEP_STALE = peep(Freshness.NOT_SO_FRESH);
 
-    LastSeenPeepComparator comparator;
+    PeepFreshnessComparator comparator;
 
     @Before
     public void setUp() {
-        comparator = new LastSeenPeepComparator();
+        comparator = new PeepFreshnessComparator();
     }
 
     @Test
@@ -38,8 +38,8 @@ public class LastSeenPeepComparatorTest {
         assertThat(compare).isEqualTo(-1);
     }
 
-    private static Peep peep(long lastSeen) {
-        return new Peep(null, null, null, new LastSeen(lastSeen, null));
+    private static Peep peep(Freshness freshness) {
+        return new Peep(null, null, null, new LastSeen(0, freshness));
     }
 
 }

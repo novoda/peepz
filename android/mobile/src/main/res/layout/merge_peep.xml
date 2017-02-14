@@ -37,7 +37,7 @@
                 android:id="@+id/peep_online_indicator"
                 android:layout_width="8dp"
                 android:layout_height="8dp"
-                tools:background="@drawable/peep_indicator_stale" />
+                tools:background="@drawable/peep_indicator_idle" />
 
             <com.novoda.support.FontTextView
                 android:id="@+id/peep_text_name"
