@@ -6,7 +6,7 @@ import RoomView from '../roomView';
 describe('RoomView', () => {
 
   let _;
-  const props = { wall: [] };
+  const props = { user: { uid: {} }, wall: [] };
 
   it('renders without exploding', () => {
     _ = Helper.of(<RoomView {...props} />);

@@ -1,4 +1,9 @@
 export default (a, b) => {
+
+  console.log('a', a);
+  console.log('b', b);
+
+
   if (a.image && b.image) {
     return compareImage(a.image, b.image);
   }
