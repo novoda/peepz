@@ -36,6 +36,7 @@ export default class RoomView extends React.Component {
     const updateLastSeen = () => {
       this.props.updateLastSeen(roomId, user);
     };
+    updateLastSeen();
     this.updateLastSeenTask = setInterval(updateLastSeen, FIVE_MINUTES);
   }
 
