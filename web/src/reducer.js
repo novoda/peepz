@@ -98,6 +98,19 @@ const roomSelection = (state = 'novoda') => {
   return state;
 };
 
+const drawer = (state = {roomListing: [], open: false}, action) => {
+  switch(action.type) {
+      case 'drawerClose':
+        return {...state, open: false};
+      case 'drawerChange':
+        return {...state, open: action.state};
+      case 'drawerToggle':
+        return {...state, open: !state.open};
+      default:
+        return state;
+  }
+};
+
 const reducer = combineReducers({
   camera,
   user,
@@ -105,7 +118,8 @@ const reducer = combineReducers({
   wall,
   loading,
   room,
-  roomSelection
+  roomSelection,
+  drawer
 });
 
 export default reducer;

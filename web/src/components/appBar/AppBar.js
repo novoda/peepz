@@ -1,3 +1,8 @@
 import AppBarView from './appBarView';
+import { mapToProps, mapToDispatch } from './appBarContainer';
+import { connect } from 'react-redux';
 
-export default AppBarView;
+export default connect(
+  mapToProps,
+  mapToDispatch
+)(AppBarView);
