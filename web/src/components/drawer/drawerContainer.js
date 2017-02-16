@@ -1,7 +1,8 @@
 export const mapToProps = state => {
   return {
       roomListing: state.drawer.roomListing,
-      open: state.drawer.open
+      open: state.drawer.open,
+      user: state.user
   };
 };
 
