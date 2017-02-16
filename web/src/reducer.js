@@ -98,7 +98,7 @@ const roomSelection = (state = 'novoda') => {
   return state;
 };
 
-const drawer = (state = {roomListing: [], open: false}, action) => {
+const drawer = (state = {roomListing: [], open: false, options: { showOffline: true}}, action) => {
   switch(action.type) {
       case 'drawerClose':
         return {...state, open: false};
@@ -106,6 +106,10 @@ const drawer = (state = {roomListing: [], open: false}, action) => {
         return {...state, open: action.state};
       case 'drawerToggle':
         return {...state, open: !state.open};
+      case 'drawerOfflineChange': {
+        const newOptions = {...state.options, showOffline: !state.options.showOffline};
+        return {...state, options: newOptions};
+      }
       default:
         return state;
   }

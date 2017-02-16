@@ -2,6 +2,7 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
+import Toggle from 'material-ui/Toggle';
 
 export default class DrawerView extends React.Component {
 
@@ -13,7 +14,7 @@ export default class DrawerView extends React.Component {
         <Divider />
         <Rooms onClose={this.props.onClose} />
         <Divider />
-        <Settings />
+        <Settings onToggled={this.props.onToggled} options={this.props.options} />
       </Drawer>
     );
   }
@@ -22,22 +23,25 @@ export default class DrawerView extends React.Component {
 
 const Me = ({user}) => {
   return (
-      user ? <h1>{user.displayName}</h1> : null
+      user ? <h2>{user.displayName}</h2> : null
   );
 };
 
 const Rooms = ({onClose}) => {
   return (
     <div>
-      <h1>Rooms</h1>
+      <h2>Rooms</h2>
       <MenuItem onTouchTap={onClose}>Menu Item</MenuItem>
       <MenuItem onTouchTap={onClose}>Menu Item 2</MenuItem>
     </div>
   );
 };
 
-const Settings = () => {
+const Settings = ({options, onToggled}) => {
   return (
-    <div></div>
+    <div>
+      <h2>Options</h2>
+      <Toggle onToggle={onToggled} toggled={options.showOffline} label={'Show offline peepz'}/>
+    </div>
   );
 };

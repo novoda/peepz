@@ -6,6 +6,7 @@ export const mapToProps = state => {
     isLoadingRoom: state.loading.isLoadingRoom,
     room: state.room,
     wall: state.wall,
+    showOffline: state.drawer.options.showOffline,
     nowProvider: () => {
       return Date.now();
     }
