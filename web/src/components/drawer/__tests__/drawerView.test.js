@@ -1,15 +1,15 @@
 /*global Helper describe it expect */
 
 import React from 'react';
-import SettingsPageView from '../settingsPageView';
+import DrawerView from '../drawerView';
 
-describe('SettingsPageView', () => {
+describe('DrawerView', () => {
 
   let _;
   const props = {};
 
   it('renders without exploding', () => {
-    _ = Helper.of(<SettingsPageView {...props} />);
+    _ = Helper.of(<DrawerView {...props} />);
 
     expect(_.rootExists()).toBe(true);
   });
