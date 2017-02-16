@@ -8,20 +8,11 @@ export default StyleSheet.create({
     borderBottom: 'solid 1px #f3f3f3',
     zIndex: '-1',
   },
-  contentStyle: {
-    listStyle: 'none',
-    width: '100%',
-    height: '100%',
-    display: 'flex',
-  },
   containerStyle: {
     width: '100%',
     height: '100%',
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingLeft: '4%',
-    paddingRight: '2%'
+    alignItems: 'center'
   },
   titleStyle: {
     background: 'linear-gradient(to right, #391885 5%, #72218A 62%, #7F70C4)',
@@ -31,13 +22,19 @@ export default StyleSheet.create({
     WebkitTextFillColor: 'transparent',
     WebkitBackgroundClip: 'text !important',
     fontSize: '1.4em',
+    textAlign: 'center',
+    border: 'none',
   },
   settingsStyle: {
-   fontFamily: 'Montserrat, sans-serif',
-   backgroundColor: 'transparent',
-   border: 'none',
-   color: '#72218a',
-   fontSize: '0.6em',
-   cursor: 'pointer',
- }
+    fontFamily: 'Montserrat, sans-serif',
+    backgroundColor: 'transparent',
+    border: 'none',
+    color: '#72218a',
+    fontSize: '0.6em',
+    cursor: 'pointer',
+  },
+  endContainer: {
+    marginRight: '2%',
+    marginLeft: 'auto'
+  }
 });
