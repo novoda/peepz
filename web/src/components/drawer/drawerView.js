@@ -11,10 +11,9 @@ export default class DrawerView extends React.Component {
         onRequestChange={this.props.onRequestChange}>
         <Me user={this.props.user}/>
         <Divider />
-        <h1>Rooms</h1>
-        <MenuItem onTouchTap={this.props.onClose}>Menu Item</MenuItem>
-        <MenuItem onTouchTap={this.props.onClose}>Menu Item 2</MenuItem>
+        <Rooms onClose={this.props.onClose} />
         <Divider />
+        <Settings />
       </Drawer>
     );
   }
@@ -24,5 +23,21 @@ export default class DrawerView extends React.Component {
 const Me = ({user}) => {
   return (
       user ? <h1>{user.displayName}</h1> : null
+  );
+};
+
+const Rooms = ({onClose}) => {
+  return (
+    <div>
+      <h1>Rooms</h1>
+      <MenuItem onTouchTap={onClose}>Menu Item</MenuItem>
+      <MenuItem onTouchTap={onClose}>Menu Item 2</MenuItem>
+    </div>
+  );
+};
+
+const Settings = () => {
+  return (
+    <div></div>
   );
 };
