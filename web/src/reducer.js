@@ -66,6 +66,7 @@ const loading = (state = { isLoadingSignIn: true, isLoadingRoom: true }, action)
       return {...state, isLoadingRoom: true};
 
     case 'onRoomLoaded':
+    case 'onRoomError':
       return {...state, isLoadingRoom: false};
 
     default:

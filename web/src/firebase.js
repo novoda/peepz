@@ -77,6 +77,8 @@ const joinRoom = roomId => user => dispatch => {
     .then(getWall(wallPath)(dispatch))
     .then(() => {
       return dispatch({type: 'onRoomLoaded'});
+    }).catch(() => {
+      return dispatch({type: 'onRoomError'});
     });
 };
 
