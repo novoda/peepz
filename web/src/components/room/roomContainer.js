@@ -4,6 +4,7 @@ export const mapToProps = state => {
   return {
     user: state.user,
     isLoadingRoom: state.loading.isLoadingRoom,
+    room: state.room,
     wall: state.wall,
     nowProvider: () => {
       return Date.now();

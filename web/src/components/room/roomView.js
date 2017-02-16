@@ -29,7 +29,12 @@ export default class RoomView extends React.Component {
 
   componentDidMount() {
     this.props.joinRoom(this.props.roomId, this.props.user);
-    this._startUpdatingLastSeen(this.props.roomId, this.props.user);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (!prevProps.room && this.props.room) {
+      this._startUpdatingLastSeen(this.props.roomId, this.props.user);
+    }
   }
 
   _startUpdatingLastSeen(roomId, user) {
