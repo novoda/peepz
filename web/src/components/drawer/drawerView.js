@@ -31,8 +31,7 @@ const Rooms = ({onClose}) => {
   return (
     <div>
       <h2>Rooms</h2>
-      <MenuItem onTouchTap={onClose}>Menu Item</MenuItem>
-      <MenuItem onTouchTap={onClose}>Menu Item 2</MenuItem>
+      <MenuItem onTouchTap={onClose}>TODO</MenuItem>
     </div>
   );
 };
