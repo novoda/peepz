@@ -74,7 +74,6 @@ const loading = (state = { isLoadingSignIn: true, isLoadingRoom: true }, action)
   }
 };
 
-
 const wall = (state = [], action) => {
   switch(action.type) {
     case 'onUpdate':

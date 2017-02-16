@@ -6,7 +6,7 @@ import wallSort from './sort/wallSort';
 import Progress from 'material-ui/CircularProgress';
 import Styles from './room.style';
 
-const FIVE_MINUTES = (60 * 5) * 1000;
+const FIVE_MINUTES = (2 * 60) * 1000;
 
 export default class RoomView extends React.Component {
 
