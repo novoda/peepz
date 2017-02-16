@@ -32,7 +32,7 @@ export default StyleSheet.create({
     WebkitBackgroundClip: 'text !important',
     fontSize: '1.4em',
   },
-  logoutStyle: {
+  settingsStyle: {
    fontFamily: 'Montserrat, sans-serif',
    backgroundColor: 'transparent',
    border: 'none',

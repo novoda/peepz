@@ -1,8 +1,7 @@
 import UserHomePageView from './userHomePageView';
-import { mapToProps, mapToDispatch } from './userHomePageContainer';
+import { mapToProps } from './userHomePageContainer';
 import { connect } from 'react-redux';
 
 export default connect(
-  mapToProps,
-  mapToDispatch
+  mapToProps
 )(UserHomePageView);

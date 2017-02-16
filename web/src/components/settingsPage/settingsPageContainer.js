@@ -1,4 +1,5 @@
-import { fetchSignIn as fetch} from '../../firebase';
+import { fetchSignIn as fetch, logout} from '../../firebase';
+import { browserHistory } from 'react-router';
 
 export const mapToProps = state => {
   return {
@@ -12,6 +13,10 @@ export const mapToDispatch = dispatch => {
   return {
     fetchSignIn: () => {
       dispatch(fetch());
+    },
+    onLogoutClicked: () => {
+      dispatch(logout());
+      browserHistory.push('/');
     }
   };
 };

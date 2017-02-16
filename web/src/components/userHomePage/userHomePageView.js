@@ -4,15 +4,10 @@ import Room from '../room/Room';
 
 export default class UserHomePageView extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.updateLastSeenTask = undefined;
-  }
-
   render() {
     return (
       <div>
-        <AppBar onLogoutClicked={this.props.onLogoutClicked}/>
+        <AppBar />
         <Room roomId={this.props.roomId}/>
       </div>
     );
