@@ -28,7 +28,7 @@ export default class RoomView extends React.Component {
     const userId = this.props.user.uid;
     return this.props.wall.filter(each => {
       if (!this.props.showOffline && userId !== each.uid) {
-        return (now - each.lastSeen) > (60 * 15) * 1000;
+        return (now - each.lastSeen) < (60 * 15) * 1000;
       } else {
         return true;
       }
