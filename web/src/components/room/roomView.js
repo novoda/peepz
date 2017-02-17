@@ -23,7 +23,7 @@ export default class RoomView extends React.Component {
     );
   }
 
-  filter = (now, userId) => each => {
+  filter = now => userId => each => {
     if (!this.props.showOffline && userId !== each.uid) {
       return (now - each.lastSeen) < (60 * 15) * 1000;
     } else {
@@ -34,7 +34,7 @@ export default class RoomView extends React.Component {
   _getWallContent() {
     const now = Date.now();
     const userId = this.props.user.uid;
-    return this.props.wall.filter(this.filter(now, userId))
+    return this.props.wall.filter(this.filter(now)(userId))
     .sort(wallSort(now, userId));
   }
 
