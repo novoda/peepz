@@ -23,16 +23,18 @@ export default class RoomView extends React.Component {
     );
   }
 
+  filter = (now, userId) => each => {
+    if (!this.props.showOffline && userId !== each.uid) {
+      return (now - each.lastSeen) < (60 * 15) * 1000;
+    } else {
+      return true;
+    }
+  };
+
   _getWallContent() {
     const now = Date.now();
     const userId = this.props.user.uid;
-    return this.props.wall.filter(each => {
-      if (!this.props.showOffline && userId !== each.uid) {
-        return (now - each.lastSeen) < (60 * 15) * 1000;
-      } else {
-        return true;
-      }
-    })
+    return this.props.wall.filter(this.filter(now, userId))
     .sort(wallSort(now, userId));
   }
 
