@@ -26,14 +26,14 @@ export default class RoomView extends React.Component {
   _getWallContent() {
     const now = Date.now();
     const userId = this.props.user.uid;
-    return this.props.wall.sort(wallSort(now, userId))
-      .filter(each => {
-        if (!this.props.showOffline && userId !== each.uid) {
-          return (now - each.lastSeen) < (60 * 15) * 1000;
-        } else {
-          return true;
-        }
-      });
+    return this.props.wall.filter(each => {
+      if (!this.props.showOffline && userId !== each.uid) {
+        return (now - each.lastSeen) > (60 * 15) * 1000;
+      } else {
+        return true;
+      }
+    })
+    .sort(wallSort(now, userId));
   }
 
   componentDidMount() {
@@ -41,8 +41,8 @@ export default class RoomView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.room && this.props.room) {
-      this._startUpdatingLastSeen(this.props.roomId, this.props.user);
+    if (!prevProps.room.id && this.props.room.id) {
+      this._startUpdatingLastSeen(this.props.room.id, this.props.user);
     }
   }
 
