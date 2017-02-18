@@ -4,13 +4,13 @@ import android.os.Handler;
 
 import com.novoda.support.Duration;
 
-class PreviewlessPictureTakeTimer {
+class Timer {
 
     private final Handler handler;
 
     private Callback callback;
 
-    PreviewlessPictureTakeTimer(Handler handler) {
+    Timer(Handler handler) {
         this.handler = handler;
     }
 
@@ -22,7 +22,7 @@ class PreviewlessPictureTakeTimer {
     private final Runnable ping = new Runnable() {
         @Override
         public void run() {
-            callback.onTimeToTakeNewPicture();
+            callback.onCountdownComplete();
         }
     };
 
@@ -33,7 +33,7 @@ class PreviewlessPictureTakeTimer {
 
     public interface Callback {
 
-        void onTimeToTakeNewPicture();
+        void onCountdownComplete();
 
     }
 

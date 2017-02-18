@@ -40,7 +40,8 @@ public class PeepzActivity extends BaseActivity {
         PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
         PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
-        automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(Settings.create(this), new PreviewlessPictureTakeTimer(new Handler()), previewlessPictureTaker);
+        Handler handler = new Handler();
+        automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(Settings.create(this), new Timer(handler), previewlessPictureTaker);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(
                 new SignedInUserIsFirstPeepComparator(signedInUser.getUid()),

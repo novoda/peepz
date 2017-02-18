@@ -21,7 +21,7 @@ import static com.novoda.peepz.PictureTakeInterval.FREQUENT;
 import static com.novoda.peepz.PictureTakeInterval.INFREQUENT;
 import static com.novoda.peepz.PictureTakeInterval.OFF;
 import static com.novoda.peepz.PictureTakeInterval.VERY_FREQUENT;
-import static com.novoda.peepz.PreviewlessPictureTakeTimer.Callback;
+import static com.novoda.peepz.Timer.Callback;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.never;
@@ -44,7 +44,7 @@ public class AutomaticPreviewlessPictureTakerTest {
         public Settings settings;
 
         @Mock
-        public PreviewlessPictureTakeTimer timer;
+        public Timer timer;
 
         @Mock
         public PreviewlessPictureTaker pictureTaker;
@@ -119,7 +119,7 @@ public class AutomaticPreviewlessPictureTakerTest {
 
             service.start();
 
-            verify(timer).schedule(any(PreviewlessPictureTakeTimer.Callback.class), eq(parameter.duration));
+            verify(timer).schedule(any(Timer.Callback.class), eq(parameter.duration));
         }
 
         @Test
@@ -140,7 +140,7 @@ public class AutomaticPreviewlessPictureTakerTest {
             InOrder inOrder = Mockito.inOrder(timer, settings);
             inOrder.verify(timer).stop();
             inOrder.verify(settings).setPictureTakeInterval(parameter.interval);
-            inOrder.verify(timer).schedule(any(PreviewlessPictureTakeTimer.Callback.class), eq(parameter.duration));
+            inOrder.verify(timer).schedule(any(Timer.Callback.class), eq(parameter.duration));
         }
 
         @Test

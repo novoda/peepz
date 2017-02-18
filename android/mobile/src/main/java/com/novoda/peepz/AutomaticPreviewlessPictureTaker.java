@@ -7,10 +7,10 @@ import com.novoda.support.Duration;
 class AutomaticPreviewlessPictureTaker {
 
     private final Settings settings;
-    private final PreviewlessPictureTakeTimer timer;
+    private final Timer timer;
     private final PreviewlessPictureTaker pictureTaker;
 
-    AutomaticPreviewlessPictureTaker(Settings settings, PreviewlessPictureTakeTimer timer, PreviewlessPictureTaker pictureTaker) {
+    AutomaticPreviewlessPictureTaker(Settings settings, Timer timer, PreviewlessPictureTaker pictureTaker) {
         this.settings = settings;
         this.timer = timer;
         this.pictureTaker = pictureTaker;
@@ -45,9 +45,9 @@ class AutomaticPreviewlessPictureTaker {
     }
 
     private void scheduleTimerWith(Duration delay) {
-        timer.schedule(new PreviewlessPictureTakeTimer.Callback() {
+        timer.schedule(new Timer.Callback() {
             @Override
-            public void onTimeToTakeNewPicture() {
+            public void onCountdownComplete() {
                 takeNewPicture();
             }
         }, delay);
