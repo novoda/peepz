@@ -1,7 +1,5 @@
 package com.novoda.peepz;
 
-import android.util.Log;
-
 import com.google.android.cameraview.CameraView;
 
 class PreviewlessPictureTaker {
@@ -28,10 +26,7 @@ class PreviewlessPictureTaker {
 
     public void takeNewPicture() {
         if (cameraReady) {
-            log("takeNewPicture");
             cameraView.takePicture();
-        } else {
-            log("takeNewPicture but camera not ready");
         }
     }
 
@@ -47,7 +42,6 @@ class PreviewlessPictureTaker {
 
         @Override
         public void onCameraOpened(CameraView cameraView) {
-            log("onCameraOpened");
             cameraReady = true;
         }
 
@@ -71,7 +65,6 @@ class PreviewlessPictureTaker {
 
         @Override
         public void onCameraClosed(CameraView cameraView) {
-            log("onCameraClosed");
             cameraReady = false;
         }
 
@@ -81,10 +74,6 @@ class PreviewlessPictureTaker {
 
         void onPictureUploaded();
 
-    }
-
-    private static int log(String msg) {
-        return Log.v("!!!", PreviewlessPictureTaker.class.getName() + ": " + msg);
     }
 
 }

@@ -20,7 +20,6 @@ import java.util.Collection;
 import static com.novoda.peepz.PictureTakeInterval.FREQUENT;
 import static com.novoda.peepz.PictureTakeInterval.INFREQUENT;
 import static com.novoda.peepz.PictureTakeInterval.OFF;
-import static com.novoda.peepz.PictureTakeInterval.VERY_FREQUENT;
 import static com.novoda.peepz.Timer.Callback;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
@@ -31,7 +30,6 @@ import static org.mockito.Mockito.when;
 @RunWith(Enclosed.class)
 public class AutomaticPreviewlessPictureTakerTest {
 
-    private static final Duration DURATION_VERY_FREQUENT = Duration.seconds(30);
     private static final Duration DURATION_FREQUENT = Duration.minutes(2);
     private static final Duration DURATION_INFREQUENT = Duration.minutes(5);
 
