@@ -12,6 +12,8 @@ public interface PeepzPageDisplayer {
 
         void onClickTakePicture();
 
+        void onClickSetPictureTimer();
+
         void onClickSignOut();
 
     }

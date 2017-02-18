@@ -9,6 +9,11 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/peepz_menu_timer"
+        android:title="@string/peepz_menu_timer"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/peepz_menu_sign_out"
         android:title="@string/peepz_menu_sign_out"
         app:showAsAction="never" />

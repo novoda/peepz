@@ -59,6 +59,11 @@ public class AndroidPeepzPageDisplayer implements PeepzPageDisplayer {
                     return true;
                 }
 
+                if (item.getItemId() == R.id.peepz_menu_timer) {
+                    callback.onClickSetPictureTimer();
+                    return true;
+                }
+
                 if (item.getItemId() == R.id.peepz_menu_sign_out) {
                     callback.onClickSignOut();
                     return true;

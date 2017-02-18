@@ -6,6 +6,7 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="peepzToolbarDefStyle">@style/PeepzApp.Toolbar</item>
+        <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert</item>
         <item name="floatingActionButtonDefStyle">@style/PeepzApp.FloatingActionButton</item>
         <item name="actionMenuTextColor">@color/purple_text</item>
         <item name="colorPrimary">@color/white</item>

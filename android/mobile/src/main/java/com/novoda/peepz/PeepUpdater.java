@@ -16,6 +16,15 @@ class PeepUpdater {
         this.signedInUser = signedInUser;
     }
 
+    public void updatePeepLastSeen() {
+        long currentTimeMillis = clock.currentTimeMillis();
+        firebaseDatabase
+                .getReference(BaseActivity.KEY_ROOT)
+                .child(signedInUser.getUid())
+                .child("lastSeen")
+                .setValue(currentTimeMillis);
+    }
+
     public void updatePeepImage(String imageUrl) {
         long currentTimeMillis = clock.currentTimeMillis();
 
@@ -27,7 +36,6 @@ class PeepUpdater {
                 currentTimeMillis
         );
 
-        // TODO: only really want to update their image, imageTimestamp and lastSeen
         firebaseDatabase
                 .getReference(BaseActivity.KEY_ROOT)
                 .child(signedInUser.getUid())
