@@ -1,5 +1,7 @@
 package com.novoda.peepz;
 
+import android.util.Log;
+
 import com.novoda.support.Duration;
 
 class HeartbeatPinger {
@@ -15,10 +17,12 @@ class HeartbeatPinger {
     }
 
     public void start() {
+        log("start");
         ping();
     }
 
     private void ping() {
+        log("ping");
         peepUpdater.updatePeepLastSeen();
         scheduleNextHeartbeatPing();
     }
@@ -27,13 +31,19 @@ class HeartbeatPinger {
         timer.schedule(new Timer.Callback() {
             @Override
             public void onCountdownComplete() {
+                log("onCountdownComplete");
                 ping();
             }
-        }, Duration.minutes(DELAY_BETWEEN_PINGS_MINUTES));
+        }, Duration.seconds(20));
     }
 
     public void stop() {
+        log("stop");
         timer.stop();
+    }
+
+    private static int log(String msg) {
+        return Log.v("!!!", HeartbeatPinger.class.getName() + ": " + msg);
     }
 
 }
