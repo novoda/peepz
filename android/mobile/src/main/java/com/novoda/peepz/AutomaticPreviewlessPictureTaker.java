@@ -76,10 +76,6 @@ class AutomaticPreviewlessPictureTaker {
     }
 
     private Duration getDelayFor(PictureTakeInterval interval) {
-        if (interval == PictureTakeInterval.VERY_FREQUENT) {
-            return Duration.seconds(30);
-        }
-
         if (interval == PictureTakeInterval.FREQUENT) {
             return Duration.minutes(2);
         }

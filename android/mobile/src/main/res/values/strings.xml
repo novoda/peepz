@@ -7,7 +7,6 @@
     <string name="take_picture">Take picture</string>
     <string name="because_the_picture_take">Because the picture take</string>
     <string name="made_with_love_by_novoda">Made with 😘 by Novoda</string>
-    <string name="very_frequent">30 seconds</string>
     <string name="frequent">2 minutes</string>
     <string name="infrequent">5 minutes</string>
     <string name="off">Off</string>
@@ -20,7 +19,6 @@
     <string name="peepz_menu_timer">@string/set_picture_timer</string>
     <string name="peepz_menu_sign_out">@string/sign_out</string>
 
-    <string name="action_set_timer_very_frequent">@string/very_frequent</string>
     <string name="action_set_timer_frequent">@string/frequent</string>
     <string name="action_set_timer_infrequent">@string/infrequent</string>
     <string name="action_set_timer_off">@string/off</string>

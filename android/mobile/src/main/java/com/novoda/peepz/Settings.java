@@ -27,7 +27,7 @@ class Settings {
                 return interval;
             }
         }
-        throw new IllegalStateException("should be impossible, since we supply a default");
+        return DEFAULT_INTERVAL;
     }
 
     public void setPictureTakeInterval(PictureTakeInterval interval) {

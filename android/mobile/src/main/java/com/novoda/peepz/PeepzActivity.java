@@ -127,12 +127,6 @@ public class PeepzActivity extends BaseActivity {
     private Actions foo() {
         return new Actions(
                 Arrays.asList(
-                        new Action(R.id.action_set_timer_very_frequent, R.string.action_set_timer_very_frequent, new Runnable() {
-                            @Override
-                            public void run() {
-                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.VERY_FREQUENT);
-                            }
-                        }),
                         new Action(R.id.action_set_timer_frequent, R.string.action_set_timer_frequent, new Runnable() {
                             @Override
                             public void run() {

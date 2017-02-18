@@ -104,7 +104,6 @@ public class AutomaticPreviewlessPictureTakerTest {
         @Parameterized.Parameters
         public static Collection<Parameter[]> data() {
             return Arrays.asList(
-                    new Parameter[]{new Parameter(VERY_FREQUENT, DURATION_VERY_FREQUENT)},
                     new Parameter[]{new Parameter(FREQUENT, DURATION_FREQUENT)},
                     new Parameter[]{new Parameter(INFREQUENT, DURATION_INFREQUENT)}
             );
