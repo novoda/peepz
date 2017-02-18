@@ -34,7 +34,7 @@ class HeartbeatPinger {
                 log("onCountdownComplete");
                 ping();
             }
-        }, Duration.seconds(20));
+        }, Duration.minutes(DELAY_BETWEEN_PINGS_MINUTES));
     }
 
     public void stop() {
