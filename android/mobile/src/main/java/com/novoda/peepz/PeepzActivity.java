@@ -25,6 +25,7 @@ public class PeepzActivity extends BaseActivity {
 
     private PeepzPageDisplayer peepzPageDisplayer;
     private AutomaticPreviewlessPictureTaker automaticPreviewlessPictureTaker;
+    private HeartbeatPinger heartbeatPinger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class PeepzActivity extends BaseActivity {
         PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
         Handler handler = new Handler();
         automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(Settings.create(this), new Timer(handler), previewlessPictureTaker);
+        heartbeatPinger = new HeartbeatPinger(new Timer(handler), peepUpdater);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(
                 new SignedInUserIsFirstPeepComparator(signedInUser.getUid()),
@@ -105,12 +107,14 @@ public class PeepzActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        heartbeatPinger.start();
         automaticPreviewlessPictureTaker.start();
     }
 
     @Override
     protected void onPause() {
         automaticPreviewlessPictureTaker.stop();
+        heartbeatPinger.stop();
         super.onPause();
     }
 
