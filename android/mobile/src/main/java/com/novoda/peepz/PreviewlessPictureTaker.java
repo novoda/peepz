@@ -36,7 +36,7 @@ class PreviewlessPictureTaker {
 
         @Override
         public void onCameraOpened(CameraView cameraView) {
-            Log.d("!!!", "onCameraOpened: " + System.currentTimeMillis());
+            log("onCameraOpened");
             cameraReady = true;
             scheduleAutomaticPictureTake();
         }
@@ -61,6 +61,7 @@ class PreviewlessPictureTaker {
 
         @Override
         public void onCameraClosed(CameraView cameraView) {
+            log("onCameraClosed");
             cameraReady = false;
             handler.removeCallbacks(runnable);
         }
@@ -75,18 +76,17 @@ class PreviewlessPictureTaker {
     private final Runnable runnable = new Runnable() {
         @Override
         public void run() {
-            Log.d("!!!", "autoPictureTake: " + System.currentTimeMillis());
-            if (cameraReady) {
-                cameraView.takePicture();
-                scheduleAutomaticPictureTake();
-            }
+            takeNewPicture();
+            scheduleAutomaticPictureTake();
         }
     };
 
     public void takeNewPicture() {
-        Log.d("!!!", "requestPictureTake: " + System.currentTimeMillis());
         if (cameraReady) {
+            log("takeNewPicture");
             cameraView.takePicture();
+        } else {
+            log("takeNewPicture but camera not ready");
         }
     }
 
@@ -102,6 +102,10 @@ class PreviewlessPictureTaker {
 
         void onPictureUploaded();
 
+    }
+
+    private static int log(String msg) {
+        return Log.v("!!!", PreviewlessPictureTaker.class.getName() + ": " + msg);
     }
 
 }

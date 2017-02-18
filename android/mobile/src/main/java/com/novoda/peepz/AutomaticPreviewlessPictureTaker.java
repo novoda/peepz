@@ -17,9 +17,10 @@ class AutomaticPreviewlessPictureTaker {
     }
 
     public void start() {
+        log("start");
         final PictureTakeInterval interval = settings.getPictureTakeInterval();
         if (!autoPictureTakingEnabled(interval)) {
-            Log.v("!!!", "auto picture taking disabled");
+            log("auto picture taking disabled");
             return;
         }
 
@@ -39,7 +40,7 @@ class AutomaticPreviewlessPictureTaker {
     private void scheduleNextPictureTake(PictureTakeInterval interval) {
         if (autoPictureTakingEnabled(interval)) {
             Duration delay = getDelayFor(interval);
-            Log.v("!!!", "scheduling next picture after delay: " + delay.toString());
+            log("scheduleNextPictureTake " + delay.toString());
             scheduleTimerWith(delay);
         }
     }
@@ -54,6 +55,7 @@ class AutomaticPreviewlessPictureTaker {
     }
 
     public void change(PictureTakeInterval interval) {
+        log("change");
         stop();
         settings.setPictureTakeInterval(interval);
 
@@ -63,11 +65,12 @@ class AutomaticPreviewlessPictureTaker {
     }
 
     public void takeNewPicture() {
+        log("takeNewPicture");
         pictureTaker.takeNewPicture();
     }
 
     public void stop() {
-        Log.v("!!!", "stopping automatic picture take");
+        log("stop");
         timer.stop();
         pictureTaker.stop();
     }
@@ -86,5 +89,9 @@ class AutomaticPreviewlessPictureTaker {
         }
 
         throw new IllegalArgumentException("no associated duration for given interval: " + interval);
+    }
+
+    private static int log(String msg) {
+        return Log.v("!!!", AutomaticPreviewlessPictureTaker.class.getName() + ": " + msg);
     }
 }
