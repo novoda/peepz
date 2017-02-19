@@ -1,7 +1,7 @@
 const DO_NOT_FILTER = true;
 const FILTER = false;
 
-const FITHTEEN_MINUTES = (60 * 15) * 1000;
+const FIFTEEN_MINUTES = (60 * 15) * 1000;
 
 const filter = userId => now => options => peep => {
   if (isMe(userId, peep)) {
@@ -19,7 +19,7 @@ const isMe = (userId, peep) => {
 
 const isOffline = (now, peep) => {
   const delta = now - peep.lastSeen;
-  return delta > FITHTEEN_MINUTES;
+  return delta > FIFTEEN_MINUTES;
 };
 
 export default filter;

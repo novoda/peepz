@@ -4,11 +4,11 @@ import wallFilter from '../wallFilter';
 
 describe('WallFilter', () => {
 
-  const FITHTEEN_MINUTES = (60 * 15) * 1000;
+  const FIFTEEN_MINUTES = (60 * 15) * 1000;
 
   const userId = '1234';
   const now = 0;
-  const offlineLastSeen = now - (FITHTEEN_MINUTES + 1000);
+  const offlineLastSeen = now - (FIFTEEN_MINUTES + 1000);
   const NOT_ME_OFFLINE = { uid: '5678', lastSeen: offlineLastSeen};
   const ME_OFFLINE = { uid: userId,  lastSeen: offlineLastSeen};
   const HIDE_OFFLINE = { showOffline: false };
