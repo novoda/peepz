@@ -73,7 +73,7 @@ public class PeepzActivity extends BaseActivity {
 
         @Override
         public void onClickSetPictureTimer() {
-            SettingsDialogWidget dialogView = (SettingsDialogWidget) getLayoutInflater().inflate(R.layout.debug_view_dialog, null, false);
+            SettingsDialogWidget dialogView = (SettingsDialogWidget) getLayoutInflater().inflate(R.layout.view_settings_dialog, null, false);
             final AlertDialog alertDialog = new AlertDialog.Builder(PeepzActivity.this)
                     .setView(dialogView)
                     .create();
