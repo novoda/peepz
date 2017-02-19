@@ -7,9 +7,12 @@
     <string name="take_picture">Take picture</string>
     <string name="because_the_picture_take">Because the picture take</string>
     <string name="made_with_love_by_novoda">Made with 😘 by Novoda</string>
-    <string name="frequent">2 minutes</string>
-    <string name="infrequent">5 minutes</string>
+    <string name="show_offline_peepz">Show offline Peepz</string>
+    <string name="_2_minutes">2 minutes</string>
+    <string name="_5_minutes">5 minutes</string>
     <string name="off">Off</string>
+    <string name="cancel">Cancel</string>
+    <string name="ok">Ok</string>
 
     <string name="peepz_signin_button">@string/sign_in</string>
     <string name="peepz_signin_tagline">@string/because_the_picture_take</string>
@@ -19,8 +22,16 @@
     <string name="peepz_menu_timer">@string/set_picture_timer</string>
     <string name="peepz_menu_sign_out">@string/sign_out</string>
 
-    <string name="action_set_timer_frequent">@string/frequent</string>
-    <string name="action_set_timer_infrequent">@string/infrequent</string>
+    <string name="settings_dialog_timer_heading">@string/set_picture_timer</string>
+    <string name="settings_dialog_timer_frequent">@string/_2_minutes</string>
+    <string name="settings_dialog_timer_infrequent">@string/_5_minutes</string>
+    <string name="settings_dialog_timer_off">@string/off</string>
+    <string name="settings_dialog_filter_offline">@string/show_offline_peepz</string>
+    <string name="settings_dialog_button_cancel">@string/cancel</string>
+    <string name="settings_dialog_button_ok">@string/ok</string>
+
+    <string name="action_set_timer_frequent">@string/_2_minutes</string>
+    <string name="action_set_timer_infrequent">@string/_5_minutes</string>
     <string name="action_set_timer_off">@string/off</string>
 
 </resources>

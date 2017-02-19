@@ -26,6 +26,7 @@ public class PeepzActivity extends BaseActivity {
     private PeepzPageDisplayer peepzPageDisplayer;
     private AutomaticPreviewlessPictureTaker automaticPreviewlessPictureTaker;
     private HeartbeatPinger heartbeatPinger;
+    private Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,8 @@ public class PeepzActivity extends BaseActivity {
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
         PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
         Handler handler = new Handler();
-        automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(Settings.create(this), new Timer(handler), previewlessPictureTaker);
+        settings = Settings.create(this);
+        automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(settings, new Timer(handler), previewlessPictureTaker);
         heartbeatPinger = new HeartbeatPinger(new Timer(handler), peepUpdater);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(
@@ -71,8 +73,24 @@ public class PeepzActivity extends BaseActivity {
 
         @Override
         public void onClickSetPictureTimer() {
-            ActionsAlertDialogCreator actionsAlertDialogCreator = new ActionsAlertDialogCreator(PeepzActivity.this);
-            AlertDialog alertDialog = actionsAlertDialogCreator.create(foo());
+            SettingsDialogWidget dialogView = (SettingsDialogWidget) getLayoutInflater().inflate(R.layout.debug_view_dialog, null, false);
+            final AlertDialog alertDialog = new AlertDialog.Builder(PeepzActivity.this)
+                    .setView(dialogView)
+                    .create();
+
+            dialogView.bind(new SettingsDialogWidget.Callback() {
+                @Override
+                public void onClickOk(PictureTakeInterval interval) {
+                    automaticPreviewlessPictureTaker.change(interval);
+                    alertDialog.dismiss();
+                }
+
+                @Override
+                public void onClickCancel() {
+                    alertDialog.dismiss();
+                }
+            }, settings.getPictureTakeInterval());
+
             alertDialog.show();
         }
 

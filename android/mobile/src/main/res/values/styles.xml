@@ -6,6 +6,7 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="peepzToolbarDefStyle">@style/PeepzApp.Toolbar</item>
+        <item name="radioButtonWidgetDefStyle">@style/PeepzApp.RadioButtonWidget</item>
         <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert</item>
         <item name="floatingActionButtonDefStyle">@style/PeepzApp.FloatingActionButton</item>
         <item name="actionMenuTextColor">@color/purple_text</item>
@@ -21,6 +22,10 @@
         <item name="contentInsetStart">24dp</item>
     </style>
 
+    <style name="PeepzApp.RadioButtonWidget">
+        <item name="android:minHeight">48dp</item>
+    </style>
+
     <style name="PeepzApp.Toolbar.Theme" parent="Theme.AppCompat.Light">
         <!--Overflow menu item text color-->
         <item name="android:textColorPrimary">@color/purple_text</item>
@@ -32,20 +37,59 @@
         <item name="android:padding">16dp</item>
         <item name="android:elevation">@dimen/fab_elevation_default</item>
         <item name="android:background">@drawable/floating_action_button_background_white</item>
-        <item name="android:stateListAnimator">@animator/floating_action_button_elevation_animator</item>
+        <item name="android:stateListAnimator">@animator/floating_action_button_elevation_animator
+        </item>
     </style>
 
-    <style name="Peepz" />
+    <style name="Peepz.Fab" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/white</item>
+        <item name="colorControlHighlight">@color/purple_accent</item>
+    </style>
 
-    <style name="Peepz.SignIn" />
+    <style name="Selfie.Fab" parent="ThemeOverlay.AppCompat">
+        <item name="colorAccent">@color/purple_accent</item>
+        <item name="colorControlHighlight">@color/white</item>
+    </style>
 
-    <style name="Peepz.SignIn.Tagline">
+    <!--Settings-->
+
+    <style name="PeepzApp.Settings" />
+
+    <style name="PeepzApp.Settings.Dialog" />
+
+    <style name="PeepzApp.Settings.Dialog.Heading">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">16sp</item>
+        <item name="textFont">montserratBold</item>
+    </style>
+
+    <style name="PeepzApp.Settings.Dialog.Button">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">8dp</item>
+        <item name="textFont">montserratMedium</item>
+    </style>
+
+    <style name="PeepzApp.Settings.Dialog.Button.Cancel" parent="@style/PeepzApp.Settings.Dialog.Button">
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="PeepzApp.Settings.Dialog.Button.Ok" parent="@style/PeepzApp.Settings.Dialog.Button">
+        <item name="android:textColor">@color/purple_text</item>
+    </style>
+
+    <!--Sign-in-->
+
+    <style name="PeepzApp.SignIn" />
+
+    <style name="PeepzApp.SignIn.Tagline">
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/purple_text</item>
         <item name="textFont">montserratRegular</item>
     </style>
 
-    <style name="Peepz.SignIn.Button">
+    <style name="PeepzApp.SignIn.Button">
         <item name="android:background">@drawable/sign_in_button_background</item>
         <item name="android:ellipsize">end</item>
         <item name="android:maxLines">1</item>
@@ -58,20 +102,10 @@
         <item name="textFont">montserratRegular</item>
     </style>
 
-    <style name="Peepz.SignIn.Footer">
+    <style name="PeepzApp.SignIn.Footer">
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/gray_text</item>
         <item name="textFont">montserratRegular</item>
-    </style>
-
-    <style name="Peepz.Fab" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/white</item>
-        <item name="colorControlHighlight">@color/purple_accent</item>
-    </style>
-
-    <style name="Selfie.Fab" parent="ThemeOverlay.AppCompat">
-        <item name="colorAccent">@color/purple_accent</item>
-        <item name="colorControlHighlight">@color/white</item>
     </style>
 
 </resources>
