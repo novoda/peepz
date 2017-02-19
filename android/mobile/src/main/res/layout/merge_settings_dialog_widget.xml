@@ -14,8 +14,9 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:orientation="vertical"
-        tools:paddingLeft="24dp"
-        tools:paddingRight="24dp">
+        android:paddingLeft="24dp"
+        android:paddingTop="32dp"
+        android:paddingRight="24dp">
 
         <com.novoda.support.FontTextView
             style="@style/PeepzApp.Settings.Dialog.Heading"
@@ -24,17 +25,20 @@
             android:text="@string/settings_dialog_timer_heading" />
 
         <com.novoda.peepz.RadioButtonWidget
+            android:id="@+id/settings_dialog_timer_frequent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="@string/settings_dialog_timer_frequent" />
 
         <com.novoda.peepz.RadioButtonWidget
+            android:id="@+id/settings_dialog_timer_infrequent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_dialog_timer_infrequent" />
 
         <com.novoda.peepz.RadioButtonWidget
+            android:id="@+id/settings_dialog_timer_off"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/settings_dialog_timer_off" />
@@ -49,6 +53,7 @@
         android:padding="8dp">
 
         <com.novoda.support.FontTextView
+            android:id="@+id/settings_dialog_button_cancel"
             style="@style/PeepzApp.Settings.Dialog.Button.Cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -57,6 +62,7 @@
             android:text="@string/settings_dialog_button_cancel" />
 
         <com.novoda.support.FontTextView
+            android:id="@+id/settings_dialog_button_ok"
             style="@style/PeepzApp.Settings.Dialog.Button.Ok"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -23,7 +23,6 @@
     </style>
 
     <style name="PeepzApp.RadioButtonWidget">
-        <item name="android:foreground">@drawable/radio_button_widget_foreground</item>
         <item name="android:minHeight">48dp</item>
     </style>
 
