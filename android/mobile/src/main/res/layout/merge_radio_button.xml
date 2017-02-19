@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:layout_marginTop="100dp"
+    tools:parentTag="LinearLayout">
+
+    <ImageView
+        android:id="@+id/radio_button_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/ic_radio_normal"
+        android:duplicateParentState="true" />
+
+    <com.novoda.support.FontTextView
+        android:id="@+id/radio_button_text_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="16dp"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        app:textFont="montserratRegular"
+        tools:text="2 minutes" />
+
+</merge>

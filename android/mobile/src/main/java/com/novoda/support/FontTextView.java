@@ -71,7 +71,9 @@ public class FontTextView extends TextView {
 
         public enum FontType {
 
-            MONTSERRAT_REGULAR("fonts/Montserrat-Regular.otf"); // https://www.fontsquirrel.com/license/montserrat
+            MONTSERRAT_REGULAR("fonts/Montserrat-Regular.otf"), // https://www.fontsquirrel.com/license/montserrat
+            MONTSERRAT_BOLD("fonts/Montserrat-Bold.otf"),
+            MONTSERRAT_MEDIUM("fonts/Montserrat-Medium.otf");
 
             private final String assetUrl;
 
