@@ -25,7 +25,7 @@ export default class RoomView extends React.Component {
   }
 
   _getWallContent() {
-    const now = Date.now();
+    const now = this.props.nowProvider();
     const userId = this.props.user.uid;
     const filterOptions = this.props.filterOptions;
     const filter = wallFilter(userId)(now)(filterOptions);
