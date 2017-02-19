@@ -7,18 +7,18 @@ import NavigationMenu from 'material-ui/svg-icons/navigation/menu';
 
 export default ({toggleDrawer}) => {
   return (
-    <div className={css(Style.appBarStyle)}>
-      <div className={css(Style.containerStyle)}>
-        <IconButton onClick={toggleDrawer} style={{marginLeft: '2%'}}>
-          <NavigationMenu color={'#391885'} />
+    <div className={css(Style.css.appBarStyle)}>
+      <div className={css(Style.css.containerStyle)}>
+        <IconButton onClick={toggleDrawer} {...Style.js.burgerContainer}>
+          <NavigationMenu {...Style.js.burger} />
         </IconButton>
 
-        <Link to={'/'} style={{ textDecoration: 'none' }}>
-          <button className={css(Style.titleStyle)}>Peepz</button>
+        <Link to={'/'}>
+          <button className={css(Style.css.titleStyle)}>Peepz</button>
         </Link>
 
-        <Link to={'/settings'} className={css(Style.endContainer)}>
-          <button className={css(Style.settingsStyle)}>Settings</button>
+        <Link to={'/settings'} className={css(Style.css.endContainer)}>
+          <button className={css(Style.css.settingsStyle)}>Settings</button>
         </Link>
       </div>
     </div>
