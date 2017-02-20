@@ -16,7 +16,7 @@ export default class UserHomePageView extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getRoomListings();
+    this.props.getRoomListings(this.props.userId);
   }
 
 }
