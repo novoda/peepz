@@ -67,6 +67,7 @@
     </style>
 
     <style name="PeepzApp.Settings.Dialog.Button">
+        <item name="android:background">@drawable/settings_dialog_button_background</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>
