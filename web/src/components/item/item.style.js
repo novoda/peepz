@@ -34,5 +34,35 @@ export default StyleSheet.create({
   },
   fullGray: {
     filter: 'grayscale(100%)'
+  },
+  infoContainer: {
+    position: 'absolute',
+    bottom: '0',
+    margin: '6px',
+    height: '18px'
+  },
+  indicatorWrapper: {
+    float: 'left',
+    marginTop: '4px'
+  },
+  indicatorCircle: {
+    border: '1px solid #FFF',
+    borderRadius: '16px',
+    boxShadow: '0 0 1px #888',
+    marginLeft: '4px',
+    marginRight: '6px',
+    height: '6px',
+    get width() {
+      return this.height;
+    }
+  },
+  indicatorOffline: {
+    backgroundColor: 'transparent'
+  },
+  indicatorIdle: {
+    backgroundColor: '#888'
+  },
+  indicatorOnline: {
+    backgroundColor: '#391885'
   }
 });
