@@ -82,6 +82,7 @@ public class PeepzActivity extends BaseActivity {
             dialogView.bind(new SettingsDialogWidget.Callback() {
                 @Override
                 public void onClickOk(PictureTakeInterval interval, boolean shouldShowOfflinePeepz) {
+                    settings.setShouldShowOfflinePeepz(shouldShowOfflinePeepz);
                     automaticPreviewlessPictureTaker.change(interval);
                     peepzService.observeChanges(onPeepsUpdatedCallback);
                     alertDialog.dismiss();
