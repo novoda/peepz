@@ -13,9 +13,6 @@ import butterknife.ButterKnife;
 
 public class RadioButtonWidget extends ForegroundLinearLayout {
 
-    @BindView(R.id.radio_button_image)
-    ImageView imageView;
-
     @BindView(R.id.radio_button_text_label)
     TextView labelTextView;
 
