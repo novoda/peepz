@@ -2,6 +2,13 @@
   "rules": {
 
     "wip": {
+
+      "users": {
+        "$userId": {
+          ".read": "auth.uid === $userId"
+        }
+      },
+
       "rooms": {
         "$room": {
 
