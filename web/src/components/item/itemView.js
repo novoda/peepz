@@ -44,7 +44,8 @@ export default class Item extends React.Component {
 
     return (
       <div className={css(Style.container)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-        <div className={css(Style.overlayBackground)} />
+        {this.state.isHovering ? <div className={css(Style.overlayBackground)} /> : null}
+
         <img className={css(Style.imageStyle, availabilityFilter, this.state.isHovering && Style.makeOpaque)}
           src={image.payload}
           onError={onImageError}
