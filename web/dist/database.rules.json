@@ -17,6 +17,10 @@
             ".write": "data.child(auth.uid).val() === 'admin'"
           },
 
+          "options": {
+            ".read": "data.parent().child('members').child(auth.uid).exists()",
+          },
+
           "wall": {
             ".read": "data.parent().child('members').child(auth.uid).exists()",
             "$userId": {
