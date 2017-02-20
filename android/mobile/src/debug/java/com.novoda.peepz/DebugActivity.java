@@ -21,7 +21,7 @@ public class DebugActivity extends BaseActivity {
 
         dialogView.bind(new SettingsDialogWidget.Callback() {
             @Override
-            public void onClickOk(PictureTakeInterval interval) {
+            public void onClickOk(PictureTakeInterval interval, boolean shouldShowOfflinePeepz) {
                 Toast.makeText(getApplicationContext(), "click: " + interval.name(), Toast.LENGTH_SHORT).show();
                 alertDialog.dismiss();
             }
@@ -30,7 +30,7 @@ public class DebugActivity extends BaseActivity {
             public void onClickCancel() {
                 alertDialog.dismiss();
             }
-        }, PictureTakeInterval.FREQUENT);
+        }, PictureTakeInterval.FREQUENT, true);
 
         alertDialog.show();
     }

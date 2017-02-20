@@ -17,39 +17,54 @@ class PeepzService {
 
     private final FirebaseDatabase database;
     private final Comparator<Peep> comparator;
+    private final Settings settings;
 
-    PeepzService(FirebaseDatabase database, Comparator<Peep> comparator) {
+    private Callback callback;
+
+    PeepzService(FirebaseDatabase database, Comparator<Peep> comparator, Settings settings) {
         this.database = database;
         this.comparator = comparator;
+        this.settings = settings;
     }
 
-    public void observeChanges(final Callback callback) {
+    public void observeChanges(Callback callback) {
+        this.callback = callback;
+
         DatabaseReference wallRef = database.getReference(BaseActivity.KEY_ROOT);
-        wallRef.addValueEventListener(new ValueEventListener() {
-
-            @Override
-            public void onDataChange(DataSnapshot wall) {
-                Converter converter = new Converter();
-                List<Peep> peepz = new ArrayList<>((int) wall.getChildrenCount());
-                for (DataSnapshot item : wall.getChildren()) {
-                    try {
-                        Peep peep = converter.convert(item);
-                        peepz.add(peep);
-                    } catch (Converter.ConverterException e) {
-                        Log.e("!!!", "error converting peep: " + item);
-                    }
-                }
-                Collections.sort(peepz, comparator);
-                callback.onNext(peepz);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // TODO: on error?
-            }
-
-        });
+        wallRef.addValueEventListener(valueEventListener);
     }
+
+    private final ValueEventListener valueEventListener = new ValueEventListener() {
+
+        @Override
+        public void onDataChange(DataSnapshot wall) {
+            Converter converter = new Converter();
+            List<Peep> peepz = new ArrayList<>((int) wall.getChildrenCount());
+            for (DataSnapshot item : wall.getChildren()) {
+                try {
+                    Peep peep = converter.convert(item);
+                    if (offline(peep) && !settings.shouldShowOfflinePeepz()) {
+                        continue;
+                    }
+                    peepz.add(peep);
+                } catch (Converter.ConverterException e) {
+                    Log.e("!!!", "error converting peep: " + item);
+                }
+            }
+            Collections.sort(peepz, comparator);
+            callback.onNext(peepz);
+        }
+
+        private boolean offline(Peep peep) {
+            return peep.lastSeen().freshness() == Freshness.NOT_SO_FRESH;
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+            // TODO: on error?
+        }
+
+    };
 
     public interface Callback {
 
