@@ -4,7 +4,6 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
@@ -22,6 +21,9 @@ public class SettingsDialogWidget extends LinearLayout {
 
     @BindView(R.id.settings_dialog_timer_off)
     View offTimerView;
+
+    @BindView(R.id.settings_dialog_switch_filter_offline)
+    View filterOfflineSwitch;
 
     @BindView(R.id.settings_dialog_button_ok)
     View okButton;
@@ -46,20 +48,30 @@ public class SettingsDialogWidget extends LinearLayout {
         ButterKnife.bind(this);
     }
 
-    public void bind(final Callback callback, PictureTakeInterval pictureTakeInterval) {
+    public void bind(final Callback callback, PictureTakeInterval pictureTakeInterval, boolean showOfflinePeepz) {
         updateActivatedStateOnTimerViews(pictureTakeInterval);
         updateClickListenersForTimerViews();
+
+        filterOfflineSwitch.setActivated(showOfflinePeepz);
+        filterOfflineSwitch.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterOfflineSwitch.setActivated(!filterOfflineSwitch.isActivated());
+            }
+        });
 
         okButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                PictureTakeInterval interval = null;
                 for (View view : timerViews()) {
                     if (view.isActivated()) {
-                        PictureTakeInterval interval = getPictureTakeIntervalAssociatedWith(view);
-                        callback.onClickOk(interval);
+                        interval = getPictureTakeIntervalAssociatedWith(view);
                         break;
                     }
                 }
+
+                callback.onClickOk(interval, filterOfflineSwitch.isActivated());
             }
         });
 
@@ -136,7 +148,7 @@ public class SettingsDialogWidget extends LinearLayout {
 
     public interface Callback {
 
-        void onClickOk(PictureTakeInterval interval);
+        void onClickOk(PictureTakeInterval interval, boolean shouldShowOfflinePeepz);
 
         void onClickCancel();
 
