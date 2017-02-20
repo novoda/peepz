@@ -122,4 +122,4 @@ const calculateIndicatorColour = (lastSeen, imageTimestamp) => {
   } else {
     return Style.indicatorOnline;
   }
-}
+};

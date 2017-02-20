@@ -110,6 +110,8 @@ const drawer = (state = {roomListing: [], open: false, options: { showOffline: t
         const newOptions = {...state.options, showOffline: !state.options.showOffline};
         return {...state, options: newOptions};
       }
+      case 'onRoomListing':
+        return {...state, roomListing: values(action.payload)};
       default:
         return state;
   }

@@ -12,7 +12,7 @@ export default class DrawerView extends React.Component {
         onRequestChange={this.props.onRequestChange}>
         <Me user={this.props.user}/>
         <Divider />
-        <Rooms onClose={this.props.onClose} />
+        <Rooms onClose={this.props.onClose(this.props.user)} listings={this.props.roomListing} />
         <Divider />
         <Settings onToggled={this.props.onToggled} options={this.props.options} />
       </Drawer>
@@ -27,11 +27,16 @@ const Me = ({user}) => {
   );
 };
 
-const Rooms = ({onClose}) => {
+const Rooms = ({onClose, listings}) => {
+  const rooms = listings.map(each => {
+    return (
+      <MenuItem key={each.id} onTouchTap={onClose(each)}>{each.name}</MenuItem>
+    );
+  });
   return (
     <div>
       <h2>Rooms</h2>
-      <MenuItem onTouchTap={onClose}>TODO</MenuItem>
+      {rooms}
     </div>
   );
 };

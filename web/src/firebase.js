@@ -57,8 +57,8 @@ const logout = () => dispatch => {
 const roomListing = userId => dispatch => {
   fb.database().ref(`wip/users/${userId}/rooms`).on('value', snapshot => {
     const listings = snapshot.val();
-    dispatch({type: 'onRoomListing', listings});
-  }, console.log);
+    dispatch({type: 'onRoomListing', payload: listings});
+  });
 };
 
 const joinRoom = roomId => user => dispatch => {
@@ -93,8 +93,14 @@ const updateUser = (wallPath, user) => {
   });
 };
 
+let currentWallRef;
+
 const getWall = wallPath => dispatch => () => {
-  fb.database().ref(wallPath).on('value', snapshot => {
+  if (currentWallRef) {
+    currentWallRef.off();
+  }
+  currentWallRef = fb.database().ref(wallPath);
+  currentWallRef.on('value', snapshot => {
     const result = snapshot.val() || {};
     dispatch({type: 'onUpdate', payload: result });
   });
