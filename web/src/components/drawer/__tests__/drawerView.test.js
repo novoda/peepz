@@ -6,7 +6,7 @@ import DrawerView from '../drawerView';
 describe('DrawerView', () => {
 
   let _;
-  const props = {};
+  const props = { onClose: () => {} };
 
   it('renders without exploding', () => {
     _ = Helper.of(<DrawerView {...props} />);
