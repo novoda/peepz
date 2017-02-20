@@ -7,58 +7,64 @@
     tools:layout_marginTop="25dp"
     tools:layout_width="match_parent"
     tools:orientation="vertical"
-    tools:parentTag="LinearLayout">
+    tools:parentTag="ScrollView">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:orientation="vertical"
-        android:paddingTop="32dp">
+        android:layout_height="0dp"
+        android:layout_weight="100">
 
-        <com.novoda.support.FontTextView
-            style="@style/PeepzApp.Settings.Dialog.Heading"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:text="@string/settings_dialog_timer_heading" />
+            android:orientation="vertical"
+            android:paddingTop="32dp">
 
-        <com.novoda.peepz.RadioButtonWidget
-            android:id="@+id/settings_dialog_timer_frequent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/settings_dialog_timer_frequent" />
+            <com.novoda.support.FontTextView
+                style="@style/PeepzApp.Settings.Dialog.Heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:text="@string/settings_dialog_timer_heading" />
 
-        <com.novoda.peepz.RadioButtonWidget
-            android:id="@+id/settings_dialog_timer_infrequent"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_dialog_timer_infrequent" />
+            <com.novoda.peepz.RadioButtonWidget
+                android:id="@+id/settings_dialog_timer_frequent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/settings_dialog_timer_frequent" />
 
-        <com.novoda.peepz.RadioButtonWidget
-            android:id="@+id/settings_dialog_timer_off"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_dialog_timer_off" />
+            <com.novoda.peepz.RadioButtonWidget
+                android:id="@+id/settings_dialog_timer_infrequent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_dialog_timer_infrequent" />
 
-        <com.novoda.support.FontTextView
-            style="@style/PeepzApp.Settings.Dialog.Heading"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
-            android:text="@string/settings_dialog_filters_heading" />
+            <com.novoda.peepz.RadioButtonWidget
+                android:id="@+id/settings_dialog_timer_off"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_dialog_timer_off" />
 
-        <com.novoda.peepz.SwitchWidget
-            android:id="@+id/settings_dialog_switch_filter_offline"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/settings_dialog_filter_offline" />
+            <com.novoda.support.FontTextView
+                style="@style/PeepzApp.Settings.Dialog.Heading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="24dp"
+                android:layout_marginRight="24dp"
+                android:text="@string/settings_dialog_filters_heading" />
 
-    </LinearLayout>
+            <com.novoda.peepz.SwitchWidget
+                android:id="@+id/settings_dialog_switch_filter_offline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/settings_dialog_filter_offline" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <LinearLayout
         android:layout_width="match_parent"
