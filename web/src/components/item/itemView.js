@@ -3,7 +3,7 @@ import Console from '../../console';
 import { css } from 'aphrodite/no-important';
 import Style from './item.style';
 
-const FITHTEEN_MINUTES = (15 * 60) * 1000;
+const FIFTEEN_MINUTES = (15 * 60) * 1000;
 
 const missingImage = {
   payload: 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg',
@@ -96,7 +96,7 @@ export default class Item extends React.Component {
 
 const lastSeenToFilterAmount = lastSeen => {
   const delta = Date.now() - lastSeen;
-  if (!lastSeen || delta >= FITHTEEN_MINUTES) {
+  if (!lastSeen || delta >= FIFTEEN_MINUTES) {
     return Style.fullGray;
   } else {
     return false;
@@ -113,8 +113,8 @@ const Indicator = ({lastSeen, imageTimestamp}) => {
 };
 
 const calculateIndicatorColour = (lastSeen, imageTimestamp) => {
-  const isOffline = Date.now() - lastSeen > FITHTEEN_MINUTES;
-  const isIdle = Date.now() - imageTimestamp > FITHTEEN_MINUTES;
+  const isOffline = Date.now() - lastSeen > FIFTEEN_MINUTES;
+  const isIdle = Date.now() - imageTimestamp > FIFTEEN_MINUTES;
   if (isOffline) {
     return Style.indicatorOffline;
   } else if (isIdle) {
