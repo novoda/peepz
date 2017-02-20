@@ -9,8 +9,8 @@
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/peepz_menu_timer"
-        android:title="@string/peepz_menu_timer"
+        android:id="@+id/peepz_menu_settings"
+        android:title="@string/peepz_menu_settings"
         app:showAsAction="never" />
 
     <item
