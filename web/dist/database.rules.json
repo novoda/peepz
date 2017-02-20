@@ -18,8 +18,8 @@
           },
 
           "wall": {
-              ".read": "data.parent().child('members').child(auth.uid).exists()",
-              "$userId": {
+            ".read": "data.parent().child('members').child(auth.uid).exists()",
+            "$userId": {
               ".write": "auth.uid === $userId"
             }
           }
