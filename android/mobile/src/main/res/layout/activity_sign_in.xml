@@ -20,7 +20,7 @@
             android:src="@drawable/sign_in_title" />
 
         <com.novoda.support.FontTextView
-            style="@style/Peepz.SignIn.Tagline"
+            style="@style/PeepzApp.SignIn.Tagline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -28,7 +28,7 @@
 
         <com.novoda.support.FontTextView
             android:id="@+id/sign_in_button"
-            style="@style/Peepz.SignIn.Button"
+            style="@style/PeepzApp.SignIn.Button"
             android:layout_width="@dimen/sign_in_button_width"
             android:layout_height="@dimen/sign_in_button_height"
             android:focusable="true"
@@ -37,7 +37,7 @@
     </LinearLayout>
 
     <com.novoda.support.FontTextView
-        style="@style/Peepz.SignIn.Footer"
+        style="@style/PeepzApp.SignIn.Footer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

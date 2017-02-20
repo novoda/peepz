@@ -3,6 +3,7 @@
 import React from 'react';
 import Wall from '../wall/Wall';
 import wallSort from './sort/wallSort';
+import wallFilter from './wallFilter';
 import Progress from 'material-ui/CircularProgress';
 import Styles from './room.style';
 
@@ -23,19 +24,13 @@ export default class RoomView extends React.Component {
     );
   }
 
-  filter = now => userId => each => {
-    if (!this.props.showOffline && userId !== each.uid) {
-      return (now - each.lastSeen) < (60 * 15) * 1000;
-    } else {
-      return true;
-    }
-  };
-
   _getWallContent() {
-    const now = Date.now();
+    const now = this.props.nowProvider();
     const userId = this.props.user.uid;
-    return this.props.wall.filter(this.filter(now)(userId))
-    .sort(wallSort(now, userId));
+    const filterOptions = this.props.filterOptions;
+    const filter = wallFilter(userId)(now)(filterOptions);
+    return this.props.wall.filter(filter)
+      .sort(wallSort(now, userId));
   }
 
   componentDidMount() {

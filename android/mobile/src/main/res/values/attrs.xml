@@ -2,11 +2,16 @@
 <resources>
 
     <attr name="peepzToolbarDefStyle" format="reference" />
+    <attr name="radioButtonWidgetDefStyle" format="reference" />
 
     <attr name="floatingActionButtonDefStyle" format="reference" />
 
     <declare-styleable name="FloatingActionButton">
         <attr name="android:src" />
+    </declare-styleable>
+
+    <declare-styleable name="RadioButtonWidget">
+        <attr name="android:text" />
     </declare-styleable>
 
 </resources>

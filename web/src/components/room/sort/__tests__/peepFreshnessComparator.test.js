@@ -4,9 +4,9 @@ import peepFreshness from '../peepFreshnessComparator';
 
 describe('ImageFreshnessComparator', () => {
 
-  const FITHTEEN_MINUTES = 15 * (60 * 1000);
-  const now = FITHTEEN_MINUTES + 1000;
-  const FRESH_PEEP = { lastSeen: FITHTEEN_MINUTES };
+  const FIFTEEN_MINUTES = 15 * (60 * 1000);
+  const now = FIFTEEN_MINUTES + 1000;
+  const FRESH_PEEP = { lastSeen: FIFTEEN_MINUTES };
   const STALE_PEEP = { lastSeen: 0 };
 
   it('stale peep is greater than peep', () => {

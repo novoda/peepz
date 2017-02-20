@@ -2,14 +2,20 @@ package com.novoda.peepz;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 
 import com.google.android.cameraview.CameraView;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.novoda.accessibility.AccessibilityServices;
+import com.novoda.accessibility.Action;
+import com.novoda.accessibility.Actions;
+import com.novoda.accessibility.ActionsAlertDialogCreator;
 import com.novoda.support.SystemClock;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -18,7 +24,9 @@ import butterknife.ButterKnife;
 public class PeepzActivity extends BaseActivity {
 
     private PeepzPageDisplayer peepzPageDisplayer;
-    private AutomaticPictureTaker automaticPictureTaker;
+    private AutomaticPreviewlessPictureTaker automaticPreviewlessPictureTaker;
+    private HeartbeatPinger heartbeatPinger;
+    private Settings settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +41,11 @@ public class PeepzActivity extends BaseActivity {
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
         PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
-        automaticPictureTaker = new AutomaticPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
+        PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
+        Handler handler = new Handler();
+        settings = Settings.create(this);
+        automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(settings, new Timer(handler), previewlessPictureTaker);
+        heartbeatPinger = new HeartbeatPinger(new Timer(handler), peepUpdater);
 
         Comparator<Peep> comparator = new PeepCompoundComparator(
                 new SignedInUserIsFirstPeepComparator(signedInUser.getUid()),
@@ -60,6 +72,29 @@ public class PeepzActivity extends BaseActivity {
         }
 
         @Override
+        public void onClickSetPictureTimer() {
+            SettingsDialogWidget dialogView = (SettingsDialogWidget) getLayoutInflater().inflate(R.layout.view_settings_dialog, null, false);
+            final AlertDialog alertDialog = new AlertDialog.Builder(PeepzActivity.this)
+                    .setView(dialogView)
+                    .create();
+
+            dialogView.bind(new SettingsDialogWidget.Callback() {
+                @Override
+                public void onClickOk(PictureTakeInterval interval) {
+                    automaticPreviewlessPictureTaker.change(interval);
+                    alertDialog.dismiss();
+                }
+
+                @Override
+                public void onClickCancel() {
+                    alertDialog.dismiss();
+                }
+            }, settings.getPictureTakeInterval());
+
+            alertDialog.show();
+        }
+
+        @Override
         public void onClickSignOut() {
             firebaseApi().signOut();
             startActivity(new Intent(getApplicationContext(), SignInActivity.class));
@@ -73,7 +108,7 @@ public class PeepzActivity extends BaseActivity {
             peepzPageDisplayer.display(peepz);
             FirebaseUser signedInUser = firebaseApi().getSignedInUser();
             if (missingSignedInUserFromPeepz(peepz, signedInUser)) {
-                automaticPictureTaker.requestPictureTake();
+                automaticPreviewlessPictureTaker.takeNewPicture();
             }
         }
 
@@ -90,13 +125,45 @@ public class PeepzActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        automaticPictureTaker.start();
+        heartbeatPinger.start();
+        automaticPreviewlessPictureTaker.start();
     }
 
     @Override
     protected void onPause() {
-        automaticPictureTaker.stop();
+        automaticPreviewlessPictureTaker.stop();
+        heartbeatPinger.stop();
         super.onPause();
+    }
+
+    private void bar() {
+        ActionsAlertDialogCreator actionsAlertDialogCreator = new ActionsAlertDialogCreator(this);
+        AlertDialog alertDialog = actionsAlertDialogCreator.create(foo());
+
+    }
+
+    private Actions foo() {
+        return new Actions(
+                Arrays.asList(
+                        new Action(R.id.action_set_timer_frequent, R.string.action_set_timer_frequent, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.FREQUENT);
+                            }
+                        }),
+                        new Action(R.id.action_set_timer_infrequent, R.string.action_set_timer_infrequent, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.INFREQUENT);
+                            }
+                        }),
+                        new Action(R.id.action_set_timer_off, R.string.action_set_timer_off, new Runnable() {
+                            @Override
+                            public void run() {
+                                automaticPreviewlessPictureTaker.change(PictureTakeInterval.OFF);
+                            }
+                        })
+                ));
     }
 
 }

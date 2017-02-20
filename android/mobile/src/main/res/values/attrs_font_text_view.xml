@@ -5,6 +5,8 @@
     <attr name="textFont" format="enum">
       <enum name="none" value="-1" />
       <enum name="montserratRegular" value="0" />
+      <enum name="montserratBold" value="1" />
+      <enum name="montserratMedium" value="2" />
     </attr>
   </declare-styleable>
 
