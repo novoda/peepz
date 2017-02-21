@@ -5,7 +5,9 @@ export const mapToProps = state => {
       roomListing: state.drawer.roomListing,
       open: state.drawer.open,
       user: state.user,
-      options: state.drawer.options
+      options: state.drawer.options,
+      cameraModes: state.room.options.cameraModes,
+      cameraModeSelection: state.drawer.cameraModeSelection
     };
 };
 
@@ -13,7 +15,6 @@ export const mapToDispatch = dispatch => {
   return {
     onClose: user => listing => () => {
       dispatch({type: 'drawerClose' });
-
       dispatch(joinRoom(listing.id)(user));
     },
     onRequestChange: open => {
@@ -21,6 +22,9 @@ export const mapToDispatch = dispatch => {
     },
     onToggled: (event, newState) => {
       dispatch({type: 'drawerOfflineChange', state: newState});
+    },
+    onCameraModeSelected: cameraMode => {
+      dispatch({type: 'onCameraModeSelected', payload: cameraMode});
     }
   };
 };

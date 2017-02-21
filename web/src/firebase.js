@@ -94,7 +94,6 @@ const updateUser = (wallPath, user) => {
 };
 
 let currentWallRef;
-
 const getWall = wallPath => dispatch => () => {
   if (currentWallRef) {
     currentWallRef.off();

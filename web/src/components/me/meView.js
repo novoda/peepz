@@ -8,7 +8,6 @@ import { css } from 'aphrodite/no-important';
 import Style from './me.style';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg';
-const FIVE_MINTUES_MS = (5 * 60) * 1000;
 
 export default class MeView extends React.Component {
 
@@ -64,20 +63,34 @@ export default class MeView extends React.Component {
   }
 
   componentDidMount() {
+    this._scheduleAutomaticPhotos(this.props.cameraModeSelection);
+  }
+
+  _scheduleAutomaticPhotos(cameraModeSelection) {
+    if (this.autoScreenshotTask) {
+      clearInterval(this.autoScreenshotTask);
+    }
     const autoScreenshot = () => {
       if (!this.props.requestAutomaticScreenshot) {
         this.props.automaticScreenshot();
       }
     };
-    this.autoScreenshotTask = setInterval(autoScreenshot, FIVE_MINTUES_MS);
+    const cameraInterval = cameraModeSelection.interval;
+    if (cameraInterval > 0) {
+      this.autoScreenshotTask = setInterval(autoScreenshot, cameraInterval);
+    }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     if (this.props.requestManualScreenshot) {
       const screenshot = this.refs.webcam.getScreenshot();
       const user = this.props.user;
       const roomId = this.props.roomId;
       this.props.screenshot(roomId, user, screenshot);
+    }
+
+    if (prevProps.cameraModeSelection.id !== this.props.cameraModeSelection.id) {
+      this._scheduleAutomaticPhotos(this.props.cameraModeSelection);
     }
   }
 

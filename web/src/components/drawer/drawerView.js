@@ -3,6 +3,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import Divider from 'material-ui/Divider';
 import Toggle from 'material-ui/Toggle';
+import DropDownMenu from 'material-ui/DropDownMenu';
 
 export default class DrawerView extends React.Component {
 
@@ -12,9 +13,16 @@ export default class DrawerView extends React.Component {
         onRequestChange={this.props.onRequestChange}>
         <Me user={this.props.user}/>
         <Divider />
-        <Rooms onClose={this.props.onClose(this.props.user)} listings={this.props.roomListing} />
+        <Rooms
+          onClose={this.props.onClose(this.props.user)}
+          listings={this.props.roomListing} />
         <Divider />
-        <Settings onToggled={this.props.onToggled} options={this.props.options} />
+        <Settings
+          onToggled={this.props.onToggled}
+          options={this.props.options}
+          cameraModes={this.props.cameraModes}
+          cameraModeSelection={this.props.cameraModeSelection}
+          onCameraModeSelected={this.props.onCameraModeSelected}/>
       </Drawer>
     );
   }
@@ -41,11 +49,37 @@ const Rooms = ({onClose, listings}) => {
   );
 };
 
-const Settings = ({options, onToggled}) => {
+const Settings = ({options, onToggled, cameraModes, cameraModeSelection, onCameraModeSelected}) => {
   return (
     <div>
       <h2>Options</h2>
       <Toggle onToggle={onToggled} toggled={options.showOffline} label={'Show offline peepz'}/>
+      <CameraMode cameraModes={cameraModes} cameraModeSelection={cameraModeSelection} onCameraModeSelected={onCameraModeSelected}/>
+    </div>
+  );
+};
+
+const CameraMode = ({cameraModes, cameraModeSelection, onCameraModeSelected}) => {
+  const cameraOptions = cameraModes.sort((a, b) => {
+    return a.sort - b.sort;
+  }).map(each => {
+    return (
+      <MenuItem key={each.id} value={each.id} primaryText={each.label}/>
+    );
+  });
+
+  const handleChange = cameraModes => (event, index, value) => {
+    onCameraModeSelected(cameraModes.filter(each => each.id === value)[0]);
+  };
+
+  return (
+    <div>
+      <div>Camera mode:</div>
+      <DropDownMenu
+        value={cameraModeSelection.id}
+        onChange={handleChange(cameraModes)}>
+        {cameraOptions}
+      </DropDownMenu>
     </div>
   );
 };
