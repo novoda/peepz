@@ -1,12 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
 
-buildProperties {
-    debugSigning {
-        file rootProject.file('debugSigning.properties')
-    }
-}
-
 android {
     compileSdkVersion 25
     buildToolsVersion "23.0.3"
@@ -22,12 +16,7 @@ android {
     }
 
     signingConfigs {
-        debug {
-            storeFile file("../debug.keystore")
-            storePassword buildProperties.debugSigning['storePassword'].string
-            keyAlias buildProperties.debugSigning['keyAlias'].string
-            keyPassword buildProperties.debugSigning['keyPassword'].string
-        }
+        debug.storeFile rootProject.file('debug.keystore')
     }
 
     buildTypes {
