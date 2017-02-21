@@ -9,21 +9,21 @@ buildProperties {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '25.0.2'
 
     defaultConfig {
-        applicationId "com.novoda.peepz"
+        applicationId 'com.novoda.peepz'
         minSdkVersion 21
         targetSdkVersion 22
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner 'android.support.test.runner.AndroidJUnitRunner'
     }
 
     signingConfigs {
         debug {
-            storeFile file("../debug.keystore")
+            storeFile file('../debug.keystore')
             storePassword buildProperties.debugSigning['storePassword'].string
             keyAlias buildProperties.debugSigning['keyAlias'].string
             keyPassword buildProperties.debugSigning['keyPassword'].string
