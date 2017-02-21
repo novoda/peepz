@@ -7,6 +7,7 @@
         <item name="android:windowTranslucentStatus">true</item>
         <item name="peepzToolbarDefStyle">@style/PeepzApp.Toolbar</item>
         <item name="radioButtonWidgetDefStyle">@style/PeepzApp.RadioButtonWidget</item>
+        <item name="switchWidgetDefStyle">@style/PeepzApp.SwitchWidget</item>
         <item name="alertDialogTheme">@style/Theme.AppCompat.Light.Dialog.Alert</item>
         <item name="floatingActionButtonDefStyle">@style/PeepzApp.FloatingActionButton</item>
         <item name="actionMenuTextColor">@color/purple_text</item>
@@ -24,6 +25,16 @@
 
     <style name="PeepzApp.RadioButtonWidget">
         <item name="android:minHeight">48dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:foreground">@drawable/clickable_widget_foreground</item>
+    </style>
+
+    <style name="PeepzApp.SwitchWidget">
+        <item name="android:minHeight">48dp</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:foreground">@drawable/clickable_widget_foreground</item>
     </style>
 
     <style name="PeepzApp.Toolbar.Theme" parent="Theme.AppCompat.Light">
@@ -64,6 +75,7 @@
     </style>
 
     <style name="PeepzApp.Settings.Dialog.Button">
+        <item name="android:background">@drawable/settings_dialog_button_background</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
         <item name="android:gravity">center</item>

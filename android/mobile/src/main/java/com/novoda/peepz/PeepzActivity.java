@@ -27,6 +27,7 @@ public class PeepzActivity extends BaseActivity {
     private AutomaticPreviewlessPictureTaker automaticPreviewlessPictureTaker;
     private HeartbeatPinger heartbeatPinger;
     private Settings settings;
+    private PeepzService peepzService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +53,7 @@ public class PeepzActivity extends BaseActivity {
                 new PeepFreshnessComparator(),
                 new ImageFreshnessPeepComparator()
         );
-        PeepzService peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator);
+        peepzService = new PeepzService(FirebaseDatabase.getInstance(), comparator, settings);
         peepzService.observeChanges(onPeepsUpdatedCallback);
     }
 
@@ -80,8 +81,10 @@ public class PeepzActivity extends BaseActivity {
 
             dialogView.bind(new SettingsDialogWidget.Callback() {
                 @Override
-                public void onClickOk(PictureTakeInterval interval) {
+                public void onClickOk(PictureTakeInterval interval, boolean shouldShowOfflinePeepz) {
+                    settings.setShouldShowOfflinePeepz(shouldShowOfflinePeepz);
                     automaticPreviewlessPictureTaker.change(interval);
+                    peepzService.observeChanges(onPeepsUpdatedCallback);
                     alertDialog.dismiss();
                 }
 
@@ -89,7 +92,7 @@ public class PeepzActivity extends BaseActivity {
                 public void onClickCancel() {
                     alertDialog.dismiss();
                 }
-            }, settings.getPictureTakeInterval());
+            }, settings.getPictureTakeInterval(), settings.shouldShowOfflinePeepz());
 
             alertDialog.show();
         }

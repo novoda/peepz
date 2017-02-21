@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 class Settings {
 
     private static final String KEY_INTERVAL = "key_interval";
+    private static final String KEY_SHOW_OFFLINE_PEEPZ = "key_show_offline_peepz";
     private static final String FILE = "com.novoda.peepz.settings";
     private static final PictureTakeInterval DEFAULT_INTERVAL = PictureTakeInterval.FREQUENT;
 
@@ -32,6 +33,14 @@ class Settings {
 
     public void setPictureTakeInterval(PictureTakeInterval interval) {
         sharedPreferences.edit().putInt(KEY_INTERVAL, interval.id()).apply();
+    }
+
+    public boolean shouldShowOfflinePeepz() {
+        return sharedPreferences.getBoolean(KEY_SHOW_OFFLINE_PEEPZ, true);
+    }
+
+    public void setShouldShowOfflinePeepz(boolean shouldShowOfflinePeepz) {
+        sharedPreferences.edit().putBoolean(KEY_SHOW_OFFLINE_PEEPZ, shouldShowOfflinePeepz).apply();
     }
 
 }
