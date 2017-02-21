@@ -5,7 +5,15 @@
 
       "users": {
         "$userId": {
-          ".read": "auth.uid === $userId"
+          ".read": "auth.uid === $userId",
+          "rooms": {
+            "$roomId": {
+              "options": {
+                ".read": "auth.uid === $userId",
+                ".write": "auth.uid === $userId"
+              }
+            }
+          }
         }
       },
 
@@ -22,8 +30,8 @@
           },
 
           "wall": {
-            ".read": "data.parent().child('members').child(auth.uid).exists()",
-            "$userId": {
+              ".read": "data.parent().child('members').child(auth.uid).exists()",
+              "$userId": {
               ".write": "auth.uid === $userId"
             }
           }
