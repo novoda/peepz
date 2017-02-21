@@ -1,2 +1,3 @@
+rootProject.name = 'peepz-android'
 include ':core'
 include ':mobile'
