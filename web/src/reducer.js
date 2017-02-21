@@ -84,19 +84,11 @@ const wall = (state = [], action) => {
   }
 };
 
-
-const cameraModesState = {
-  id0: { id: 'id0', sort: 2, interval: -1, label: 'off'},
-  id1: { id: 'id1', sort: 0, interval: 120000, label: 'so so'},
-  id2: { id: 'id2', sort: 1, interval: 300000, label: 'sometimes'}
-};
-
 const offlineTimeout = 900000;
-
-const room = (state = { options: { cameraModes: values(cameraModesState), offlineTimeout } }, action) => {
+const room = (state = { options: { cameraModes: [], offlineTimeout } }, action) => {
   switch(action.type) {
     case 'onRoomOptions':
-      return {...state, options: action.payload};
+      return {...state, options: {...action.payload, cameraModes: values(action.payload.cameraModes)}};
 
     case 'onRoomJoined':
       return {...state, id: action.payload};
@@ -110,8 +102,7 @@ const roomSelection = (state = 'novoda') => {
   return state;
 };
 
-const defaultCameraSelection = cameraModesState.id1;
-const drawer = (state = {roomListing: [], open: false, options: { showOffline: true}, cameraModeSelection: defaultCameraSelection}, action) => {
+const drawer = (state = {roomListing: [], open: false, options: { showOffline: true}, cameraModeSelectionId: ''}, action) => {
   switch(action.type) {
       case 'drawerClose':
         return {...state, open: false};
@@ -126,8 +117,11 @@ const drawer = (state = {roomListing: [], open: false, options: { showOffline: t
       case 'onRoomListing':
         return {...state, roomListing: values(action.payload)};
 
+      case 'onUserRoomOptions':
+        return {...state, cameraModeSelectionId: action.payload.cameraModeSelection};
+
       case 'onCameraModeSelected':
-        return {...state, cameraModeSelection: action.payload};
+        return {...state, cameraModeSelectionId: action.payload.id};
       default:
         return state;
   }

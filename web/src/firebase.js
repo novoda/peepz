@@ -75,6 +75,8 @@ const joinRoom = roomId => user => dispatch => {
       return dispatch({type: 'onRoomJoined', payload: roomId});
     })
     .then(getWall(wallPath)(dispatch))
+    .then(getRoomOptions(`wip/rooms/${roomId}/options`)(dispatch))
+    .then(getUserOptions(`wip/users/${user.uid}/rooms/${roomId}/options`)(dispatch))
     .then(() => {
       return dispatch({type: 'onRoomLoaded'});
     }).catch(() => {
@@ -105,6 +107,33 @@ const getWall = wallPath => dispatch => () => {
   });
 };
 
+let currentOptionsRef;
+const getRoomOptions = optionsPath => dispatch => () => {
+  if (currentOptionsRef) {
+    currentOptionsRef.off();
+  }
+  currentOptionsRef = fb.database().ref(optionsPath);
+  currentOptionsRef.on('value', snapshot => {
+    const result = snapshot.val() || {};
+    dispatch({type: 'onRoomOptions', payload: result });
+  });
+};
+
+const getUserOptions = optionsPath => dispatch => () => {
+  return fb.database().ref(optionsPath).once('value', snapshot => {
+    const result = snapshot.val();
+    if (result) {
+      dispatch({type: 'onUserRoomOptions', payload: result });
+    }
+  });
+};
+
+const updateUserRoomOptions = (userId, roomId, cameraMode) => dispatch => {
+  dispatch({type: 'onCameraModeSelected', payload: cameraMode});
+  return fb.database().ref(`wip/users/${userId}/rooms/${roomId}/options/cameraModeSelection`)
+    .set(cameraMode.id);
+};
+
 export {
   fetchSignIn,
   requestSignIn,
@@ -112,5 +141,6 @@ export {
   lastSeen,
   logout,
   roomListing,
-  joinRoom
+  joinRoom,
+  updateUserRoomOptions
 };

@@ -21,8 +21,8 @@ export default class DrawerView extends React.Component {
           onToggled={this.props.onToggled}
           options={this.props.options}
           cameraModes={this.props.cameraModes}
-          cameraModeSelection={this.props.cameraModeSelection}
-          onCameraModeSelected={this.props.onCameraModeSelected}/>
+          cameraModeSelectionId={this.props.cameraModeSelectionId}
+          onCameraModeSelected={this.props.onCameraModeSelected(this.props.user.uid, this.props.roomId)}/>
       </Drawer>
     );
   }
@@ -49,17 +49,17 @@ const Rooms = ({onClose, listings}) => {
   );
 };
 
-const Settings = ({options, onToggled, cameraModes, cameraModeSelection, onCameraModeSelected}) => {
+const Settings = ({options, onToggled, cameraModes, cameraModeSelectionId, onCameraModeSelected}) => {
   return (
     <div>
       <h2>Options</h2>
       <Toggle onToggle={onToggled} toggled={options.showOffline} label={'Show offline peepz'}/>
-      <CameraMode cameraModes={cameraModes} cameraModeSelection={cameraModeSelection} onCameraModeSelected={onCameraModeSelected}/>
+      <CameraMode cameraModes={cameraModes} cameraModeSelectionId={cameraModeSelectionId} onCameraModeSelected={onCameraModeSelected}/>
     </div>
   );
 };
 
-const CameraMode = ({cameraModes, cameraModeSelection, onCameraModeSelected}) => {
+const CameraMode = ({cameraModes, cameraModeSelectionId, onCameraModeSelected}) => {
   const cameraOptions = cameraModes.sort((a, b) => {
     return a.sort - b.sort;
   }).map(each => {
@@ -76,7 +76,7 @@ const CameraMode = ({cameraModes, cameraModeSelection, onCameraModeSelected}) =>
     <div>
       <div>Camera mode:</div>
       <DropDownMenu
-        value={cameraModeSelection.id}
+        value={cameraModeSelectionId}
         onChange={handleChange(cameraModes)}>
         {cameraOptions}
       </DropDownMenu>

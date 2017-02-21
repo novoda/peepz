@@ -1,13 +1,14 @@
-import { joinRoom } from '../../firebase';
+import { joinRoom, updateUserRoomOptions } from '../../firebase';
 
 export const mapToProps = state => {
   return {
       roomListing: state.drawer.roomListing,
+      roomId: state.room.id,
       open: state.drawer.open,
       user: state.user,
       options: state.drawer.options,
       cameraModes: state.room.options.cameraModes,
-      cameraModeSelection: state.drawer.cameraModeSelection
+      cameraModeSelectionId: state.drawer.cameraModeSelectionId
     };
 };
 
@@ -23,8 +24,8 @@ export const mapToDispatch = dispatch => {
     onToggled: (event, newState) => {
       dispatch({type: 'drawerOfflineChange', state: newState});
     },
-    onCameraModeSelected: cameraMode => {
-      dispatch({type: 'onCameraModeSelected', payload: cameraMode});
+    onCameraModeSelected: (userId, roomId) => cameraMode => {
+      dispatch(updateUserRoomOptions(userId, roomId, cameraMode));
     }
   };
 };
