@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import drawer from './reducers/drawerReducer';
 import values from 'object.values';
 
 const camera = (state = { requestScreenshot: false, isPreviewing: false , manualScreenshot: false}, action) => {
@@ -100,31 +101,6 @@ const room = (state = { options: { cameraModes: [], offlineTimeout } }, action) 
 
 const roomSelection = (state = 'novoda') => {
   return state;
-};
-
-const drawer = (state = {roomListing: [], open: false, options: { showOffline: true}, cameraModeSelectionId: ''}, action) => {
-  switch(action.type) {
-      case 'drawerClose':
-        return {...state, open: false};
-      case 'drawerChange':
-        return {...state, open: action.state};
-      case 'drawerToggle':
-        return {...state, open: !state.open};
-      case 'drawerOfflineChange': {
-        const newOptions = {...state.options, showOffline: !state.options.showOffline};
-        return {...state, options: newOptions};
-      }
-      case 'onRoomListing':
-        return {...state, roomListing: values(action.payload)};
-
-      case 'onUserRoomOptions':
-        return {...state, cameraModeSelectionId: action.payload.cameraModeSelection};
-
-      case 'onCameraModeSelected':
-        return {...state, cameraModeSelectionId: action.payload.id};
-      default:
-        return state;
-  }
 };
 
 const FIVE_MINTUES_MS = (5 * 60) * 1000;
