@@ -4,16 +4,8 @@ const createWallPath = roomId => {
   return `wip/rooms/${roomId}/wall`;
 };
 
-const fetchSignIn = () => dispatch => {
-  dispatch({type: 'fetchSignIn'});
-  const unsubscribe = fb.auth().onAuthStateChanged(result => {
-    unsubscribe();
-    if (result) {
-      dispatch({type: 'onSignedIn', payload: result});
-    } else {
-      dispatch({type: 'onSignedOut'});
-    }
-  });
+const fetchSignIn = {
+  type: 'fetchSignIn'
 };
 
 const requestSignIn = () => dispatch => {

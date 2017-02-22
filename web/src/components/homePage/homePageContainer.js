@@ -10,7 +10,7 @@ export const mapToProps = state => {
 export const mapToDispatch = dispatch => {
   return {
     fetchSignIn: () => {
-      dispatch(fetch());
+      dispatch(fetch);
     }
   };
 };
