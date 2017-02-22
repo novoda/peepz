@@ -6,6 +6,7 @@ import Controls from '../controls/Controls';
 import Webcam from 'react-webcam';
 import { css } from 'aphrodite/no-important';
 import Style from './me.style';
+import Console from '../../console';
 
 const hodor = 'https://raw.githubusercontent.com/kolodny/babel-plugin-hodor/master/hodor.jpg';
 
@@ -63,10 +64,10 @@ export default class MeView extends React.Component {
   }
 
   componentDidMount() {
-    this._scheduleAutomaticPhotos(this.props.cameraModeSelection);
+    this._scheduleAutomaticPhotos(this.props.cameraModeSelectionId, this.props.cameraModes);
   }
 
-  _scheduleAutomaticPhotos(cameraModeSelection) {
+  _scheduleAutomaticPhotos(cameraModeId, cameraModes) {
     if (this.autoScreenshotTask) {
       clearInterval(this.autoScreenshotTask);
     }
@@ -75,10 +76,17 @@ export default class MeView extends React.Component {
         this.props.automaticScreenshot();
       }
     };
-    const cameraInterval = cameraModeSelection.interval;
-    if (cameraInterval > 0) {
-      this.autoScreenshotTask = setInterval(autoScreenshot, cameraInterval);
+    const cameraModeSelection = this._selectCameraMode(cameraModeId, cameraModes);
+    if (!cameraModeSelection || cameraModeSelection.id === 'missing' || !cameraModeSelection.interval || cameraModeSelection.interval <= 0) {
+      return;
     }
+    Console.log('scheduling camera updates for: ', cameraModeSelection);
+    const cameraInterval = cameraModeSelection.interval;
+    this.autoScreenshotTask = setInterval(autoScreenshot, cameraInterval);
+  }
+
+  _selectCameraMode(cameraModeId, cameraModes) {
+    return cameraModes.filter(mode => mode.id === cameraModeId)[0];
   }
 
   componentDidUpdate(prevProps) {
@@ -89,8 +97,9 @@ export default class MeView extends React.Component {
       this.props.screenshot(roomId, user, screenshot);
     }
 
-    if (prevProps.cameraModeSelection.id !== this.props.cameraModeSelection.id) {
-      this._scheduleAutomaticPhotos(this.props.cameraModeSelection);
+    if ((prevProps.cameraModeSelectionId !== this.props.cameraModeSelectionId)
+        || prevProps.cameraModes !== this.props.cameraModes) {
+      this._scheduleAutomaticPhotos(this.props.cameraModeSelectionId, this.props.cameraModes);
     }
   }
 

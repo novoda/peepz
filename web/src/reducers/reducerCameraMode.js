@@ -1,16 +1,15 @@
-const FIVE_MINTUES_MS = (5 * 60) * 1000;
-
 const initialState = {
-  selection: {
-    id: 'missing',
-    interval: FIVE_MINTUES_MS
-  }
+  selectionId: 'missing'
 };
 
 const cameraMode = (state = initialState, action) => {
   switch(action.type) {
     case 'onCameraModeSelected':
-      return {...state, selection: action.payload};
+      return {...state, selectionId: action.payload.id};
+
+    case 'onUserRoomOptions':
+      return {...state, selectionId: action.payload.cameraModeSelection};
+
     default:
       return state;
   }

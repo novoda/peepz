@@ -8,7 +8,8 @@ export const mapToProps = state => {
     requestManualScreenshot: state.camera.requestManualScreenshot,
     user: state.user,
     roomId: state.room.id,
-    cameraModeSelection: state.cameraMode.selection
+    cameraModeSelectionId: state.cameraMode.selectionId,
+    cameraModes: state.room.options.cameraModes
   };
 };
 
