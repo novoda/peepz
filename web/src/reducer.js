@@ -1,30 +1,10 @@
 import { combineReducers } from 'redux';
 import drawer from './reducers/reducerDrawer';
 import cameraMode from './reducers/reducerCameraMode';
-
-import values from 'object.values';
-
-const camera = (state = { requestScreenshot: false, isPreviewing: false , manualScreenshot: false}, action) => {
-  switch (action.type) {
-    case 'showPreview':
-      return {...state, active: true};
-
-    case 'closePreview':
-      return {...state, active: false};
-
-    case 'automaticScreenshot':
-      return {...state, active: true, requestAutomaticScreenshot: true};
-
-    case 'manualScreenshot':
-      return {...state, requestManualScreenshot: true};
-
-    case 'closeCamera':
-      return { active: false, requestManualScreenshot: false , requestAutomaticScreenshot: false};
-
-    default:
-      return state;
-  }
-};
+import loading from './reducers/reducerLoading';
+import wall from './reducers/reducerWall';
+import room from './reducers/reducerRoom';
+import camera from './reducers/reducerCamera';
 
 const user = (state = {}, action) => {
   switch(action.type) {
@@ -50,51 +30,6 @@ const isSignedIn = (state = false, action) => {
 
     case 'onSignedOut':
       return false;
-
-    default:
-      return state;
-  }
-};
-
-const loading = (state = { isLoadingSignIn: true, isLoadingRoom: true }, action) => {
-  switch(action.type) {
-    case 'fetchSignIn':
-      return {...state, isLoadingSignIn: true};
-
-    case 'onSignedIn':
-    case 'onSignedOut':
-      return {...state, isLoadingSignIn: false};
-
-    case 'requestJoinRoom':
-      return {...state, isLoadingRoom: true};
-
-    case 'onRoomLoaded':
-    case 'onRoomError':
-      return {...state, isLoadingRoom: false};
-
-    default:
-      return state;
-  }
-};
-
-const wall = (state = [], action) => {
-  switch(action.type) {
-    case 'onUpdate':
-      return values(action.payload);
-
-    default:
-      return state;
-  }
-};
-
-const offlineTimeout = 900000;
-const room = (state = { options: { cameraModes: [], offlineTimeout } }, action) => {
-  switch(action.type) {
-    case 'onRoomOptions':
-      return {...state, options: {...action.payload, cameraModes: values(action.payload.cameraModes)}};
-
-    case 'onRoomJoined':
-      return {...state, id: action.payload};
 
     default:
       return state;
