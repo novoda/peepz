@@ -21,7 +21,7 @@ export const mapToDispatch = dispatch => {
     screenshot: (roomId, user, screenshot) => {
       dispatch({type: 'closeCamera'});
       if (screenshot !== 'data:,') {
-        dispatch(submitScreenshot(roomId)(user)(screenshot));
+        dispatch(submitScreenshot(screenshot));
       } else {
         Console.error('screenshot was invalid, skipping');
       }

@@ -28,20 +28,6 @@ const dispatchSignedIn = dispatch => user => () => {
   dispatch({type: 'onSignedIn', payload: user});
 };
 
-const submitScreenshot = roomId => user => screenshot => () => {
-  const wallPath = createWallPath(roomId);
-  return fb.storage()
-    .ref()
-    .child(`${wallPath}/${user.uid}/${user.uid}.webp`)
-    .putString(screenshot, 'data_url')
-    .then(result => {
-      return fb.database().ref(`${wallPath}/${user.uid}/image`).set({
-        payload: result.downloadURL,
-        timestamp: Date.now()
-      });
-    });
-};
-
 const lastSeen = roomId => userId => () => {
   fb.database().ref(`${createWallPath(roomId)}/${userId}`).update({
     lastSeen: Date.now()
@@ -132,6 +118,13 @@ const updateUserRoomOptions = (userId, roomId, cameraMode) => dispatch => {
   dispatch({type: 'onCameraModeSelected', payload: cameraMode});
   return fb.database().ref(`wip/users/${userId}/rooms/${roomId}/options/cameraModeSelection`)
     .set(cameraMode.id);
+};
+
+const submitScreenshot = picture => {
+  return {
+    type: 'submitScreenshot',
+    payload: picture
+  };
 };
 
 export {

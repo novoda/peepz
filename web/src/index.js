@@ -11,7 +11,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 firebase.initializeApp(config);
 injectTapEventPlugin();
 
-const store = create();
+const store = create(firebase);
 
 render(
   <Root store={store} />,
