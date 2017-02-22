@@ -1,9 +1,12 @@
 import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import {List, ListItem, makeSelectable} from 'material-ui/List';
 import Divider from 'material-ui/Divider';
 import Toggle from 'material-ui/Toggle';
 import DropDownMenu from 'material-ui/DropDownMenu';
+
+const SelectableList = makeSelectable(List);
 
 export default class DrawerView extends React.Component {
 
@@ -15,7 +18,8 @@ export default class DrawerView extends React.Component {
         <Divider />
         <Rooms
           onClose={this.props.onClose}
-          listings={this.props.roomListing} />
+          listings={this.props.roomListing}
+          roomId={this.props.roomId} />
         <Divider />
         <Settings
           onToggled={this.props.onToggled}
@@ -35,16 +39,18 @@ const Me = ({user}) => {
   );
 };
 
-const Rooms = ({onClose, listings}) => {
+const Rooms = ({onClose, listings, roomId}) => {
   const rooms = listings.map(each => {
     return (
-      <MenuItem key={each.id} onTouchTap={onClose(each)}>{each.name}</MenuItem>
+      <ListItem key={each.id} value={each.id} onTouchTap={onClose(each)} primaryText={each.name} />
     );
   });
   return (
     <div>
       <h2>Rooms</h2>
+      <SelectableList value={roomId}>
       {rooms}
+      </SelectableList>
     </div>
   );
 };
