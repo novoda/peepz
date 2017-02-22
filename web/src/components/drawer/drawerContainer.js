@@ -23,6 +23,7 @@ export const mapToDispatch = dispatch => {
     },
     onToggled: (event, newState) => {
       dispatch({type: 'drawerOfflineChange', state: newState});
+      dispatch({type: 'updateUserRoomOptions', payload: { showOffline: newState}});
     },
     onCameraModeSelected: () => cameraMode => {
       dispatch({type: 'onCameraModeSelected', payload: cameraMode});
