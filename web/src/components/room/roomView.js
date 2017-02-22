@@ -38,14 +38,18 @@ export default class RoomView extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (!prevProps.room.id && this.props.room.id) {
-      this._startUpdatingLastSeen(this.props.room.id, this.props.user);
+    if (this._hasJoinedRoom(prevProps)) {
+      this._startUpdatingLastSeen();
     }
   }
 
-  _startUpdatingLastSeen(roomId, user) {
+  _hasJoinedRoom(prevProps) {
+    return !prevProps.room.id && this.props.room.id;
+  }
+
+  _startUpdatingLastSeen() {
     const updateLastSeen = () => {
-      this.props.updateLastSeen(roomId, user);
+      this.props.updateLastSeen();
     };
     updateLastSeen();
     this.updateLastSeenTask = setInterval(updateLastSeen, FIVE_MINUTES);

@@ -17,6 +17,11 @@ const firebaseMiddleware = firebase => store => next => action => {
         .then(continueToNext);
       break;
 
+
+    case 'lastSeen':
+      lastSeen(firebase)(state.room.id)(state.user.uid)(store.dispatch);
+      break;
+
     default:
       return next(action);
   }
@@ -44,6 +49,12 @@ const submitScreenshot = firebase => roomId => user => screenshot => {
         timestamp: Date.now()
       });
     });
+};
+
+const lastSeen = firebase => roomId => userId => () => {
+  firebase.database().ref(`wip/rooms/${roomId}/wall/${userId}`).update({
+    lastSeen: Date.now()
+  });
 };
 
 export default firebaseMiddleware;

@@ -1,9 +1,5 @@
 import * as fb from 'firebase';
 
-const createWallPath = roomId => {
-  return `wip/rooms/${roomId}/wall`;
-};
-
 const fetchSignIn = {
   type: 'fetchSignIn'
 };
@@ -12,10 +8,8 @@ const requestSignIn = {
   type: 'requestSignIn'
 };
 
-const lastSeen = roomId => userId => () => {
-  fb.database().ref(`${createWallPath(roomId)}/${userId}`).update({
-    lastSeen: Date.now()
-  });
+const lastSeen = {
+  type: 'lastSeen'
 };
 
 const logout = {

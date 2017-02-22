@@ -17,8 +17,8 @@ export const mapToProps = state => {
 
 export const mapToDispatch = dispatch => {
   return {
-    updateLastSeen: (roomId, user) => {
-      dispatch(lastSeen(roomId)(user.uid));
+    updateLastSeen: () => {
+      dispatch(lastSeen);
     },
     joinRoom: roomId => {
       dispatch(joinRoom(roomId));
