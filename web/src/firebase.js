@@ -1,5 +1,3 @@
-import * as fb from 'firebase';
-
 const fetchSignIn = {
   type: 'fetchSignIn'
 };
@@ -27,10 +25,11 @@ const joinRoom = roomId => {
   };
 };
 
-const updateUserRoomOptions = (userId, roomId, cameraMode) => dispatch => {
-  dispatch({type: 'onCameraModeSelected', payload: cameraMode});
-  return fb.database().ref(`wip/users/${userId}/rooms/${roomId}/options/cameraModeSelection`)
-    .set(cameraMode.id);
+const updateUserRoomOptions = options => {
+  return {
+    type: 'updateUserRoomOptions',
+    payload: options
+  };
 };
 
 const submitScreenshot = picture => {

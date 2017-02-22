@@ -24,7 +24,7 @@ const drawer = (state = intialState, action) => {
       case 'onUserRoomOptions':
         return {...state, options: action.payload};
       case 'onCameraModeSelected':
-        return {...state, cameraModeSelectionId: action.payload.id};
+        return {...state, options: { ...state.options, cameraModeSelection: action.payload.id }};
       default:
         return state;
   }
