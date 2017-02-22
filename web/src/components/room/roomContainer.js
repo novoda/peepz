@@ -20,8 +20,8 @@ export const mapToDispatch = dispatch => {
     updateLastSeen: (roomId, user) => {
       dispatch(lastSeen(roomId)(user.uid));
     },
-    joinRoom: (roomId, user) => {
-      dispatch(joinRoom(roomId)(user));
+    joinRoom: roomId => {
+      dispatch(joinRoom(roomId));
     }
   };
 };

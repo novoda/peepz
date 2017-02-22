@@ -26,44 +26,11 @@ const roomListing = {
   type: 'roomListing'
 };
 
-const joinRoom = roomId => user => dispatch => {
-  const wallPath = createWallPath(roomId);
-  dispatch({type: 'requestJoinRoom'});
-  fb.database()
-    .ref(wallPath)
-    .once('value')
-    .then(hasUser(user))
-    .then(userExists => {
-      return userExists ? {} : updateUser(wallPath, user);
-    })
-    .then(() => {
-      return dispatch({type: 'onRoomJoined', payload: roomId});
-    })
-    .then(() => {
-      return dispatch({type: 'getWall'});
-    })
-    .then(() => {
-      return dispatch({type: 'getRoomOptions'});
-    })
-    .then(() => {
-      return dispatch({type: 'getUserOptions'});
-    })
-    .then(() => {
-      return dispatch({type: 'onRoomLoaded'});
-    }).catch(() => {
-      return dispatch({type: 'onRoomError'});
-    });
-};
-
-const hasUser = user => snapshot => {
-  return snapshot.child(user.uid).exists();
-};
-
-const updateUser = (wallPath, user) => {
-  return fb.database().ref(`${wallPath}/${user.uid}`).set({
-    uid: user.uid,
-    name: user.displayName
-  });
+const joinRoom = roomId => {
+  return {
+    type: 'joinRoom',
+    payload: roomId
+  };
 };
 
 const updateUserRoomOptions = (userId, roomId, cameraMode) => dispatch => {
