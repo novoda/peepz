@@ -3,12 +3,14 @@ import { compose, createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import loggerMiddleware from './loggerMiddlewear';
 import firebaseMiddleware from './firebaseMiddlewear';
+import wallMiddleware from './middleware/wallMiddleware';
 
 const enhancer = firebase => compose(
   applyMiddleware(
     thunk,
     loggerMiddleware,
-    firebaseMiddleware(firebase)
+    firebaseMiddleware(firebase),
+    wallMiddleware(firebase)
   )
 );
 
