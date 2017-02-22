@@ -12,10 +12,10 @@ export const mapToProps = state => {
 export const mapToDispatch = dispatch => {
   return {
     fetchSignIn: () => {
-      dispatch(fetch());
+      dispatch(fetch);
     },
     onLogoutClicked: () => {
-      dispatch(logout());
+      dispatch(logout);
       browserHistory.push('/');
     }
   };

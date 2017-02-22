@@ -18,10 +18,8 @@ const lastSeen = roomId => userId => () => {
   });
 };
 
-const logout = () => dispatch => {
-  return fb.auth().signOut().then(() => {
-    dispatch({type: 'onSignedOut'});
-  });
+const logout = {
+  type: 'logout'
 };
 
 const roomListing = {
