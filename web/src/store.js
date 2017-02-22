@@ -6,6 +6,7 @@ import firebaseMiddleware from './firebaseMiddlewear';
 import wallMiddleware from './middleware/wallMiddleware';
 import authMiddleware from './middleware/authMiddleware';
 import roomOptionsMiddleware from './middleware/roomOptionsMiddleware';
+import userRoomOptionsMiddleware from './middleware/userRoomOptionsMiddleware';
 
 const enhancer = firebase => compose(
   applyMiddleware(
@@ -14,7 +15,8 @@ const enhancer = firebase => compose(
     firebaseMiddleware(firebase),
     wallMiddleware(firebase),
     authMiddleware(firebase),
-    roomOptionsMiddleware(firebase)
+    roomOptionsMiddleware(firebase),
+    userRoomOptionsMiddleware(firebase)
   )
 );
 
