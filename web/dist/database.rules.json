@@ -30,9 +30,9 @@
           },
 
           "wall": {
-              ".read": "data.parent().child('members').child(auth.uid).exists()",
-              "$userId": {
-              ".write": "auth.uid === $userId"
+            ".read": "data.parent().child('members').child(auth.uid).exists()",
+            "$userId": {
+              ".write": "data.parent().parent().child('members').child(auth.uid).exists() && auth.uid === $userId"
             }
           }
 
