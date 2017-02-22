@@ -14,12 +14,12 @@ export default class DrawerView extends React.Component {
         <Me user={this.props.user}/>
         <Divider />
         <Rooms
-          onClose={this.props.onClose(this.props.user)}
+          onClose={this.props.onClose}
           listings={this.props.roomListing} />
         <Divider />
         <Settings
           onToggled={this.props.onToggled}
-          options={this.props.options}
+          showOffline={this.props.showOffline}
           cameraModes={this.props.cameraModes}
           cameraModeSelectionId={this.props.cameraModeSelectionId}
           onCameraModeSelected={this.props.onCameraModeSelected(this.props.user.uid, this.props.roomId)}/>
@@ -49,11 +49,11 @@ const Rooms = ({onClose, listings}) => {
   );
 };
 
-const Settings = ({options, onToggled, cameraModes, cameraModeSelectionId, onCameraModeSelected}) => {
+const Settings = ({showOffline, onToggled, cameraModes, cameraModeSelectionId, onCameraModeSelected}) => {
   return (
     <div>
       <h2>Options</h2>
-      <Toggle onToggle={onToggled} toggled={options.showOffline} label={'Show offline peepz'}/>
+      <Toggle onToggle={onToggled} toggled={showOffline} label={'Show offline peepz'}/>
       <CameraMode cameraModes={cameraModes} cameraModeSelectionId={cameraModeSelectionId} onCameraModeSelected={onCameraModeSelected}/>
     </div>
   );

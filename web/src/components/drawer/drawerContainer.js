@@ -6,17 +6,17 @@ export const mapToProps = state => {
       roomId: state.room.id,
       open: state.drawer.open,
       user: state.user,
-      options: state.drawer.options,
+      showOffline: state.drawer.options.showOffline,
       cameraModes: state.room.options.cameraModes,
-      cameraModeSelectionId: state.drawer.cameraModeSelectionId
+      cameraModeSelectionId: state.drawer.options.cameraModeSelection
     };
 };
 
 export const mapToDispatch = dispatch => {
   return {
-    onClose: user => listing => () => {
+    onClose: listing => () => {
       dispatch({type: 'drawerClose' });
-      dispatch(joinRoom(listing.id)(user));
+      dispatch(joinRoom(listing.id));
     },
     onRequestChange: open => {
       dispatch({type: 'drawerChange', state: open});

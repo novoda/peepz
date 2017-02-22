@@ -17,7 +17,6 @@ const firebaseMiddleware = firebase => store => next => action => {
         .then(continueToNext);
       break;
 
-
     case 'lastSeen':
       lastSeen(firebase)(state.room.id)(state.user.uid)(store.dispatch);
       break;
