@@ -8,6 +8,11 @@ const firebaseMiddleware = firebase => store => next => action => {
       submitScreenshot(firebase)(state.room.id)(state.user)(action.payload)
         .then(continueToNext);
       break;
+
+    case 'roomListing':
+      roomListing(firebase)(state.user.uid)(store.dispatch);
+      break;
+      
     default:
       return next(action);
   }
@@ -25,6 +30,13 @@ const submitScreenshot = firebase => roomId => user => screenshot => {
         timestamp: Date.now()
       });
     });
+};
+
+const roomListing = firebase => userId => dispatch => {
+  firebase.database().ref(`wip/users/${userId}/rooms`).on('value', snapshot => {
+    const listings = snapshot.val();
+    dispatch({type: 'onRoomListing', payload: listings});
+  });
 };
 
 const createWallPath = roomId => {

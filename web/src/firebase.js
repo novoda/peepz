@@ -40,11 +40,8 @@ const logout = () => dispatch => {
   });
 };
 
-const roomListing = userId => dispatch => {
-  fb.database().ref(`wip/users/${userId}/rooms`).on('value', snapshot => {
-    const listings = snapshot.val();
-    dispatch({type: 'onRoomListing', payload: listings});
-  });
+const roomListing = {
+  type: 'roomListing'
 };
 
 const joinRoom = roomId => user => dispatch => {
