@@ -42,7 +42,9 @@ const joinRoom = roomId => user => dispatch => {
     .then(() => {
       return dispatch({type: 'getWall'});
     })
-    .then(getRoomOptions(`wip/rooms/${roomId}/options`)(dispatch))
+    .then(() => {
+      return dispatch({type: 'getRoomOptions'});
+    })
     .then(getUserOptions(`wip/users/${user.uid}/rooms/${roomId}/options`)(dispatch))
     .then(() => {
       return dispatch({type: 'onRoomLoaded'});
@@ -59,18 +61,6 @@ const updateUser = (wallPath, user) => {
   return fb.database().ref(`${wallPath}/${user.uid}`).set({
     uid: user.uid,
     name: user.displayName
-  });
-};
-
-let currentOptionsRef;
-const getRoomOptions = optionsPath => dispatch => () => {
-  if (currentOptionsRef) {
-    currentOptionsRef.off();
-  }
-  currentOptionsRef = fb.database().ref(optionsPath);
-  currentOptionsRef.on('value', snapshot => {
-    const result = snapshot.val() || {};
-    dispatch({type: 'onRoomOptions', payload: result });
   });
 };
 
