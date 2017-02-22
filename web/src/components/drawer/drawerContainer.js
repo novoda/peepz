@@ -1,4 +1,4 @@
-import { joinRoom, updateUserRoomOptions } from '../../firebase';
+import { joinRoom } from '../../firebase';
 
 export const mapToProps = state => {
   return {
