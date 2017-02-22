@@ -7,7 +7,7 @@ export const mapToProps = () => {
 export const mapToDispatch = dispatch => {
   return {
     requestSignIn: () => {
-      dispatch(signIn());
+      dispatch(signIn);
     }
   };
 };

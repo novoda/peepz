@@ -8,16 +8,8 @@ const fetchSignIn = {
   type: 'fetchSignIn'
 };
 
-const requestSignIn = () => dispatch => {
-  const provider = new fb.auth.GoogleAuthProvider();
-  fb.auth().signInWithPopup(provider).then(result => {
-    const user = result.user;
-    dispatchSignedIn(dispatch)(user)();
-  });
-};
-
-const dispatchSignedIn = dispatch => user => () => {
-  dispatch({type: 'onSignedIn', payload: user});
+const requestSignIn = {
+  type: 'requestSignIn'
 };
 
 const lastSeen = roomId => userId => () => {
