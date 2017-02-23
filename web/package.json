@@ -7,7 +7,7 @@
     "test": "jest --config ./jest.config",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "start": "webpack-dev-server --progress --colors --https --host 0.0.0.0",
-    "build": "webpack --optimize-minimize"
+    "build": "webpack --optimize-minimize --define process.env.NODE_ENV='production'"
   },
   "dependencies": {
     "aphrodite": "^1.1.0",
