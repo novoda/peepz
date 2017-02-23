@@ -7,6 +7,9 @@ const wall = (state = initialState, action) => {
     case 'onUpdate':
       return values(action.payload);
 
+    case 'requestJoinRoom':
+      return initialState;
+
     default:
       return state;
   }
