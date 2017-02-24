@@ -1,4 +1,4 @@
-import { lastSeen, joinRoom } from '../../firebase';
+import { lastSeen, joinRoom } from '../../actions';
 
 export const mapToProps = state => {
   return {

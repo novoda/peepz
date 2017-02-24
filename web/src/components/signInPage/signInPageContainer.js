@@ -1,4 +1,4 @@
-import { requestSignIn as signIn} from '../../firebase';
+import { requestSignIn as signIn} from '../../actions';
 
 export const mapToProps = () => {
   return {};

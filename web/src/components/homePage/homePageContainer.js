@@ -1,4 +1,4 @@
-import { fetchSignIn as fetch} from '../../firebase';
+import { fetchSignIn as fetch} from '../../actions';
 
 export const mapToProps = state => {
   return {

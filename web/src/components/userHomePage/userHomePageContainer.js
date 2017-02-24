@@ -1,4 +1,4 @@
-import { roomListing } from '../../firebase';
+import { roomListing } from '../../actions';
 
 export const mapToProps = state => {
   return {

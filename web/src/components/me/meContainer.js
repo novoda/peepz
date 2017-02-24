@@ -1,4 +1,4 @@
-import { submitScreenshot } from '../../firebase';
+import { submitScreenshot } from '../../actions';
 import Console from '../../console';
 
 export const mapToProps = state => {
