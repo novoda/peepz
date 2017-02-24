@@ -1,4 +1,4 @@
-import { joinRoom } from '../../actions';
+import { joinRoom, drawerClose, drawerChange, updateUserRoomOptions, drawerOfflineChange, onCameraModeSelected} from '../../actions';
 
 export const mapToProps = state => {
   return {
@@ -15,19 +15,19 @@ export const mapToProps = state => {
 export const mapToDispatch = dispatch => {
   return {
     onClose: listing => () => {
-      dispatch({type: 'drawerClose' });
+      dispatch(drawerClose);
       dispatch(joinRoom(listing.id));
     },
-    onRequestChange: open => {
-      dispatch({type: 'drawerChange', state: open});
+    onRequestChange: state => {
+      dispatch(drawerChange(state));
     },
     onToggled: (event, newState) => {
-      dispatch({type: 'drawerOfflineChange', state: newState});
-      dispatch({type: 'updateUserRoomOptions', payload: { showOffline: newState}});
+      dispatch(drawerOfflineChange(newState));
+      dispatch(updateUserRoomOptions({showOffline: newState}));
     },
     onCameraModeSelected: () => cameraMode => {
-      dispatch({type: 'onCameraModeSelected', payload: cameraMode});
-      dispatch({type: 'updateUserRoomOptions', payload: { cameraModeSelection: cameraMode.id}});
+      dispatch(onCameraModeSelected(cameraMode));
+      dispatch(updateUserRoomOptions({ cameraModeSelection: cameraMode.id}));
     }
   };
 };

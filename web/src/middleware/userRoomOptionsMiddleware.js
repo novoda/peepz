@@ -1,11 +1,13 @@
+import { TYPES, onUserRoomOptions } from '../actions';
+
 const userRoomOptionsMiddleware = firebase => store => next => action => {
   const state = store.getState();
   switch (action.type) {
-    case 'getUserOptions':
+    case TYPES.GET_USER_OPTIONS:
       getUserOptions(firebase)(state.user.uid)(state.room.id)(store.dispatch);
       break;
 
-    case 'updateUserRoomOptions':
+    case TYPES.UPDATE_USER_ROOM_OPTIONS:
       updateUserRoomOptions(firebase)(state.user.uid)(state.room.id)(action.payload);
     break;
 
@@ -19,7 +21,7 @@ const getUserOptions = firebase => userId => roomId => dispatch => {
   return firebase.database().ref(optionsPath).once('value', snapshot => {
     const result = snapshot.val();
     if (result) {
-      dispatch({type: 'onUserRoomOptions', payload: result });
+      dispatch(onUserRoomOptions(result));
     }
   });
 };

@@ -1,3 +1,5 @@
+import { drawerToggle} from '../../actions';
+
 export const mapToProps = () => {
   return {};
 };
@@ -5,7 +7,7 @@ export const mapToProps = () => {
 export const mapToDispatch = dispatch => {
   return {
     toggleDrawer: () => {
-      dispatch({type: 'drawerToggle'});
+      dispatch(drawerToggle);
     }
   };
 };

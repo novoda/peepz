@@ -1,7 +1,9 @@
+import { TYPES, requestJoinRoom, onRoomJoined, onRoomError, getWall, getRoomOptions, getUserOptions, onRoomLoaded } from '../actions';
+
 const joinRoomMiddleware = firebase => store => next => action => {
   const state = store.getState();
   switch (action.type) {
-    case 'joinRoom':
+    case TYPES.JOIN_ROOM:
       joinRoom(firebase)(action.payload)(state.user)(store.dispatch);
       break;
     default:
@@ -12,7 +14,7 @@ const joinRoomMiddleware = firebase => store => next => action => {
 const joinRoom = firebase => roomId => user => dispatch => {
   const wallPath = `wip/rooms/${roomId}/wall`;
   const dispatchAction = dispatcher(dispatch);
-  dispatch({type: 'requestJoinRoom'});
+  dispatch(requestJoinRoom);
   firebase.database()
     .ref(wallPath)
     .once('value')
@@ -20,14 +22,12 @@ const joinRoom = firebase => roomId => user => dispatch => {
     .then(userExists => {
       return userExists ? {} : updateUser(firebase)(wallPath)(user);
     })
-    .then(dispatchAction({type: 'onRoomJoined', payload: roomId}))
-    .then(dispatchAction({type: 'getWall'}))
-    .then(dispatchAction({type: 'getRoomOptions'}))
-    .then(dispatchAction({type: 'getUserOptions'}))
-    .then(dispatchAction({type: 'onRoomLoaded'}))
-    .catch(() => {
-      return dispatchAction({type: 'onRoomError'});
-    });
+    .then(dispatchAction(onRoomJoined(roomId)))
+    .then(dispatchAction(getWall))
+    .then(dispatchAction(getRoomOptions))
+    .then(dispatchAction(getUserOptions))
+    .then(dispatchAction(onRoomLoaded))
+    .catch(dispatchAction(onRoomError));
 };
 
 const hasUser = user => snapshot => {

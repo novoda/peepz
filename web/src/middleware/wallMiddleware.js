@@ -1,3 +1,5 @@
+import { TYPES } from '../actions';
+
 let currentWallRef;
 const firebaseMiddleware = firebase => store => next => action => {
   const state = store.getState();
@@ -5,19 +7,19 @@ const firebaseMiddleware = firebase => store => next => action => {
     return next(action);
   };
   switch (action.type) {
-    case 'getWall':
+    case TYPES.GET_WALL:
       if (currentWallRef) {
         currentWallRef.off();
       }
       currentWallRef = getWall(firebase)(state.room.id)(store.dispatch);
       break;
 
-    case 'submitScreenshot':
+    case TYPES.SUBMIT_SCREENSHOT:
       submitScreenshot(firebase)(state.room.id)(state.user)(action.payload)
         .then(continueToNext);
       break;
 
-    case 'lastSeen':
+    case TYPES.LAST_SEEN:
       lastSeen(firebase)(state.room.id)(state.user.uid)(store.dispatch);
       break;
 

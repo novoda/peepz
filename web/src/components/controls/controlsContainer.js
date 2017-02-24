@@ -1,3 +1,5 @@
+import { showPreview, closePreview, manualScreenshot } from '../../actions';
+
 export const mapToProps = state => {
   return {
     cameraIsActive: state.camera.active
@@ -7,13 +9,13 @@ export const mapToProps = state => {
 export const mapToDispatch = dispatch => {
   return {
     onPreview: () => {
-      dispatch({type: 'showPreview'});
+      dispatch(showPreview);
     },
     closePreview: () => {
-      dispatch({type: 'closePreview'});
+      dispatch(closePreview);
     },
     startScreenshot: () => {
-      dispatch({type: 'manualScreenshot'});
+      dispatch(manualScreenshot);
     }
   };
 };

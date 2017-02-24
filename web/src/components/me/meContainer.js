@@ -1,4 +1,4 @@
-import { submitScreenshot } from '../../actions';
+import { submitScreenshot, automaticScreenshot, closeCamera,  closePreview} from '../../actions';
 import Console from '../../console';
 
 export const mapToProps = state => {
@@ -16,10 +16,10 @@ export const mapToProps = state => {
 export const mapToDispatch = dispatch => {
   return {
     automaticScreenshot: () => {
-      dispatch({type: 'automaticScreenshot'});
+      dispatch(automaticScreenshot);
     },
     screenshot: (roomId, user, screenshot) => {
-      dispatch({type: 'closeCamera'});
+      dispatch(closeCamera);
       if (screenshot !== 'data:,') {
         dispatch(submitScreenshot(screenshot));
       } else {
@@ -27,7 +27,7 @@ export const mapToDispatch = dispatch => {
       }
     },
     closePreview: () => {
-      dispatch({type: 'closePreview'});
+      dispatch(closePreview);
     }
   };
 };

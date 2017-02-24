@@ -1,14 +1,16 @@
+import { TYPES, onSignedIn, onSignedOut } from '../actions';
+
 const authMiddleware = firebase => store => next => action => {
   switch (action.type) {
-    case 'fetchSignIn':
+    case TYPES.FETCH_SIGN_IN:
       fetchSignIn(firebase)(store.dispatch);
       break;
 
-    case 'requestSignIn':
+    case TYPES.REQUEST_SIGN_IN:
       requestSignIn(firebase)(store.dispatch);
       break;
 
-    case 'logout':
+    case TYPES.LOGOUT:
       logout(firebase)(store.dispatch);
       break;
 
@@ -21,9 +23,9 @@ const fetchSignIn = firebase => dispatch => {
   const unsubscribe = firebase.auth().onAuthStateChanged(result => {
     unsubscribe();
     if (result) {
-      dispatch({type: 'onSignedIn', payload: result});
+      dispatch(onSignedIn(result));
     } else {
-      dispatch({type: 'onSignedOut'});
+      dispatch(onSignedOut);
     }
   });
 };
@@ -32,13 +34,13 @@ const requestSignIn = firebase => dispatch => {
   const provider = new firebase.auth.GoogleAuthProvider();
   firebase.auth().signInWithPopup(provider).then(result => {
     const user = result.user;
-    dispatch({type: 'onSignedIn', payload: user});
+    dispatch(onSignedIn(user));
   });
 };
 
 const logout = firebase => dispatch => {
   return firebase.auth().signOut().then(() => {
-    dispatch({type: 'onSignedOut'});
+    dispatch(onSignedOut);
   });
 };
 
