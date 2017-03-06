@@ -41,7 +41,7 @@ const updateUser = firebase => wallPath => user => {
   });
 };
 
-const dispatcher = dispatch => action => {
+const dispatcher = dispatch => action => () => {
   return dispatch(action);
 };
 
