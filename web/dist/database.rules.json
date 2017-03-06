@@ -26,13 +26,13 @@
           },
 
           "options": {
-            ".read": "data.parent().child('members').child(auth.uid).exists()"
+            ".read": "auth.email.endsWith(data.parent().child('members').child('domain').val()) || data.parent().child('members').child(auth.uid).exists()"
           },
 
           "wall": {
-            ".read": "data.parent().child('members').child(auth.uid).exists()",
+            ".read": "auth.email.endsWith(data.parent().child('members').child('domain').val()) || data.parent().child('members').child(auth.uid).exists()",
             "$userId": {
-              ".write": "data.parent().parent().child('members').child(auth.uid).exists() && auth.uid === $userId"
+              ".write": "(auth.email.endsWith(data.parent().parent().child('members').child('domain').val()) || data.parent().parent().child('members').child(auth.uid).exists()) && auth.uid === $userId"
             }
           }
 
