@@ -7,7 +7,7 @@ const authMiddleware = firebase => store => next => action => {
       break;
 
     case TYPES.REQUEST_SIGN_IN:
-      requestSignIn(firebase)(store.dispatch);
+      requestSignIn(firebase)();
       break;
 
     case TYPES.LOGOUT:
@@ -30,12 +30,9 @@ const fetchSignIn = firebase => dispatch => {
   });
 };
 
-const requestSignIn = firebase => dispatch => {
+const requestSignIn = firebase => {
   const provider = new firebase.auth.GoogleAuthProvider();
-  firebase.auth().signInWithPopup(provider).then(result => {
-    const user = result.user;
-    dispatch(onSignedIn(user));
-  });
+  firebase.auth().signInWithRedirect(provider);
 };
 
 const logout = firebase => dispatch => {
