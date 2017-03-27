@@ -10,7 +10,11 @@ export default class UserHomePageView extends React.Component {
       <div>
         <Drawer />
         <AppBar />
-        <Room roomId={this.props.roomId}/>
+        {
+          this.props.roomId !== 'none' ?
+          <Room roomId={this.props.roomId}/>
+          : null
+        }
       </div>
     );
   }

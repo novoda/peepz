@@ -1,3 +1,4 @@
+import values from 'object.values';
 import { combineReducers } from 'redux';
 import drawer from './reducers/reducerDrawer';
 import cameraMode from './reducers/reducerCameraMode';
@@ -36,8 +37,14 @@ const isSignedIn = (state = false, action) => {
   }
 };
 
-const roomSelection = (state = 'novoda') => {
-  return state;
+const roomSelection = (state = 'none', action) => {
+  switch(action.type) {
+    case 'onRoomListing':
+      return values(action.payload)[0].id;
+
+    default:
+      return state;
+  }
 };
 
 const reducer = combineReducers({
