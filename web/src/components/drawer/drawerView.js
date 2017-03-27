@@ -43,7 +43,7 @@ const displayRooms = props => {
   } else {
     return null;
   }
-}
+};
 
 
 const Me = ({user}) => {
