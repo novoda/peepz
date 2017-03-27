@@ -26,13 +26,13 @@
           },
 
           "options": {
-            ".read": "(data.parent().child('members/domain').exists() && auth.email.endsWith(data.parent().child('members/domain').val())) || data.parent().child('members/individuals/' + auth.uid).exists()",
+            ".read": "(data.parent().child('members/domain').exists() && auth.email.endsWith(data.parent().child('members/domain').val())) || data.parent().child('members/individuals/' + auth.uid).exists()"
           },
 
           "wall": {
             ".read": "(data.parent().child('members/domain').exists() && auth.email.endsWith(data.parent().child('members/domain').val())) || data.parent().child('members/individuals/' + auth.uid).exists()",
             "$userId": {
-              "write": "(data.parent().parent().child('members/domain').exists() && auth.email.endsWith(data.parent().parent().child('members/domain').val())) || data.parent().parent().child('members/individuals/' + auth.uid).exists() && auth.uid === $userId",
+              ".write": "(data.parent().parent().child('members/domain').exists() && auth.email.endsWith(data.parent().parent().child('members/domain').val()) ) || data.parent().parent().child('members/individuals/' + auth.uid).exists() && auth.uid === $userId"
             }
           }
 
