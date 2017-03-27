@@ -16,11 +16,7 @@ export default class DrawerView extends React.Component {
         onRequestChange={this.props.onRequestChange}>
         <Me user={this.props.user}/>
         <Divider />
-        <Rooms
-          onClose={this.props.onClose}
-          listings={this.props.roomListing}
-          roomId={this.props.roomId} />
-        <Divider />
+        { displayRooms(this.props) }
         <Settings
           onToggled={this.props.onToggled}
           showOffline={this.props.showOffline}
@@ -32,6 +28,23 @@ export default class DrawerView extends React.Component {
   }
 
 }
+
+const displayRooms = props => {
+  if (props.roomListing.length > 1) {
+    return (
+      <div>
+        <Rooms
+          onClose={props.onClose}
+          listings={props.roomListing}
+          roomId={props.roomId} />
+        <Divider />
+      </div>
+    );
+  } else {
+    return null;
+  }
+}
+
 
 const Me = ({user}) => {
   return (
