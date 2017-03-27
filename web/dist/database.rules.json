@@ -21,18 +21,18 @@
         "$room": {
 
           "members": {
-            ".read": "data.child('individuals').child(auth.uid).val() === 'admin'",
-            ".write": "data.child('individuals').child(auth.uid).val() === 'admin'"
+            ".read": "data.child('individuals/' + auth.uid).val() === 'admin'",
+            ".write": "data.child('individuals/' + auth.uid).val() === 'admin'"
           },
 
           "options": {
-            ".read": "auth.email.endsWith(data.parent().child('members').child('domain').val()) || data.parent().child('members').child('individuals').child(auth.uid).exists()"
+            ".read": "(data.parent().child('members/domain').exists() && auth.email.endsWith(data.parent().child('members/domain').val())) || data.parent().child('members/individuals/' + auth.uid).exists()",
           },
 
           "wall": {
-            ".read": "auth.email.endsWith(data.parent().child('members').child('domain').val()) || data.parent().child('members').child(auth.uid).exists()",
+            ".read": "(data.parent().child('members/domain').exists() && auth.email.endsWith(data.parent().child('members/domain').val())) || data.parent().child('members/individuals/' + auth.uid).exists()",
             "$userId": {
-              ".write": "(auth.email.endsWith(data.parent().parent().child('members').child('domain').val()) || data.parent().parent().child('members').child('individuals').child(auth.uid).exists()) && auth.uid === $userId"
+              "write": "(data.parent().parent().child('members/domain').exists() && auth.email.endsWith(data.parent().parent().child('members/domain').val())) || data.parent().parent().child('members/individuals/' + auth.uid).exists() && auth.uid === $userId",
             }
           }
 
