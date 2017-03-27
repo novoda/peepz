@@ -41,7 +41,6 @@ const roomSelection = (state = 'none', action) => {
   switch(action.type) {
     case 'onRoomListing':
       return values(action.payload)[0].id;
-
     default:
       return state;
   }

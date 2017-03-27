@@ -13,7 +13,11 @@ const firebaseMiddleware = firebase => store => next => action => {
 const roomListing = firebase => userId => dispatch => {
   firebase.database().ref(`wip/users/${userId}/rooms`).on('value', snapshot => {
     const listings = snapshot.val();
-    dispatch({type: 'onRoomListing', payload: listings});
+    if (listings) {
+      dispatch({type: 'onRoomListing', payload: listings});
+    } else {
+      dispatch({type: 'onUserHasNoRooms'});
+    }
   });
 };
 
