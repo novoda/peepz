@@ -42,5 +42,4 @@ const adminListing = firebase => roomListing => dispatch => {
   });
 };
 
-
 export default firebaseMiddleware;

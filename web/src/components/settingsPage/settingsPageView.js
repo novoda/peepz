@@ -75,8 +75,8 @@ const userList = users => {
   return users.map(each => {
     return (
       <li>
-        <CardText>{each.displayName}</CardText>
-        <CardText>{each.email}</CardText>
+        <CardText>{each.uid}</CardText>
+        <CardText>{each.role}</CardText>
       </li>
     );
   });
