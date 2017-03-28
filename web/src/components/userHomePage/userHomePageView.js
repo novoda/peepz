@@ -2,6 +2,7 @@ import React from 'react';
 import AppBar from '../appBar/AppBar';
 import Room from '../room/Room';
 import Drawer from '../drawer/Drawer';
+import Onboarding from '../../onboarding/Onboarding';
 
 export default class UserHomePageView extends React.Component {
 
@@ -20,7 +21,7 @@ export default class UserHomePageView extends React.Component {
         case 'none':
           return null;
         case 'empty':
-          return <div>You are not a member of any rooms!</div>;
+          return <Onboarding />
         default:
           return <Room roomId={roomId}/>;
     }
