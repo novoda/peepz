@@ -21,7 +21,7 @@ exports.joinRoom = functions.database.ref('/wip/events/{key}')
     });
 
 const updateUser = ref => wallPath => user => {
-  return ref(`${wallPath}/${user.uid}`).set({
+  return ref.child(`${wallPath}/${user.uid}`).set({
     uid: user.uid,
     name: user.displayName
   });
