@@ -18,7 +18,9 @@ export default class OnboardingView extends React.Component {
            hintText="Room ID"
            floatingLabelText="Room ID"
            onChange={this._handleTextFieldChange(this)} />
-        <RaisedButton onClick={this._handleSubmit(this)} label="JOIN" disabled={!this.state.canSubmit} />
+        <RaisedButton
+          onClick={this._handleSubmit(this)}
+          label="JOIN" disabled={!this.state.canSubmit} />
       </div>
     );
   }
@@ -34,7 +36,7 @@ export default class OnboardingView extends React.Component {
   }
 
   _handleSubmit(self) {
-    return function(event) {
+    return function() {
       self.props.joinRoom(self.state.textFieldValue);
     };
   }
