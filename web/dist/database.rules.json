@@ -3,6 +3,10 @@
 
     "wip": {
 
+      "events": {
+        ".write": "auth !== null"
+      },
+
       "users": {
         "$userId": {
           ".read": "auth.uid === $userId",
