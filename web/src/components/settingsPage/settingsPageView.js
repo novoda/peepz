@@ -18,6 +18,7 @@ export default class SettingsPageView extends React.Component {
         <div style={style}>
           <Me user={this.props.user} onLogoutClicked={this.props.onLogoutClicked}/>
           <div style={{height: '24px'}}/>
+          { this.props.isAdmin ? <Admin rooms={this.props.rooms}/> : null }
         </div>
       </div>
     );
@@ -25,6 +26,7 @@ export default class SettingsPageView extends React.Component {
 
   componentDidMount() {
     this.props.fetchSignIn();
+    this.props.fetchAdmin();
   }
 
 }
@@ -43,4 +45,39 @@ const Me = ({user, onLogoutClicked}) => {
       </CardActions>
     </Card>
   );
+};
+
+const listStyle = {
+  listStyle: 'none',
+  padding: 0,
+  margin: 0,
+  width: '100%'
+};
+
+const Admin = ({rooms}) => {
+  const roomList = rooms.map(room => {
+    return (
+      <li key={room.id}>
+        <Card>
+          <CardHeader title={`Admin ${room.id}`}/>
+          <CardHeader title="Awaiting approval"/>
+          <ul style={listStyle}>{userList(room.awaitingApproval)}</ul>
+          <CardHeader title="Members"/>
+          <ul style={listStyle}>{userList(room.members)}</ul>
+        </Card>
+      </li>
+    );
+  });
+  return (<ul style={listStyle}>{roomList}</ul>);
+};
+
+const userList = users => {
+  return users.map(each => {
+    return (
+      <li>
+        <CardText>{each.displayName}</CardText>
+        <CardText>{each.email}</CardText>
+      </li>
+    );
+  });
 };

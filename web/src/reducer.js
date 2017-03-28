@@ -6,6 +6,7 @@ import loading from './reducers/reducerLoading';
 import wall from './reducers/reducerWall';
 import room from './reducers/reducerRoom';
 import camera from './reducers/reducerCamera';
+import admin from './reducers/reducerAdmin';
 
 const user = (state = {}, action) => {
   switch(action.type) {
@@ -42,7 +43,7 @@ const roomSelection = (state = 'none', action) => {
     case 'onRoomListing':
       return values(action.payload)[0].id;
     case 'onUserHasNoRooms':
-      return 'empty'; 
+      return 'empty';
     default:
       return state;
   }
@@ -57,7 +58,8 @@ const reducer = combineReducers({
   room,
   roomSelection,
   drawer,
-  cameraMode
+  cameraMode,
+  admin
 });
 
 export default reducer;

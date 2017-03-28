@@ -5,6 +5,10 @@ const firebaseMiddleware = firebase => store => next => action => {
       roomListing(firebase)(state.user.uid)(store.dispatch);
       break;
 
+    case 'adminListing':
+      adminListing(firebase)(state.drawer.roomListing)(store.dispatch);
+      break;
+
     default:
       return next(action);
   }
@@ -20,5 +24,23 @@ const roomListing = firebase => userId => dispatch => {
     }
   });
 };
+
+const adminListing = firebase => roomListing => dispatch => {
+  Promise.all(roomListing.map(room => {
+    return firebase.database().ref(`wip/rooms/${room.id}/members`).once('value')
+    .then(result => {
+      return Promise.resolve({...result.val(), id: room.id});
+    }).catch(() => {
+      return Promise.resolve(false);
+    });
+  })).then(result => {
+    const adminRooms = result.filter(each => each);
+    console.log('result:', adminRooms);
+    if (adminRooms.length > 0) {
+      dispatch({type: 'onAdminListing', payload: adminRooms});
+    }
+  });
+};
+
 
 export default firebaseMiddleware;

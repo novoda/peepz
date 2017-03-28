@@ -5,7 +5,9 @@ export const mapToProps = state => {
   return {
       isSignedIn: state.isSignedIn,
       isLoadingSignIn: state.loading.isLoadingSignIn,
-      user: state.user
+      user: state.user,
+      isAdmin: state.admin.isAdmin,
+      rooms: state.admin.rooms
   };
 };
 
@@ -17,6 +19,9 @@ export const mapToDispatch = dispatch => {
     onLogoutClicked: () => {
       dispatch(logout);
       browserHistory.push('/');
+    },
+    fetchAdmin: () => {
+      dispatch({type: 'adminListing'});
     }
   };
 };
