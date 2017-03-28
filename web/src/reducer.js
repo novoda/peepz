@@ -41,6 +41,8 @@ const roomSelection = (state = 'none', action) => {
   switch(action.type) {
     case 'onRoomListing':
       return values(action.payload)[0].id;
+    case 'onUserHasNoRooms':
+      return 'empty'; 
     default:
       return state;
   }

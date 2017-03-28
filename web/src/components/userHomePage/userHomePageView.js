@@ -10,13 +10,20 @@ export default class UserHomePageView extends React.Component {
       <div>
         <Drawer />
         <AppBar />
-        {
-          this.props.roomId !== 'none' ?
-          <Room roomId={this.props.roomId}/>
-          : null
-        }
+        {this._roomWrapper(this.props.roomId)}
       </div>
     );
+  }
+
+  _roomWrapper(roomId) {
+    switch(roomId) {
+        case 'none':
+          return null;
+        case 'empty':
+          return <div>You are not a member of any rooms!</div>;
+        default:
+          return <Room roomId={roomId}/>;
+    }
   }
 
   componentDidMount() {
