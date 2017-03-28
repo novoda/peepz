@@ -20,7 +20,7 @@ const joinRoom = firebase => roomId => user => dispatch => {
     .once('value')
     .then(hasUser(user))
     .then(userExists => {
-      return userExists ? {} : updateUser(firebase)(user);
+      return userExists ? {} : updateUser(firebase)(user)(roomId);
     })
     .then(dispatchAction(onRoomJoined(roomId)))
     .then(dispatchAction(getWall))
@@ -34,12 +34,15 @@ const hasUser = user => snapshot => {
   return snapshot.child(user.uid).exists();
 };
 
-const updateUser = firebase => user => {
+const updateUser = firebase => user => roomId => {
   return firebase.database().ref('/wip/events/').push({
     type: 'JOIN',
     payload: {
-      uid: user.uid,
-      name: user.displayName
+      roomId: roomId,
+      user: {
+        uid: user.uid,
+        displayName: user.displayName
+      }
     }
   });
 };
