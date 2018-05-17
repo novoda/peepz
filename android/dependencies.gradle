@@ -1,0 +1,32 @@
+ext {
+    supportLibVersion = '27.1.1'
+    firebaseVersion = '10.0.1'
+
+    libraries = [
+            accessibilitools    : 'com.novoda:accessibilitools:1.4.0',
+            butterknife         : 'com.jakewharton:butterknife:8.8.1',
+            butterknifeProcessor: 'com.jakewharton:butterknife-compiler:8.8.1',
+            cameraview          : 'com.github.jackSzm:cameraview:e32e238321',
+            firebaseAuth        : "com.google.firebase:firebase-auth:${firebaseVersion}",
+            firebaseCore        : "com.google.firebase:firebase-core:${firebaseVersion}",
+            firebaseDatabase    : "com.google.firebase:firebase-database:${firebaseVersion}",
+            firebaseStorage     : "com.google.firebase:firebase-storage:${firebaseVersion}",
+            glide               : 'com.github.bumptech.glide:glide:3.7.0',
+            playServicesAuth    : 'com.google.android.gms:play-services-auth:10.0.1',
+            rvTools             : 'com.ataulm:rv-tools:1.1.0',
+            supportAppCompat    : "com.android.support:appcompat-v7:${supportLibVersion}",
+            supportDesign       : "com.android.support:design:${supportLibVersion}",
+            supportRecyclerView : "com.android.support:recyclerview-v7:${supportLibVersion}",
+            supportV13          : "com.android.support:support-v13:${supportLibVersion}"
+    ]
+
+    librariesTest = [
+            espressoCore        : 'com.android.support.test.espresso:espresso-core:2.2.2',
+            fest                : 'org.easytesting:fest-assert-core:2.0M10',
+            junit               : 'junit:junit:4.12',
+            mockito             : 'org.mockito:mockito-core:1.10.19',
+            supportTestRunner   : 'com.android.support.test:runner:0.5',
+            supportTestRules    : 'com.android.support.test:rules:0.5'
+    ]
+
+}
