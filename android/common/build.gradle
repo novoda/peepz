@@ -25,7 +25,7 @@ android {
 }
 
 dependencies {
-    compile project(":core")
+    implementation project(":core")
 
     implementation libraries.supportAppCompat
     implementation libraries.supportDesign
