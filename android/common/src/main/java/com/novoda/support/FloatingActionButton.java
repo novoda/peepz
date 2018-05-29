@@ -8,14 +8,15 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.novoda.peepz.R;
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FloatingActionButton extends FrameLayout {
 
-    @BindView(R.id.floating_action_button_image)
+    @BindView(R2.id.floating_action_button_image)
     ImageView imageView;
 
     private final Drawable drawable;

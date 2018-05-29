@@ -1,4 +1,17 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+        google()
+    }
+
+    dependencies {
+        classpath "com.jakewharton:butterknife-gradle-plugin:${butterknifeVersion}"
+    }
+}
+
 apply plugin: 'com.android.library'
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 27
@@ -30,5 +43,7 @@ dependencies {
     implementation libraries.supportDesign
     implementation libraries.supportRecyclerView
     implementation libraries.supportV13
+    implementation libraries.butterknife
+    annotationProcessor libraries.butterknifeProcessor
 
 }
