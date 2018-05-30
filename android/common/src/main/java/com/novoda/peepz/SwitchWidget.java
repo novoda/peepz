@@ -7,12 +7,15 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SwitchWidget extends ForegroundLinearLayout {
 
-    @BindView(R.id.switch_text_label)
+    @BindView(R2.id.switch_text_label)
     TextView labelTextView;
 
     private final String labelText;

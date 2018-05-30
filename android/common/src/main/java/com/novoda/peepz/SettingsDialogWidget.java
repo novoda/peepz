@@ -5,6 +5,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -13,22 +16,22 @@ import butterknife.ButterKnife;
 
 public class SettingsDialogWidget extends LinearLayout {
 
-    @BindView(R.id.settings_dialog_timer_frequent)
+    @BindView(R2.id.settings_dialog_timer_frequent)
     View frequentTimerView;
 
-    @BindView(R.id.settings_dialog_timer_infrequent)
+    @BindView(R2.id.settings_dialog_timer_infrequent)
     View infrequentTimerView;
 
-    @BindView(R.id.settings_dialog_timer_off)
+    @BindView(R2.id.settings_dialog_timer_off)
     View offTimerView;
 
-    @BindView(R.id.settings_dialog_switch_filter_offline)
+    @BindView(R2.id.settings_dialog_switch_filter_offline)
     View filterOfflineSwitch;
 
-    @BindView(R.id.settings_dialog_button_ok)
+    @BindView(R2.id.settings_dialog_button_ok)
     View okButton;
 
-    @BindView(R.id.settings_dialog_button_cancel)
+    @BindView(R2.id.settings_dialog_button_cancel)
     View cancelButton;
 
     public SettingsDialogWidget(Context context, AttributeSet attrs) {
@@ -130,15 +133,15 @@ public class SettingsDialogWidget extends LinearLayout {
     }
 
     private PictureTakeInterval getPictureTakeIntervalAssociatedWith(View view) {
-        switch (view.getId()) {
-            case R.id.settings_dialog_timer_frequent:
-                return PictureTakeInterval.FREQUENT;
-            case R.id.settings_dialog_timer_infrequent:
-                return PictureTakeInterval.INFREQUENT;
-            case R.id.settings_dialog_timer_off:
-                return PictureTakeInterval.OFF;
-            default:
-                throw new IllegalArgumentException("no PictureTakeInterval associated with view");
+        int i = view.getId();
+        if (i == R.id.settings_dialog_timer_frequent) {
+            return PictureTakeInterval.FREQUENT;
+        } else if (i == R.id.settings_dialog_timer_infrequent) {
+            return PictureTakeInterval.INFREQUENT;
+        } else if (i == R.id.settings_dialog_timer_off) {
+            return PictureTakeInterval.OFF;
+        } else {
+            throw new IllegalArgumentException("no PictureTakeInterval associated with view");
         }
     }
 

@@ -5,15 +5,17 @@ import android.content.res.TypedArray;
 import android.support.design.internal.ForegroundLinearLayout;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class RadioButtonWidget extends ForegroundLinearLayout {
 
-    @BindView(R.id.radio_button_text_label)
+    @BindView(R2.id.radio_button_text_label)
     TextView labelTextView;
 
     private final String labelText;

@@ -4,13 +4,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
-import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -22,13 +23,13 @@ public class SelfiePreviewWidget extends FrameLayout {
         FLIP_HORIZONTAL_MATRIX.preScale(-1, 1);
     }
 
-    @BindView(R.id.selfie_preview_image)
+    @BindView(R2.id.selfie_preview_image)
     ImageView imageView;
 
-    @BindView(R.id.selfie_preview_button_retake)
+    @BindView(R2.id.selfie_preview_button_retake)
     View retakeButton;
 
-    @BindView(R.id.selfie_preview_button_accept)
+    @BindView(R2.id.selfie_preview_button_accept)
     View acceptButton;
 
     public SelfiePreviewWidget(Context context, AttributeSet attrs) {

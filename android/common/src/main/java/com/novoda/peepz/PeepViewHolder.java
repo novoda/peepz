@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.novoda.peepz.common.R;
+
 final class PeepViewHolder extends RecyclerView.ViewHolder {
 
     public static PeepViewHolder inflateView(ViewGroup parent) {

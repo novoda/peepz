@@ -45,5 +45,17 @@ dependencies {
     implementation libraries.supportV13
     implementation libraries.butterknife
     annotationProcessor libraries.butterknifeProcessor
+    implementation libraries.accessibilitools
+
+    implementation libraries.firebaseCore
+    implementation libraries.firebaseAuth
+    implementation libraries.firebaseDatabase
+    implementation libraries.firebaseStorage
+    implementation libraries.playServicesAuth
+    implementation libraries.glide
+    implementation libraries.rvTools
+    implementation libraries.cameraview
 
 }
+
+apply plugin: 'com.google.gms.google-services'

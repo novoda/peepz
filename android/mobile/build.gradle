@@ -34,19 +34,6 @@ dependencies {
     implementation libraries.supportDesign
     implementation libraries.supportRecyclerView
     implementation libraries.supportV13
-    implementation libraries.accessibilitools
-    implementation libraries.butterknife
-    annotationProcessor libraries.butterknifeProcessor
-    implementation libraries.glide
-    implementation libraries.cameraview
-    implementation libraries.rvTools
-
-    implementation libraries.firebaseCore
-    implementation libraries.firebaseAuth
-    implementation libraries.firebaseDatabase
-    implementation libraries.firebaseStorage
-
-    implementation libraries.playServicesAuth
 
     // Android runner and rules support
     androidTestImplementation(librariesTest.supportTestRunner) {

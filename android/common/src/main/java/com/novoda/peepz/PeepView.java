@@ -16,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -32,13 +34,13 @@ public class PeepView extends FrameLayout {
 
     private final ImageState imageState = new ImageState();
 
-    @BindView(R.id.peep_image)
+    @BindView(R2.id.peep_image)
     ImageView imageView;
 
-    @BindView(R.id.peep_online_indicator)
+    @BindView(R2.id.peep_online_indicator)
     View onlineIndicatorView;
 
-    @BindView(R.id.peep_text_name)
+    @BindView(R2.id.peep_text_name)
     TextView nameTextView;
 
     public PeepView(Context context, AttributeSet attrs) {

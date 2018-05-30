@@ -4,20 +4,21 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 
 import com.google.android.cameraview.CameraView;
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SelfieLiveWidget extends FrameLayout {
 
-    @BindView(R.id.selfie_live_camera)
+    @BindView(R2.id.selfie_live_camera)
     CameraView cameraView;
 
-    @BindView(R.id.selfie_live_button_take_picture)
+    @BindView(R2.id.selfie_live_button_take_picture)
     View takePictureButton;
 
     @Nullable
