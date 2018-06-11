@@ -6,6 +6,8 @@ import android.view.View;
 
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 import com.novoda.support.SystemClock;
 
 import butterknife.BindView;
@@ -13,10 +15,10 @@ import butterknife.ButterKnife;
 
 public class SelfieActivity extends BaseActivity {
 
-    @BindView(R.id.selfie_view)
+    @BindView(R2.id.selfie_view)
     SelfieView selfieView;
 
-    @BindView(R.id.selfie_button_close)
+    @BindView(R2.id.selfie_button_close)
     View closeButton;
 
     private PictureUploader pictureUploader;

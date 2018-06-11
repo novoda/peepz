@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
 
-import com.novoda.peepz.R;
+import com.novoda.peepz.common.R;
 
 import java.lang.ref.SoftReference;
 import java.util.ArrayList;

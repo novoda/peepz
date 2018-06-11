@@ -13,6 +13,7 @@ import com.novoda.accessibility.AccessibilityServices;
 import com.novoda.accessibility.Action;
 import com.novoda.accessibility.Actions;
 import com.novoda.accessibility.ActionsAlertDialogCreator;
+import com.novoda.peepz.common.R;
 import com.novoda.support.SystemClock;
 
 import java.util.Arrays;

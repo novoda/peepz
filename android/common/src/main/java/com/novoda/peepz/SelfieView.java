@@ -6,15 +6,18 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SelfieView extends FrameLayout {
 
-    @BindView(R.id.selfie_live)
+    @BindView(R2.id.selfie_live)
     SelfieLiveWidget liveWidget;
 
-    @BindView(R.id.selfie_preview)
+    @BindView(R2.id.selfie_preview)
     SelfiePreviewWidget previewWidget;
 
     @Nullable

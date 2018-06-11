@@ -5,6 +5,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.novoda.accessibility.AccessibilityServices;
+import com.novoda.peepz.common.R;
 
 import java.util.List;
 

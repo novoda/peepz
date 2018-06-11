@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
 import com.ataulm.rv.SpacesItemDecoration;
+import com.novoda.peepz.common.R;
 
 import java.util.List;
 

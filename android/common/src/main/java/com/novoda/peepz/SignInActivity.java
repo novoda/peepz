@@ -8,6 +8,8 @@ import android.widget.TextView;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.firebase.auth.FirebaseUser;
+import com.novoda.peepz.common.R;
+import com.novoda.peepz.common.R2;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -16,7 +18,7 @@ public class SignInActivity extends BaseActivity {
 
     private static final int REQUEST_CODE_SIGN_IN = 1;
 
-    @BindView(R.id.sign_in_button)
+    @BindView(R2.id.sign_in_button)
     TextView signInButton;
 
     @Override

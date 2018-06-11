@@ -2,7 +2,6 @@ package com.novoda.peepz;
 
 import android.support.annotation.NonNull;
 
-import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
