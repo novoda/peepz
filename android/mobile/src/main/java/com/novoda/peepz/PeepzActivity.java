@@ -3,8 +3,6 @@ package com.novoda.peepz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.Toolbar;
 
 import com.google.android.cameraview.CameraView;
 import com.google.firebase.auth.FirebaseUser;
@@ -19,6 +17,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.Toolbar;
 import butterknife.ButterKnife;
 
 public class PeepzActivity extends BaseActivity {
@@ -42,7 +42,7 @@ public class PeepzActivity extends BaseActivity {
         FirebaseUser signedInUser = firebaseApi().getSignedInUser();
         PeepUpdater peepUpdater = new PeepUpdater(new SystemClock(), FirebaseDatabase.getInstance(), signedInUser);
         PictureUploader pictureUploader = new PictureUploader(signedInUser);
-        PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) ButterKnife.findById(this, R.id.peepz_secret_camera), pictureUploader, peepUpdater);
+        PreviewlessPictureTaker previewlessPictureTaker = new PreviewlessPictureTaker((CameraView) this.findViewById( R.id.peepz_secret_camera), pictureUploader, peepUpdater);
         Handler handler = new Handler();
         settings = Settings.create(this);
         automaticPreviewlessPictureTaker = new AutomaticPreviewlessPictureTaker(settings, new Timer(handler), previewlessPictureTaker);
@@ -60,9 +60,9 @@ public class PeepzActivity extends BaseActivity {
     private PeepzPageDisplayer createPageDisplayer() {
         return new AndroidPeepzPageDisplayer(
                 AccessibilityServices.newInstance(this),
-                (Toolbar) ButterKnife.findById(this, R.id.toolbar),
-                (PeepzView) ButterKnife.findById(this, R.id.peepz),
-                ButterKnife.findById(this, R.id.peepz_button_take_picture)
+                (Toolbar) this.findViewById( R.id.toolbar),
+                (PeepzView) this.findViewById( R.id.peepz),
+                this.findViewById(R.id.peepz_button_take_picture)
         );
     }
 
@@ -141,7 +141,7 @@ public class PeepzActivity extends BaseActivity {
 
     private void bar() {
         ActionsAlertDialogCreator actionsAlertDialogCreator = new ActionsAlertDialogCreator(this);
-        AlertDialog alertDialog = actionsAlertDialogCreator.create(foo());
+//        AlertDialog alertDialog = actionsAlertDialogCreator.create(foo());
 
     }
 

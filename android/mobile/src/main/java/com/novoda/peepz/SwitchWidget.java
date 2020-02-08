@@ -2,10 +2,11 @@ package com.novoda.peepz;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.support.design.internal.ForegroundLinearLayout;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.TextView;
+
+import com.google.android.material.internal.ForegroundLinearLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
