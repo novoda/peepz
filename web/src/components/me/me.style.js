@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
 export default StyleSheet.create({
   container: {
@@ -12,11 +12,11 @@ export default StyleSheet.create({
     top: '50%',
     width: '640px',
     height: '480px',
-    get marginLeft () {
-      return `calc(${this.width} / 2 - ${this.width})`;
+    get marginLeft() {
+      return `calc(${this.width} / 2 - ${this.width})`
     },
-    get marginTop () {
-      return `calc(${this.height} / 2 - ${this.height})`;
+    get marginTop() {
+      return `calc(${this.height} / 2 - ${this.height})`
     }
   }
-});
+})

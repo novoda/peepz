@@ -1,18 +1,22 @@
 buildscript {
     repositories {
         jcenter()
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.3'
-        classpath 'com.google.gms:google-services:3.0.0'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.android.tools.build:gradle:3.5.3'
+        classpath 'com.google.gms:google-services:4.3.3'
         classpath 'com.novoda:gradle-build-properties-plugin:0.2'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:10.2.1'
     }
+
 }
 
 allprojects {
     repositories {
         jcenter()
+        google()
         maven {
             url "https://jitpack.io"
         }

@@ -2,7 +2,7 @@ package com.novoda.peepz;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -35,7 +35,7 @@ class PictureUploader {
             @Override
             public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                 if (task.isSuccessful()) {
-                    String imageUrl = task.getResult().getDownloadUrl().toString();
+                    String imageUrl = task.getResult().getStorage().getDownloadUrl().toString();
                     callback.onSuccess(imageUrl);
                 } else {
                     callback.onFailure();

@@ -1,8 +1,9 @@
 package com.novoda.peepz;
 
 import android.content.Context;
-import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
+
+import androidx.appcompat.widget.Toolbar;
 
 public class PeepzToolbar extends Toolbar {
 

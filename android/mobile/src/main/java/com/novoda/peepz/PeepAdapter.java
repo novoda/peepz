@@ -1,9 +1,10 @@
 package com.novoda.peepz;
 
-import android.support.v7.widget.RecyclerView;
 import android.view.ViewGroup;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 class PeepAdapter extends RecyclerView.Adapter<PeepViewHolder> {
 

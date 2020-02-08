@@ -2,6 +2,8 @@
     package="com.novoda.peepz">
 
     <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
 
     <application
         android:allowBackup="true"
@@ -23,7 +25,7 @@
             </intent-filter>
 
         </activity-alias>
-
+<!--        <receiver android:name=".CheckInReceiver"/>-->
     </application>
 
 </manifest>

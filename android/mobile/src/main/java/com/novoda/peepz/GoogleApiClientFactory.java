@@ -1,12 +1,13 @@
 package com.novoda.peepz;
 
-import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.NonNull;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+
+import androidx.fragment.app.FragmentActivity;
 
 class GoogleApiClientFactory {
 

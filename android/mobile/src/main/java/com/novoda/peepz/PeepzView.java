@@ -1,13 +1,14 @@
 package com.novoda.peepz;
 
 import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import com.ataulm.rv.SpacesItemDecoration;
+//import com.ataulm.rv.SpacesItemDecoration;
 
 import java.util.List;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class PeepzView extends RecyclerView {
 
@@ -21,7 +22,7 @@ public class PeepzView extends RecyclerView {
         int spans = getResources().getInteger(R.integer.spans);
         setLayoutManager(new GridLayoutManager(getContext(), spans));
         int dimensionPixelSize = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
-        addItemDecoration(SpacesItemDecoration.newInstance(dimensionPixelSize, dimensionPixelSize, spans));
+//        addItemDecoration(SpacesItemDecoration.newInstance(dimensionPixelSize, dimensionPixelSize, spans));
     }
 
     public void update(List<Peep> peepz) {

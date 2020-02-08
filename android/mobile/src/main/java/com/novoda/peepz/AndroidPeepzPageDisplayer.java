@@ -1,12 +1,13 @@
 package com.novoda.peepz;
 
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.novoda.accessibility.AccessibilityServices;
 
 import java.util.List;
+
+import androidx.appcompat.widget.Toolbar;
 
 public class AndroidPeepzPageDisplayer implements PeepzPageDisplayer {
 

@@ -6,8 +6,8 @@ import android.graphics.ColorMatrix;
 import android.graphics.ColorMatrixColorFilter;
 import android.graphics.Outline;
 import android.graphics.Rect;
-import android.support.annotation.Nullable;
-import android.support.annotation.Px;
+import androidx.annotation.Nullable;
+import androidx.annotation.Px;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewOutlineProvider;
@@ -87,7 +87,7 @@ public class PeepView extends FrameLayout {
         if (imageState.shouldUpdateImageFor(peep)) {
             Glide.with(getContext())
                     .load(peep.image().payload())
-                    .crossFade()
+//                    .crossFade()
                     .into(imageView);
         }
     }

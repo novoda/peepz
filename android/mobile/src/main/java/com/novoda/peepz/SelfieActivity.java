@@ -1,7 +1,7 @@
 package com.novoda.peepz;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.view.View;
 
 import com.google.firebase.auth.FirebaseUser;
