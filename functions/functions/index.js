@@ -10,21 +10,21 @@ const { Storage } = require('@google-cloud/storage')
 // }) //functions.config().firebase)
 
 // Creates a client
-const storage = new Storage()
+// const storage = new Storage()
 
-async function listFiles() {
-  // Lists files in the bucket
-  const [files] = await storage
-    .bucket('gs://peepz-2f400.appspot.com/')
-    .getFiles({ directory: 'wip/rooms/novoda/wall/vTtdPbyVBTMVKdLAlyP1fcSUvvS2', versions: true })
+// async function listFiles() {
+//   // Lists files in the bucket
+//   const [files] = await storage
+//     .bucket('gs://peepz-2f400.appspot.com/')
+//     .getFiles({ directory: 'wip/rooms/novoda/wall/vTtdPbyVBTMVKdLAlyP1fcSUvvS2', versions: true })
 
-  console.log('Files:')
-  files.forEach(file => {
-    console.log(file.generation)
-  })
-}
+//   console.log('Files:')
+//   files.forEach(file => {
+//     console.log(file.generation)
+//   })
+// }
 
-listFiles().catch(console.error)
+// listFiles().catch(console.error)
 
 // exports.joinRoom = functions.database.ref('/wip/events/{key}').onWrite(event => {
 //   const data = event.data.val()
