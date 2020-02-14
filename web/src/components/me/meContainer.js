@@ -1,5 +1,5 @@
-import { submitScreenshot, automaticScreenshot, closeCamera,  closePreview} from '../../actions';
-import Console from '../../console';
+import { submitScreenshot, automaticScreenshot, closeCamera, closePreview } from '../../actions'
+import Console from '../../console'
 
 export const mapToProps = state => {
   return {
@@ -10,24 +10,24 @@ export const mapToProps = state => {
     roomId: state.room.id,
     cameraModeSelectionId: state.cameraMode.selectionId,
     cameraModes: state.room.options.cameraModes
-  };
-};
+  }
+}
 
 export const mapToDispatch = dispatch => {
   return {
     automaticScreenshot: () => {
-      dispatch(automaticScreenshot);
+      dispatch(automaticScreenshot)
     },
     screenshot: (roomId, user, screenshot) => {
-      dispatch(closeCamera);
+      dispatch(closeCamera)
       if (screenshot !== 'data:,') {
-        dispatch(submitScreenshot(screenshot));
+        dispatch(submitScreenshot(screenshot))
       } else {
-        Console.error('screenshot was invalid, skipping');
+        Console.error('screenshot was invalid, skipping')
       }
     },
     closePreview: () => {
-      dispatch(closePreview);
+      dispatch(closePreview)
     }
-  };
-};
+  }
+}
