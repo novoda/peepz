@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
 export default {
   css: StyleSheet.create({
@@ -7,7 +7,7 @@ export default {
       width: '100%',
       backgroundColor: '#fafafa',
       borderBottom: 'solid 1px #f3f3f3',
-      zIndex: '-1',
+      zIndex: '-1'
     },
     containerStyle: {
       width: '100%',
@@ -24,7 +24,7 @@ export default {
       WebkitBackgroundClip: 'text !important',
       fontSize: '1.4em',
       textAlign: 'center',
-      border: 'none',
+      border: 'none'
     },
     settingsStyle: {
       fontFamily: 'Montserrat, sans-serif',
@@ -32,12 +32,12 @@ export default {
       border: 'none',
       color: '#72218a',
       fontSize: '0.6em',
-      cursor: 'pointer',
+      cursor: 'pointer'
     },
     endContainer: {
       marginRight: '2%',
       marginLeft: 'auto'
-    },
+    }
   }),
   js: {
     burgerContainer: {
@@ -49,4 +49,4 @@ export default {
       color: '#391885'
     }
   }
-};
+}

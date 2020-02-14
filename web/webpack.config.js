@@ -1,6 +1,6 @@
 /* global require module __dirname*/
 
-const path = require('path');
+const path = require('path')
 
 module.exports = {
   context: path.resolve(__dirname, './src'),
@@ -12,20 +12,23 @@ module.exports = {
     filename: '[name].bundle.js'
   },
   module: {
-    loaders: [
+    rules: [
       {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          babelrc: true
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+            plugins: ['@babel/plugin-proposal-class-properties', '@babel/plugin-proposal-object-rest-spread']
+          }
         }
       },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: "file-loader?name=/assets/[name].[ext]"
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ['file-loader']
       }
     ]
   },
   devtool: 'source-map'
-};
+}
