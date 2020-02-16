@@ -1,18 +1,18 @@
-import values from 'object.values';
+import values from 'object.values'
 
-const initialState = [];
+const initialState = []
 
 const wall = (state = initialState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'onUpdate':
-      return values(action.payload);
+      return values(action.payload)
 
     case 'requestJoinRoom':
-      return initialState;
+      return initialState
 
     default:
-      return state;
+      return state
   }
-};
+}
 
-export default wall;
+export default wall

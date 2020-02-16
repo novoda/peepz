@@ -1,4 +1,4 @@
-import { StyleSheet } from 'aphrodite/no-important';
+import { StyleSheet } from 'aphrodite/no-important'
 
 export default StyleSheet.create({
   container: {
@@ -20,7 +20,7 @@ export default StyleSheet.create({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    background: 'linear-gradient(120deg, #391885, #72218A 10%, #7F70C4)',
+    background: 'linear-gradient(120deg, #391885, #72218A 10%, #7F70C4)'
   },
   overlayName: {
     color: 'white',
@@ -28,6 +28,13 @@ export default StyleSheet.create({
     fontSize: '0.8em',
     fontWeight: 'light',
     float: 'left'
+  },
+  overlayPlace: {
+    color: 'white',
+    fontFamily: 'Montserrat, sans-serif',
+    fontSize: '0.8em',
+    fontWeight: 'light',
+    float: 'none'
   },
   contextOnlyLink: {
     cursor: 'default'
@@ -39,7 +46,7 @@ export default StyleSheet.create({
     position: 'absolute',
     bottom: '0',
     margin: '6px',
-    height: '18px'
+    height: '30px'
   },
   indicatorWrapper: {
     float: 'left',
@@ -53,7 +60,7 @@ export default StyleSheet.create({
     marginRight: '6px',
     height: '6px',
     get width() {
-      return this.height;
+      return this.height
     }
   },
   indicatorOffline: {
@@ -65,4 +72,4 @@ export default StyleSheet.create({
   indicatorOnline: {
     backgroundColor: '#391885'
   }
-});
+})
