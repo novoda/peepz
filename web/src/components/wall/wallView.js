@@ -8,11 +8,10 @@ const toPeepz = user => peep => {
   if (user.uid === peep.uid) {
     return (
       <li key={peep.uid} className={css(Style.item)}>
-        <Me me={peep} />
+        <Me me={peep} place={peep.place} />
       </li>
     )
   } else {
-    console.log(peep.place)
     return (
       <li key={peep.uid} className={css(Style.item)}>
         <Item image={peep.image} name={peep.name} lastSeen={peep.lastSeen} place={peep.place} />

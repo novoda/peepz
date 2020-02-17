@@ -21,7 +21,7 @@ export default class MeView extends React.Component {
     if (this.props.cameraIsActive) {
       return (
         <div>
-          <Item image={this.props.me.image || hodor} />
+          <Item image={this.props.me.image || hodor} place={this.props.place} />
           <div className={css(Style.popOutWebcamStyle)}>
             <Controls />
             <Webcam
@@ -54,14 +54,14 @@ export default class MeView extends React.Component {
       return (
         <div className={css(Style.container)}>
           <Controls />
-          <Item image={this.props.me.image} lastSeen={Date.now()} />
+          <Item image={this.props.me.image} lastSeen={Date.now()} place={this.props.place} />
         </div>
       )
     } else {
       return (
         <div className={css(Style.container)}>
           <Controls />
-          <Item lastSeen={Date.now()} />
+          <Item lastSeen={Date.now()} place={this.props.place} />
         </div>
       )
     }
