@@ -32,6 +32,7 @@ export default class Item extends React.Component {
     const availabilityFilter = lastSeenToFilterAmount(lastSeen)
     const onMouseEnter = this._onMouseEnter.bind(this)
     const onMouseLeave = this._onMouseExit.bind(this)
+
     return (
       <div className={css(Style.container)} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
         {this.state.isHovering ? <div className={css(Style.overlayBackground)} /> : null}
@@ -45,13 +46,13 @@ export default class Item extends React.Component {
 
         {this.state.isHovering ? (
           <div className={css(Style.infoContainer)}>
-            <div className={css(Style.overlayPlace)}> {place ? `🏢 ${place}` : '🏢'} </div>
+            <div className={css(Style.overlayPlace)}> {place ? `🏢 ${place}` : <span>&nbsp;&nbsp;</span>} </div>
             <Indicator lastSeen={lastSeen} imageTimestamp={image.timestamp} />
             <div className={css(Style.overlayName)}>{name}</div>
           </div>
         ) : (
           <div className={css(Style.infoContainer)}>
-            <div className={css(Style.overlayPlace)}> {place ? `🏢 ${place}` : '🏢'} </div>
+            <div className={css(Style.overlayPlace)}> {place ? `🏢 ${place}` : <span>&nbsp;&nbsp;</span>} </div>
             <Indicator lastSeen={lastSeen} imageTimestamp={image.timestamp} />
           </div>
         )}

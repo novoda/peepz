@@ -1,12 +1,10 @@
 {
   "parser": "babel-eslint",
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "rules": {
     "react/prop-types": "off",
     "react/display-name": "off",
-    "semi": "error"
+    "semi": "off"
   },
   "parserOptions": {
     "ecmaVersion": 6,
