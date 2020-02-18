@@ -22,12 +22,13 @@ exports.updateRoomId = functions.auth.user().onCreate(user => {
       id: 'novoda'
     })
 })
-
+const GEOFENCE_TRANSITION_ENTER = 1
+const GEOFENCE_TRANSITION_EXIT = 2
 exports.updateLocation = functions.firestore.document('/peepz/{uid}/places/{placeId}').onWrite((change, context) => {
   const uid = context.params.uid
   const place = change.after.data()
-  const isEntereing = place.transition == 1
-  const name = place.place || ''
+  const isEntereing = place.transition == GEOFENCE_TRANSITION_ENTER
+  const name = isEntereing ? place.place : ''
   return admin
     .database()
     .ref(`wip/rooms/novoda/wall/${uid}`)
@@ -35,3 +36,4 @@ exports.updateLocation = functions.firestore.document('/peepz/{uid}/places/{plac
       place: name
     })
 })
+5

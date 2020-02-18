@@ -36,56 +36,16 @@ public abstract class BaseActivity extends AppCompatActivity {
         googleApiClientApi = new GoogleApiClientApi(this);
         googleApiClientApi.setupGoogleApiClient();
         firebaseApi = new FirebaseApi(FirebaseAuth.getInstance(), googleApiClientApi);
-
-        geofencingClient = LocationServices.getGeofencingClient(this);
-
-        Log.e("TEST", "addGeofence");
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             Log.e("TEST", "Can't check for permission");
             return;
         }
-        geofencingClient.addGeofences(getGeofencingRequest(), getGeofencePendingIntent())
-                .addOnSuccessListener(this, aVoid -> {
-                    Log.i("TEST", "We have entered something worth considering");
-                })
-                .addOnFailureListener(this, e -> {
-                    Log.e("TEST", "Error");
-                });
-    }
 
-    private GeofencingRequest getGeofencingRequest() {
-        List geofenceList = new ArrayList();
-        geofenceList.add(new Geofence.Builder()
-                .setRequestId("Carl_home")
-                .setCircularRegion(
-                        Double.parseDouble("51.5446"),
-                        Double.parseDouble("-0.0358"),
-                        50
-                )
-                .setExpirationDuration(Geofence.NEVER_EXPIRE)
-                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER |
-                        Geofence.GEOFENCE_TRANSITION_EXIT)
-                .build());
-
-
-        geofenceList.add(new Geofence.Builder()
-                .setRequestId("novoda_unit8")
-                .setCircularRegion(
-                        51.5415,
-                        -0.0956,
-                         50
-                )
-                .setExpirationDuration(Geofence.NEVER_EXPIRE)
-                .setTransitionTypes(Geofence.GEOFENCE_TRANSITION_ENTER |
-                        Geofence.GEOFENCE_TRANSITION_EXIT)
-                .build());
-        GeofencingRequest.Builder builder = new GeofencingRequest.Builder();
-        builder.setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER);
-        builder.addGeofences(geofenceList);
-        return builder.build();
+        new GeoFence().register(this, getGeofencePendingIntent());
     }
 
     private PendingIntent geofencePendingIntent = null;
+
     private PendingIntent getGeofencePendingIntent() {
         if (geofencePendingIntent != null) {
             return geofencePendingIntent;
