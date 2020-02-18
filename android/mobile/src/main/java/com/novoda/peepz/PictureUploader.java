@@ -31,15 +31,13 @@ class PictureUploader {
         StorageReference destination = FirebaseStorage.getInstance().getReference().child(path);
 
         UploadTask uploadTask = destination.putStream(new ByteArrayInputStream(stream.toByteArray()));
-        uploadTask.addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
-                if (task.isSuccessful()) {
-                    String imageUrl = task.getResult().getStorage().getDownloadUrl().toString();
-                    callback.onSuccess(imageUrl);
-                } else {
-                    callback.onFailure();
-                }
+        uploadTask.addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(t -> {
+                    callback.onSuccess(t.getResult().toString());
+                });
+            } else {
+                callback.onFailure();
             }
         });
     }
