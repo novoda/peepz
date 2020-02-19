@@ -4,6 +4,9 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
 import com.novoda.support.Clock;
 
+import java.util.HashMap;
+import java.util.Map;
+
 class PeepUpdater {
 
     private final Clock clock;
@@ -36,10 +39,18 @@ class PeepUpdater {
                 currentTimeMillis
         );
 
+        Map<String, Object> i = new HashMap();
+        i.put("payload", imageUrl);
+        i.put("timestamp", currentTimeMillis);
+        Map<String, Object> c = new HashMap<String, Object>();
+        c.put("uid", signedInUser.getUid());
+        c.put("name", signedInUser.getDisplayName());
+        c.put("lastSeen", currentTimeMillis);
+        c.put("image", i);
+
         firebaseDatabase
                 .getReference(BaseActivity.KEY_ROOT)
-                .child(signedInUser.getUid())
-                .setValue(apiPeep);
+                .child(signedInUser.getUid()).updateChildren(c);
     }
 
 }

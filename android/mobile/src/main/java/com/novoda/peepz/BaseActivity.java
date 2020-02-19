@@ -5,17 +5,11 @@ import android.app.PendingIntent;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.util.Log;
-import android.widget.Toast;
 
-import com.google.android.gms.location.Geofence;
 import com.google.android.gms.location.GeofencingClient;
-import com.google.android.gms.location.GeofencingRequest;
-import com.google.android.gms.location.LocationServices;
 import com.google.firebase.auth.FirebaseAuth;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,6 +27,18 @@ public abstract class BaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
+//                .detectDiskReads()
+//                .detectDiskWrites()
+//                .detectAll()
+//                .penaltyLog()
+//                .build());
+//        StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder()
+//                .detectLeakedSqlLiteObjects()
+//                .detectLeakedClosableObjects()
+//                .penaltyLog()
+//                .penaltyDeath()
+//                .build());
         googleApiClientApi = new GoogleApiClientApi(this);
         googleApiClientApi.setupGoogleApiClient();
         firebaseApi = new FirebaseApi(FirebaseAuth.getInstance(), googleApiClientApi);
@@ -42,6 +48,8 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
 
         new GeoFence().register(this, getGeofencePendingIntent());
+
+
     }
 
     private PendingIntent geofencePendingIntent = null;
@@ -62,11 +70,6 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected GoogleApiClientApi googleApiClientApi() {
         return googleApiClientApi;
-    }
-
-    protected void toast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
-        log("toast: " + text);
     }
 
     protected void log(String text) {

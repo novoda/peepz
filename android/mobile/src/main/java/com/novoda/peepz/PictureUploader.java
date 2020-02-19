@@ -2,10 +2,8 @@ package com.novoda.peepz;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import androidx.annotation.NonNull;
+import android.os.AsyncTask;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -13,6 +11,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 class PictureUploader {
 
@@ -23,24 +22,9 @@ class PictureUploader {
     }
 
     public void upload(byte[] picture, final Callback callback) {
-        Bitmap bmp = BitmapFactory.decodeByteArray(picture, 0, picture.length);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bmp.compress(Bitmap.CompressFormat.WEBP, 100, stream);
-
-        String path = BaseActivity.KEY_ROOT + "/" + signedInUser.getUid() + "/" + signedInUser.getUid() + ".webp";
-        StorageReference destination = FirebaseStorage.getInstance().getReference().child(path);
-
-        UploadTask uploadTask = destination.putStream(new ByteArrayInputStream(stream.toByteArray()));
-        uploadTask.addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(t -> {
-                    callback.onSuccess(t.getResult().toString());
-                });
-            } else {
-                callback.onFailure();
-            }
-        });
+        new CompressAndUpload(callback).execute(picture);
     }
+
 
     public interface Callback {
 
@@ -48,6 +32,44 @@ class PictureUploader {
 
         void onFailure();
 
+    }
+
+    private class CompressAndUpload extends AsyncTask<byte[], Void, Void> {
+
+        private Callback callback;
+
+        public CompressAndUpload(final Callback callback) {
+            this.callback = callback;
+        }
+
+        @Override
+        protected Void doInBackground(byte[]... picture) {
+            Bitmap bmp = BitmapFactory.decodeByteArray(picture[0], 0, picture[0].length);
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+
+            bmp.compress(Bitmap.CompressFormat.WEBP, 100, stream);
+
+            String path = BaseActivity.KEY_ROOT + "/" + signedInUser.getUid() + "/" + signedInUser.getUid() + ".webp";
+            StorageReference destination = FirebaseStorage.getInstance().getReference().child(path);
+
+            UploadTask uploadTask = destination.putStream(new ByteArrayInputStream(stream.toByteArray()));
+            uploadTask.addOnCompleteListener(task -> {
+                try {
+                    stream.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if (task.isSuccessful()) {
+                    task.getResult().getStorage().getDownloadUrl().addOnCompleteListener(t -> {
+                        callback.onSuccess(t.getResult().toString());
+                    });
+                } else {
+                    callback.onFailure();
+                }
+            });
+            return null;
+        }
     }
 
 }

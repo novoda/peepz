@@ -21,6 +21,7 @@ class GeoFence {
     data class Place(val name: String = "", val description: String = "", val latitude: Double = 0.0, val longitude: Double = 0.0)
 
     private fun toGeofence(place: Place): Geofence {
+        Log.v(TAG, "Adding ${place.name} to geofence")
         return Geofence.Builder()
                 .setRequestId(place.name)
                 .setCircularRegion(place.longitude, place.latitude, 50f)
