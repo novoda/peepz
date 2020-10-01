@@ -11,10 +11,12 @@ import SwiftUI
 @main
 struct PeepzApp: App {
     // @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var model = PeepzModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(model)
         }
     }
 }

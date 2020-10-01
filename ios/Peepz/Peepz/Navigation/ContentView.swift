@@ -1,16 +1,8 @@
-//
-//  ContentView.swift
-//  Peepz
-//
-//  Created by Michal Novoda on 23/09/2020.
-//
-
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, peepz!")
-            .padding()
+        LoginView()
     }
 }
 

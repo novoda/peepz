@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90460A172523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
+		90460A182523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
 		90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE59251B3D56000856C5 /* PeepzApp.swift */; };
 		90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* ContentView.swift */; };
 		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 		90D5DEA1251CA109000856C5 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = 90D5DEA0251CA109000856C5 /* FirebaseFunctions */; };
 		90D5DEA3251CA109000856C5 /* FirebaseStorageSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 90D5DEA2251CA109000856C5 /* FirebaseStorageSwift */; };
 		90D5DEA5251CA109000856C5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 90D5DEA4251CA109000856C5 /* FirebaseAuth */; };
+		90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
+		90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,7 @@
 
 /* Begin PBXFileReference section */
 		90460A0D2523415900DB743E /* Peepz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Peepz.entitlements; sourceTree = "<group>"; };
+		90460A162523444800DB743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		90D5DE56251B3D56000856C5 /* Peepz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peepz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D5DE59251B3D56000856C5 /* PeepzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzApp.swift; sourceTree = "<group>"; };
 		90D5DE5B251B3D56000856C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 		90D5DE76251B3D58000856C5 /* PeepzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzUITests.swift; sourceTree = "<group>"; };
 		90D5DE78251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D5DE90251BA806000856C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		90E6445C2524BEC900B07DEB /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +97,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		90460A11252343CE00DB743E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				90460A162523444800DB743E /* LoginView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		90D5DE4D251B3D56000856C5 = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +128,12 @@
 		90D5DE58251B3D56000856C5 /* Peepz */ = {
 			isa = PBXGroup;
 			children = (
+				90E644652524C18C00B07DEB /* Navigation */,
+				90E6445B2524BEB500B07DEB /* Model */,
+				90460A11252343CE00DB743E /* Authentication */,
 				90460A0D2523415900DB743E /* Peepz.entitlements */,
 				90D5DE90251BA806000856C5 /* GoogleService-Info.plist */,
 				90D5DE59251B3D56000856C5 /* PeepzApp.swift */,
-				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
 				90D5DE5D251B3D58000856C5 /* Assets.xcassets */,
 				90D5DE62251B3D58000856C5 /* Info.plist */,
 				90D5DE5F251B3D58000856C5 /* Preview Content */,
@@ -149,6 +165,22 @@
 				90D5DE78251B3D58000856C5 /* Info.plist */,
 			);
 			path = PeepzUITests;
+			sourceTree = "<group>";
+		};
+		90E6445B2524BEB500B07DEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90E6445C2524BEC900B07DEB /* PeepzModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		90E644652524C18C00B07DEB /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
+			);
+			path = Navigation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +327,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */,
+				90460A172523444800DB743E /* LoginView.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
 			);
@@ -304,6 +338,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */,
 				90D5DE6C251B3D58000856C5 /* PeepzTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -312,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90460A182523444800DB743E /* LoginView.swift in Sources */,
 				90D5DE77251B3D58000856C5 /* PeepzUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
