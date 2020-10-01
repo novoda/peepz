@@ -27,6 +27,8 @@
 		90D5DEA5251CA109000856C5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 90D5DEA4251CA109000856C5 /* FirebaseAuth */; };
 		90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
 		90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
+		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
+		90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,7 @@
 		90D5DE78251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D5DE90251BA806000856C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90E6445C2524BEC900B07DEB /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
+		90FAD0732525EB2800477A70 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +131,7 @@
 		90D5DE58251B3D56000856C5 /* Peepz */ = {
 			isa = PBXGroup;
 			children = (
+				90FAD0722525EB0F00477A70 /* Gallery */,
 				90E644652524C18C00B07DEB /* Navigation */,
 				90E6445B2524BEB500B07DEB /* Model */,
 				90460A11252343CE00DB743E /* Authentication */,
@@ -181,6 +185,14 @@
 				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		90FAD0722525EB0F00477A70 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				90FAD0732525EB2800477A70 /* GalleryView.swift */,
+			);
+			path = Gallery;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,6 +343,7 @@
 				90460A172523444800DB743E /* LoginView.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
+				90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				90460A182523444800DB743E /* LoginView.swift in Sources */,
+				90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */,
 				90D5DE77251B3D58000856C5 /* PeepzUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
