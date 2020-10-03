@@ -4,6 +4,7 @@ struct GalleryView: View {
     var body: some View {
         Text("Hello, GalleryView!")
             .navigationTitle("Novodians")
+            .navigationBarBackButtonHidden(true)
     }
 }
 
