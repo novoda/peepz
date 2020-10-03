@@ -7,11 +7,6 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Image(systemName: "person.circle").imageScale(.large)
-            TextField("Login ID", text: $model.loginId)
-            SecureField("Password", text: $model.password)
-            Button(action: model.authenticate) {
-                Text("Log In")
-            }
             GoogleSignInViewController()
 
             // isActive - means is it showing its destination

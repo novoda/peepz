@@ -3,14 +3,7 @@ import GoogleSignIn
 import Firebase
 
 class PeepzModel: NSObject, ObservableObject {
-    var loginId: String = ""
-    var password: String = ""
     @Published var isAuthenticated = false
-
-    func authenticate() {
-        print("Login Id \(loginId), Password Id \(password)")
-
-    }
 
     override init() {
         super.init()
