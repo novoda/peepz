@@ -21,19 +21,30 @@ extension PeepzModel: GIDSignInDelegate {
 
         if let error = error {
             print("Sign In failed with error: \(error)")
-            isAuthenticated = false
             return
         }
 
         guard let authentication = user.authentication else { return }
         let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                        accessToken: authentication.accessToken)
-        isAuthenticated = true
-        print("Sign in successful: \(credential)")
+
+        firebaseAuth(credential: credential)
     }
 
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         // Perform any operations when the user disconnects from app here.
         print("Logged out: Yet to be implemented")
+    }
+
+    func firebaseAuth(credential: AuthCredential) {
+        Auth.auth().signIn(with: credential) { (authResult, error) in
+
+            if let error = error {
+                print("Firebase Login failed: \(error)")
+                return
+            }
+
+            self.isAuthenticated = true
+        }
     }
 }
