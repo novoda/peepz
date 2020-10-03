@@ -1,10 +1,3 @@
-//
-//  GalleryView.swift
-//  Peepz
-//
-//  Created by Michal Novoda on 01/10/2020.
-//
-
 import SwiftUI
 
 struct GalleryView: View {
