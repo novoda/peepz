@@ -43,8 +43,18 @@ extension PeepzModel: GIDSignInDelegate {
                 print("Firebase Login failed: \(error)")
                 return
             }
-
             self.isAuthenticated = true
+        }
+    }
+
+    func signOut() {
+        do {
+            GIDSignIn.sharedInstance().signOut()
+            try Auth.auth().signOut()
+
+            isAuthenticated = false
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
         }
     }
 }

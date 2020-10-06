@@ -25,7 +25,6 @@ struct LoginView_Previews: PreviewProvider {
 
 // Google Sign in
 struct GoogleSignInViewController: UIViewControllerRepresentable {
-
     func makeUIViewController(context: Context) -> some UIViewController {
 
         // We need the view controller to set it as presentingViewController for Google Sign In.
