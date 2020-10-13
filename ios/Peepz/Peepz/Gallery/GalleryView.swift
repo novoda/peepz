@@ -13,7 +13,11 @@ struct GalleryView: View {
         ScrollView {
             LazyVGrid(columns: columns) {
                 ForEach(model.users, id: \.self) { user in
-                    GalleryItemView()
+                    let state = GalleryItemViewState(imageName: "hodor",
+                                                     location: user.location,
+                                                     name: user.name,
+                                                     isActive: true)
+                    GalleryItemView(state: state)
                 }
             }
         }
