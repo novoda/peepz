@@ -4,6 +4,9 @@ import Firebase
 
 class PeepzModel: NSObject, ObservableObject {
     @Published var isAuthenticated = false
+    @Published var users = [User]()
+    
+    var fireDatabaseRef = Database.database().reference()
 
     override init() {
         super.init()
@@ -44,6 +47,7 @@ extension PeepzModel: GIDSignInDelegate {
                 return
             }
             self.isAuthenticated = true
+            self.getUsers() //ToDo: Should this be put in a different place?
         }
     }
 
@@ -55,6 +59,22 @@ extension PeepzModel: GIDSignInDelegate {
             isAuthenticated = false
         } catch let signOutError as NSError {
             print ("Error signing out: %@", signOutError)
+        }
+    }
+
+    func getUsers() {
+        var ref: DatabaseReference!
+
+        ref = Database.database().reference()
+        ref.child("wip/rooms/novoda/wall/").observe(.value, with: { [weak self] snapshot  in
+            // Get user value
+            guard let value = snapshot.value as? NSDictionary else {
+                print("Error: No users here")
+                return
+            }
+            self?.users = value.allValues.compactMap { User(dictionary: $0 as! NSDictionary) }
+        }) { error in
+            print(error.localizedDescription)
         }
     }
 }
