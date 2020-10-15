@@ -4,8 +4,8 @@ import Firebase
 
 class PeepzModel: NSObject, ObservableObject {
     @Published var isAuthenticated = false
-    @Published var users = [User]()
-    
+    @Published var users = [GalleryItemViewState]()
+
     var fireDatabaseRef = Database.database().reference()
 
     override init() {
@@ -47,7 +47,7 @@ extension PeepzModel: GIDSignInDelegate {
                 return
             }
             self.isAuthenticated = true
-            self.getUsers() //ToDo: Should this be put in a different place?
+            self.getUsers() //ToDo: Should this be put in a different place? - yes
         }
     }
 
@@ -63,6 +63,7 @@ extension PeepzModel: GIDSignInDelegate {
     }
 
     func getUsers() {
+        let fifteenMinutes: Double = 60 * 15
         var ref: DatabaseReference!
 
         ref = Database.database().reference()
@@ -72,7 +73,17 @@ extension PeepzModel: GIDSignInDelegate {
                 print("Error: No users here")
                 return
             }
-            self?.users = value.allValues.compactMap { User(dictionary: $0 as! NSDictionary) }
+            self?.users = value
+                .allValues
+                .compactMap { User(dictionary: $0 as! NSDictionary) }
+                .sorted(by: { $0.lastSeen > $1.lastSeen })
+                .map({ user -> GalleryItemViewState in
+                    let isActive = Date().timeIntervalSince1970 - (user.lastSeen * 0.001) < fifteenMinutes
+                    return GalleryItemViewState(imageName: user.imageUrl,
+                                                     location: user.location,
+                                                     name: user.name,
+                                                     isActive: isActive)
+                })
         }) { error in
             print(error.localizedDescription)
         }

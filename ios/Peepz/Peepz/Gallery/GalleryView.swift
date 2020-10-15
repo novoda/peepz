@@ -4,19 +4,14 @@ struct GalleryView: View {
     @EnvironmentObject var model: PeepzModel
 
     var columns = [
-        GridItem(.flexible()),
-        GridItem(.flexible())
+        GridItem(.flexible(), spacing: 0),
+        GridItem(.flexible(), spacing: 0)
     ]
 
     var body: some View {
-
         ScrollView {
-            LazyVGrid(columns: columns) {
-                ForEach(model.users, id: \.self) { user in
-                    let state = GalleryItemViewState(imageName: "hodor",
-                                                     location: user.location,
-                                                     name: user.name,
-                                                     isActive: true)
+            LazyVGrid(columns: columns, spacing: 0) {
+                ForEach(model.users, id: \.self) { state in
                     GalleryItemView(state: state)
                 }
             }

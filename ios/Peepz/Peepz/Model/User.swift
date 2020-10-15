@@ -3,22 +3,23 @@ import Foundation
 struct User: Codable, Hashable {
     let uid: String
     let name: String
+    let lastSeen: Double
     let imageUrl: String?
-    let imageTimestamp: Date?
-    let lastSeen: Date?
+    let imageTimestamp: Double?
     let location: String?
 
     init?(dictionary: NSDictionary) {
         guard
             let uid = dictionary["uid"] as? String,
-            let name = dictionary["name"] as? String
+            let name = dictionary["name"] as? String,
+            let lastSeen = dictionary["lastSeen"] as? Double
         else { return nil }
         self.name = name
         self.uid = uid
+        self.lastSeen = lastSeen
 
         imageUrl = User.imgUrl(dictionary: dictionary["image"] as? NSDictionary)
-        imageTimestamp = User.date(timestamp: User.imgTimeStamp(dictionary: dictionary["image"] as? NSDictionary)) //TODO: Point free about function composition would work great here.
-        lastSeen = User.date(timestamp: dictionary["uid"] as? Double)
+        imageTimestamp = User.imgTimeStamp(dictionary: dictionary["image"] as? NSDictionary)
         location = dictionary["location"] as? String
     }
 
