@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct GalleryItemViewState {
-    let imageName: String
+struct GalleryItemViewState: Hashable {
+    let imageName: String?
     let location: String?
     let name: String
     let isActive: Bool
@@ -12,10 +12,18 @@ struct GalleryItemView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            Image(state.imageName)
-                .resizable()
+            AsyncImage(
+                url: URL(string: state.imageName ?? ""),
+                placeholder: {
+                    Image("hodor")
+                        .resizable()
+                })
                 .aspectRatio(1, contentMode: .fit)
-                .border(Color.black, width: 1)
+                .ifCondition(!state.isActive) { image in
+                    image
+                        .overlay(Rectangle().foregroundColor(.gray))
+                        .blendMode(.saturation)
+                }
             HStack {
                 Circle()
                     .frame(width: 10, height: 10, alignment: .center)
@@ -45,3 +53,39 @@ struct GalleryItemView_Previews: PreviewProvider {
         )
     }
 }
+
+extension View {
+    @ViewBuilder
+    func ifCondition<TrueContent: View, FalseContent: View>(_ condition: Bool, then trueContent: (Self) -> TrueContent, else falseContent: (Self) -> FalseContent) -> some View {
+        if condition {
+            trueContent(self)
+        } else {
+            falseContent(self)
+        }
+    }
+
+    @ViewBuilder
+    func ifCondition<TrueContent: View>(_ condition: Bool, then trueContent: (Self) -> TrueContent) -> some View {
+        if condition {
+            trueContent(self)
+        } else {
+            self
+        }
+    }
+}
+
+extension View {
+    @ViewBuilder
+    func `if`<TrueContent: View, FalseContent: View>(
+        _ condition: Bool,
+        if ifTransform: (Self) -> TrueContent,
+        else elseTransform: (Self) -> FalseContent
+    ) -> some View {
+        if condition {
+            ifTransform(self)
+        } else {
+            elseTransform(self)
+        }
+    }
+}
+
