@@ -19,7 +19,7 @@ struct GalleryItemView: View {
                         .resizable()
                 })
                 .aspectRatio(1, contentMode: .fit)
-                .ifCondition(!state.isActive) { image in
+                .if(!state.isActive) { image in
                     image
                         .overlay(Rectangle().foregroundColor(.gray))
                         .blendMode(.saturation)
@@ -56,7 +56,7 @@ struct GalleryItemView_Previews: PreviewProvider {
 
 extension View {
     @ViewBuilder
-    func ifCondition<TrueContent: View, FalseContent: View>(_ condition: Bool, then trueContent: (Self) -> TrueContent, else falseContent: (Self) -> FalseContent) -> some View {
+    func `if`<TrueContent: View, FalseContent: View>(_ condition: Bool, then trueContent: (Self) -> TrueContent, else falseContent: (Self) -> FalseContent) -> some View {
         if condition {
             trueContent(self)
         } else {
@@ -65,7 +65,7 @@ extension View {
     }
 
     @ViewBuilder
-    func ifCondition<TrueContent: View>(_ condition: Bool, then trueContent: (Self) -> TrueContent) -> some View {
+    func `if`<TrueContent: View>(_ condition: Bool, then trueContent: (Self) -> TrueContent) -> some View {
         if condition {
             trueContent(self)
         } else {
@@ -73,19 +73,3 @@ extension View {
         }
     }
 }
-
-extension View {
-    @ViewBuilder
-    func `if`<TrueContent: View, FalseContent: View>(
-        _ condition: Bool,
-        if ifTransform: (Self) -> TrueContent,
-        else elseTransform: (Self) -> FalseContent
-    ) -> some View {
-        if condition {
-            ifTransform(self)
-        } else {
-            elseTransform(self)
-        }
-    }
-}
-
