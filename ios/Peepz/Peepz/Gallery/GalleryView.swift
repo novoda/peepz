@@ -16,7 +16,7 @@ struct GalleryView: View {
                 }
             }
         }
-        .navigationTitle("Novodians")
+        .navigationTitle("Novodans")
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(
             trailing:
