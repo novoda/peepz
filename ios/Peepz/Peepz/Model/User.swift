@@ -37,4 +37,10 @@ struct User: Codable, Hashable {
     static func imgTimeStamp(dictionary: NSDictionary?) -> Double? {
         return dictionary?["timestamp"] as? Double
     }
+
+    func isActive(now: Date = Date()) -> Bool {
+        let fifteenMinutes: Double = 60 * 15
+        let lastSeenInMinutes = self.lastSeen * 0.001
+        return now.timeIntervalSince1970 - lastSeenInMinutes < fifteenMinutes
+    }
 }

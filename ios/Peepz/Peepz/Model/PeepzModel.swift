@@ -63,7 +63,6 @@ extension PeepzModel: GIDSignInDelegate {
     }
 
     func getUsers() {
-        let fifteenMinutes: Double = 60 * 15
         var ref: DatabaseReference!
 
         ref = Database.database().reference()
@@ -77,15 +76,15 @@ extension PeepzModel: GIDSignInDelegate {
                 .allValues
                 .compactMap { User(dictionary: $0 as! NSDictionary) }
                 .sorted(by: { $0.lastSeen > $1.lastSeen })
-                .map({ user -> GalleryItemViewState in
-                    let isActive = Date().timeIntervalSince1970 - (user.lastSeen * 0.001) < fifteenMinutes
-                    return GalleryItemViewState(imageName: user.imageUrl,
-                                                     location: user.location,
-                                                     name: user.name,
-                                                     isActive: isActive)
-                })
+                .map(toGalleryItemViewState)
         }) { error in
             print(error.localizedDescription)
         }
     }
+}
+private func toGalleryItemViewState(user: User) -> GalleryItemViewState {
+    GalleryItemViewState(imageName: user.imageUrl,
+                         location: user.location,
+                         name: user.name,
+                         isActive: user.isActive())
 }
