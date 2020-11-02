@@ -1,0 +1,860 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3383B73E4B4347CC8FCE99BF /* Pods_Peepz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 67F8265A9695EEC9B26CDB5A /* Pods_Peepz.framework */; };
+		901317102528EEB800FA3C01 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9013170F2528EEB800FA3C01 /* FirebaseFirestore */; };
+		901317122528EEB800FA3C01 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 901317112528EEB800FA3C01 /* FirebaseDatabase */; };
+		901317142528EEB800FA3C01 /* GoogleUtilities_UserDefaults in Frameworks */ = {isa = PBXBuildFile; productRef = 901317132528EEB800FA3C01 /* GoogleUtilities_UserDefaults */; };
+		901317162528EEB800FA3C01 /* FirebaseStorageSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 901317152528EEB800FA3C01 /* FirebaseStorageSwift */; };
+		901317182528EEB800FA3C01 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 901317172528EEB800FA3C01 /* FirebaseStorage */; };
+		9013171A2528EEB800FA3C01 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 901317192528EEB800FA3C01 /* FirebaseFirestoreSwift */; };
+		9013171C2528EEB800FA3C01 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9013171B2528EEB800FA3C01 /* FirebaseAuth */; };
+		90262FDF25333F99000CA696 /* GalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90262FDE25333F99000CA696 /* GalleryItemView.swift */; };
+		9036203C2534AE6D00123072 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036203B2534AE6C00123072 /* User.swift */; };
+		9036203D2534AE6D00123072 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036203B2534AE6C00123072 /* User.swift */; };
+		90460A172523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
+		90460A182523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
+		90749BCC2536005E00DD946B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90749BCB2536005E00DD946B /* ImageLoader.swift */; };
+		90749BCD2536005E00DD946B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90749BCB2536005E00DD946B /* ImageLoader.swift */; };
+		90749BD22536009E00DD946B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90749BD12536009E00DD946B /* AsyncImageView.swift */; };
+		90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE59251B3D56000856C5 /* PeepzApp.swift */; };
+		90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* ContentView.swift */; };
+		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
+		90D5DE61251B3D58000856C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */; };
+		90D5DE6C251B3D58000856C5 /* PeepzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE6B251B3D58000856C5 /* PeepzTests.swift */; };
+		90D5DE77251B3D58000856C5 /* PeepzUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE76251B3D58000856C5 /* PeepzUITests.swift */; };
+		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
+		90D5DE92251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
+		90D5DE93251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
+		90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
+		90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
+		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
+		90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		90D5DE68251B3D58000856C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D5DE55251B3D56000856C5;
+			remoteInfo = Peepz;
+		};
+		90D5DE73251B3D58000856C5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D5DE55251B3D56000856C5;
+			remoteInfo = Peepz;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		67F8265A9695EEC9B26CDB5A /* Pods_Peepz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Peepz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8E7FBDC397B7F23A51E21E93 /* Pods-Peepz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peepz.release.xcconfig"; path = "Target Support Files/Pods-Peepz/Pods-Peepz.release.xcconfig"; sourceTree = "<group>"; };
+		90262FDE25333F99000CA696 /* GalleryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemView.swift; sourceTree = "<group>"; };
+		9036203B2534AE6C00123072 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		90460A0D2523415900DB743E /* Peepz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Peepz.entitlements; sourceTree = "<group>"; };
+		90460A162523444800DB743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		90749BCB2536005E00DD946B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		90749BD12536009E00DD946B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
+		90D5DE56251B3D56000856C5 /* Peepz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peepz.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D5DE59251B3D56000856C5 /* PeepzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzApp.swift; sourceTree = "<group>"; };
+		90D5DE5B251B3D56000856C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		90D5DE5D251B3D58000856C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		90D5DE62251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90D5DE67251B3D58000856C5 /* PeepzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeepzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D5DE6B251B3D58000856C5 /* PeepzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzTests.swift; sourceTree = "<group>"; };
+		90D5DE6D251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90D5DE72251B3D58000856C5 /* PeepzUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PeepzUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		90D5DE76251B3D58000856C5 /* PeepzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzUITests.swift; sourceTree = "<group>"; };
+		90D5DE78251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		90D5DE90251BA806000856C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		90E6445C2524BEC900B07DEB /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
+		90FAD0732525EB2800477A70 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		90FAD093252679B300477A70 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
+		90FAD095252679C500477A70 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
+		90FAD097252679D000477A70 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
+		90FAD099252679D900477A70 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
+		B23340EEA3119241B7FF1005 /* Pods-Peepz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peepz.debug.xcconfig"; path = "Target Support Files/Pods-Peepz/Pods-Peepz.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		90D5DE53251B3D56000856C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				901317182528EEB800FA3C01 /* FirebaseStorage in Frameworks */,
+				901317142528EEB800FA3C01 /* GoogleUtilities_UserDefaults in Frameworks */,
+				9013171A2528EEB800FA3C01 /* FirebaseFirestoreSwift in Frameworks */,
+				9013171C2528EEB800FA3C01 /* FirebaseAuth in Frameworks */,
+				901317122528EEB800FA3C01 /* FirebaseDatabase in Frameworks */,
+				901317102528EEB800FA3C01 /* FirebaseFirestore in Frameworks */,
+				901317162528EEB800FA3C01 /* FirebaseStorageSwift in Frameworks */,
+				3383B73E4B4347CC8FCE99BF /* Pods_Peepz.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D5DE64251B3D58000856C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D5DE6F251B3D58000856C5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		90460A11252343CE00DB743E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				90460A162523444800DB743E /* LoginView.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		90D5DE4D251B3D56000856C5 = {
+			isa = PBXGroup;
+			children = (
+				90D5DE58251B3D56000856C5 /* Peepz */,
+				90D5DE6A251B3D58000856C5 /* PeepzTests */,
+				90D5DE75251B3D58000856C5 /* PeepzUITests */,
+				90D5DE57251B3D56000856C5 /* Products */,
+				90FAD092252679B300477A70 /* Frameworks */,
+				FB2103484FA69E1279B3F085 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		90D5DE57251B3D56000856C5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				90D5DE56251B3D56000856C5 /* Peepz.app */,
+				90D5DE67251B3D58000856C5 /* PeepzTests.xctest */,
+				90D5DE72251B3D58000856C5 /* PeepzUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90D5DE58251B3D56000856C5 /* Peepz */ = {
+			isa = PBXGroup;
+			children = (
+				90FAD0722525EB0F00477A70 /* Gallery */,
+				90E644652524C18C00B07DEB /* Navigation */,
+				90E6445B2524BEB500B07DEB /* Model */,
+				90460A11252343CE00DB743E /* Authentication */,
+				90460A0D2523415900DB743E /* Peepz.entitlements */,
+				90D5DE90251BA806000856C5 /* GoogleService-Info.plist */,
+				90D5DE59251B3D56000856C5 /* PeepzApp.swift */,
+				90D5DE5D251B3D58000856C5 /* Assets.xcassets */,
+				90D5DE62251B3D58000856C5 /* Info.plist */,
+				90D5DE5F251B3D58000856C5 /* Preview Content */,
+				90FAD0822526775C00477A70 /* Frameworks */,
+			);
+			path = Peepz;
+			sourceTree = "<group>";
+		};
+		90D5DE5F251B3D58000856C5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		90D5DE6A251B3D58000856C5 /* PeepzTests */ = {
+			isa = PBXGroup;
+			children = (
+				90D5DE6B251B3D58000856C5 /* PeepzTests.swift */,
+				90D5DE6D251B3D58000856C5 /* Info.plist */,
+			);
+			path = PeepzTests;
+			sourceTree = "<group>";
+		};
+		90D5DE75251B3D58000856C5 /* PeepzUITests */ = {
+			isa = PBXGroup;
+			children = (
+				90D5DE76251B3D58000856C5 /* PeepzUITests.swift */,
+				90D5DE78251B3D58000856C5 /* Info.plist */,
+			);
+			path = PeepzUITests;
+			sourceTree = "<group>";
+		};
+		90E6445B2524BEB500B07DEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				90E6445C2524BEC900B07DEB /* PeepzModel.swift */,
+				9036203B2534AE6C00123072 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		90E644652524C18C00B07DEB /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		90FAD0722525EB0F00477A70 /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				90FAD0732525EB2800477A70 /* GalleryView.swift */,
+				90262FDE25333F99000CA696 /* GalleryItemView.swift */,
+				90749BCB2536005E00DD946B /* ImageLoader.swift */,
+				90749BD12536009E00DD946B /* AsyncImageView.swift */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		90FAD0822526775C00477A70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
+		90FAD092252679B300477A70 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				90FAD099252679D900477A70 /* SystemConfiguration.framework */,
+				90FAD097252679D000477A70 /* AuthenticationServices.framework */,
+				90FAD095252679C500477A70 /* SafariServices.framework */,
+				90FAD093252679B300477A70 /* LocalAuthentication.framework */,
+				67F8265A9695EEC9B26CDB5A /* Pods_Peepz.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FB2103484FA69E1279B3F085 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B23340EEA3119241B7FF1005 /* Pods-Peepz.debug.xcconfig */,
+				8E7FBDC397B7F23A51E21E93 /* Pods-Peepz.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		90D5DE55251B3D56000856C5 /* Peepz */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D5DE7B251B3D58000856C5 /* Build configuration list for PBXNativeTarget "Peepz" */;
+			buildPhases = (
+				FBFABBF6B8328F4C2A209770 /* [CP] Check Pods Manifest.lock */,
+				90D5DE52251B3D56000856C5 /* Sources */,
+				90D5DE53251B3D56000856C5 /* Frameworks */,
+				90D5DE54251B3D56000856C5 /* Resources */,
+				D1EC69454E773AF514992077 /* [CP] Copy Pods Resources */,
+				DE089B8C8B6FF1E396F14801 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Peepz;
+			packageProductDependencies = (
+				9013170F2528EEB800FA3C01 /* FirebaseFirestore */,
+				901317112528EEB800FA3C01 /* FirebaseDatabase */,
+				901317132528EEB800FA3C01 /* GoogleUtilities_UserDefaults */,
+				901317152528EEB800FA3C01 /* FirebaseStorageSwift */,
+				901317172528EEB800FA3C01 /* FirebaseStorage */,
+				901317192528EEB800FA3C01 /* FirebaseFirestoreSwift */,
+				9013171B2528EEB800FA3C01 /* FirebaseAuth */,
+			);
+			productName = Peepz;
+			productReference = 90D5DE56251B3D56000856C5 /* Peepz.app */;
+			productType = "com.apple.product-type.application";
+		};
+		90D5DE66251B3D58000856C5 /* PeepzTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D5DE7E251B3D58000856C5 /* Build configuration list for PBXNativeTarget "PeepzTests" */;
+			buildPhases = (
+				90D5DE63251B3D58000856C5 /* Sources */,
+				90D5DE64251B3D58000856C5 /* Frameworks */,
+				90D5DE65251B3D58000856C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90D5DE69251B3D58000856C5 /* PBXTargetDependency */,
+			);
+			name = PeepzTests;
+			productName = PeepzTests;
+			productReference = 90D5DE67251B3D58000856C5 /* PeepzTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		90D5DE71251B3D58000856C5 /* PeepzUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 90D5DE81251B3D58000856C5 /* Build configuration list for PBXNativeTarget "PeepzUITests" */;
+			buildPhases = (
+				90D5DE6E251B3D58000856C5 /* Sources */,
+				90D5DE6F251B3D58000856C5 /* Frameworks */,
+				90D5DE70251B3D58000856C5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				90D5DE74251B3D58000856C5 /* PBXTargetDependency */,
+			);
+			name = PeepzUITests;
+			productName = PeepzUITests;
+			productReference = 90D5DE72251B3D58000856C5 /* PeepzUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		90D5DE4E251B3D56000856C5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
+				TargetAttributes = {
+					90D5DE55251B3D56000856C5 = {
+						CreatedOnToolsVersion = 12.0;
+					};
+					90D5DE66251B3D58000856C5 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 90D5DE55251B3D56000856C5;
+					};
+					90D5DE71251B3D58000856C5 = {
+						CreatedOnToolsVersion = 12.0;
+						TestTargetID = 90D5DE55251B3D56000856C5;
+					};
+				};
+			};
+			buildConfigurationList = 90D5DE51251B3D56000856C5 /* Build configuration list for PBXProject "Peepz" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 90D5DE4D251B3D56000856C5;
+			packageReferences = (
+				9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
+			productRefGroup = 90D5DE57251B3D56000856C5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				90D5DE55251B3D56000856C5 /* Peepz */,
+				90D5DE66251B3D58000856C5 /* PeepzTests */,
+				90D5DE71251B3D58000856C5 /* PeepzUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		90D5DE54251B3D56000856C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D5DE61251B3D58000856C5 /* Preview Assets.xcassets in Resources */,
+				90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */,
+				90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D5DE65251B3D58000856C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D5DE92251BA806000856C5 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D5DE70251B3D58000856C5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90D5DE93251BA806000856C5 /* GoogleService-Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D1EC69454E773AF514992077 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peepz/Pods-Peepz-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peepz/Pods-Peepz-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Peepz/Pods-Peepz-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE089B8C8B6FF1E396F14801 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peepz/Pods-Peepz-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Peepz/Pods-Peepz-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Peepz/Pods-Peepz-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBFABBF6B8328F4C2A209770 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Peepz-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		90D5DE52251B3D56000856C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90262FDF25333F99000CA696 /* GalleryItemView.swift in Sources */,
+				90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */,
+				90460A172523444800DB743E /* LoginView.swift in Sources */,
+				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
+				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
+				90749BD22536009E00DD946B /* AsyncImageView.swift in Sources */,
+				90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */,
+				90749BCC2536005E00DD946B /* ImageLoader.swift in Sources */,
+				9036203C2534AE6D00123072 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D5DE63251B3D58000856C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */,
+				90D5DE6C251B3D58000856C5 /* PeepzTests.swift in Sources */,
+				90749BCD2536005E00DD946B /* ImageLoader.swift in Sources */,
+				9036203D2534AE6D00123072 /* User.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D5DE6E251B3D58000856C5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				90460A182523444800DB743E /* LoginView.swift in Sources */,
+				90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */,
+				90D5DE77251B3D58000856C5 /* PeepzUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		90D5DE69251B3D58000856C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D5DE55251B3D56000856C5 /* Peepz */;
+			targetProxy = 90D5DE68251B3D58000856C5 /* PBXContainerItemProxy */;
+		};
+		90D5DE74251B3D58000856C5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D5DE55251B3D56000856C5 /* Peepz */;
+			targetProxy = 90D5DE73251B3D58000856C5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		90D5DE79251B3D58000856C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		90D5DE7A251B3D58000856C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		90D5DE7C251B3D58000856C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B23340EEA3119241B7FF1005 /* Pods-Peepz.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Peepz/Peepz.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Peepz/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peepz/Frameworks",
+				);
+				INFOPLIST_FILE = Peepz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.peepz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		90D5DE7D251B3D58000856C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E7FBDC397B7F23A51E21E93 /* Pods-Peepz.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Peepz/Peepz.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Peepz/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peepz/Frameworks",
+				);
+				INFOPLIST_FILE = Peepz/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.peepz;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		90D5DE7F251B3D58000856C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PeepzTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.peepz.PeepzTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peepz.app/Peepz";
+			};
+			name = Debug;
+		};
+		90D5DE80251B3D58000856C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = PeepzTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.peepz.PeepzTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peepz.app/Peepz";
+			};
+			name = Release;
+		};
+		90D5DE82251B3D58000856C5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peepz/Frameworks",
+				);
+				INFOPLIST_FILE = PeepzUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.peepz.PeepzUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Peepz;
+			};
+			name = Debug;
+		};
+		90D5DE83251B3D58000856C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Peepz/Frameworks",
+				);
+				INFOPLIST_FILE = PeepzUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.peepz.PeepzUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Peepz;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		90D5DE51251B3D56000856C5 /* Build configuration list for PBXProject "Peepz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D5DE79251B3D58000856C5 /* Debug */,
+				90D5DE7A251B3D58000856C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90D5DE7B251B3D58000856C5 /* Build configuration list for PBXNativeTarget "Peepz" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D5DE7C251B3D58000856C5 /* Debug */,
+				90D5DE7D251B3D58000856C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90D5DE7E251B3D58000856C5 /* Build configuration list for PBXNativeTarget "PeepzTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D5DE7F251B3D58000856C5 /* Debug */,
+				90D5DE80251B3D58000856C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		90D5DE81251B3D58000856C5 /* Build configuration list for PBXNativeTarget "PeepzUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				90D5DE82251B3D58000856C5 /* Debug */,
+				90D5DE83251B3D58000856C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				branch = "6.33-spm-beta";
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9013170F2528EEB800FA3C01 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		901317112528EEB800FA3C01 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		901317132528EEB800FA3C01 /* GoogleUtilities_UserDefaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = GoogleUtilities_UserDefaults;
+		};
+		901317152528EEB800FA3C01 /* FirebaseStorageSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorageSwift;
+		};
+		901317172528EEB800FA3C01 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+		901317192528EEB800FA3C01 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		9013171B2528EEB800FA3C01 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 90D5DE4E251B3D56000856C5 /* Project object */;
+}
