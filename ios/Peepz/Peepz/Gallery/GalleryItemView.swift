@@ -1,4 +1,5 @@
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct GalleryItemViewState: Hashable {
     let imageName: String?
@@ -12,12 +13,9 @@ struct GalleryItemView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            AsyncImage(
-                url: URL(string: state.imageName ?? ""),
-                placeholder: {
-                    Image("hodor")
-                        .resizable()
-                })
+            WebImage(url: URL(string: state.imageName ?? ""))
+                .resizable()
+                .placeholder(Image("hodor"))
                 .aspectRatio(1, contentMode: .fit)
                 .if(!state.isActive) { image in
                     image

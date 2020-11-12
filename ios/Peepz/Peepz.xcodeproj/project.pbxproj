@@ -20,9 +20,6 @@
 		9036203D2534AE6D00123072 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036203B2534AE6C00123072 /* User.swift */; };
 		90460A172523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
 		90460A182523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
-		90749BCC2536005E00DD946B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90749BCB2536005E00DD946B /* ImageLoader.swift */; };
-		90749BCD2536005E00DD946B /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90749BCB2536005E00DD946B /* ImageLoader.swift */; };
-		90749BD22536009E00DD946B /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90749BD12536009E00DD946B /* AsyncImageView.swift */; };
 		90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE59251B3D56000856C5 /* PeepzApp.swift */; };
 		90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* ContentView.swift */; };
 		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
@@ -36,6 +33,7 @@
 		90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
 		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
+		B866911D255D8B0100CABD4A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B866911C255D8B0100CABD4A /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,8 +60,6 @@
 		9036203B2534AE6C00123072 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		90460A0D2523415900DB743E /* Peepz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Peepz.entitlements; sourceTree = "<group>"; };
 		90460A162523444800DB743E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		90749BCB2536005E00DD946B /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		90749BD12536009E00DD946B /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		90D5DE56251B3D56000856C5 /* Peepz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peepz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D5DE59251B3D56000856C5 /* PeepzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzApp.swift; sourceTree = "<group>"; };
 		90D5DE5B251B3D56000856C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -94,6 +90,7 @@
 				901317182528EEB800FA3C01 /* FirebaseStorage in Frameworks */,
 				901317142528EEB800FA3C01 /* GoogleUtilities_UserDefaults in Frameworks */,
 				9013171A2528EEB800FA3C01 /* FirebaseFirestoreSwift in Frameworks */,
+				B866911D255D8B0100CABD4A /* SDWebImageSwiftUI in Frameworks */,
 				9013171C2528EEB800FA3C01 /* FirebaseAuth in Frameworks */,
 				901317122528EEB800FA3C01 /* FirebaseDatabase in Frameworks */,
 				901317102528EEB800FA3C01 /* FirebaseFirestore in Frameworks */,
@@ -215,8 +212,6 @@
 			children = (
 				90FAD0732525EB2800477A70 /* GalleryView.swift */,
 				90262FDE25333F99000CA696 /* GalleryItemView.swift */,
-				90749BCB2536005E00DD946B /* ImageLoader.swift */,
-				90749BD12536009E00DD946B /* AsyncImageView.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -276,6 +271,7 @@
 				901317172528EEB800FA3C01 /* FirebaseStorage */,
 				901317192528EEB800FA3C01 /* FirebaseFirestoreSwift */,
 				9013171B2528EEB800FA3C01 /* FirebaseAuth */,
+				B866911C255D8B0100CABD4A /* SDWebImageSwiftUI */,
 			);
 			productName = Peepz;
 			productReference = 90D5DE56251B3D56000856C5 /* Peepz.app */;
@@ -350,6 +346,7 @@
 			mainGroup = 90D5DE4D251B3D56000856C5;
 			packageReferences = (
 				9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 90D5DE57251B3D56000856C5 /* Products */;
 			projectDirPath = "";
@@ -460,9 +457,7 @@
 				90460A172523444800DB743E /* LoginView.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
-				90749BD22536009E00DD946B /* AsyncImageView.swift in Sources */,
 				90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */,
-				90749BCC2536005E00DD946B /* ImageLoader.swift in Sources */,
 				9036203C2534AE6D00123072 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,7 +468,6 @@
 			files = (
 				90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */,
 				90D5DE6C251B3D58000856C5 /* PeepzTests.swift in Sources */,
-				90749BCD2536005E00DD946B /* ImageLoader.swift in Sources */,
 				9036203D2534AE6D00123072 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,6 +623,7 @@
 				CODE_SIGN_ENTITLEMENTS = Peepz/Peepz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Peepz/Preview Content\"";
+				DEVELOPMENT_TEAM = 6344MVRY42;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -658,6 +653,7 @@
 				CODE_SIGN_ENTITLEMENTS = Peepz/Peepz.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Peepz/Preview Content\"";
+				DEVELOPMENT_TEAM = 6344MVRY42;
 				ENABLE_PREVIEWS = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -816,6 +812,14 @@
 				kind = branch;
 			};
 		};
+		B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -853,6 +857,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9013170E2528EEB800FA3C01 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		B866911C255D8B0100CABD4A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
