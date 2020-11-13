@@ -15,7 +15,9 @@ public class GalleryModel: ObservableObject {
         self.authenticationClient.authenticated
             .sink { isAuthenticated in
                 self.isAuthenticated = isAuthenticated
-                self.galleryClient.observe()
+                if (isAuthenticated) {
+                    self.galleryClient.observe()
+                }
             }
             .store(in: &cancellables)
 
