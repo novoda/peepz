@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GalleryView: View {
-    @EnvironmentObject var model: PeepzModel
+    var model: GalleryModel
 
     var columns = [
         GridItem(.flexible(), spacing: 0),
@@ -11,7 +11,7 @@ struct GalleryView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 0) {
-                ForEach(model.users, id: \.self) { state in
+                ForEach(model.items, id: \.self) { state in
                     GalleryItemView(state: state)
                 }
             }
@@ -30,9 +30,8 @@ struct GalleryView: View {
 struct GalleryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            GalleryView()
+            GalleryView(model: .mock)
                 .navigationTitle("Smoothies")
-                .environmentObject(PeepzModel())
         }
     }
 }

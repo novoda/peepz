@@ -2,7 +2,7 @@ import SwiftUI
 import GoogleSignIn
 
 struct LoginView: View {
-    @EnvironmentObject var model: PeepzModel
+    @ObservedObject var model: GalleryModel
 
     var body: some View {
         VStack {
@@ -10,16 +10,14 @@ struct LoginView: View {
             GoogleSignInViewController()
 
             // isActive - means is it showing its destination
-            NavigationLink(destination: GalleryView(), isActive: $model.isAuthenticated) { EmptyView() }
+            NavigationLink(destination: GalleryView(model: model), isActive: $model.isAuthenticated, label: { EmptyView() })
         }
     }
 }
 
 struct LoginView_Previews: PreviewProvider {
-
     static var previews: some View {
-        LoginView()
-            .environmentObject(PeepzModel())
+        LoginView(model: .mock)
     }
 }
 

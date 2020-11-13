@@ -1,13 +1,15 @@
 import Foundation
 
-struct User: Codable, Hashable {
+public struct User: Codable, Hashable {
     let uid: String
     let name: String
     let lastSeen: Double
     let imageUrl: String?
     let imageTimestamp: Double?
     let location: String?
+}
 
+extension User {
     init?(dictionary: NSDictionary) {
         guard
             let uid = dictionary["uid"] as? String,
