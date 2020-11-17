@@ -16,10 +16,21 @@ extension AuthenticationClient {
 
 private class AuthenticationFirebase: NSObject, GIDSignInDelegate {
     let authenticatedSubject = PassthroughSubject<Bool, Never>()
+    private let signIn: GIDSignIn
+    private let auth: Auth
+    private let firebaseClientId: String?
+
+    init(signIn: GIDSignIn = GIDSignIn.sharedInstance(),
+         auth: Auth = Auth.auth(),
+         firebaseClientId: String? = FirebaseApp.app()?.options.clientID) {
+        self.signIn = signIn
+        self.auth = auth
+        self.firebaseClientId = firebaseClientId
+    }
 
     func setup() {
-        GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-        GIDSignIn.sharedInstance().delegate = self
+        signIn.clientID = firebaseClientId
+        signIn.delegate = self
     }
 
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error?) {
@@ -36,7 +47,7 @@ private class AuthenticationFirebase: NSObject, GIDSignInDelegate {
     }
 
     private func firebaseAuth(credential: AuthCredential) {
-        Auth.auth().signIn(with: credential) { (authResult, error) in
+        auth.signIn(with: credential) { (authResult, error) in
 
             if let error = error {
                 print("Firebase Login failed: \(error)")
@@ -54,8 +65,8 @@ private class AuthenticationFirebase: NSObject, GIDSignInDelegate {
 
     func signOut() {
         do {
-            GIDSignIn.sharedInstance().signOut()
-            try Auth.auth().signOut()
+            signIn.signOut()
+            try auth.signOut()
 
             authenticatedSubject.send(false)
         } catch let signOutError as NSError {
