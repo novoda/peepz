@@ -7,7 +7,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Image(systemName: "person.circle").imageScale(.large)
-            GoogleSignInViewController()
+            GoogleSignInViewController(authClient: .mock)
 
             // isActive - means is it showing its destination
             NavigationLink(destination: GalleryView(model: model), isActive: $model.isAuthenticated, label: { EmptyView() })
@@ -23,15 +23,12 @@ struct LoginView_Previews: PreviewProvider {
 
 // Google Sign in
 struct GoogleSignInViewController: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> some UIViewController {
+    let authClient: AuthenticationClient
 
+    func makeUIViewController(context: Context) -> some UIViewController {        
         // We need the view controller to set it as presentingViewController for Google Sign In.
         let vc = UIViewController()
-        GIDSignIn.sharedInstance()?.presentingViewController = vc
-        vc.view = GIDSignInButton()
-
-        // Automatically sign in the user.
-        GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        authClient.restore(vc)
 
         return vc
     }

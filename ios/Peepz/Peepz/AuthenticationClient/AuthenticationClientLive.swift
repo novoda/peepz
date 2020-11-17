@@ -10,7 +10,8 @@ extension AuthenticationClient {
 
         return AuthenticationClient(authenticated: instance.authenticatedSubject.eraseToAnyPublisher(),
                                     signin: {},
-                                    signOut: instance.signOut)
+                                    signOut: instance.signOut,
+                                    restore: instance.restore)
     }
 }
 
@@ -72,5 +73,11 @@ private class AuthenticationFirebase: NSObject, GIDSignInDelegate {
         } catch let signOutError as NSError {
             print("Error signing out: %@", signOutError)
         }
+    }
+
+    func restore(with vc: UIViewController) {
+        signIn.presentingViewController = vc
+        vc.view = GIDSignInButton()
+        signIn.restorePreviousSignIn()
     }
 }
