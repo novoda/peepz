@@ -21,7 +21,8 @@ struct PeepzApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(model: .firebase)
+//            ContentView(model: .firebase)
+            ContentView(model: .mock)
         }
     }
 }
