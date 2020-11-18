@@ -43,14 +43,14 @@ public class PeepzModel: ObservableObject {
 
 
 extension PeepzModel {
-    static var firebase: PeepzModel {
-        PeepzModel(galleryClient: .firebase, authenticationClient: .firebase)
+    static var live: PeepzModel {
+        PeepzModel(galleryClient: .live, authenticationClient: .live)
     }
 }
 
 extension PeepzModel {
     static var mock: PeepzModel {
-        PeepzModel(galleryClient: .mock, authenticationClient: .authenticated)
+        PeepzModel(galleryClient: .staticData, authenticationClient: .authenticated)
     }
 }
 

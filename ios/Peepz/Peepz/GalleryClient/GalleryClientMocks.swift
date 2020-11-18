@@ -2,7 +2,7 @@ import Combine
 import Foundation
 
 extension GalleryClient {
-    static var mock: Self {
+    static var staticData: Self {
         return Self(observe: {}, observeUsers: Just<[User]>(.bebopCrew).eraseToAnyPublisher())
     }
 }

@@ -21,7 +21,7 @@ struct PeepzApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView(model: .mock) //ContentView(model: .mock)
+            ContentView(model: .live) //ContentView(model: .mock)
         }
     }
 }

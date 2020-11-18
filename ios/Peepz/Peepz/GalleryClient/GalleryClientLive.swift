@@ -4,7 +4,7 @@ import Firebase
 import Combine
 
 extension GalleryClient {
-    static var firebase: Self {
+    static var live: Self {
         let instance = GalleryModelFirebase()
         return Self(observe: instance.observe, observeUsers: instance.usersSubject.eraseToAnyPublisher())
     }

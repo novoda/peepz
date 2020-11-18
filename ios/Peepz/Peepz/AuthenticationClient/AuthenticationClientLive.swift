@@ -4,7 +4,7 @@ import GoogleSignIn
 import Firebase
 
 extension AuthenticationClient {
-    static var firebase: AuthenticationClient {
+    static var live: AuthenticationClient {
         let instance = AuthenticationFirebase()
         instance.setup()
 
