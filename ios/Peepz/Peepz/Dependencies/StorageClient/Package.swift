@@ -10,6 +10,9 @@ let package = Package(
         .library(
             name: "StorageClient",
             targets: ["StorageClient"]),
+        .library(
+            name: "StorageClientLive",
+            targets: ["StorageClientLive"]),
     ],
     dependencies: [
         .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", .branch("6.34-spm-beta"))
@@ -17,7 +20,12 @@ let package = Package(
     targets: [
         .target(
             name: "StorageClient",
+            dependencies: []
+        ),
+        .target(
+            name: "StorageClientLive",
             dependencies: [
+                .byName(name: "StorageClient"),
                 .product(name: "FirebaseDatabase", package: "Firebase"),
             ]
         ),

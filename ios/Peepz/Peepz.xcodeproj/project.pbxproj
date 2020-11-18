@@ -15,10 +15,10 @@
 		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
 		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		B807B8802565C66300DC0027 /* Authentication in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B807B87F2565C66300DC0027 /* Authentication */; };
-		B807B8822565C66300DC0027 /* StorageClient in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B807B8812565C66300DC0027 /* StorageClient */; };
-		B807B8882565C68C00DC0027 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B807B8872565C68C00DC0027 /* SDWebImageSwiftUI */; };
 		B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482AC255DFFA000F21497 /* PeepzModel.swift */; };
 		B895DFE825659331009D7554 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895DFE725659331009D7554 /* LoginView.swift */; };
+		B8D06BC02565E1020051781A /* StorageClientLive in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B8D06BBF2565E1020051781A /* StorageClientLive */; };
+		B8D06BC22565E1130051781A /* StorageClient in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B8D06BC12565E1130051781A /* StorageClient */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,9 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B807B8882565C68C00DC0027 /* SDWebImageSwiftUI in Frameworks */,
 				B807B8802565C66300DC0027 /* Authentication in Frameworks */,
-				B807B8822565C66300DC0027 /* StorageClient in Frameworks */,
+				B8D06BC02565E1020051781A /* StorageClientLive in Frameworks */,
+				B8D06BC22565E1130051781A /* StorageClient in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,8 +164,8 @@
 			name = Peepz;
 			packageProductDependencies = (
 				B807B87F2565C66300DC0027 /* Authentication */,
-				B807B8812565C66300DC0027 /* StorageClient */,
-				B807B8872565C68C00DC0027 /* SDWebImageSwiftUI */,
+				B8D06BBF2565E1020051781A /* StorageClientLive */,
+				B8D06BC12565E1130051781A /* StorageClient */,
 			);
 			productName = Peepz;
 			productReference = 90D5DE56251B3D56000856C5 /* Peepz.app */;

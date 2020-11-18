@@ -1,4 +1,5 @@
 import SwiftUI
+import StorageClientLive
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -24,5 +25,11 @@ struct PeepzApp: App {
             ContentView()
                 .environmentObject(model)
         }
+    }
+}
+
+extension PeepzModel {
+    static var live: PeepzModel {
+        PeepzModel(storageClient: .live, authenticationClient: .authenticated)
     }
 }

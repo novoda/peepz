@@ -45,12 +45,6 @@ public class PeepzModel: ObservableObject {
 
 
 extension PeepzModel {
-    static var live: PeepzModel {
-        PeepzModel(storageClient: .staticData, authenticationClient: .authenticated)
-    }
-}
-
-extension PeepzModel {
     static var mock: PeepzModel {
         PeepzModel(storageClient: .staticData, authenticationClient: .authenticated)
     }

@@ -1,11 +1,16 @@
 import Foundation
 import Firebase
 import Combine
+import StorageClient
 
 extension StorageClient {
-    static var live: Self {
+    public static var live: StorageClient {
         let instance = GalleryModelFirebase()
-        return Self(observe: instance.observe, observeUsers: instance.usersSubject.eraseToAnyPublisher())
+
+        return StorageClient(
+            observe: instance.observe,
+            observeUsers: instance.usersSubject.eraseToAnyPublisher()
+        )
     }
 }
 

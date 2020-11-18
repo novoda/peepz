@@ -9,7 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "Authentication",
-            targets: ["Authentication"]),
+            targets: ["Authentication"])
     ],
     dependencies: [
 //        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", .branch("6.34-spm-beta")),
