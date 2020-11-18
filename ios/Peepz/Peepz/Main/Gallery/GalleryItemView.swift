@@ -1,5 +1,5 @@
 import SwiftUI
-import SDWebImageSwiftUI
+//import SDWebImageSwiftUI
 
 public struct GalleryItemViewState: Hashable {
     let imageName: String?
@@ -13,15 +13,15 @@ struct GalleryItemView: View {
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            WebImage(url: URL(string: state.imageName ?? ""))
-                .resizable()
-                .placeholder(Image("hodor"))
-                .aspectRatio(1, contentMode: .fit)
-                .if(!state.isActive) { image in
-                    image
-                        .overlay(Rectangle().foregroundColor(.gray))
-                        .blendMode(.saturation)
-                }
+//            WebImage(url: URL(string: state.imageName ?? ""))
+//                .resizable()
+//                .placeholder(Image("hodor"))
+//                .aspectRatio(1, contentMode: .fit)
+//                .if(!state.isActive) { image in
+//                    image
+//                        .overlay(Rectangle().foregroundColor(.gray))
+//                        .blendMode(.saturation)
+//                }
             HStack {
                 Circle()
                     .frame(width: 10, height: 10, alignment: .center)

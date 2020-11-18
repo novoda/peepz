@@ -210,7 +210,6 @@
 			);
 			mainGroup = 90D5DE4D251B3D56000856C5;
 			packageReferences = (
-				B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 90D5DE57251B3D56000856C5 /* Products */;
 			projectDirPath = "";
@@ -448,26 +447,13 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.5.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
 /* Begin XCSwiftPackageProductDependency section */
 		B830CE4F2565E80100F405DE /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
 		};
-		B807B8872565C68C00DC0027 /* SDWebImageSwiftUI */ = {
 		B830CE552565E80100F405DE /* StorageClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
-			productName = SDWebImageSwiftUI;
 			productName = StorageClientLive;
 		};
 /* End XCSwiftPackageProductDependency section */
