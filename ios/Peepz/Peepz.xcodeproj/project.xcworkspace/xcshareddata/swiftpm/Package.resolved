@@ -3,19 +3,19 @@
     "pins": [
       {
         "package": "abseil",
-        "repositoryURL": "https://github.com/firebase/abseil-cpp.git",
+        "repositoryURL": "https://github.com/firebase/abseil-cpp-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "8ddf129163673642a339d7980327bcb2c117a28e",
+          "revision": "05d8107f2971a37e6c77245b7c4c6b0a7e97bc99",
           "version": null
         }
       },
       {
         "package": "BoringSSL-GRPC",
-        "repositoryURL": "https://github.com/firebase/boringssl.git",
+        "repositoryURL": "https://github.com/firebase/boringssl-SwiftPM.git",
         "state": {
           "branch": null,
-          "revision": "d3275d3c77a63746f869a092a1a2a014cf0e5b9a",
+          "revision": "7bcafa2660bc58715c39637494550d1ed7cd7229",
           "version": null
         }
       },
@@ -23,17 +23,26 @@
         "package": "Firebase",
         "repositoryURL": "https://github.com/firebase/firebase-ios-sdk.git",
         "state": {
-          "branch": "6.33-spm-beta",
-          "revision": "c26f513c90cc59b5303af2f535b71ba0ca8fe6cb",
+          "branch": "6.34-spm-beta",
+          "revision": "70b54ba972e5768fe84f69f700ae362c8fbf8e8b",
           "version": null
         }
       },
       {
-        "package": "gRPC",
-        "repositoryURL": "https://github.com/firebase/grpc.git",
+        "package": "GoogleSignIn",
+        "repositoryURL": "https://github.com/darrarski/GoogleSignIn-Swift.git",
         "state": {
           "branch": null,
-          "revision": "b22bc5256665ff2f1763505631df0ee60378b083",
+          "revision": "503063ce6471ffee1d066486dc1b82a1dccde2a0",
+          "version": "0.0.5"
+        }
+      },
+      {
+        "package": "gRPC",
+        "repositoryURL": "https://github.com/firebase/grpc-SwiftPM.git",
+        "state": {
+          "branch": null,
+          "revision": "5bb2669317ae2183f4cb00c675423af1924f0b46",
           "version": null
         }
       },
@@ -42,8 +51,8 @@
         "repositoryURL": "https://github.com/google/gtm-session-fetcher.git",
         "state": {
           "branch": null,
-          "revision": "1d4ef59335abfccee6150ca5c9b436c17c801fa9",
-          "version": "1.4.0"
+          "revision": "91ed3d188eb95705fef3c249453b81f32dc557d1",
+          "version": "1.5.0"
         }
       },
       {
@@ -69,8 +78,26 @@
         "repositoryURL": "https://github.com/google/promises.git",
         "state": {
           "branch": null,
-          "revision": "c5cdb6bdc2d3db8ef81e3bc71d55d31baf638837",
-          "version": "1.2.10"
+          "revision": "d8accebc8fa32f57196df191e733f946e955c549",
+          "version": "1.2.11"
+        }
+      },
+      {
+        "package": "SDWebImage",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImage.git",
+        "state": {
+          "branch": null,
+          "revision": "2c8ed9a2f3ad537dbe9e58e2ec18be361da112aa",
+          "version": "5.9.5"
+        }
+      },
+      {
+        "package": "SDWebImageSwiftUI",
+        "repositoryURL": "https://github.com/SDWebImage/SDWebImageSwiftUI.git",
+        "state": {
+          "branch": null,
+          "revision": "4c7f169e39bc35d6b80d42b8eb8301bee9cd0907",
+          "version": "1.5.0"
         }
       }
     ]
