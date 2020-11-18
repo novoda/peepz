@@ -13,21 +13,20 @@ public class GalleryModel: ObservableObject {
         self.authenticationClient = authenticationClient
 
         self.authenticationClient.authenticated
-            .sink { isAuthenticated in
-                self.isAuthenticated = isAuthenticated
-                if (isAuthenticated) {
-                    self.galleryClient.observe()
-                }
-            }
+            .assign(to: \.isAuthenticated, on: self)
             .store(in: &cancellables)
 
         self.galleryClient.observeUsers
-            .map { users in
-                let sorted = users.sorted { $0.lastSeen > $1.lastSeen}
-                return sorted.map(toGalleryItemViewState(user:))
-            }
-            .sink { items in
-                self.items = items
+            .map { $0.sorted { $0.lastSeen > $1.lastSeen } }
+            .map { $0.map(toGalleryItemViewState(user:)) }
+            .assign(to: \.items, on: self)
+            .store(in: &cancellables)
+
+        self.authenticationClient.authenticated
+            .sink { isAuthenticated in
+                if isAuthenticated {
+                    galleryClient.observe()
+                }
             }
             .store(in: &cancellables)
     }
