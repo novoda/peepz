@@ -2,7 +2,7 @@ import SwiftUI
 import GoogleSignIn
 
 struct LoginView: View {
-    @ObservedObject var model: GalleryModel
+    @ObservedObject var model: PeepzModel
 
     var body: some View {
         VStack {

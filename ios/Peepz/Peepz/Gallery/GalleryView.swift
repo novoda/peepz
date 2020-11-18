@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GalleryView: View {
-    var model: GalleryModel
+    var model: PeepzModel
 
     var columns = [
         GridItem(.flexible(), spacing: 0),

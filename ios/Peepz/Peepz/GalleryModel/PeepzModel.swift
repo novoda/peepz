@@ -1,6 +1,6 @@
 import Combine
 
-public class GalleryModel: ObservableObject {
+public class PeepzModel: ObservableObject {
     private let galleryClient: GalleryClient
     private let authenticationClient: AuthenticationClient
     private var cancellables = [AnyCancellable]()
@@ -37,15 +37,15 @@ public class GalleryModel: ObservableObject {
 }
 
 
-extension GalleryModel {
-    static var firebase: GalleryModel {
-        GalleryModel(galleryClient: .firebase, authenticationClient: .firebase)
+extension PeepzModel {
+    static var firebase: PeepzModel {
+        PeepzModel(galleryClient: .firebase, authenticationClient: .firebase)
     }
 }
 
-extension GalleryModel {
-    static var mock: GalleryModel {
-        GalleryModel(galleryClient: .mock, authenticationClient: .authenticated)
+extension PeepzModel {
+    static var mock: PeepzModel {
+        PeepzModel(galleryClient: .mock, authenticationClient: .authenticated)
     }
 }
 

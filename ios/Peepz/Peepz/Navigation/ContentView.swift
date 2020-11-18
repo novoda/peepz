@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    var model: GalleryModel
+    var model: PeepzModel
 
     var body: some View {
         NavigationView {

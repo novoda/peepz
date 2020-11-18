@@ -32,7 +32,7 @@
 		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		B866911D255D8B0100CABD4A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B866911C255D8B0100CABD4A /* SDWebImageSwiftUI */; };
-		B89482AD255DFFA000F21497 /* GalleryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482AC255DFFA000F21497 /* GalleryModel.swift */; };
+		B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482AC255DFFA000F21497 /* PeepzModel.swift */; };
 		B89482BD255E054C00F21497 /* GalleryClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482BC255E054C00F21497 /* GalleryClientInterface.swift */; };
 		B89482C6255E056E00F21497 /* AuthenticationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482C5255E056E00F21497 /* AuthenticationClient.swift */; };
 		B89482CB255E05C100F21497 /* GalleryClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482CA255E05C100F21497 /* GalleryClientLive.swift */; };
@@ -84,7 +84,7 @@
 		90FAD097252679D000477A70 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD099252679D900477A70 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		B23340EEA3119241B7FF1005 /* Pods-Peepz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peepz.debug.xcconfig"; path = "Target Support Files/Pods-Peepz/Pods-Peepz.debug.xcconfig"; sourceTree = "<group>"; };
-		B89482AC255DFFA000F21497 /* GalleryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryModel.swift; sourceTree = "<group>"; };
+		B89482AC255DFFA000F21497 /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
 		B89482BC255E054C00F21497 /* GalleryClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryClientInterface.swift; sourceTree = "<group>"; };
 		B89482C5255E056E00F21497 /* AuthenticationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationClient.swift; sourceTree = "<group>"; };
 		B89482CA255E05C100F21497 /* GalleryClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryClientLive.swift; sourceTree = "<group>"; };
@@ -207,7 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				9036203B2534AE6C00123072 /* User.swift */,
-				B89482AC255DFFA000F21497 /* GalleryModel.swift */,
+				B89482AC255DFFA000F21497 /* PeepzModel.swift */,
 			);
 			path = GalleryModel;
 			sourceTree = "<group>";
@@ -487,7 +487,7 @@
 			files = (
 				90262FDF25333F99000CA696 /* GalleryItemView.swift in Sources */,
 				90460A172523444800DB743E /* LoginView.swift in Sources */,
-				B89482AD255DFFA000F21497 /* GalleryModel.swift in Sources */,
+				B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
 				90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */,
