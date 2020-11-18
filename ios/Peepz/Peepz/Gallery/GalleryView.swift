@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct GalleryView: View {
-    var model: PeepzModel
+    @EnvironmentObject var model: PeepzModel
 
     var columns = [
         GridItem(.flexible(), spacing: 0),
@@ -30,7 +30,8 @@ struct GalleryView: View {
 struct GalleryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            GalleryView(model: .mock)
+            GalleryView()
+                .environmentObject(PeepzModel.mock)
                 .navigationTitle("Smoothies")
         }
     }

@@ -18,10 +18,12 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct PeepzApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+    @StateObject private var model: PeepzModel = .live
 
     var body: some Scene {
         WindowGroup {
-            ContentView(model: .live) //ContentView(model: .mock)
+            ContentView()
+                .environmentObject(model)
         }
     }
 }
