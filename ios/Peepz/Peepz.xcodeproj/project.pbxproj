@@ -14,12 +14,28 @@
 		90D5DE61251B3D58000856C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */; };
 		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
 		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
-		B807B8802565C66300DC0027 /* Authentication in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B807B87F2565C66300DC0027 /* Authentication */; };
+		B830CE502565E80100F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE4F2565E80100F405DE /* Authentication */; };
+		B830CE512565E80100F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE4F2565E80100F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B830CE562565E80100F405DE /* StorageClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE552565E80100F405DE /* StorageClientLive */; };
+		B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE552565E80100F405DE /* StorageClientLive */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482AC255DFFA000F21497 /* PeepzModel.swift */; };
 		B895DFE825659331009D7554 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895DFE725659331009D7554 /* LoginView.swift */; };
-		B8D06BC02565E1020051781A /* StorageClientLive in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B8D06BBF2565E1020051781A /* StorageClientLive */; };
-		B8D06BC22565E1130051781A /* StorageClient in Frameworks */ = {isa = PBXBuildFile; platformFilter = ios; productRef = B8D06BC12565E1130051781A /* StorageClient */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B8D89F8F2565E71200448883 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B830CE512565E80100F405DE /* Authentication in Embed Frameworks */,
+				B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		90262FDE25333F99000CA696 /* GalleryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemView.swift; sourceTree = "<group>"; };
@@ -48,9 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B807B8802565C66300DC0027 /* Authentication in Frameworks */,
-				B8D06BC02565E1020051781A /* StorageClientLive in Frameworks */,
-				B8D06BC22565E1130051781A /* StorageClient in Frameworks */,
+				B830CE502565E80100F405DE /* Authentication in Frameworks */,
+				B830CE562565E80100F405DE /* StorageClientLive in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -156,6 +171,7 @@
 				90D5DE52251B3D56000856C5 /* Sources */,
 				90D5DE53251B3D56000856C5 /* Frameworks */,
 				90D5DE54251B3D56000856C5 /* Resources */,
+				B8D89F8F2565E71200448883 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -163,9 +179,8 @@
 			);
 			name = Peepz;
 			packageProductDependencies = (
-				B807B87F2565C66300DC0027 /* Authentication */,
-				B8D06BBF2565E1020051781A /* StorageClientLive */,
-				B8D06BC12565E1130051781A /* StorageClient */,
+				B830CE4F2565E80100F405DE /* Authentication */,
+				B830CE552565E80100F405DE /* StorageClientLive */,
 			);
 			productName = Peepz;
 			productReference = 90D5DE56251B3D56000856C5 /* Peepz.app */;
@@ -443,20 +458,17 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		B807B87F2565C66300DC0027 /* Authentication */ = {
+		B830CE4F2565E80100F405DE /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
 		};
-		B807B8812565C66300DC0027 /* StorageClient */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = StorageClient;
-		};
 		B807B8872565C68C00DC0027 /* SDWebImageSwiftUI */ = {
+		B830CE552565E80100F405DE /* StorageClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B866911B255D8B0100CABD4A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+			productName = StorageClientLive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -9,9 +9,11 @@ let package = Package(
     products: [
         .library(
             name: "StorageClient",
+            type: .dynamic,
             targets: ["StorageClient"]),
         .library(
             name: "StorageClientLive",
+            type: .dynamic,
             targets: ["StorageClientLive"]),
     ],
     dependencies: [
