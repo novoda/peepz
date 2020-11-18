@@ -7,7 +7,7 @@ struct LoginView: View {
     var body: some View {
         VStack {
             Image(systemName: "person.circle").imageScale(.large)
-            GoogleSignInViewController(authClient: .mock)
+            GoogleSignInViewController(authClient: .authenticated)
 
             // isActive - means is it showing its destination
             NavigationLink(destination: GalleryView(model: model), isActive: $model.isAuthenticated, label: { EmptyView() })

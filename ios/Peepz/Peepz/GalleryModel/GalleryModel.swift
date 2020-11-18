@@ -45,7 +45,7 @@ extension GalleryModel {
 
 extension GalleryModel {
     static var mock: GalleryModel {
-        GalleryModel(galleryClient: .mock, authenticationClient: .mock)
+        GalleryModel(galleryClient: .mock, authenticationClient: .authenticated)
     }
 }
 
