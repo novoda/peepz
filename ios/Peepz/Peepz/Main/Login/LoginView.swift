@@ -8,7 +8,6 @@ struct LoginView: View {
             Image(systemName: "person.circle").imageScale(.large)
             GoogleSignInViewController(model: model)
 
-            // isActive - means is it showing its destination
             NavigationLink(destination: GalleryView(), isActive: $model.isAuthenticated, label: { EmptyView() })
         }
     }

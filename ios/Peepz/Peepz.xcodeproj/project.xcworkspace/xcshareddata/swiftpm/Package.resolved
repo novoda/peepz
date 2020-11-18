@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "GoogleSignIn",
-        "repositoryURL": "https://github.com/darrarski/GoogleSignIn-Swift.git",
-        "state": {
-          "branch": null,
-          "revision": "503063ce6471ffee1d066486dc1b82a1dccde2a0",
-          "version": "0.0.5"
-        }
-      },
-      {
         "package": "gRPC",
         "repositoryURL": "https://github.com/firebase/grpc-SwiftPM.git",
         "state": {

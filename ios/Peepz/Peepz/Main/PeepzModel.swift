@@ -1,16 +1,18 @@
 import Combine
 import UIKit
+import StorageClient
+import Authentication
 
 public class PeepzModel: ObservableObject {
-    private let galleryClient: GalleryClient
+    private let galleryClient: StorageClient
     private let authenticationClient: AuthenticationClient
     private var cancellables = [AnyCancellable]()
     
     @Published var isAuthenticated = false
     @Published var items = [GalleryItemViewState]()
 
-    init(galleryClient: GalleryClient, authenticationClient: AuthenticationClient) {
-        self.galleryClient = galleryClient
+    init(storageClient: StorageClient, authenticationClient: AuthenticationClient) {
+        self.galleryClient = storageClient
         self.authenticationClient = authenticationClient
 
         self.authenticationClient.authenticated
@@ -26,7 +28,7 @@ public class PeepzModel: ObservableObject {
         self.authenticationClient.authenticated
             .sink { isAuthenticated in
                 if isAuthenticated {
-                    galleryClient.observe()
+                    storageClient.observe()
                 }
             }
             .store(in: &cancellables)
@@ -44,13 +46,13 @@ public class PeepzModel: ObservableObject {
 
 extension PeepzModel {
     static var live: PeepzModel {
-        PeepzModel(galleryClient: .live, authenticationClient: .live)
+        PeepzModel(storageClient: .staticData, authenticationClient: .authenticated)
     }
 }
 
 extension PeepzModel {
     static var mock: PeepzModel {
-        PeepzModel(galleryClient: .staticData, authenticationClient: .authenticated)
+        PeepzModel(storageClient: .staticData, authenticationClient: .authenticated)
     }
 }
 
@@ -59,4 +61,12 @@ private func toGalleryItemViewState(user: User) -> GalleryItemViewState {
                          location: user.location,
                          name: user.name,
                          isActive: user.isActive())
+}
+
+fileprivate extension User {
+    func isActive(now: Date = Date()) -> Bool {
+        let fifteenMinutes: Double = 60 * 15
+        let lastSeenInMinutes = self.lastSeen * 0.001
+        return now.timeIntervalSince1970 - lastSeenInMinutes < fifteenMinutes
+    }
 }
