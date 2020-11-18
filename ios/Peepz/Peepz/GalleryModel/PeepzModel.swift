@@ -1,4 +1,5 @@
 import Combine
+import UIKit
 
 public class PeepzModel: ObservableObject {
     private let galleryClient: GalleryClient
@@ -29,6 +30,10 @@ public class PeepzModel: ObservableObject {
                 }
             }
             .store(in: &cancellables)
+    }
+
+    func restore(with vc: UIViewController) {
+        authenticationClient.restore(vc)
     }
 
     func signOut() {
