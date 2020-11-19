@@ -7,28 +7,74 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		90262FDF25333F99000CA696 /* GalleryItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90262FDE25333F99000CA696 /* GalleryItemView.swift */; };
 		90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE59251B3D56000856C5 /* PeepzApp.swift */; };
 		90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* ContentView.swift */; };
 		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
 		90D5DE61251B3D58000856C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */; };
 		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
-		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		B830CE502565E80100F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE4F2565E80100F405DE /* Authentication */; };
 		B830CE512565E80100F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE4F2565E80100F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B830CE562565E80100F405DE /* StorageClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE552565E80100F405DE /* StorageClientLive */; };
 		B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE552565E80100F405DE /* StorageClientLive */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482AC255DFFA000F21497 /* PeepzModel.swift */; };
+		B830CE672565E96E00F405DE /* Gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B830CE5E2565E96D00F405DE /* Gallery.framework */; };
+		B830CE6E2565E96E00F405DE /* GalleryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CE6D2565E96E00F405DE /* GalleryTests.swift */; };
+		B830CE702565E96E00F405DE /* Gallery.h in Headers */ = {isa = PBXBuildFile; fileRef = B830CE602565E96D00F405DE /* Gallery.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B830CE732565E96E00F405DE /* Gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B830CE5E2565E96D00F405DE /* Gallery.framework */; };
+		B830CE742565E96E00F405DE /* Gallery.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B830CE5E2565E96D00F405DE /* Gallery.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B830CE8B2565EA7100F405DE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* View.swift */; };
+		B830CE8C2565EA7100F405DE /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90262FDE25333F99000CA696 /* ItemView.swift */; };
+		B830CE992565EB0B00F405DE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CE8F2565EAD900F405DE /* ViewModel.swift */; };
+		B830CE9F2565EBE000F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE9E2565EBE000F405DE /* Authentication */; };
+		B830CEA02565EBE000F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE9E2565EBE000F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B830CEA22565EBE000F405DE /* StorageClient in Frameworks */ = {isa = PBXBuildFile; productRef = B830CEA12565EBE000F405DE /* StorageClient */; };
+		B830CEA32565EBE000F405DE /* StorageClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CEA12565EBE000F405DE /* StorageClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B895DFE825659331009D7554 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895DFE725659331009D7554 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B830CE682565E96E00F405DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B830CE5D2565E96D00F405DE;
+			remoteInfo = Gallery;
+		};
+		B830CE6A2565E96E00F405DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D5DE55251B3D56000856C5;
+			remoteInfo = Peepz;
+		};
+		B830CE712565E96E00F405DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B830CE5D2565E96D00F405DE;
+			remoteInfo = Gallery;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
+		B830CEA42565EBE000F405DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B830CEA02565EBE000F405DE /* Authentication in Embed Frameworks */,
+				B830CEA32565EBE000F405DE /* StorageClient in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8D89F8F2565E71200448883 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B830CE742565E96E00F405DE /* Gallery.framework in Embed Frameworks */,
 				B830CE512565E80100F405DE /* Authentication in Embed Frameworks */,
 				B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */,
 			);
@@ -38,7 +84,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		90262FDE25333F99000CA696 /* GalleryItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryItemView.swift; sourceTree = "<group>"; };
+		90262FDE25333F99000CA696 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		90460A0D2523415900DB743E /* Peepz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Peepz.entitlements; sourceTree = "<group>"; };
 		90D5DE56251B3D56000856C5 /* Peepz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peepz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D5DE59251B3D56000856C5 /* PeepzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzApp.swift; sourceTree = "<group>"; };
@@ -47,13 +93,19 @@
 		90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90D5DE62251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D5DE90251BA806000856C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		90FAD0732525EB2800477A70 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
+		90FAD0732525EB2800477A70 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		90FAD093252679B300477A70 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD095252679C500477A70 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD097252679D000477A70 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD099252679D900477A70 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		B807B87B25659FAF00DC0027 /* SDWebImageSwiftUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SDWebImageSwiftUI; path = "/Users/gbasile/Library/Developer/Xcode/DerivedData/Peepz-fqqalvhboyepfddbqnaqniimzlov/SourcePackages/checkouts/SDWebImageSwiftUI"; sourceTree = "<absolute>"; };
-		B89482AC255DFFA000F21497 /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
+		B830CE5E2565E96D00F405DE /* Gallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830CE602565E96D00F405DE /* Gallery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gallery.h; sourceTree = "<group>"; };
+		B830CE612565E96D00F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B830CE662565E96E00F405DE /* GalleryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GalleryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830CE6D2565E96E00F405DE /* GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTests.swift; sourceTree = "<group>"; };
+		B830CE6F2565E96E00F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B830CE8F2565EAD900F405DE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B895DFE5256592FD009D7554 /* StorageClient */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StorageClient; sourceTree = "<group>"; };
 		B895DFE6256592FD009D7554 /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Authentication; sourceTree = "<group>"; };
 		B895DFE725659331009D7554 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -64,8 +116,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B830CE732565E96E00F405DE /* Gallery.framework in Frameworks */,
 				B830CE502565E80100F405DE /* Authentication in Frameworks */,
 				B830CE562565E80100F405DE /* StorageClientLive in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CE5B2565E96D00F405DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CE9F2565EBE000F405DE /* Authentication in Frameworks */,
+				B830CEA22565EBE000F405DE /* StorageClient in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CE632565E96E00F405DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CE672565E96E00F405DE /* Gallery.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				90D5DE56251B3D56000856C5 /* Peepz.app */,
+				B830CE5E2565E96D00F405DE /* Gallery.framework */,
+				B830CE662565E96E00F405DE /* GalleryTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -93,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				B895DFE2256592D6009D7554 /* Dependencies */,
+				B830CE582565E93D00F405DE /* Features */,
 				90E644652524C18C00B07DEB /* Main */,
 				90460A0D2523415900DB743E /* Peepz.entitlements */,
 				90D5DE90251BA806000856C5 /* GoogleService-Info.plist */,
@@ -116,20 +189,9 @@
 			isa = PBXGroup;
 			children = (
 				B8A40DB32565983C00E5EAC8 /* Login */,
-				90FAD0722525EB0F00477A70 /* Gallery */,
 				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
-				B89482AC255DFFA000F21497 /* PeepzModel.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		90FAD0722525EB0F00477A70 /* Gallery */ = {
-			isa = PBXGroup;
-			children = (
-				90FAD0732525EB2800477A70 /* GalleryView.swift */,
-				90262FDE25333F99000CA696 /* GalleryItemView.swift */,
-			);
-			path = Gallery;
 			sourceTree = "<group>";
 		};
 		90FAD092252679B300477A70 /* Frameworks */ = {
@@ -142,6 +204,44 @@
 				90FAD093252679B300477A70 /* LocalAuthentication.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B830CE582565E93D00F405DE /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				B830CE5F2565E96D00F405DE /* Gallery */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		B830CE5F2565E96D00F405DE /* Gallery */ = {
+			isa = PBXGroup;
+			children = (
+				B830CE7D2565E98000F405DE /* Sources */,
+				B830CE7E2565E98600F405DE /* Tests */,
+			);
+			path = Gallery;
+			sourceTree = "<group>";
+		};
+		B830CE7D2565E98000F405DE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				90FAD0732525EB2800477A70 /* View.swift */,
+				90262FDE25333F99000CA696 /* ItemView.swift */,
+				B830CE8F2565EAD900F405DE /* ViewModel.swift */,
+				B830CE612565E96D00F405DE /* Info.plist */,
+				B830CE602565E96D00F405DE /* Gallery.h */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B830CE7E2565E98600F405DE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B830CE6F2565E96E00F405DE /* Info.plist */,
+				B830CE6D2565E96E00F405DE /* GalleryTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		B895DFE2256592D6009D7554 /* Dependencies */ = {
@@ -163,6 +263,17 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		B830CE592565E96D00F405DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CE702565E96E00F405DE /* Gallery.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
 		90D5DE55251B3D56000856C5 /* Peepz */ = {
 			isa = PBXNativeTarget;
@@ -176,6 +287,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				B830CE722565E96E00F405DE /* PBXTargetDependency */,
 			);
 			name = Peepz;
 			packageProductDependencies = (
@@ -186,17 +298,66 @@
 			productReference = 90D5DE56251B3D56000856C5 /* Peepz.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B830CE5D2565E96D00F405DE /* Gallery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830CE752565E96E00F405DE /* Build configuration list for PBXNativeTarget "Gallery" */;
+			buildPhases = (
+				B830CE592565E96D00F405DE /* Headers */,
+				B830CE5A2565E96D00F405DE /* Sources */,
+				B830CE5B2565E96D00F405DE /* Frameworks */,
+				B830CE5C2565E96D00F405DE /* Resources */,
+				B830CEA42565EBE000F405DE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Gallery;
+			packageProductDependencies = (
+				B830CE9E2565EBE000F405DE /* Authentication */,
+				B830CEA12565EBE000F405DE /* StorageClient */,
+			);
+			productName = Gallery;
+			productReference = B830CE5E2565E96D00F405DE /* Gallery.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B830CE652565E96E00F405DE /* GalleryTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830CE782565E96E00F405DE /* Build configuration list for PBXNativeTarget "GalleryTests" */;
+			buildPhases = (
+				B830CE622565E96E00F405DE /* Sources */,
+				B830CE632565E96E00F405DE /* Frameworks */,
+				B830CE642565E96E00F405DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B830CE692565E96E00F405DE /* PBXTargetDependency */,
+				B830CE6B2565E96E00F405DE /* PBXTargetDependency */,
+			);
+			name = GalleryTests;
+			productName = GalleryTests;
+			productReference = B830CE662565E96E00F405DE /* GalleryTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		90D5DE4E251B3D56000856C5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1200;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 1200;
 				TargetAttributes = {
 					90D5DE55251B3D56000856C5 = {
 						CreatedOnToolsVersion = 12.0;
+					};
+					B830CE5D2565E96D00F405DE = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					B830CE652565E96E00F405DE = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 90D5DE55251B3D56000856C5;
 					};
 				};
 			};
@@ -216,6 +377,8 @@
 			projectRoot = "";
 			targets = (
 				90D5DE55251B3D56000856C5 /* Peepz */,
+				B830CE5D2565E96D00F405DE /* Gallery */,
+				B830CE652565E96E00F405DE /* GalleryTests */,
 			);
 		};
 /* End PBXProject section */
@@ -231,6 +394,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B830CE5C2565E96D00F405DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CE642565E96E00F405DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -238,16 +415,49 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90262FDF25333F99000CA696 /* GalleryItemView.swift in Sources */,
 				B895DFE825659331009D7554 /* LoginView.swift in Sources */,
-				B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
-				90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CE5A2565E96D00F405DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CE8C2565EA7100F405DE /* ItemView.swift in Sources */,
+				B830CE992565EB0B00F405DE /* ViewModel.swift in Sources */,
+				B830CE8B2565EA7100F405DE /* View.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CE622565E96E00F405DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CE6E2565E96E00F405DE /* GalleryTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B830CE692565E96E00F405DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B830CE5D2565E96D00F405DE /* Gallery */;
+			targetProxy = B830CE682565E96E00F405DE /* PBXContainerItemProxy */;
+		};
+		B830CE6B2565E96E00F405DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D5DE55251B3D56000856C5 /* Peepz */;
+			targetProxy = B830CE6A2565E96E00F405DE /* PBXContainerItemProxy */;
+		};
+		B830CE722565E96E00F405DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B830CE5D2565E96D00F405DE /* Gallery */;
+			targetProxy = B830CE712565E96E00F405DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		90D5DE79251B3D58000856C5 /* Debug */ = {
@@ -369,6 +579,7 @@
 		90D5DE7C251B3D58000856C5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Peepz/Peepz.entitlements;
@@ -398,6 +609,7 @@
 		90D5DE7D251B3D58000856C5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Peepz/Peepz.entitlements;
@@ -424,6 +636,104 @@
 			};
 			name = Release;
 		};
+		B830CE762565E96E00F405DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Peepz/Features/Gallery/Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.Gallery;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B830CE772565E96E00F405DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Peepz/Features/Gallery/Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.Gallery;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B830CE792565E96E00F405DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Peepz/Features/GalleryTests/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.GalleryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peepz.app/Peepz";
+			};
+			name = Debug;
+		};
+		B830CE7A2565E96E00F405DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Peepz/Features/GalleryTests/Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.GalleryTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peepz.app/Peepz";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -445,6 +755,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B830CE752565E96E00F405DE /* Build configuration list for PBXNativeTarget "Gallery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830CE762565E96E00F405DE /* Debug */,
+				B830CE772565E96E00F405DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B830CE782565E96E00F405DE /* Build configuration list for PBXNativeTarget "GalleryTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830CE792565E96E00F405DE /* Debug */,
+				B830CE7A2565E96E00F405DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -455,6 +783,14 @@
 		B830CE552565E80100F405DE /* StorageClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StorageClientLive;
+		};
+		B830CE9E2565EBE000F405DE /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Authentication;
+		};
+		B830CEA12565EBE000F405DE /* StorageClient */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = StorageClient;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

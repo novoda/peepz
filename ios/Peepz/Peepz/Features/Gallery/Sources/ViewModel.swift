@@ -3,21 +3,16 @@ import UIKit
 import StorageClient
 import Authentication
 
-public class PeepzModel: ObservableObject {
+public class GalleryViewModel: ObservableObject {
     private let galleryClient: StorageClient
     private let authenticationClient: AuthenticationClient
     private var cancellables = [AnyCancellable]()
-    
-    @Published var isAuthenticated = false
+
     @Published var items = [GalleryItemViewState]()
 
-    init(storageClient: StorageClient, authenticationClient: AuthenticationClient) {
+    public init(storageClient: StorageClient, authenticationClient: AuthenticationClient) {
         self.galleryClient = storageClient
         self.authenticationClient = authenticationClient
-
-        self.authenticationClient.authenticated
-            .assign(to: \.isAuthenticated, on: self)
-            .store(in: &cancellables)
 
         self.galleryClient.observeUsers
             .map { $0.sorted { $0.lastSeen > $1.lastSeen } }
@@ -34,19 +29,8 @@ public class PeepzModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    func restore(with vc: UIViewController) {
-        authenticationClient.restore(vc)
-    }
-
-    func signOut() {
+    public func signOut() {
         authenticationClient.signOut()
-    }
-}
-
-
-extension PeepzModel {
-    static var mock: PeepzModel {
-        PeepzModel(storageClient: .staticData, authenticationClient: .authenticated)
     }
 }
 
@@ -64,3 +48,4 @@ fileprivate extension User {
         return now.timeIntervalSince1970 - lastSeenInMinutes < fifteenMinutes
     }
 }
+

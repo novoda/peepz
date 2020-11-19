@@ -1,5 +1,7 @@
 import SwiftUI
 import StorageClientLive
+import Authentication
+import Gallery
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -18,18 +20,29 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct PeepzApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var model: PeepzModel = .live
+    @StateObject private var dependencies: Dependencies = .live
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(model)
+                .environmentObject(dependencies)
         }
     }
 }
 
-extension PeepzModel {
-    static var live: PeepzModel {
-        PeepzModel(storageClient: .live, authenticationClient: .authenticated)
+class Dependencies: ObservableObject {
+    let gallery: GalleryViewModel
+    var login: LoginViewModel
+
+    internal init(gallery: GalleryViewModel, login: LoginViewModel) {
+        self.gallery = gallery
+        self.login = login
+    }
+
+    static var live: Dependencies {
+        return Dependencies(
+            gallery: GalleryViewModel(storageClient: .staticData, authenticationClient: .authenticated),
+            login: LoginViewModel(client: .authenticated)
+        )
     }
 }

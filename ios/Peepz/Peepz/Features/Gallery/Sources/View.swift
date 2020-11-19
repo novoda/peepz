@@ -1,14 +1,18 @@
 import SwiftUI
 
-struct GalleryView: View {
-    @EnvironmentObject var model: PeepzModel
+public struct GalleryView: View {
+    let model: GalleryViewModel
+
+    public init(model: GalleryViewModel) {
+        self.model = model
+    }
 
     var columns = [
         GridItem(.flexible(), spacing: 0),
         GridItem(.flexible(), spacing: 0)
     ]
 
-    var body: some View {
+    public var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 0) {
                 ForEach(model.items, id: \.self) { state in
@@ -30,8 +34,9 @@ struct GalleryView: View {
 struct GalleryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            GalleryView()
-                .environmentObject(PeepzModel.mock)
+            GalleryView(model: .init(storageClient: .staticData, authenticationClient: .authenticated))
+                .environmentObject(GalleryViewModel(storageClient: .staticData,
+                                                    authenticationClient: .authenticated))
                 .navigationTitle("Smoothies")
         }
     }

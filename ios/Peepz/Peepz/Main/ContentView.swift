@@ -1,8 +1,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var model: PeepzModel
-    
     var body: some View {
         NavigationView {
             LoginView()
@@ -13,6 +11,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(PeepzModel.mock)
     }
 }
