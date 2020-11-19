@@ -25,7 +25,7 @@ struct PeepzApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            PeepzView()
                 .environmentObject(dependencies)
         }
     }

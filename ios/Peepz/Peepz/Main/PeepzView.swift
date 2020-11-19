@@ -2,7 +2,7 @@ import SwiftUI
 import Gallery
 import Login
 
-struct ContentView: View {
+struct PeepzView: View {
     @EnvironmentObject var dependencies: Dependencies
 
     var body: some View {
@@ -15,8 +15,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct PeepzView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PeepzView()
     }
 }

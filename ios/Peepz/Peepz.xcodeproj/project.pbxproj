@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE59251B3D56000856C5 /* PeepzApp.swift */; };
-		90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* ContentView.swift */; };
+		90D5DE5C251B3D56000856C5 /* PeepzView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* PeepzView.swift */; };
 		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
 		90D5DE61251B3D58000856C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */; };
 		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
@@ -129,7 +129,7 @@
 		90460A0D2523415900DB743E /* Peepz.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Peepz.entitlements; sourceTree = "<group>"; };
 		90D5DE56251B3D56000856C5 /* Peepz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Peepz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		90D5DE59251B3D56000856C5 /* PeepzApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzApp.swift; sourceTree = "<group>"; };
-		90D5DE5B251B3D56000856C5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		90D5DE5B251B3D56000856C5 /* PeepzView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzView.swift; sourceTree = "<group>"; };
 		90D5DE5D251B3D58000856C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		90D5DE62251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -250,8 +250,7 @@
 		90E644652524C18C00B07DEB /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				B8A40DB32565983C00E5EAC8 /* Login */,
-				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
+				90D5DE5B251B3D56000856C5 /* PeepzView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -338,13 +337,6 @@
 				B895DFE5256592FD009D7554 /* StorageClient */,
 			);
 			path = Dependencies;
-			sourceTree = "<group>";
-		};
-		B8A40DB32565983C00E5EAC8 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -574,7 +566,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
+				90D5DE5C251B3D56000856C5 /* PeepzView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
