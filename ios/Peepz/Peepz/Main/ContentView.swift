@@ -1,9 +1,15 @@
 import SwiftUI
+import Gallery
 
 struct ContentView: View {
+    @EnvironmentObject var dependencies: Dependencies
+
     var body: some View {
         NavigationView {
-            LoginView()
+            LoginView(
+                destination: GalleryView(model: dependencies.gallery),
+                viewModel: dependencies.login
+            )
         }
     }
 }

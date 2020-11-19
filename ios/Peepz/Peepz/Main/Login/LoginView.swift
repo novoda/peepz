@@ -3,8 +3,15 @@ import Authentication
 import Gallery
 import Combine
 
-struct LoginView: View {
+struct LoginView<V>: View where V: View {
     @EnvironmentObject var dependencies: Dependencies
+    private let destination: V
+    private let viewModel: LoginViewModel
+
+    internal init(destination: V, viewModel: LoginViewModel) {
+        self.destination = destination
+        self.viewModel = viewModel
+    }
 
     var body: some View {
         VStack {
@@ -12,7 +19,7 @@ struct LoginView: View {
             GoogleSignInViewController(viewModel: dependencies.login)
 
             NavigationLink(
-                destination: GalleryView(model: dependencies.gallery),
+                destination: destination,
                 isActive: $dependencies.login.authenticated,
                 label: { EmptyView() })
         }
@@ -21,7 +28,7 @@ struct LoginView: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(destination: EmptyView(), viewModel: LoginViewModel(client: .authenticated))
     }
 }
 
