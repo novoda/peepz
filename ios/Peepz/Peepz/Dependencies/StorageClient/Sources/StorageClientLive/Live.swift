@@ -8,6 +8,7 @@ extension StorageClient {
         let instance = GalleryModelFirebase()
 
         return StorageClient(
+            configure: instance.configure,
             observe: instance.observe,
             observeUsers: instance.usersSubject.eraseToAnyPublisher()
         )
@@ -16,6 +17,10 @@ extension StorageClient {
 
 private class GalleryModelFirebase {
     let usersSubject = PassthroughSubject<[User], Never>()
+
+    func configure() {
+        FirebaseApp.configure()
+    }
 
     func observe() {
         var ref: DatabaseReference!

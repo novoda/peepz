@@ -8,8 +8,8 @@ struct PeepzView: View {
     var body: some View {
         NavigationView {
             LoginView(
-                destination: GalleryView(model: dependencies.gallery),
-                viewModel: dependencies.login
+                destination: GalleryView(model: dependencies.galleryViewModel),
+                viewModel: dependencies.loginViewModel
             )
         }
     }
@@ -18,5 +18,15 @@ struct PeepzView: View {
 struct PeepzView_Previews: PreviewProvider {
     static var previews: some View {
         PeepzView()
+    }
+}
+
+extension Dependencies {
+    var galleryViewModel: GalleryViewModel {
+        GalleryViewModel(storageClient: storage, authenticationClient: authentication)
+    }
+
+    var loginViewModel: LoginViewModel {
+        LoginViewModel(client: authentication)
     }
 }

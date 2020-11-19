@@ -3,7 +3,11 @@ import Foundation
 
 extension StorageClient {
     public static var staticData: Self {
-        return Self(observe: {}, observeUsers: Just<[User]>(.bebopCrew).eraseToAnyPublisher())
+        return Self(
+            configure: {},
+            observe: {},
+            observeUsers: Just<[User]>(.bebopCrew).eraseToAnyPublisher()
+        )
     }
 }
 

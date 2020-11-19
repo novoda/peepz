@@ -7,5 +7,5 @@ public struct AuthenticationClient {
     public var signin: () -> Void
     public var signOut: () -> Void
     public var restore: (UIViewController) -> Void
-    public var appOpen: (URL) -> Void
+    public var appOpen: (URL) -> Bool
 }

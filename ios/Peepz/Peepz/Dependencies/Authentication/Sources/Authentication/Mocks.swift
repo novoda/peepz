@@ -7,7 +7,7 @@ extension AuthenticationClient {
                                     signin: { subject.send(true) },
                                     signOut: { subject.send(false) },
                                     restore: { _ in /* no op */ },
-                                    appOpen: { _ in /* no op */ })
+                                    appOpen: { _ in true })
     }
 
     public static var notAuthenticated: AuthenticationClient {
@@ -16,6 +16,6 @@ extension AuthenticationClient {
                                     signin: { subject.send(true) },
                                     signOut: { subject.send(false) },
                                     restore: { _ in /* no op */ },
-                                    appOpen: { _ in /* no op */ })
+                                    appOpen: { _ in true })
     }
 }

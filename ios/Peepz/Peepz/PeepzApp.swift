@@ -1,20 +1,21 @@
 import SwiftUI
+import StorageClient
 import StorageClientLive
 import Authentication
 import Gallery
 import Login
 
 class AppDelegate: NSObject, UIApplicationDelegate {
+    private let dependencies = Dependencies.live
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
-//        FirebaseApp.configure()
+        dependencies.storage.configure()
 
         return true
     }
 
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
-        return true
-//        return GIDSignIn.sharedInstance().handle(url)
+        return dependencies.authentication.appOpen(url)
     }
 }
 
@@ -32,18 +33,18 @@ struct PeepzApp: App {
 }
 
 class Dependencies: ObservableObject {
-    let gallery: GalleryViewModel
-    var login: LoginViewModel
+    let storage: StorageClient
+    let authentication: AuthenticationClient
 
-    internal init(gallery: GalleryViewModel, login: LoginViewModel) {
-        self.gallery = gallery
-        self.login = login
+    internal init(storage: StorageClient, authentication: AuthenticationClient) {
+        self.storage = storage
+        self.authentication = authentication
     }
 
-    static var live: Dependencies {
+    static var live: Dependencies = {
         return Dependencies(
-            gallery: GalleryViewModel(storageClient: .staticData, authenticationClient: .authenticated),
-            login: LoginViewModel(client: .authenticated)
+            storage: .staticData,
+            authentication: .authenticated
         )
-    }
+    }()
 }
