@@ -5,23 +5,31 @@ import PackageDescription
 
 let package = Package(
     name: "Authentication",
-    platforms: [.iOS(.v13)],
+    platforms: [.iOS(.v14)],
     products: [
         .library(
             name: "Authentication",
             type: .dynamic,
-            targets: ["Authentication"])
+            targets: ["Authentication"]
+        ),
+        .library(
+            name: "AuthenticationLive",
+            type: .dynamic,
+            targets: ["AuthenticationLive"]
+        )
     ],
     dependencies: [
-//        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", .branch("6.34-spm-beta")),
-//        .package(name: "GoogleSignIn", url: "https://github.com/darrarski/GoogleSignIn-Swift.git", from: "0.0.5")
+
     ],
     targets: [
         .target(
             name: "Authentication",
+            dependencies: []
+        ),
+        .target(
+            name: "AuthenticationLive",
             dependencies: [
-//                .product(name: "FirebaseAuth", package: "Firebase"),
-//                "GoogleSignIn"
+                .byName(name: "Authentication"),
             ]
         ),
         .testTarget(

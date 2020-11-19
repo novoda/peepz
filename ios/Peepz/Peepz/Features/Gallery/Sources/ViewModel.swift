@@ -4,17 +4,17 @@ import StorageClient
 import Authentication
 
 public class GalleryViewModel: ObservableObject {
-    private let galleryClient: StorageClient
+    private let storageClient: StorageClient
     private let authenticationClient: AuthenticationClient
     private var cancellables = [AnyCancellable]()
 
     @Published var items = [GalleryItemViewState]()
 
     public init(storageClient: StorageClient, authenticationClient: AuthenticationClient) {
-        self.galleryClient = storageClient
+        self.storageClient = storageClient
         self.authenticationClient = authenticationClient
 
-        self.galleryClient.observeUsers
+        self.storageClient.observeUsers
             .map { $0.sorted { $0.lastSeen > $1.lastSeen } }
             .map { $0.map(toGalleryItemViewState(user:)) }
             .assign(to: \.items, on: self)

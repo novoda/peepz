@@ -16,6 +16,10 @@ public class LoginViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
+    func signIn() {
+        client.signin()
+    }
+
     func restore(with vc: UIViewController) {
         client.restore(vc)
     }

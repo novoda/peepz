@@ -12,8 +12,6 @@
 		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
 		90D5DE61251B3D58000856C5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE60251B3D58000856C5 /* Preview Assets.xcassets */; };
 		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
-		B830CE502565E80100F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE4F2565E80100F405DE /* Authentication */; };
-		B830CE512565E80100F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE4F2565E80100F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B830CE562565E80100F405DE /* StorageClientLive in Frameworks */ = {isa = PBXBuildFile; productRef = B830CE552565E80100F405DE /* StorageClientLive */; };
 		B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE552565E80100F405DE /* StorageClientLive */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B830CE672565E96E00F405DE /* Gallery.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B830CE5E2565E96D00F405DE /* Gallery.framework */; };
@@ -38,6 +36,8 @@
 		B830CEF12565F50400F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CEF02565F50400F405DE /* Authentication */; };
 		B830CEF22565F50400F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CEF02565F50400F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B86C3F862565F9F50046049C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B86C3F852565F9F50046049C /* SDWebImageSwiftUI */; };
+		B86C3F90256676950046049C /* AuthenticationLive in Frameworks */ = {isa = PBXBuildFile; productRef = B86C3F8F256676950046049C /* AuthenticationLive */; };
+		B86C3F91256676950046049C /* AuthenticationLive in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B86C3F8F256676950046049C /* AuthenticationLive */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,7 +117,7 @@
 			files = (
 				B830CEC92565F40200F405DE /* Login.framework in Embed Frameworks */,
 				B830CE742565E96E00F405DE /* Gallery.framework in Embed Frameworks */,
-				B830CE512565E80100F405DE /* Authentication in Embed Frameworks */,
+				B86C3F91256676950046049C /* AuthenticationLive in Embed Frameworks */,
 				B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -162,7 +162,7 @@
 			files = (
 				B830CEC82565F40200F405DE /* Login.framework in Frameworks */,
 				B830CE732565E96E00F405DE /* Gallery.framework in Frameworks */,
-				B830CE502565E80100F405DE /* Authentication in Frameworks */,
+				B86C3F90256676950046049C /* AuthenticationLive in Frameworks */,
 				B830CE562565E80100F405DE /* StorageClientLive in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,8 +380,8 @@
 			);
 			name = Peepz;
 			packageProductDependencies = (
-				B830CE4F2565E80100F405DE /* Authentication */,
 				B830CE552565E80100F405DE /* StorageClientLive */,
+				B86C3F8F256676950046049C /* AuthenticationLive */,
 			);
 			productName = Peepz;
 			productReference = 90D5DE56251B3D56000856C5 /* Peepz.app */;
@@ -1089,10 +1089,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		B830CE4F2565E80100F405DE /* Authentication */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = Authentication;
-		};
 		B830CE552565E80100F405DE /* StorageClientLive */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StorageClientLive;
@@ -1113,6 +1109,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B86C3F802565F9D00046049C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
+		};
+		B86C3F8F256676950046049C /* AuthenticationLive */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AuthenticationLive;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

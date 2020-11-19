@@ -14,7 +14,9 @@ public struct LoginView<V>: View where V: View {
     public var body: some View {
         VStack {
             Image(systemName: "person.circle").imageScale(.large)
-            GoogleSignInViewController(viewModel: viewModel)
+            Button("Login") {
+                viewModel.signIn()
+            }
 
             NavigationLink(
                 destination: destination,
@@ -26,21 +28,9 @@ public struct LoginView<V>: View where V: View {
 
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView(destination: EmptyView(), viewModel: LoginViewModel(client: .authenticated))
+        LoginView(
+            destination: EmptyView(),
+            viewModel: LoginViewModel(client: .authenticated)
+        )
     }
-}
-
-// Google Sign in
-struct GoogleSignInViewController: UIViewControllerRepresentable {
-    let viewModel: LoginViewModel
-
-    func makeUIViewController(context: Context) -> some UIViewController {
-        // We need the view controller to set it as presentingViewController for Google Sign In.
-        let vc = UIViewController()
-        viewModel.restore(with: vc)
-
-        return vc
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) { }
 }
