@@ -28,6 +28,7 @@
 		B830CEA02565EBE000F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE9E2565EBE000F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B830CEA22565EBE000F405DE /* StorageClient in Frameworks */ = {isa = PBXBuildFile; productRef = B830CEA12565EBE000F405DE /* StorageClient */; };
 		B830CEA32565EBE000F405DE /* StorageClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CEA12565EBE000F405DE /* StorageClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B830CEAA2565F1AE00F405DE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CEA92565F1AE00F405DE /* LoginViewModel.swift */; };
 		B895DFE825659331009D7554 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895DFE725659331009D7554 /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,11 +95,6 @@
 		90D5DE62251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D5DE90251BA806000856C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		90FAD0732525EB2800477A70 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		90FAD093252679B300477A70 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
-		90FAD095252679C500477A70 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
-		90FAD097252679D000477A70 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
-		90FAD099252679D900477A70 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
-		B807B87B25659FAF00DC0027 /* SDWebImageSwiftUI */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SDWebImageSwiftUI; path = "/Users/gbasile/Library/Developer/Xcode/DerivedData/Peepz-fqqalvhboyepfddbqnaqniimzlov/SourcePackages/checkouts/SDWebImageSwiftUI"; sourceTree = "<absolute>"; };
 		B830CE5E2565E96D00F405DE /* Gallery.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Gallery.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B830CE602565E96D00F405DE /* Gallery.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Gallery.h; sourceTree = "<group>"; };
 		B830CE612565E96D00F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -106,6 +102,7 @@
 		B830CE6D2565E96E00F405DE /* GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTests.swift; sourceTree = "<group>"; };
 		B830CE6F2565E96E00F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B830CE8F2565EAD900F405DE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B830CEA92565F1AE00F405DE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B895DFE5256592FD009D7554 /* StorageClient */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StorageClient; sourceTree = "<group>"; };
 		B895DFE6256592FD009D7554 /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Authentication; sourceTree = "<group>"; };
 		B895DFE725659331009D7554 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -147,7 +144,6 @@
 			children = (
 				90D5DE58251B3D56000856C5 /* Peepz */,
 				90D5DE57251B3D56000856C5 /* Products */,
-				90FAD092252679B300477A70 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -192,18 +188,6 @@
 				90D5DE5B251B3D56000856C5 /* ContentView.swift */,
 			);
 			path = Main;
-			sourceTree = "<group>";
-		};
-		90FAD092252679B300477A70 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				B807B87B25659FAF00DC0027 /* SDWebImageSwiftUI */,
-				90FAD099252679D900477A70 /* SystemConfiguration.framework */,
-				90FAD097252679D000477A70 /* AuthenticationServices.framework */,
-				90FAD095252679C500477A70 /* SafariServices.framework */,
-				90FAD093252679B300477A70 /* LocalAuthentication.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		B830CE582565E93D00F405DE /* Features */ = {
@@ -257,6 +241,7 @@
 			isa = PBXGroup;
 			children = (
 				B895DFE725659331009D7554 /* LoginView.swift */,
+				B830CEA92565F1AE00F405DE /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -415,6 +400,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B830CEAA2565F1AE00F405DE /* LoginViewModel.swift in Sources */,
 				B895DFE825659331009D7554 /* LoginView.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
