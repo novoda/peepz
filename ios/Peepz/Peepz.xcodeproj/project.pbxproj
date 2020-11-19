@@ -37,6 +37,7 @@
 		B830CEE22565F45200F405DE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CEA92565F1AE00F405DE /* ViewModel.swift */; };
 		B830CEF12565F50400F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CEF02565F50400F405DE /* Authentication */; };
 		B830CEF22565F50400F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CEF02565F50400F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		B86C3F862565F9F50046049C /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B86C3F852565F9F50046049C /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,6 +171,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B86C3F862565F9F50046049C /* SDWebImageSwiftUI in Frameworks */,
 				B830CE9F2565EBE000F405DE /* Authentication in Frameworks */,
 				B830CEA22565EBE000F405DE /* StorageClient in Frameworks */,
 			);
@@ -403,6 +405,7 @@
 			packageProductDependencies = (
 				B830CE9E2565EBE000F405DE /* Authentication */,
 				B830CEA12565EBE000F405DE /* StorageClient */,
+				B86C3F852565F9F50046049C /* SDWebImageSwiftUI */,
 			);
 			productName = Gallery;
 			productReference = B830CE5E2565E96D00F405DE /* Gallery.framework */;
@@ -506,6 +509,7 @@
 			);
 			mainGroup = 90D5DE4D251B3D56000856C5;
 			packageReferences = (
+				B86C3F802565F9D00046049C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 90D5DE57251B3D56000856C5 /* Products */;
 			projectDirPath = "";
@@ -1073,6 +1077,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		B86C3F802565F9D00046049C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		B830CE4F2565E80100F405DE /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1093,6 +1108,11 @@
 		B830CEF02565F50400F405DE /* Authentication */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Authentication;
+		};
+		B86C3F852565F9F50046049C /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B86C3F802565F9D00046049C /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
