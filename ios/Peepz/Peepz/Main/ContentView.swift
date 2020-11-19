@@ -1,5 +1,6 @@
 import SwiftUI
 import Gallery
+import Login
 
 struct ContentView: View {
     @EnvironmentObject var dependencies: Dependencies

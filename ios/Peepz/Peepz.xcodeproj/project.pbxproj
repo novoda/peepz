@@ -28,8 +28,15 @@
 		B830CEA02565EBE000F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CE9E2565EBE000F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		B830CEA22565EBE000F405DE /* StorageClient in Frameworks */ = {isa = PBXBuildFile; productRef = B830CEA12565EBE000F405DE /* StorageClient */; };
 		B830CEA32565EBE000F405DE /* StorageClient in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CEA12565EBE000F405DE /* StorageClient */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
-		B830CEAA2565F1AE00F405DE /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CEA92565F1AE00F405DE /* LoginViewModel.swift */; };
-		B895DFE825659331009D7554 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895DFE725659331009D7554 /* LoginView.swift */; };
+		B830CEBC2565F40200F405DE /* Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B830CEB32565F40200F405DE /* Login.framework */; };
+		B830CEC32565F40200F405DE /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CEC22565F40200F405DE /* LoginTests.swift */; };
+		B830CEC52565F40200F405DE /* Login.h in Headers */ = {isa = PBXBuildFile; fileRef = B830CEB52565F40200F405DE /* Login.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B830CEC82565F40200F405DE /* Login.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B830CEB32565F40200F405DE /* Login.framework */; };
+		B830CEC92565F40200F405DE /* Login.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B830CEB32565F40200F405DE /* Login.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B830CEDE2565F44F00F405DE /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = B895DFE725659331009D7554 /* View.swift */; };
+		B830CEE22565F45200F405DE /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B830CEA92565F1AE00F405DE /* ViewModel.swift */; };
+		B830CEF12565F50400F405DE /* Authentication in Frameworks */ = {isa = PBXBuildFile; productRef = B830CEF02565F50400F405DE /* Authentication */; };
+		B830CEF22565F50400F405DE /* Authentication in Embed Frameworks */ = {isa = PBXBuildFile; productRef = B830CEF02565F50400F405DE /* Authentication */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +61,27 @@
 			remoteGlobalIDString = B830CE5D2565E96D00F405DE;
 			remoteInfo = Gallery;
 		};
+		B830CEBD2565F40200F405DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B830CEB22565F40200F405DE;
+			remoteInfo = Login;
+		};
+		B830CEBF2565F40200F405DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 90D5DE55251B3D56000856C5;
+			remoteInfo = Peepz;
+		};
+		B830CEC62565F40200F405DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 90D5DE4E251B3D56000856C5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B830CEB22565F40200F405DE;
+			remoteInfo = Login;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,12 +97,24 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B830CEF32565F50400F405DE /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B830CEF22565F50400F405DE /* Authentication in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		B8D89F8F2565E71200448883 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				B830CEC92565F40200F405DE /* Login.framework in Embed Frameworks */,
 				B830CE742565E96E00F405DE /* Gallery.framework in Embed Frameworks */,
 				B830CE512565E80100F405DE /* Authentication in Embed Frameworks */,
 				B830CE572565E80100F405DE /* StorageClientLive in Embed Frameworks */,
@@ -102,10 +142,16 @@
 		B830CE6D2565E96E00F405DE /* GalleryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryTests.swift; sourceTree = "<group>"; };
 		B830CE6F2565E96E00F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B830CE8F2565EAD900F405DE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		B830CEA92565F1AE00F405DE /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		B830CEA92565F1AE00F405DE /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B830CEB32565F40200F405DE /* Login.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Login.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830CEB52565F40200F405DE /* Login.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Login.h; sourceTree = "<group>"; };
+		B830CEB62565F40200F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B830CEBB2565F40200F405DE /* LoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B830CEC22565F40200F405DE /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
+		B830CEC42565F40200F405DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B895DFE5256592FD009D7554 /* StorageClient */ = {isa = PBXFileReference; lastKnownFileType = folder; path = StorageClient; sourceTree = "<group>"; };
 		B895DFE6256592FD009D7554 /* Authentication */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Authentication; sourceTree = "<group>"; };
-		B895DFE725659331009D7554 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B895DFE725659331009D7554 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +159,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B830CEC82565F40200F405DE /* Login.framework in Frameworks */,
 				B830CE732565E96E00F405DE /* Gallery.framework in Frameworks */,
 				B830CE502565E80100F405DE /* Authentication in Frameworks */,
 				B830CE562565E80100F405DE /* StorageClientLive in Frameworks */,
@@ -136,6 +183,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B830CEB02565F40200F405DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CEF12565F50400F405DE /* Authentication in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CEB82565F40200F405DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CEBC2565F40200F405DE /* Login.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -144,6 +207,7 @@
 			children = (
 				90D5DE58251B3D56000856C5 /* Peepz */,
 				90D5DE57251B3D56000856C5 /* Products */,
+				B830CEEF2565F50400F405DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -153,6 +217,8 @@
 				90D5DE56251B3D56000856C5 /* Peepz.app */,
 				B830CE5E2565E96D00F405DE /* Gallery.framework */,
 				B830CE662565E96E00F405DE /* GalleryTests.xctest */,
+				B830CEB32565F40200F405DE /* Login.framework */,
+				B830CEBB2565F40200F405DE /* LoginTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -194,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				B830CE5F2565E96D00F405DE /* Gallery */,
+				B830CEB42565F40200F405DE /* Login */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -228,6 +295,42 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
+		B830CEB42565F40200F405DE /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				B830CED92565F41300F405DE /* Sources */,
+				B830CEDA2565F41B00F405DE /* Tests */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		B830CED92565F41300F405DE /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				B830CEA92565F1AE00F405DE /* ViewModel.swift */,
+				B895DFE725659331009D7554 /* View.swift */,
+				B830CEB52565F40200F405DE /* Login.h */,
+				B830CEB62565F40200F405DE /* Info.plist */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		B830CEDA2565F41B00F405DE /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				B830CEC22565F40200F405DE /* LoginTests.swift */,
+				B830CEC42565F40200F405DE /* Info.plist */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		B830CEEF2565F50400F405DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B895DFE2256592D6009D7554 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,8 +343,6 @@
 		B8A40DB32565983C00E5EAC8 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B895DFE725659331009D7554 /* LoginView.swift */,
-				B830CEA92565F1AE00F405DE /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -254,6 +355,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				B830CE702565E96E00F405DE /* Gallery.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CEAE2565F40200F405DE /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CEC52565F40200F405DE /* Login.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +382,7 @@
 			);
 			dependencies = (
 				B830CE722565E96E00F405DE /* PBXTargetDependency */,
+				B830CEC72565F40200F405DE /* PBXTargetDependency */,
 			);
 			name = Peepz;
 			packageProductDependencies = (
@@ -325,6 +435,47 @@
 			productReference = B830CE662565E96E00F405DE /* GalleryTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		B830CEB22565F40200F405DE /* Login */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830CECA2565F40200F405DE /* Build configuration list for PBXNativeTarget "Login" */;
+			buildPhases = (
+				B830CEAE2565F40200F405DE /* Headers */,
+				B830CEAF2565F40200F405DE /* Sources */,
+				B830CEB02565F40200F405DE /* Frameworks */,
+				B830CEB12565F40200F405DE /* Resources */,
+				B830CEF32565F50400F405DE /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Login;
+			packageProductDependencies = (
+				B830CEF02565F50400F405DE /* Authentication */,
+			);
+			productName = Login;
+			productReference = B830CEB32565F40200F405DE /* Login.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B830CEBA2565F40200F405DE /* LoginTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B830CECD2565F40200F405DE /* Build configuration list for PBXNativeTarget "LoginTests" */;
+			buildPhases = (
+				B830CEB72565F40200F405DE /* Sources */,
+				B830CEB82565F40200F405DE /* Frameworks */,
+				B830CEB92565F40200F405DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B830CEBE2565F40200F405DE /* PBXTargetDependency */,
+				B830CEC02565F40200F405DE /* PBXTargetDependency */,
+			);
+			name = LoginTests;
+			productName = LoginTests;
+			productReference = B830CEBB2565F40200F405DE /* LoginTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -341,6 +492,13 @@
 						CreatedOnToolsVersion = 12.2;
 					};
 					B830CE652565E96E00F405DE = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 90D5DE55251B3D56000856C5;
+					};
+					B830CEB22565F40200F405DE = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					B830CEBA2565F40200F405DE = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = 90D5DE55251B3D56000856C5;
 					};
@@ -364,6 +522,8 @@
 				90D5DE55251B3D56000856C5 /* Peepz */,
 				B830CE5D2565E96D00F405DE /* Gallery */,
 				B830CE652565E96E00F405DE /* GalleryTests */,
+				B830CEB22565F40200F405DE /* Login */,
+				B830CEBA2565F40200F405DE /* LoginTests */,
 			);
 		};
 /* End PBXProject section */
@@ -393,6 +553,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B830CEB12565F40200F405DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CEB92565F40200F405DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -400,8 +574,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B830CEAA2565F1AE00F405DE /* LoginViewModel.swift in Sources */,
-				B895DFE825659331009D7554 /* LoginView.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
 			);
@@ -425,6 +597,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B830CEAF2565F40200F405DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CEE22565F45200F405DE /* ViewModel.swift in Sources */,
+				B830CEDE2565F44F00F405DE /* View.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B830CEB72565F40200F405DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B830CEC32565F40200F405DE /* LoginTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -442,6 +631,21 @@
 			isa = PBXTargetDependency;
 			target = B830CE5D2565E96D00F405DE /* Gallery */;
 			targetProxy = B830CE712565E96E00F405DE /* PBXContainerItemProxy */;
+		};
+		B830CEBE2565F40200F405DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B830CEB22565F40200F405DE /* Login */;
+			targetProxy = B830CEBD2565F40200F405DE /* PBXContainerItemProxy */;
+		};
+		B830CEC02565F40200F405DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 90D5DE55251B3D56000856C5 /* Peepz */;
+			targetProxy = B830CEBF2565F40200F405DE /* PBXContainerItemProxy */;
+		};
+		B830CEC72565F40200F405DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B830CEB22565F40200F405DE /* Login */;
+			targetProxy = B830CEC62565F40200F405DE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -720,6 +924,104 @@
 			};
 			name = Release;
 		};
+		B830CECB2565F40200F405DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Peepz/Features/Login/Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.Login;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B830CECC2565F40200F405DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6344MVRY42;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = Peepz/Features/Login/Sources/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.Login;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B830CECE2565F40200F405DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Peepz/Features/Login/Sources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.LoginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peepz.app/Peepz";
+			};
+			name = Debug;
+		};
+		B830CECF2565F40200F405DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Peepz/Features/Login/Sources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.novoda.LoginTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Peepz.app/Peepz";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -759,6 +1061,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		B830CECA2565F40200F405DE /* Build configuration list for PBXNativeTarget "Login" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830CECB2565F40200F405DE /* Debug */,
+				B830CECC2565F40200F405DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B830CECD2565F40200F405DE /* Build configuration list for PBXNativeTarget "LoginTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B830CECE2565F40200F405DE /* Debug */,
+				B830CECF2565F40200F405DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -777,6 +1097,10 @@
 		B830CEA12565EBE000F405DE /* StorageClient */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = StorageClient;
+		};
+		B830CEF02565F50400F405DE /* Authentication */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Authentication;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

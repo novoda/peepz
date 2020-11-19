@@ -1,26 +1,24 @@
 import SwiftUI
 import Authentication
-import Gallery
 import Combine
 
-struct LoginView<V>: View where V: View {
-    @EnvironmentObject var dependencies: Dependencies
+public struct LoginView<V>: View where V: View {
     private let destination: V
-    private let viewModel: LoginViewModel
+    @ObservedObject private var viewModel: LoginViewModel
 
-    internal init(destination: V, viewModel: LoginViewModel) {
+    public init(destination: V, viewModel: LoginViewModel) {
         self.destination = destination
         self.viewModel = viewModel
     }
 
-    var body: some View {
+    public var body: some View {
         VStack {
             Image(systemName: "person.circle").imageScale(.large)
-            GoogleSignInViewController(viewModel: dependencies.login)
+            GoogleSignInViewController(viewModel: viewModel)
 
             NavigationLink(
                 destination: destination,
-                isActive: $dependencies.login.authenticated,
+                isActive: $viewModel.isAuthenticated,
                 label: { EmptyView() })
         }
     }

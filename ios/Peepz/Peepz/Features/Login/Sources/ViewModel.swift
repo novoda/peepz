@@ -1,18 +1,18 @@
+import UIKit
 import Combine
 import Authentication
-import UIKit
 
 public class LoginViewModel: ObservableObject {
     private let client: AuthenticationClient
     private var cancellables = [AnyCancellable]()
 
-    @Published var authenticated: Bool = false
+    @Published public var isAuthenticated = false
 
     public init(client: AuthenticationClient) {
         self.client = client
 
         client.authenticated
-            .assign(to: \.authenticated, on: self)
+            .assign(to: \.isAuthenticated, on: self)
             .store(in: &cancellables)
     }
 
