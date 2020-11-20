@@ -1,7 +1,6 @@
 import SwiftUI
-import StorageClient
-import StorageClientLive
-import Authentication
+import FirebaseClient
+import FirebaseClientLive
 import Gallery
 import Login
 

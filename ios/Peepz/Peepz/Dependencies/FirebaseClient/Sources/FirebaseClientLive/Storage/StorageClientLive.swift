@@ -1,7 +1,7 @@
 import Foundation
 import Firebase
 import Combine
-import StorageClient
+import FirebaseClient
 
 extension StorageClient {
     public static var live: StorageClient {

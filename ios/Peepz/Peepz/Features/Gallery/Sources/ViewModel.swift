@@ -1,7 +1,6 @@
 import Combine
 import UIKit
-import StorageClient
-import Authentication
+import FirebaseClient
 
 public class GalleryViewModel: ObservableObject {
     private let storageClient: StorageClient

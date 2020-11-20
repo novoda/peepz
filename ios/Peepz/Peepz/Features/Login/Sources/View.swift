@@ -1,5 +1,5 @@
 import SwiftUI
-import Authentication
+import FirebaseClient
 import Combine
 
 public struct LoginView<V>: View where V: View {

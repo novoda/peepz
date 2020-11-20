@@ -1,6 +1,6 @@
 import UIKit
 import Combine
-import Authentication
+import FirebaseClient
 
 public class LoginViewModel: ObservableObject {
     private let client: AuthenticationClient

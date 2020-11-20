@@ -1,5 +1,5 @@
 import Foundation
-import StorageClient
+import FirebaseClient
 
 extension User {
     init?(dictionary: NSDictionary) {

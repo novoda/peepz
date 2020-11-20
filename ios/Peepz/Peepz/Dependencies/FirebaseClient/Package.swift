@@ -4,35 +4,35 @@
 import PackageDescription
 
 let package = Package(
-    name: "StorageClient",
+    name: "FirebaseClient",
     platforms: [.iOS(.v14)],
     products: [
         .library(
-            name: "StorageClient",
+            name: "FirebaseClient",
             type: .dynamic,
-            targets: ["StorageClient"]),
+            targets: ["FirebaseClient"]),
         .library(
-            name: "StorageClientLive",
+            name: "FirebaseClientLive",
             type: .dynamic,
-            targets: ["StorageClientLive"]),
+            targets: ["FirebaseClientLive"]),
     ],
     dependencies: [
-        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", .branch("6.34-spm-beta"))
+        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "7.1.0")
     ],
     targets: [
         .target(
-            name: "StorageClient",
+            name: "FirebaseClient",
             dependencies: []
         ),
         .target(
-            name: "StorageClientLive",
+            name: "FirebaseClientLive",
             dependencies: [
-                .byName(name: "StorageClient"),
+                .byName(name: "FirebaseClient"),
                 .product(name: "FirebaseDatabase", package: "Firebase"),
             ]
         ),
         .testTarget(
-            name: "StorageClientTests",
-            dependencies: ["StorageClient"]),
+            name: "FirebaseClientTests",
+            dependencies: ["FirebaseClient"]),
     ]
 )
