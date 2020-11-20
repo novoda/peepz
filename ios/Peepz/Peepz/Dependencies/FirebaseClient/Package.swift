@@ -30,7 +30,9 @@ let package = Package(
             dependencies: [
                 .byName(name: "FirebaseClient"),
                 .product(name: "FirebaseDatabase", package: "Firebase"),
-                .product(name: "AuthUI", package: "FirebaseUI")
+                .product(name: "AuthUI", package: "FirebaseUI"),
+                .product(name: "GoogleAuth", package: "FirebaseUI")
+
             ]
         ),
         .testTarget(
