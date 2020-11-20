@@ -17,7 +17,8 @@ let package = Package(
             targets: ["FirebaseClientLive"]),
     ],
     dependencies: [
-        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "7.1.0")
+        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "7.1.0"),
+        .package(name: "FirebaseUI", url: "https://github.com/firebase/FirebaseUI-iOS.git", .branch("pb-spm"))
     ],
     targets: [
         .target(
@@ -29,6 +30,7 @@ let package = Package(
             dependencies: [
                 .byName(name: "FirebaseClient"),
                 .product(name: "FirebaseDatabase", package: "Firebase"),
+                .product(name: "AuthUI", package: "FirebaseUI")
             ]
         ),
         .testTarget(

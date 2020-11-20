@@ -16,7 +16,7 @@ extension StorageClient {
 }
 
 private class GalleryModelFirebase {
-    let usersSubject = PassthroughSubject<[User], Never>()
+    let usersSubject = PassthroughSubject<[FirebaseClient.User], Never>()
 
     func configure() {
         FirebaseApp.configure()
