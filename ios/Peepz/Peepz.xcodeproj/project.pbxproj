@@ -19,7 +19,6 @@
 		9036203C2534AE6D00123072 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036203B2534AE6C00123072 /* User.swift */; };
 		9036203D2534AE6D00123072 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9036203B2534AE6C00123072 /* User.swift */; };
 		90460A172523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
-		90460A182523444800DB743E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90460A162523444800DB743E /* LoginView.swift */; };
 		90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE59251B3D56000856C5 /* PeepzApp.swift */; };
 		90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90D5DE5B251B3D56000856C5 /* ContentView.swift */; };
 		90D5DE5E251B3D58000856C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE5D251B3D58000856C5 /* Assets.xcassets */; };
@@ -29,11 +28,16 @@
 		90D5DE91251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
 		90D5DE92251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
 		90D5DE93251BA806000856C5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 90D5DE90251BA806000856C5 /* GoogleService-Info.plist */; };
-		90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
-		90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E6445C2524BEC900B07DEB /* PeepzModel.swift */; };
 		90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FAD0732525EB2800477A70 /* GalleryView.swift */; };
 		B866911D255D8B0100CABD4A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = B866911C255D8B0100CABD4A /* SDWebImageSwiftUI */; };
+		B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482AC255DFFA000F21497 /* PeepzModel.swift */; };
+		B89482BD255E054C00F21497 /* GalleryClientInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482BC255E054C00F21497 /* GalleryClientInterface.swift */; };
+		B89482C6255E056E00F21497 /* AuthenticationClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482C5255E056E00F21497 /* AuthenticationClient.swift */; };
+		B89482CB255E05C100F21497 /* GalleryClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482CA255E05C100F21497 /* GalleryClientLive.swift */; };
+		B89482D0255E068600F21497 /* AuthenticationClientLive.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482CF255E068600F21497 /* AuthenticationClientLive.swift */; };
+		B89482ED255E091000F21497 /* AuthenticationClientMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482EC255E091000F21497 /* AuthenticationClientMocks.swift */; };
+		B89482F2255E093F00F21497 /* GalleryClientMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = B89482F1255E093F00F21497 /* GalleryClientMocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,13 +77,19 @@
 		90D5DE76251B3D58000856C5 /* PeepzUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzUITests.swift; sourceTree = "<group>"; };
 		90D5DE78251B3D58000856C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90D5DE90251BA806000856C5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		90E6445C2524BEC900B07DEB /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
 		90FAD0732525EB2800477A70 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		90FAD093252679B300477A70 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/LocalAuthentication.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD095252679C500477A70 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/SafariServices.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD097252679D000477A70 /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/iOSSupport/System/Library/Frameworks/AuthenticationServices.framework; sourceTree = DEVELOPER_DIR; };
 		90FAD099252679D900477A70 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
 		B23340EEA3119241B7FF1005 /* Pods-Peepz.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Peepz.debug.xcconfig"; path = "Target Support Files/Pods-Peepz/Pods-Peepz.debug.xcconfig"; sourceTree = "<group>"; };
+		B89482AC255DFFA000F21497 /* PeepzModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeepzModel.swift; sourceTree = "<group>"; };
+		B89482BC255E054C00F21497 /* GalleryClientInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryClientInterface.swift; sourceTree = "<group>"; };
+		B89482C5255E056E00F21497 /* AuthenticationClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationClient.swift; sourceTree = "<group>"; };
+		B89482CA255E05C100F21497 /* GalleryClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryClientLive.swift; sourceTree = "<group>"; };
+		B89482CF255E068600F21497 /* AuthenticationClientLive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationClientLive.swift; sourceTree = "<group>"; };
+		B89482EC255E091000F21497 /* AuthenticationClientMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationClientMocks.swift; sourceTree = "<group>"; };
+		B89482F1255E093F00F21497 /* GalleryClientMocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryClientMocks.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,9 +159,11 @@
 		90D5DE58251B3D56000856C5 /* Peepz */ = {
 			isa = PBXGroup;
 			children = (
+				B89482C4255E056000F21497 /* AuthenticationClient */,
+				B89482BB255E053F00F21497 /* GalleryClient */,
 				90FAD0722525EB0F00477A70 /* Gallery */,
 				90E644652524C18C00B07DEB /* Navigation */,
-				90E6445B2524BEB500B07DEB /* Model */,
+				90E6445B2524BEB500B07DEB /* GalleryModel */,
 				90460A11252343CE00DB743E /* Authentication */,
 				90460A0D2523415900DB743E /* Peepz.entitlements */,
 				90D5DE90251BA806000856C5 /* GoogleService-Info.plist */,
@@ -190,13 +202,13 @@
 			path = PeepzUITests;
 			sourceTree = "<group>";
 		};
-		90E6445B2524BEB500B07DEB /* Model */ = {
+		90E6445B2524BEB500B07DEB /* GalleryModel */ = {
 			isa = PBXGroup;
 			children = (
-				90E6445C2524BEC900B07DEB /* PeepzModel.swift */,
 				9036203B2534AE6C00123072 /* User.swift */,
+				B89482AC255DFFA000F21497 /* PeepzModel.swift */,
 			);
-			path = Model;
+			path = GalleryModel;
 			sourceTree = "<group>";
 		};
 		90E644652524C18C00B07DEB /* Navigation */ = {
@@ -233,6 +245,26 @@
 				67F8265A9695EEC9B26CDB5A /* Pods_Peepz.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B89482BB255E053F00F21497 /* GalleryClient */ = {
+			isa = PBXGroup;
+			children = (
+				B89482BC255E054C00F21497 /* GalleryClientInterface.swift */,
+				B89482F1255E093F00F21497 /* GalleryClientMocks.swift */,
+				B89482CA255E05C100F21497 /* GalleryClientLive.swift */,
+			);
+			path = GalleryClient;
+			sourceTree = "<group>";
+		};
+		B89482C4255E056000F21497 /* AuthenticationClient */ = {
+			isa = PBXGroup;
+			children = (
+				B89482C5255E056E00F21497 /* AuthenticationClient.swift */,
+				B89482CF255E068600F21497 /* AuthenticationClientLive.swift */,
+				B89482EC255E091000F21497 /* AuthenticationClientMocks.swift */,
+			);
+			path = AuthenticationClient;
 			sourceTree = "<group>";
 		};
 		FB2103484FA69E1279B3F085 /* Pods */ = {
@@ -453,12 +485,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				90262FDF25333F99000CA696 /* GalleryItemView.swift in Sources */,
-				90E6445D2524BEC900B07DEB /* PeepzModel.swift in Sources */,
 				90460A172523444800DB743E /* LoginView.swift in Sources */,
+				B89482AD255DFFA000F21497 /* PeepzModel.swift in Sources */,
 				90D5DE5C251B3D56000856C5 /* ContentView.swift in Sources */,
 				90D5DE5A251B3D56000856C5 /* PeepzApp.swift in Sources */,
 				90FAD0742525EB2800477A70 /* GalleryView.swift in Sources */,
+				B89482ED255E091000F21497 /* AuthenticationClientMocks.swift in Sources */,
+				B89482F2255E093F00F21497 /* GalleryClientMocks.swift in Sources */,
+				B89482BD255E054C00F21497 /* GalleryClientInterface.swift in Sources */,
+				B89482D0255E068600F21497 /* AuthenticationClientLive.swift in Sources */,
 				9036203C2534AE6D00123072 /* User.swift in Sources */,
+				B89482C6255E056E00F21497 /* AuthenticationClient.swift in Sources */,
+				B89482CB255E05C100F21497 /* GalleryClientLive.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,7 +504,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90E6445E2524BEC900B07DEB /* PeepzModel.swift in Sources */,
 				90D5DE6C251B3D58000856C5 /* PeepzTests.swift in Sources */,
 				9036203D2534AE6D00123072 /* User.swift in Sources */,
 			);
@@ -476,7 +513,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90460A182523444800DB743E /* LoginView.swift in Sources */,
 				90FAD0752525EB2800477A70 /* GalleryView.swift in Sources */,
 				90D5DE77251B3D58000856C5 /* PeepzUITests.swift in Sources */,
 			);

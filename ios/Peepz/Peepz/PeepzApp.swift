@@ -18,7 +18,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 @main
 struct PeepzApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-    @StateObject private var model = PeepzModel()
+    @StateObject private var model: PeepzModel = .live
 
     var body: some Scene {
         WindowGroup {

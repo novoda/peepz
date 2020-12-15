@@ -1,7 +1,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct GalleryItemViewState: Hashable {
+public struct GalleryItemViewState: Hashable {
     let imageName: String?
     let location: String?
     let name: String

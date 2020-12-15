@@ -11,7 +11,7 @@ struct GalleryView: View {
     var body: some View {
         ScrollView {
             LazyVGrid(columns: columns, spacing: 0) {
-                ForEach(model.users, id: \.self) { state in
+                ForEach(model.items, id: \.self) { state in
                     GalleryItemView(state: state)
                 }
             }
@@ -31,8 +31,8 @@ struct GalleryView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             GalleryView()
+                .environmentObject(PeepzModel.mock)
                 .navigationTitle("Smoothies")
-                .environmentObject(PeepzModel())
         }
     }
 }
