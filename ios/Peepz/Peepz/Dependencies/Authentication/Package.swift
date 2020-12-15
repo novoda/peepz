@@ -19,7 +19,7 @@ let package = Package(
         )
     ],
     dependencies: [
-
+        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "7.0.0")
     ],
     targets: [
         .target(
@@ -30,6 +30,7 @@ let package = Package(
             name: "AuthenticationLive",
             dependencies: [
                 .byName(name: "Authentication"),
+                .product(name: "FirebaseAuth", package: "Firebase")
             ]
         ),
         .testTarget(

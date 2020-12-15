@@ -17,7 +17,7 @@ let package = Package(
             targets: ["StorageClientLive"]),
     ],
     dependencies: [
-        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", .branch("6.34-spm-beta"))
+        .package(name: "Firebase", url: "https://github.com/firebase/firebase-ios-sdk.git", from: "7.0.0")
     ],
     targets: [
         .target(
