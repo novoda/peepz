@@ -1,21 +1,18 @@
 package com.novoda.peepz;
 
 import android.content.Context;
-import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
-
-import com.google.android.cameraview.CameraView;
-
+import androidx.annotation.Nullable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import com.google.android.cameraview.CameraView;
 
 public class SelfieLiveWidget extends FrameLayout {
 
     @BindView(R.id.selfie_live_camera)
-    CameraView cameraView;
+    PeepzCameraView cameraView;
 
     @BindView(R.id.selfie_live_button_take_picture)
     View takePictureButton;

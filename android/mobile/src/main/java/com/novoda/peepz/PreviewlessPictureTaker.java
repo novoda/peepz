@@ -4,14 +4,14 @@ import com.google.android.cameraview.CameraView;
 
 class PreviewlessPictureTaker {
 
-    private final CameraView cameraView;
+    private final PeepzCameraView cameraView;
     private final PictureUploader pictureUploader;
     private final PeepUpdater peepUpdater;
 
     private Callback callback;
     private boolean cameraReady;
 
-    PreviewlessPictureTaker(CameraView cameraView, PictureUploader pictureUploader, PeepUpdater peepUpdater) {
+    PreviewlessPictureTaker(PeepzCameraView cameraView, PictureUploader pictureUploader, PeepUpdater peepUpdater) {
         this.cameraView = cameraView;
         this.pictureUploader = pictureUploader;
         this.peepUpdater = peepUpdater;
