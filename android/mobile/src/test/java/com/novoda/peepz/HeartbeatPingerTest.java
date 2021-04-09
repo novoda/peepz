@@ -34,7 +34,7 @@ public class HeartbeatPingerTest {
     @Test
     public void startSendsHeartbeatImmediately() {
         heartbeatPinger.start();
-        fail("test failure");
+        fail("test failure update");
         verify(peepUpdater).updatePeepLastSeen();
     }
 
