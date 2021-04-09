@@ -12,6 +12,7 @@ import com.novoda.peepz.databinding.ActivityPeepzBinding
 import com.novoda.support.SystemClock
 
 class PeepzActivity : BaseActivity() {
+
     private lateinit var binding: ActivityPeepzBinding
 
     private val signedInUser: FirebaseUser by lazy {
