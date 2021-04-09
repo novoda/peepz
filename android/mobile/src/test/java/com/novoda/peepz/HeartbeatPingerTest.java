@@ -1,7 +1,6 @@
 package com.novoda.peepz;
 
 import com.novoda.support.Duration;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -9,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnit;
 import org.mockito.junit.MockitoRule;
 
+import static org.junit.Assert.fail;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.eq;
 import static org.mockito.Mockito.verify;
@@ -34,7 +34,7 @@ public class HeartbeatPingerTest {
     @Test
     public void startSendsHeartbeatImmediately() {
         heartbeatPinger.start();
-
+        fail("test failure");
         verify(peepUpdater).updatePeepLastSeen();
     }
 
