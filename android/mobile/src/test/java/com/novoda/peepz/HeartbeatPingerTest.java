@@ -1,7 +1,6 @@
 package com.novoda.peepz;
 
 import com.novoda.support.Duration;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -34,7 +33,6 @@ public class HeartbeatPingerTest {
     @Test
     public void startSendsHeartbeatImmediately() {
         heartbeatPinger.start();
-
         verify(peepUpdater).updatePeepLastSeen();
     }
 

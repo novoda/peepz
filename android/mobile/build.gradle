@@ -1,15 +1,14 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.0'
+    compileSdkVersion 30
+    buildToolsVersion '30.0.3'
 
     defaultConfig {
         applicationId 'com.novoda.peepz'
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion 30
         versionCode 2
         versionName '1.1'
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
@@ -33,16 +32,21 @@ android {
     lintOptions {
         abortOnError false
     }
+    buildFeatures {
+        viewBinding true
+    }
 
 }
 
 dependencies {
     implementation project(":core")
-    def appcompat_version = "1.1.0"
+    def appcompat_version = "1.2.0"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "androidx.appcompat:appcompat-resources:$appcompat_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation "androidx.activity:activity-ktx:1.2.2"
+    implementation 'androidx.fragment:fragment-ktx:1.3.2'
 
     implementation 'com.novoda:accessibilitools:1.6.0'
 
@@ -53,39 +57,39 @@ dependencies {
 
     implementation 'com.github.jackSzm:cameraview:e32e238321'
 
-    implementation 'com.google.firebase:firebase-auth:19.2.0'
-    implementation 'com.google.firebase:firebase-firestore:21.4.0'
+    implementation 'com.google.firebase:firebase-auth:20.0.3'
+    implementation 'com.google.firebase:firebase-firestore:22.1.2'
 
-    implementation 'com.google.firebase:firebase-database:19.2.1'
-    implementation 'com.google.firebase:firebase-storage:19.1.1'
+    implementation 'com.google.firebase:firebase-database:19.7.0'
+    implementation 'com.google.firebase:firebase-storage:19.2.2'
 
-    implementation 'com.google.android.gms:play-services-auth:17.0.0'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.0'
 
-    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.google.android.material:material:1.3.0'
 
     // Android runner and rules support
-    androidTestImplementation('androidx.test.ext:junit:1.1.1') {
+    androidTestImplementation('androidx.test.ext:junit:1.1.2') {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'annotations'
     }
 
-    androidTestImplementation('androidx.test:rules:1.1.1') {
+    androidTestImplementation('androidx.test:rules:1.3.0') {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'annotations'
     }
 
     // Espresso support
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0') {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.3.0') {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs', module: 'annotations'
     }
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:1.10.19'
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.mockito:mockito-core:2.19.0'
     testImplementation 'org.easytesting:fest-assert-core:2.0M10'
-    implementation "androidx.core:core-ktx:+"
+    implementation "androidx.core:core-ktx:1.3.2"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 
